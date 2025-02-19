@@ -1,5 +1,5 @@
-# python-wf-default-deploy-pipeline.yaml
-name: Default Deployment Pipeline
+# python-wf-default-pypi-pipeline.yaml
+name: Default PyPI Pipeline
 
 on:
   workflow_call:
