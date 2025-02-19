@@ -12,11 +12,11 @@ on:
 
 jobs:
   Pre-Commit:
-    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-precommit-default.yaml@main
+    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-precommit-default.yaml@master
     secrets: inherit
 
   CI:
-    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-ci-default.yaml@main
+    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-ci-default.yaml@master
     secrets: inherit
 
   Build-and-Deploy:
@@ -24,6 +24,6 @@ jobs:
     needs:
       - Pre-Commit
       - CI
-    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-deploy-default.yaml@main
+    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-deploy-default.yaml@master
     secrets: inherit
 
