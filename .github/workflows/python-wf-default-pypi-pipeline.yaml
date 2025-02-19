@@ -1,0 +1,29 @@
+# python-wf-default-deployment-pipeline.yaml
+name: Default Deployment Pipeline
+
+on:
+  workflow_call:
+    inputs:
+      run_deploy:
+        description: "Set to 'true' to run the Build-and-Deploy job. For PR merges into main, pass 'true'. For merges into develop, pass 'false'."
+        required: true
+        default: false
+        type: boolean
+
+jobs:
+  Pre-Commit:
+    uses: citiq-prepaid/devops-platform/.github/workflows/python-process-precommit-default.yaml@main
+    secrets: inherit
+
+  CI:
+    uses: citiq-prepaid/devops-platform/.github/workflows/python-process-ci-default.yaml@main
+    secrets: inherit
+
+  Build-and-Deploy:
+    if: ${{ inputs.run_deploy == true }}
+    needs:
+      - Pre-Commit
+      - CI
+    uses: citiq-prepaid/devops-platform/.github/workflows/python-process-deploy-default.yaml@main
+    secrets: inherit
+

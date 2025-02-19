@@ -1,0 +1,57 @@
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[project]
+name = 'devops-platform'
+version = '0.1.0'
+description = 'Repository for GitHub Actions Workflows.'
+
+authors = [
+    { name = 'Jeandré Janse van Rensburg', email = 'jeandrejvr@citiqprepaid.co.za' },
+    { name = 'Hendrik du Toit', email = 'hendrikdt@citiqprepaid.co.za' }
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: System Administrators",
+    "Topic :: Software Development :: Bug Tracking",
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Software Development :: Testing",
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12'
+]
+# documentation = "https://readthedocs.org"
+license = { file = 'LICENSE' }
+maintainers = [
+]
+readme = "README.md"
+requires-python = ">=3.10"
+
+[project.urls]
+issues = "https://github.com/citiq-prepaid/devops-platform/issues"
+Changelog = 'https://github.com/citiq-prepaid/devops-platform/blob/enhancement/master/ReleaseNotes.md'
+Homepage = 'https://github.com/citiq-prepaid/devops-platform'
+repository = "https://github.com/citiq-prepaid/devops-platform.git"
+
+[tool.codespell]
+count = ''
+quiet-level = 2
+skip = 'documentation/Archive/*'
+ignore-words-list = 'space-holder'
+write-changes = ''
+
+[tool.poetry.dependencies]
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+mdformat-gfm = ">=0.4.1"
+mdformat-frontmatter = ">=2.0.8"
+mdformat-footnote = ">=0.1.1"
+pre-commit = ">=4.0.1"
+rstcheck = { extras = ["sphinx"], version = ">=6.2.4" }
