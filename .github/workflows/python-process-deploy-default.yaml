@@ -55,10 +55,10 @@ jobs:
         run: |
           poetry build
 
-#      - name: Dump environment variables
-#        run: |
-#          env
-#          echo "${{ toJson(github) }}"
+      #      - name: Dump environment variables
+      #        run: |
+      #          env
+      #          echo "${{ toJson(github) }}"
 
       # TODO: The reference in the Release notes must be corrected.
       - name: New release
@@ -89,7 +89,7 @@ jobs:
 # Configuration details needed:
 # Sender details: userid, password, server_address and server_port
 #      - name: Send release email notification
-#        uses: betterfor/action-send-mail@main
+#        uses: betterfor/action-send-mail@master
 #        with:
 #          server_address: smtp.gmail.com
 #          server_port: 465
