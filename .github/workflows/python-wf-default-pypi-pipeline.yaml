@@ -1,4 +1,4 @@
-# python-wf-default-deployment-pipeline.yaml
+# python-wf-default-deploy-pipeline.yaml
 name: Default Deployment Pipeline
 
 on:
