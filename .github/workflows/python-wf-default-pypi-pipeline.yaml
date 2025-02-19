@@ -12,11 +12,11 @@ on:
 
 jobs:
   Pre-Commit:
-    uses: citiq-prepaid/devops-platform/.github/workflows/python-process-precommit-default.yaml@main
+    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-precommit-default.yaml@main
     secrets: inherit
 
   CI:
-    uses: citiq-prepaid/devops-platform/.github/workflows/python-process-ci-default.yaml@main
+    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-ci-default.yaml@main
     secrets: inherit
 
   Build-and-Deploy:
@@ -24,6 +24,6 @@ jobs:
     needs:
       - Pre-Commit
       - CI
-    uses: citiq-prepaid/devops-platform/.github/workflows/python-process-deploy-default.yaml@main
+    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-deploy-default.yaml@main
     secrets: inherit
 

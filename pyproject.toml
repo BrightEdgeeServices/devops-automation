@@ -32,10 +32,10 @@ readme = "README.md"
 requires-python = ">=3.10"
 
 [project.urls]
-issues = "https://github.com/citiq-prepaid/devops-platform/issues"
-Changelog = 'https://github.com/citiq-prepaid/devops-platform/blob/enhancement/master/ReleaseNotes.md'
-Homepage = 'https://github.com/citiq-prepaid/devops-platform'
-repository = "https://github.com/citiq-prepaid/devops-platform.git"
+issues = "https://github.com/RealTimeEvents/devops-automation/issues"
+Changelog = 'https://github.com/RealTimeEvents/devops-automation/blob/enhancement/master/ReleaseNotes.md'
+Homepage = 'https://github.com/RealTimeEvents/devops-automation'
+repository = "https://github.com/RealTimeEvents/devops-automation.git"
 
 [tool.codespell]
 count = ''
