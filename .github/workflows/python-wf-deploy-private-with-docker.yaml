@@ -18,7 +18,7 @@ jobs:
     secrets: inherit
 
   CI:
-    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-ci-with-docker.yaml@master
+    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-ci-private-with-docker.yaml@master
     secrets: inherit
 
   Build-and-Deploy:

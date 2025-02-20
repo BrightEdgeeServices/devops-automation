@@ -1,4 +1,4 @@
-# python-process-deploy-with-docker.yaml
+# python-process-pypi-no-docker.yaml
 # ToDo
 # This is a copied version and has to be fixed
 name: Build-and-Publish-to-PyPI

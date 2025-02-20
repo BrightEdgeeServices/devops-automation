@@ -1,3 +1,4 @@
+# python-process-ci-public-with-docker.yaml
 # ToDo
 # This is a copied version and has to be fixed
 name: CI
@@ -52,9 +53,9 @@ jobs:
       - name: Configure Poetry
         run: |
           poetry config keyring.enabled false
-          poetry config http-basic.statsp __token__ ${{ secrets.GH_REPO_ACCESS_FRANZEM_STATSP }}
-          poetry source add --priority=explicit statsp https://github.com/franzem/statsp.git
-          poetry add git+https://github.com/franzem/statsp.git
+          poetry config http-basic.PoetryPrivate __token__ ${{ secrets.GH_REPO_ACCESS_CURR_USER }}
+          poetry source add --priority=explicit PoetryPrivate https://github.com/BrightEdgeeServices/PoetryPrivate.git
+          poetry add git+https://github.com/BrightEdgeeServices/PoetryPrivate.git
 
       - name: Install dependencies
         run: |
@@ -75,14 +76,13 @@ jobs:
         run: |
           poetry run pytest --cov=./ --cov-report=xml --maxfail=1 tests/
 
-      #      - name: Upload coverage to Codecov
-      #        uses: codecov/codecov-action@v5
-      #        with:
-      #          files: coverage.xml
-      #          fail_ci_if_error: true
-      #          token: ${{ secrets.CODECOV_TOKEN }}
-      #          slug: hendrikdutoit/DockerMySqlExample
-
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          files: coverage.xml
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN_MASTER }}
+          slug: BrightEdgeeServices/PythonTemplateIt
       - name: Tear down Docker Compose
         if: always()
         run: docker-compose -f docker-compose.yaml down

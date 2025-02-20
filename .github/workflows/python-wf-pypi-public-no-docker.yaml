@@ -1,4 +1,4 @@
-# python-wf-pypi-public-with-docker.yaml
+# python-wf-pypi-public-no-docker.yaml
 # ToDo
 # This is a copied version and has to be fixed
 name: Default PyPI Pipeline
@@ -18,7 +18,7 @@ jobs:
     secrets: inherit
 
   CI:
-    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-ci-no-docker.yaml@master
+    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-ci-public-no-docker.yaml@master
     secrets: inherit
 
   Build-and-Publish-to-PyPI:
