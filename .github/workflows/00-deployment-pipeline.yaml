@@ -11,7 +11,7 @@ jobs:
   #   uses: ./.github/workflows/02-ci.yaml
   #   secrets: inherit
 
-  Build-and-Release-to-Pypi:
+  Build-and-Publish:
     needs:
       # - CI
       - Pre-Commit
