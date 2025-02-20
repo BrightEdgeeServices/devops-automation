@@ -1,4 +1,4 @@
-name: Build-and-Publish-to-PyPI
+name: Build-and-Publish
 
 on:
   workflow_call:
@@ -63,26 +63,26 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python-version }}
+      # - name: Set up Python
+      #   uses: actions/setup-python@v5
+      #   with:
+      #     python-version: ${{ matrix.python-version }}
 
-      - name: Install Poetry
-        run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
+      # - name: Install Poetry
+      #   run: |
+      #     curl -sSL https://install.python-poetry.org | python3 -
+      #     echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
 
-      - name: Configure Poetry
-        run: |
-          poetry config keyring.enabled false
-          poetry config http-basic.PoetryPrivate __token__ ${{ secrets.GH_REPO_ACCESS_CURR_USER }}
-          poetry source add --priority=explicit PoetryPrivate https://github.com/BrightEdgeeServices/PoetryPrivate.git
-          poetry add git+https://github.com/BrightEdgeeServices/PoetryPrivate.git
+      # - name: Configure Poetry
+      #   run: |
+      #     poetry config keyring.enabled false
+      #     poetry config http-basic.PoetryPrivate __token__ ${{ secrets.GH_REPO_ACCESS_CURR_USER }}
+      #     poetry source add --priority=explicit PoetryPrivate https://github.com/BrightEdgeeServices/PoetryPrivate.git
+      #     poetry add git+https://github.com/BrightEdgeeServices/PoetryPrivate.git
 
-      - name: Install dependencies
-        run: |
-          poetry install
+      # - name: Install dependencies
+      #   run: |
+      #     poetry install
 
       # This is a private repository and cannot be published to PyPI.
       # - name: Build and publish with Poetry
