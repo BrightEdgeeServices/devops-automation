@@ -1,13 +1,13 @@
-# GitHub Actions Script: python-template-deploy-private-with-docker.yaml
+# python-template-deploy-private-with-docker.yaml
 # This is a template and should not be changed unless you are familiar with the
 # reusable GitHub Actions strategy of the company.
-name: Python Default Template
+name: Python Template Deploy Private With-Docker
 
 on:
   push:
 
 jobs:
-  default-deployment-pipeline:
+  python-template-deploy-private-with-docker:
     permissions:
       id-token: write
       contents: write
