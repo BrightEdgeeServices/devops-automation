@@ -1,11 +1,13 @@
-# python-wf-default-pypi-pipeline.yaml
-name: Default PyPI Pipeline
+# python-wf-deploy-private-with-docker.yaml
+# ToDo
+# This is a copied version and has to be fixed
+name: Default Deployment Pipeline
 
 on:
   workflow_call:
     inputs:
       run_deploy:
-        description: "Set to 'true' to run the Build-and-Publish-to-PyPI job if a tag was specified."
+        description: "Set to 'true' to run the Build-and-Deploy job if a tag was specified."
         required: true
         default: false
         type: boolean
@@ -16,10 +18,10 @@ jobs:
     secrets: inherit
 
   CI:
-    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-ci-default.yaml@master
+    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-ci-with-docker.yaml@master
     secrets: inherit
 
-  Build-and-Publish-to-PyPI:
+  Build-and-Deploy:
     permissions:
       id-token: write
       contents: write
@@ -27,6 +29,6 @@ jobs:
     needs:
       - Pre-Commit
       - CI
-    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-pypi-default.yaml@master
+    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-deploy-with-docker.yaml@master
     secrets: inherit
 

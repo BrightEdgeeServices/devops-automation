@@ -1,3 +1,5 @@
+# ToDo
+# This is a copied version and has to be fixed
 name: CI
 
 on:
@@ -14,8 +16,8 @@ jobs:
       MYSQL_HOST: ${{vars.MYSQL_HOST}}
       MYSQL_ROOT_PASSWORD: ${{ vars.MYSQL_ROOT_PASSWORD }}
       MYSQL_TCP_PORT: ${{ vars.MYSQL_TCP_PORT }}
-#      MYSQL_USER_ID: ${{secrets.INSTALLER_USER_ID}}
-#      MYSQL_USER_PWD: ${{secrets.INSTALLER_USER_PWD}}
+      #      MYSQL_USER_ID: ${{secrets.INSTALLER_USER_ID}}
+      #      MYSQL_USER_PWD: ${{secrets.INSTALLER_USER_PWD}}
       MYSQL_PWD: ${{vars.MYSQL_PWD}}
       PROJECT_NAME: ${{ vars.PROJECT_NAME }}
 
@@ -73,13 +75,13 @@ jobs:
         run: |
           poetry run pytest --cov=./ --cov-report=xml --maxfail=1 tests/
 
-#      - name: Upload coverage to Codecov
-#        uses: codecov/codecov-action@v5
-#        with:
-#          files: coverage.xml
-#          fail_ci_if_error: true
-#          token: ${{ secrets.CODECOV_TOKEN }}
-#          slug: hendrikdutoit/DockerMySqlExample
+      #      - name: Upload coverage to Codecov
+      #        uses: codecov/codecov-action@v5
+      #        with:
+      #          files: coverage.xml
+      #          fail_ci_if_error: true
+      #          token: ${{ secrets.CODECOV_TOKEN }}
+      #          slug: hendrikdutoit/DockerMySqlExample
 
       - name: Tear down Docker Compose
         if: always()
