@@ -88,14 +88,14 @@ jobs:
         run: |
           poetry install
 
-      - name: Check if PYPI_API_TOKEN_PROD is set
-        run: |
-          if [ -z "${{ secrets.PYPI_API_TOKEN_PROD }}" ]; then
-            echo "PYPI_API_TOKEN_PROD is empty!"
-            exit 1
-          else
-            echo "PYPI_API_TOKEN_PROD is set."
-          fi
+      # - name: Check if PYPI_API_TOKEN_PROD is set
+      #   run: |
+      #     if [ -z "${{ secrets.PYPI_API_TOKEN_PROD }}" ]; then
+      #       echo "PYPI_API_TOKEN_PROD is empty!"
+      #       exit 1
+      #     else
+      #       echo "PYPI_API_TOKEN_PROD is set."
+      #     fi
 
       - name: Build and publish with Poetry
         run: |

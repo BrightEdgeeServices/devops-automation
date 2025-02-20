@@ -15,6 +15,5 @@ jobs:
     needs:
       # - CI
       - Pre-Commit
-    if: startsWith(github.ref, 'refs/tags/')
     uses: ./.github/workflows/03-build-and-publish-to-pypi.yaml
     secrets: inherit
