@@ -5,7 +5,7 @@ on:
   workflow_call:
     inputs:
       run_deploy:
-        description: "Set to 'true' to run the Build-and-Deploy job. For PR merges into main, pass 'true'. For merges into develop, pass 'false'."
+        description: "Set to 'true' to run the Build-and-Deploy job if a tag was specified."
         required: true
         default: false
         type: boolean

@@ -5,7 +5,7 @@ on:
   workflow_call:
     inputs:
       run_deploy:
-        description: "Set to 'true' to run the Build-and-Deploy job. For PR merges into main, pass 'true'. For merges into develop, pass 'false'."
+        description: "Set to 'true' to run the Build-and-Publish-to-PyPI job if a tag was specified."
         required: true
         default: false
         type: boolean
@@ -19,11 +19,14 @@ jobs:
     uses: RealTimeEvents/devops-automation/.github/workflows/python-process-ci-default.yaml@master
     secrets: inherit
 
-  Build-and-Deploy:
+  Build-and-Publish-to-PyPI:
+    permissions:
+      id-token: write
+      contents: write
     if: ${{ inputs.run_deploy == true }}
     needs:
       - Pre-Commit
       - CI
-    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-deploy-default.yaml@master
+    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-pypi-default.yaml@master
     secrets: inherit
 
