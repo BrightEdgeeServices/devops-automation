@@ -20,6 +20,9 @@ jobs:
     secrets: inherit
 
   Build-and-Deploy:
+    permissions:
+      id-token: write
+      contents: write
     if: ${{ inputs.run_deploy == true }}
     needs:
       - Pre-Commit
