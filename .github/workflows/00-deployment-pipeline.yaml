@@ -15,5 +15,5 @@ jobs:
     needs:
       # - CI
       - Pre-Commit
-    uses: ./.github/workflows/03-build-and-publish-to-pypi.yaml
+    uses: ./.github/workflows/03-build-and-publish.yaml
     secrets: inherit
