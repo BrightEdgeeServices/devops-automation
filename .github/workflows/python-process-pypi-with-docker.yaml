@@ -48,7 +48,7 @@ jobs:
   #      - name: Debug Environment
   #        run: env
 
-  Build-and-Publish:
+  Build-and-Publish-to-PyPI:
     needs: Merge
     runs-on: ${{ matrix.os }}
 
@@ -113,7 +113,7 @@ jobs:
           prerelease: false
 
   Send-Notice:
-    needs: Publish-to-PyPI
+    needs: Build-and-Publish-to-PyPI
     runs-on: ${{ matrix.os }}
 
     strategy:
