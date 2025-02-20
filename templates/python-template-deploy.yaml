@@ -16,8 +16,3 @@ jobs:
     with:
       run_deploy: ${{ github.event.pull_request.base.ref == 'master'}}
     secrets: inherit
-
-# GitHub Actions Script: python-template-deploy.yaml
-# This is a template and should not be changed unless you are familiar with the
-# reusable GitHub Actions strategy of the company.
-name: Python Default Template
