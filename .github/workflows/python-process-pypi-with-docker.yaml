@@ -88,13 +88,19 @@ jobs:
         run: |
           poetry install
 
+      - name: Check if PYPI_API_TOKEN_PROD is set
+        run: |
+          if [ -z "${{ secrets.PYPI_API_TOKEN_PROD }}" ]; then
+            echo "PYPI_API_TOKEN_PROD is empty!"
+            exit 1
+          else
+            echo "PYPI_API_TOKEN_PROD is set."
+          fi
 
       - name: Build and publish with Poetry
         run: |
           poetry build
-          poetry publish \
-          --username __token__ \
-          --password "${{ secrets.PYPI_API_TOKEN_PROD }}"
+          poetry publish --username __token__ --password ${{ secrets.PYPI_API_TOKEN_PROD }}
 
       #- name: Dump environment variables
       #   run: |
