@@ -1,4 +1,4 @@
-# python-wf-default-pypi-pipeline.yaml
+# python-wf-pypi-public-with-docker.yaml
 name: Default PyPI Pipeline
 
 on:
@@ -16,7 +16,7 @@ jobs:
     secrets: inherit
 
   CI:
-    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-ci-default.yaml@master
+    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-ci-public-with-docker.yaml@master
     secrets: inherit
 
   Build-and-Publish-to-PyPI:
@@ -27,6 +27,6 @@ jobs:
     needs:
       - Pre-Commit
       - CI
-    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-pypi-default.yaml@master
+    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-pypi-with-docker.yaml@master
     secrets: inherit
 

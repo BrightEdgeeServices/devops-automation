@@ -1,0 +1,34 @@
+# python-wf-deploy-private-no-docker.yaml
+# ToDo
+# This is a copied version and has to be fixed
+name: Default Deployment Pipeline
+
+on:
+  workflow_call:
+    inputs:
+      run_deploy:
+        description: "Set to 'true' to run the Build-and-Deploy job if a tag was specified."
+        required: true
+        default: false
+        type: boolean
+
+jobs:
+  Pre-Commit:
+    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-precommit-default.yaml@master
+    secrets: inherit
+
+  CI:
+    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-ci-private-no-docker.yaml@master
+    secrets: inherit
+
+  Build-and-Deploy:
+    permissions:
+      id-token: write
+      contents: write
+    if: ${{ inputs.run_deploy == true }}
+    needs:
+      - Pre-Commit
+      - CI
+    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-deploy-no-docker.yaml@master
+    secrets: inherit
+
