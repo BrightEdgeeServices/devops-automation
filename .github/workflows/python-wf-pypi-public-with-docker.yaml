@@ -9,9 +9,9 @@ on:
         required: true
         default: false
         type: boolean
-    secrets:
-      personal_access_token:
-        required: true
+    # secrets:
+    #   personal_access_token:
+    #     required: true
 
 jobs:
   check-pypi-token:
@@ -30,7 +30,7 @@ jobs:
     steps:
       - name: Check if PYPI_API_TOKEN_PROD is set
         run: |
-          if [ -z "${{ secrets.personal_access_token }}" ]; then
+          if [ -z "${{ secrets.PYPI_API_TOKEN_PROD }}" ]; then
             echo "PYPI_API_TOKEN_PROD is empty!"
             exit 1
           else
