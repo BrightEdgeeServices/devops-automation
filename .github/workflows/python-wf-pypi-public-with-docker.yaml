@@ -9,9 +9,9 @@ on:
         required: true
         default: false
         type: boolean
-    secrets:
-      personal_access_token:
-        required: true
+    # secrets:
+    #   personal_access_token:
+    #     required: true
 
 jobs:
   check-pypi-token:
