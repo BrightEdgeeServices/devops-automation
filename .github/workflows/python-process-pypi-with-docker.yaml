@@ -1,6 +1,4 @@
 # python-process-pypi-with-docker.yaml
-# ToDo
-# This is a copied version and has to be fixed
 name: Build-and-Publish-to-PyPI
 
 on:
@@ -87,15 +85,6 @@ jobs:
       - name: Install dependencies
         run: |
           poetry install
-
-      # - name: Check if PYPI_API_TOKEN_PROD is set
-      #   run: |
-      #     if [ -z "${{ secrets.PYPI_API_TOKEN_PROD }}" ]; then
-      #       echo "PYPI_API_TOKEN_PROD is empty!"
-      #       exit 1
-      #     else
-      #       echo "PYPI_API_TOKEN_PROD is set."
-      #     fi
 
       - name: Build and publish with Poetry
         run: |

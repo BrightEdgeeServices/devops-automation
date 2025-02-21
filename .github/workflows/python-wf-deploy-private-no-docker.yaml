@@ -11,6 +11,11 @@ on:
         required: true
         default: false
         type: boolean
+    secrets:
+      RELEASE_EMAIL_USER:
+        required: true
+      RELEASE_EMAIL_PASSWORD:
+        required: true
 
 jobs:
   Pre-Commit:
