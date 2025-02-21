@@ -51,7 +51,7 @@ jobs:
       contents: write
     if: ${{ inputs.run_deploy == true }}
     needs:
-      - check-pypi-token
+      - check-pypi-token-2
       - Pre-Commit
       - CI
     uses: RealTimeEvents/devops-automation/.github/workflows/python-process-pypi-with-docker.yaml@master
