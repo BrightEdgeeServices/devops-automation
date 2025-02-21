@@ -14,7 +14,7 @@ on:
         required: true
 
 jobs:
-  check-pypi-token:
+  check-pypi-token-2:
     runs-on: ${{ matrix.os }}
 
     strategy:
