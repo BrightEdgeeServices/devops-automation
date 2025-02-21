@@ -12,6 +12,10 @@ on:
     secrets:
       PYPI_API_TOKEN_PROD:
         required: true
+      RELEASE_EMAIL_USER:
+        required: true
+      RELEASE_EMAIL_PASSWORD:
+        required: true
 
 jobs:
   check-pypi-token-2:
