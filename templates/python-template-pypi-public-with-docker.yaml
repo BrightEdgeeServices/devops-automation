@@ -41,4 +41,3 @@ jobs:
     # secrets: inherit
     secrets:
       PYPI_API_TOKEN_PROD: ${{ secrets.PYPI_API_TOKEN_PROD }}
-"
