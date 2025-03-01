@@ -43,6 +43,7 @@ jobs:
       - name: Configure Poetry
         run: |
           poetry config keyring.enabled false
+          poetry config pypi-token.pypi ${{ secrets.PYPI_API_TOKEN_PROD }}
           # poetry config http-basic.PoetryPrivate __token__ ${{ secrets.GH_REPO_ACCESS_CURR_USER }}
           # poetry source add --priority=explicit PoetryPrivate https://github.com/BrightEdgeeServices/PoetryPrivate.git
           # poetry add git+https://github.com/BrightEdgeeServices/PoetryPrivate.git
@@ -54,6 +55,7 @@ jobs:
       - name: Build and publish with Poetry
         run: |
           poetry build
+          poetry publish
 
       #      - name: Dump environment variables
       #        run: |
