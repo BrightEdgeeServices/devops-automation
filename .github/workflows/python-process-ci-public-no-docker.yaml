@@ -40,10 +40,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
           architecture: x64
 
-      - name: Install Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose
+      #      - name: Install Docker Compose
+      #        run: |
+      #          sudo apt-get update
+      #          sudo apt-get install -y docker-compose
 
       - name: Install Poetry
         run: |
@@ -53,38 +53,38 @@ jobs:
       - name: Configure Poetry
         run: |
           poetry config keyring.enabled false
-          poetry config http-basic.statsp __token__ ${{ secrets.GH_REPO_ACCESS_FRANZEM_STATSP }}
-          poetry source add --priority=explicit statsp https://github.com/franzem/statsp.git
-          poetry add git+https://github.com/franzem/statsp.git
+          # poetry config http-basic.PoetryPrivate __token__ ${{ secrets.GH_REPO_ACCESS_CURR_USER }}
+          # poetry source add --priority=explicit PoetryPrivate https://github.com/BrightEdgeeServices/PoetryPrivate.git
+          # poetry add git+https://github.com/BrightEdgeeServices/PoetryPrivate.git
 
       - name: Install dependencies
         run: |
           poetry install --with dev
 
-      - name: Set up Docker
-        uses: docker/setup-buildx-action@v3
+      #      - name: Set up Docker
+      #        uses: docker/setup-buildx-action@v3
 
-      - name: Start Docker Compose
-        run: docker-compose -f docker-compose.yaml up -d
+      #      - name: Start Docker Compose
+      #        run: docker-compose -f docker-compose.yaml up -d
 
-      - name: Wait for services to be ready
-        run: |
-          echo "Waiting for services to start..."
-          sleep 10
+      #      - name: Wait for services to be ready
+      #        run: |
+      #          echo "Waiting for services to start..."
+      #          sleep 10
 
       - name: Run pytest with coverage
         run: |
           poetry run pytest --cov=./ --cov-report=xml --maxfail=1 tests/
 
-      #      - name: Upload coverage to Codecov
-      #        uses: codecov/codecov-action@v5
-      #        with:
-      #          files: coverage.xml
-      #          fail_ci_if_error: true
-      #          token: ${{ secrets.CODECOV_TOKEN }}
-      #          slug: hendrikdutoit/DockerMySqlExample
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          files: coverage.xml
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: hendrikdutoit/DockerMySqlExample
 
-      - name: Tear down Docker Compose
-        if: always()
-        run: docker-compose -f docker-compose.yaml down
+#      - name: Tear down Docker Compose
+#        if: always()
+#        run: docker-compose -f docker-compose.yaml down
 
