@@ -36,6 +36,6 @@ jobs:
     needs:
       - Pre-Commit
       - CI
-    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-pypi-no-docker.yaml@master
+    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-pypi.yaml@master
     secrets: inherit
 
