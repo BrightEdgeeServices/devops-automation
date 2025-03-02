@@ -16,6 +16,10 @@ on:
         required: true
       RELEASE_EMAIL_PASSWORD:
         required: true
+      GH_REPO_ACCESS_BEE_MASTER:
+        required: true
+      GH_REPO_ACCESS_RTE_MASTER:
+        required: true
 
 jobs:
   Pre-Commit:
