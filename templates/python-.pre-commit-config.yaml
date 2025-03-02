@@ -36,18 +36,18 @@ repos:
         additional_dependencies: [ sphinx ]
         args: [ "--config", ".rstcheck.cfg" ]
 
-  #  - repo: https://github.com/asottile/pyupgrade
-  #    rev: v3.19.1
-  #    hooks:
-  #      - id: pyupgrade
-  #        args: [ --py311-plus ]
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.19.1
+    hooks:
+      - id: pyupgrade
+        args: [ --py311-plus ]
 
-  #  - repo: https://github.com/pycqa/isort
-  #    rev: 6.0.1
-  #    hooks:
-  #      - id: isort
-  #        args: [ "--profile", "black", "--filter-files", "--force-single-line-imports",
-  #                "--force-alphabetical-sort-within-sections", "--py", "auto" ]
+  - repo: https://github.com/pycqa/isort
+    rev: 6.0.1
+    hooks:
+      - id: isort
+        args: [ "--profile", "black", "--filter-files", "--force-single-line-imports",
+                "--force-alphabetical-sort-within-sections", "--py", "auto" ]
 
   - repo: https://github.com/codespell-project/codespell
     rev: v2.4.1
@@ -57,15 +57,15 @@ repos:
         additional_dependencies:
           - tomli
 
-#  - repo: https://github.com/psf/black
-#    rev: 25.1.0
-#    hooks:
-#    - id: black
-#      language_version: python3
+  - repo: https://github.com/psf/black
+    rev: 25.1.0
+    hooks:
+      - id: black
+        language_version: python3
 
-#  - repo: https://github.com/pycqa/flake8
-#    rev: 7.1.2
-#    hooks:
-#    - id: flake8
-#      language_version: python3
-#      exclude: 'templates'
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.1.2
+    hooks:
+      - id: flake8
+        language_version: python3
+        exclude: 'templates'
