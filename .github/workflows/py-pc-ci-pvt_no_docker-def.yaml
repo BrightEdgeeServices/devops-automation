@@ -1,4 +1,4 @@
-# python-process-ci-private-no-docker.yaml
+# py-pc-ci-pvt_no_docker-def.yaml
 # ToDo
 # This is a copied version and has to be fixed
 name: CI
@@ -11,16 +11,16 @@ jobs:
     runs-on: ${{matrix.os}}
     env:
       # GH_REPO_ACCESS_BY_OWN_APPS: ${{ secrets.GH_REPO_ACCESS_BY_OWN_APPS }}
-      INSTALLER_USER_ID: ${{vars.INSTALLER_USER_ID}}
-      INSTALLER_USER_PWD: ${{vars.INSTALLER_USER_PWD}}
-      MYSQL_DATABASE: ${{vars.MYSQL_DATABASE}}
-      MYSQL_HOST: ${{vars.MYSQL_HOST}}
+      INSTALLER_USER_ID:   ${{vars.INSTALLER_USER_ID}}
+      INSTALLER_USER_PWD:  ${{vars.INSTALLER_USER_PWD}}
+      MYSQL_DATABASE:      ${{vars.MYSQL_DATABASE}}
+      MYSQL_HOST:          ${{vars.MYSQL_HOST}}
       MYSQL_ROOT_PASSWORD: ${{ vars.MYSQL_ROOT_PASSWORD }}
-      MYSQL_TCP_PORT: ${{ vars.MYSQL_TCP_PORT }}
+      MYSQL_TCP_PORT:      ${{ vars.MYSQL_TCP_PORT }}
       #      MYSQL_USER_ID: ${{secrets.INSTALLER_USER_ID}}
       #      MYSQL_USER_PWD: ${{secrets.INSTALLER_USER_PWD}}
-      MYSQL_PWD: ${{vars.MYSQL_PWD}}
-      PROJECT_NAME: ${{ vars.PROJECT_NAME }}
+      MYSQL_PWD:           ${{vars.MYSQL_PWD}}
+      PROJECT_NAME:        ${{ vars.PROJECT_NAME }}
 
     strategy:
       fail-fast: true
@@ -38,43 +38,43 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-          architecture: x64
+          architecture:   x64
 
       - name: Install Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose
+        run:  |
+              sudo apt-get update
+              sudo apt-get install -y docker-compose
 
       - name: Install Poetry
-        run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
+        run:  |
+              curl -sSL https://install.python-poetry.org | python3 -
+              echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
 
       - name: Configure Poetry
-        run: |
-          poetry config keyring.enabled false
-          poetry config http-basic.statsp __token__ ${{ secrets.GH_REPO_ACCESS_FRANZEM_STATSP }}
-          poetry source add --priority=explicit statsp https://github.com/franzem/statsp.git
-          poetry add git+https://github.com/franzem/statsp.git
+        run:  |
+              poetry config keyring.enabled false
+              poetry config http-basic.statsp __token__ ${{ secrets.GH_REPO_ACCESS_FRANZEM_STATSP }}
+              poetry source add --priority=explicit statsp https://github.com/franzem/statsp.git
+              poetry add git+https://github.com/franzem/statsp.git
 
       - name: Install dependencies
-        run: |
-          poetry install --with dev
+        run:  |
+              poetry install --with dev
 
       - name: Set up Docker
         uses: docker/setup-buildx-action@v3
 
       - name: Start Docker Compose
-        run: docker-compose -f docker-compose.yaml up -d
+        run:  docker-compose -f docker-compose.yaml up -d
 
       - name: Wait for services to be ready
-        run: |
-          echo "Waiting for services to start..."
-          sleep 10
+        run:  |
+              echo "Waiting for services to start..."
+              sleep 10
 
       - name: Run pytest with coverage
-        run: |
-          poetry run pytest --cov=./ --cov-report=xml --maxfail=1 tests/
+        run:  |
+              poetry run pytest --cov=./ --cov-report=xml --maxfail=1 tests/
 
       #      - name: Upload coverage to Codecov
       #        uses: codecov/codecov-action@v5
@@ -85,6 +85,5 @@ jobs:
       #          slug: hendrikdutoit/DockerMySqlExample
 
       - name: Tear down Docker Compose
-        if: always()
-        run: docker-compose -f docker-compose.yaml down
-
+        if:   always()
+        run:  docker-compose -f docker-compose.yaml down

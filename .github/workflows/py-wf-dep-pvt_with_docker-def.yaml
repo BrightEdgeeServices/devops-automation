@@ -1,4 +1,4 @@
-# python-wf-deploy-private-with-docker.yaml
+# py-wf-dep-pvt_with_docker-def.yaml
 # ToDo
 # This is a copied version and has to be fixed
 name: Default Deployment Pipeline
@@ -8,9 +8,9 @@ on:
     inputs:
       run_deploy:
         description: "Set to 'true' to run the Build-and-Deploy job if a tag was specified."
-        required: true
-        default: false
-        type: boolean
+        required:    true
+        default:     false
+        type:        boolean
     secrets:
       RELEASE_EMAIL_USER:
         required: true
@@ -23,21 +23,20 @@ on:
 
 jobs:
   Pre-Commit:
-    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-precommit-default.yaml@master
+    uses:    RealTimeEvents/devops-automation/.github/workflows/py-pc-precom-def.yaml@master
     secrets: inherit
 
   CI:
-    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-ci-private-with-docker.yaml@master
+    uses:    RealTimeEvents/devops-automation/.github/workflows/py-pc-ci-pvt_with_docker-def.yaml@master
     secrets: inherit
 
   Build-and-Deploy:
     permissions:
       id-token: write
       contents: write
-    if: ${{ inputs.run_deploy == true }}
+    if:      ${{ inputs.run_deploy == true }}
     needs:
       - Pre-Commit
       - CI
-    uses: RealTimeEvents/devops-automation/.github/workflows/python-process-deploy-with-docker.yaml@master
+    uses:    RealTimeEvents/devops-automation/.github/workflows/py-pc-dep-with_docker-def.yaml@master
     secrets: inherit
-

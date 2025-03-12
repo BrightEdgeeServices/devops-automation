@@ -1,15 +1,16 @@
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
+requires = [
+    "poetry-core>=2.0.0,<3.0.0",
+]
 build-backend = "poetry.core.masonry.api"
 
 [project]
 name = 'devops-platform'
-version = '0.1.0'
+version = '1.0.0'
 description = 'Repository for GitHub Actions Workflows.'
 
 authors = [
-    { name = 'Jeandré Janse van Rensburg', email = 'jeandrejvr@citiqprepaid.co.za' },
-    { name = 'Hendrik du Toit', email = 'hendrikdt@citiqprepaid.co.za' }
+    { name = "Hendrik du Toit", email = "hendrik@brightedge.co.za" }
 ]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -24,18 +25,24 @@ classifiers = [
     'Programming Language :: Python :: 3.11',
     'Programming Language :: Python :: 3.12'
 ]
-# documentation = "https://readthedocs.org"
-license = { file = 'LICENSE' }
-maintainers = [
+dependencies = [
 ]
-readme = "README.md"
+license = "Proprietary"
+license-files = ["LICENSE.txt"]
+maintainers = [
+    { name = 'Henru du Toit', email = 'henru@brightedge.co.za' },
+    { name = 'Dirk du Toit', email = 'dirk@brightedge.co.za' },
+]
+readme = { file = 'README.md', content-type = 'text/markdown' }
+#readme = "README.md"
 requires-python = ">=3.10"
 
 [project.urls]
-issues = "https://github.com/RealTimeEvents/devops-automation/issues"
+# Documentation = "https://readthedocs.org"
+Issues = "https://github.com/RealTimeEvents/devops-automation/issues"
 Changelog = 'https://github.com/RealTimeEvents/devops-automation/blob/enhancement/master/ReleaseNotes.md'
 Homepage = 'https://github.com/RealTimeEvents/devops-automation'
-repository = "https://github.com/RealTimeEvents/devops-automation.git"
+Repository = "https://github.com/RealTimeEvents/devops-automation.git"
 
 [tool.codespell]
 count = ''
@@ -54,4 +61,7 @@ mdformat-gfm = ">=0.4.1"
 mdformat-frontmatter = ">=2.0.8"
 mdformat-footnote = ">=0.1.1"
 pre-commit = ">=4.0.1"
-rstcheck = { extras = ["sphinx"], version = ">=6.2.4" }
+rstcheck = { extras = [
+    "sphinx",
+], version = ">=6.2.4" }
+sphinx = ">=8.1.3"
