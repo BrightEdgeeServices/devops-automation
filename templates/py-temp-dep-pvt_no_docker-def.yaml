@@ -1,4 +1,4 @@
-# python-template-deploy-private-no-docker.yaml
+# py-temp-dep-pvt_no_docker-def.yaml
 # This is a template and should not be changed unless you are familiar with the
 # reusable GitHub Actions strategy of the company.
 name: Python Template Deploy Private No-Docker
@@ -12,10 +12,10 @@ jobs:
       id-token: write
       contents: write
     #    if: github.event.pull_request.merged == true
-    uses: RealTimeEvents/devops-automation/.github/workflows/python-wf-deploy-private-no-docker.yaml@master
+    uses: RealTimeEvents/devops-automation/.github/workflows/py-wf-dep-pvt_no_docker-def.yaml@master
     with:
       run_deploy: ${{ startsWith(github.ref, 'refs/tags/') == true }}
     # secrets: inherit
     secrets:
-      RELEASE_EMAIL_USER: ${{ secrets.RELEASE_EMAIL_USER }}
+      RELEASE_EMAIL_USER:     ${{ secrets.RELEASE_EMAIL_USER }}
       RELEASE_EMAIL_PASSWORD: ${{ secrets.RELEASE_EMAIL_PASSWORD }}

@@ -8,34 +8,36 @@ This repository contains reusable GitHub Actions workflows for various programmi
 workflows are designed to be easily integrated into your projects to provide consistent CI/CD processes across your
 organization.
 
-## Available Workflows
+## Repository Structure
 
-- [Golang CI](./docs/golang-ci.md)
-- [Python Default](./docs/python-template-default.md)
+- `.github/workflows/`
+  - Contains the actual workflow files.
+  - Workflow names starting with digits are designated for this repository and should not be reused.
+- `templates/` - Contains template files for users to copy into their projects.
 
 ## Usage
 
-1. Choose the workflow that matches your project's language or framework.
-1. Follow the setup instructions in the workflow-specific documentation in the `docs/` directory.
-1. Do not change the template workflows. If there is a specific need, discuss it with the team to create a customized
-   workflow.
+Each template workflow in `templates/` kick-off a reusable workflow in this repository's
+`.github/workflows/` directory.
+Each reusable workflow is designed to string together the desired combination of
+tasks to achieve the required workflow.
+
+Unless you are familiar with the workflow strategies, do not change the templates
+or any of the workflow scripts.
+Several repositories' CI/CD processes depend on these scripts and may break.
+Discuss any changes with your colleagues to get consensus on any changes or additions.
 
 ## Naming Convention
 
-- <language>-<type>-<task>-<description>
+- `<language>-<type>-<task>-<description>-<variation>`
   - where
-    - language = `Golang` | `Python`
-    - type = `process` | `template` | `wf`
-    - task = `default` (for workflows) | `ci` | `deploy` | `precommit`
-    - description = Short description. If it is the default it sshould be `none`
+    - language = `go (GoLang)` | `py (Python)`
+    - type = `pc (process)` | `temp (template)` | `wf (workflow)`
+    - task = `ci (continuous integration)` | `dep (deploy)` | `precom (pre-commit) | pypi`
+    - description = Short description where words are separated by "\_".
+    - variation = `def (default)` | Variation description where words are separated by "\_".
 
-## Repository Structure
-
-- `.github/workflows/`: Contains the actual workflow files.
-- `docs/`: Contains detailed documentation for each workflow.
-- `templates/`: Contains template files for users to copy into their projects.
-
-## Keeping Workflows Up-to-Date
+## Keeping Workflows Up to date
 
 We regularly update our workflows to improve functionality and security. To ensure you're using the latest version:
 
@@ -43,15 +45,54 @@ We regularly update our workflows to improve functionality and security. To ensu
 1. Review the changelog for any breaking changes or new features.
 1. Update the workflow version in your project's workflow file.
 
-## Repository Workflow Rules
+## Setup Instructions
 
-This repository follows strict workflow rules to ensure code quality and proper review processes:
+1. Create a `.github/workflows` directory in your project if it doesn't already exist.
+1. Select the relevant template from `templates/` directory.
+1. Copy the template to the `.github/workflows` directory of your repository.
+1. Do not copy any of the workflow files from this repositories `.github/workflows`.
 
-1. All changes must be associated with an issue.
-1. Changes can only be merged into the main branch via pull requests.
-1. Pull requests require approval from at least two reviewers.
-1. The main branch is protected and can only be updated through approved pull requests.
-1. When referencing workflows in your projects, use a specific version tag or commit SHA to ensure stability.
+## Available Templates
+
+1. py-temp-dep-pvt_no_docker-def.yaml
+
+   | Type        | Description                              |
+   | ----------- | ---------------------------------------- |
+   | Language    | Python                                   |
+   | Type        | Template                                 |
+   | Task        | Deployment to production environment     |
+   | Description | No Docker container has to be configured |
+   | Variation   | Default                                  |
+
+1. py-temp-dep-pvt_with_docker-def.yaml
+
+   | Type        | Description                             |
+   | ----------- | --------------------------------------- |
+   | Language    | Python                                  |
+   | Type        | Template                                |
+   | Task        | Deployment to production environment    |
+   | Description | A Docker container has to be configured |
+   | Variation   | Default                                 |
+
+1. py-temp-pypi-pub_no_docker-def.yaml
+
+   | Type        | Description                             |
+   | ----------- | --------------------------------------- |
+   | Language    | Python                                  |
+   | Type        | Template                                |
+   | Task        | Publish to PyPI                         |
+   | Description | A Docker container has to be configured |
+   | Variation   | Default                                 |
+
+1. py-temp-pypi-pub_with_docker-def.yaml
+
+   | Type        | Description                             |
+   | ----------- | --------------------------------------- |
+   | Language    | Python                                  |
+   | Type        | Template                                |
+   | Task        | Publish to PyPI                         |
+   | Description | A Docker container has to be configured |
+   | Variation   | Default                                 |
 
 [general_maintenance_y_img]: https://img.shields.io/badge/Maintenance%20Intended-%E2%9C%94-green.svg?style=flat-square "Maintenance - intended"
 [general_maintenance_y_lnk]: http://unmaintained.tech/ "Maintenance - intended"
