@@ -1,3 +1,12 @@
+# Release 1.0.0
+
+- Rename all workflow scripts to shorten the names.
+- Update workflow scripts
+- Format workflow scripts
+- Install automation scripts
+
+______________________________________________________________________
+
 # Release 0.2.0
 
 - Implement reusable GitHub workflows.
