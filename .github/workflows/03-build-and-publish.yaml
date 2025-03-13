@@ -103,7 +103,7 @@ jobs:
           prerelease: false
 
   Send-Notice:
-    needs:   Merge
+    needs:   Build-and-Publish
     runs-on: ${{ matrix.os }}
 
     strategy:
