@@ -45,28 +45,28 @@ jobs:
     #      - name: Debug Environment
     #        run: env
 
-    Build-and-Publish:
-      needs:   Merge
-      runs-on: ${{ matrix.os }}
+  Build-and-Publish:
+    needs:   Merge
+    runs-on: ${{ matrix.os }}
 
-      permissions:
-        contents: write
-        id-token: write
+    permissions:
+      contents: write
+      id-token: write
 
-      strategy:
-        fail-fast: true
-        matrix:
-          os: [ 'ubuntu-latest' ]
-          python-version: [ '3.12' ]
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ 'ubuntu-latest' ]
+        python-version: [ '3.12' ]
 
-      steps:
-        - name: Check out repository
-          uses: actions/checkout@v4
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
 
-        - name: Set up Python
-          uses: actions/setup-python@v5
-          with:
-            python-version: ${{ matrix.python-version }}
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
 
         #       - name: Install Poetry
         #         run: |
@@ -93,14 +93,14 @@ jobs:
         #      --password "${{ secrets.PYPI_API_TOKEN_PROD }}"
 
 
-        - name: New release
-          uses: softprops/action-gh-release@v2
-          with:
-            tag_name:   ${{ vars.GITHUB_HEAD_REF }}
-            name:       ${{ vars.GITHUB_HEAD_REF }}
-            body_path:  ${{ github.workspace }}/ReleaseNotes.md
-            draft:      false
-            prerelease: false
+      - name: New release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name:   ${{ vars.GITHUB_HEAD_REF }}
+          name:       ${{ vars.GITHUB_HEAD_REF }}
+          body_path:  ${{ github.workspace }}/ReleaseNotes.md
+          draft:      false
+          prerelease: false
 
   Send-Notice:
     needs:   Merge
