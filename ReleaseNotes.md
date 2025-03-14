@@ -1,3 +1,12 @@
+# Release 1.1.0
+
+- Change the name of 00-deployment-pipeline.yaml to Production Pipeline
+- Add a pub_custom_ci workflow
+  - py-temp-pypi-pub_custom_ci-def.yaml
+  - py-wf-pypi-pub_custom_ci-def.yaml.yaml
+
+______________________________________________________________________
+
 # Release 1.0.0
 
 - Rename all workflow scripts to shorten the names.

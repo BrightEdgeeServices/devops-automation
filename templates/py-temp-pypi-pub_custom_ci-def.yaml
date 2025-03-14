@@ -1,4 +1,4 @@
-# py-temp-pypi-pub_with_docker-def.yaml
+# py-temp-pypi-pub_custom_ci-def.yaml
 # This is a template and should not be changed unless you are familiar with the
 # reusable GitHub Actions strategy of the company.
 name: Python Template PyPI Public with-Docker
