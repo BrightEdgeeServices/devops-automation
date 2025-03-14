@@ -85,7 +85,7 @@ jobs:
         #     poetry install
 
         # This is a private repository and cannot be published to PyPI.
-        # - name: Build and publish with Poetry
+        # - Name: Build and publish with Poetry
         #  run: |
         #    poetry build
         #    poetry publish \

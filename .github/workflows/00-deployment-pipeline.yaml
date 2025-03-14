@@ -1,4 +1,4 @@
-name: PyPI Pipeline
+name: Production Pipeline
 
 on:
   push:
