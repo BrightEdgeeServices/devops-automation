@@ -1,5 +1,6 @@
 # Release 1.1.0
 
+- Update badges.
 - Change the name of 00-deployment-pipeline.yaml to Production Pipeline
 - Add a pub_custom_ci workflow
   - py-temp-pypi-pub_custom_ci-def.yaml

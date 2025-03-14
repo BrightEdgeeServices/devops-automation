@@ -55,53 +55,53 @@ We regularly update our workflows to improve functionality and security. To ensu
 
 1. py-temp-dep-pvt_no_docker-def.yaml
 
-   | Type | Description |
-   |\-------------|------------------------------------------|
-   | Language | Python |
-   | Type | Template |
-   | Task | Deployment to production environment |
+   | Type        | Description                              |
+   | ----------- | ---------------------------------------- |
+   | Language    | Python                                   |
+   | Type        | Template                                 |
+   | Task        | Deployment to production environment     |
    | Description | No Docker container has to be configured |
-   | Variation | Default |
+   | Variation   | Default                                  |
 
 1. py-temp-dep-pvt_with_docker-def.yaml
 
-   | Type | Description |
-   |\-------------|-----------------------------------------|
-   | Language | Python |
-   | Type | Template |
-   | Task | Deployment to production environment |
+   | Type        | Description                             |
+   | ----------- | --------------------------------------- |
+   | Language    | Python                                  |
+   | Type        | Template                                |
+   | Task        | Deployment to production environment    |
    | Description | A Docker container has to be configured |
-   | Variation | Default |
+   | Variation   | Default                                 |
 
 1. py-temp-pypi-pub_custom_ci-def.yaml
 
-   | Type | Description |
-   |\-------------|----------------------------------------------------------------------|
-   | Language | Python |
-   | Type | Template |
-   | Task | Publish to PyPI |
+   | Type        | Description                                                          |
+   | ----------- | -------------------------------------------------------------------- |
+   | Language    | Python                                                               |
+   | Type        | Template                                                             |
+   | Task        | Publish to PyPI                                                      |
    | Description | Refers to custom ci process in local directory of target repository. |
-   | Variation | Default |
+   | Variation   | Default                                                              |
 
 1. py-temp-pypi-pub_no_docker-def.yaml
 
-   | Type | Description |
-   |\-------------|-----------------------------------------|
-   | Language | Python |
-   | Type | Template |
-   | Task | Publish to PyPI |
+   | Type        | Description                             |
+   | ----------- | --------------------------------------- |
+   | Language    | Python                                  |
+   | Type        | Template                                |
+   | Task        | Publish to PyPI                         |
    | Description | A Docker container has to be configured |
-   | Variation | Default |
+   | Variation   | Default                                 |
 
 1. py-temp-pypi-pub_with_docker-def.yaml
 
-   | Type | Description |
-   |\-------------|-----------------------------------------|
-   | Language | Python |
-   | Type | Template |
-   | Task | Publish to PyPI |
+   | Type        | Description                             |
+   | ----------- | --------------------------------------- |
+   | Language    | Python                                  |
+   | Type        | Template                                |
+   | Task        | Publish to PyPI                         |
    | Description | A Docker container has to be configured |
-   | Variation | Default |
+   | Variation   | Default                                 |
 
 [cicd_codestyle_img]: https://img.shields.io/badge/code%20style-black-000000.svg "Black"
 [cicd_codestyle_lnk]: https://github.com/psf/black "Black"
