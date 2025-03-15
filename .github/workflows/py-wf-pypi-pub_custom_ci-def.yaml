@@ -23,7 +23,7 @@ jobs:
     secrets: inherit
 
   CI:
-    uses:    .github/workflows/py-pc-ci-pub_custom-def.yaml@master
+    uses:    ./.github/workflows/py-pc-ci-pub_custom-def.yaml@master
     secrets: inherit
 
   Build-and-Publish-to-PyPI:
