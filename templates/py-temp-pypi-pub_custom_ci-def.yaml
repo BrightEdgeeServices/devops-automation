@@ -12,7 +12,7 @@ jobs:
       id-token: write
       contents: write
     #    if: github.event.pull_request.merged == true
-    uses: RealTimeEvents/devops-automation/.github/workflows/py-wf-pypi-pub_custon_ci-def.yaml@master
+    uses: RealTimeEvents/devops-automation/.github/workflows/py-wf-pypi-pub_custom_ci-def.yaml@master
     with:
       run_deploy: ${{ startsWith(github.ref, 'refs/tags/') == true }}
     # secrets: inherit
