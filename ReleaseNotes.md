@@ -2,6 +2,7 @@
 
 - Update badges.
 - Change the name of 00-deployment-pipeline.yaml to Production Pipeline
+- Remove version reference from target custom workflows
 - Add a pub_custom_ci workflow
   - py-temp-pypi-pub_custom_ci-def.yaml
   - py-wf-pypi-pub_custom_ci-def.yaml.yaml
