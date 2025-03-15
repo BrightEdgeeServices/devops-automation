@@ -3,6 +3,13 @@ name: Build-and-Publish-to-PyPI
 
 on:
   workflow_call:
+    secrets:
+      PYPI_API_TOKEN_PROD:
+        required: true
+      RELEASE_EMAIL_USER:
+        required: true
+      RELEASE_EMAIL_PASSWORD:
+        required: true
 
 jobs:
   Merge:
