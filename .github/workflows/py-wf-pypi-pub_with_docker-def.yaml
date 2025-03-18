@@ -10,6 +10,14 @@ on:
         default:     false
         type:        boolean
     secrets:
+      GH_REPO_ACCESS_BEE_MASTER:
+        required: true
+      GH_REPO_ACCESS_RTE_MASTER:
+        required: true
+      MYSQL_PASSWORD:
+        required: true
+      MYSQL_USER:
+        required: true
       PYPI_API_TOKEN_PROD:
         required: true
       RELEASE_EMAIL_USER:
