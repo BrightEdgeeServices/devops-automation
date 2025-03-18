@@ -9,8 +9,7 @@ poetry init
 if (Test-Path -Path "$env:PROJECT_DIR\SetupGitHubAccess.ps1") {
     & "$env:PROJECT_DIR\SetupGitHubAccess"
 
-}
-else {
+} else {
     Write-Host "No $env:PROJECT_DIR\SetupGitHubAccess.ps1 file"
 }
 if (Test-Path -Path "$env:PROJECT_DIR\SetupPrivateRepoAccess.ps1") {
