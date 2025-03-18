@@ -1,3 +1,10 @@
+# Release 1.2.0
+
+- Update the secrets' references.
+- Add the ISSUE_TEMPLATEs
+
+______________________________________________________________________
+
 # Release 1.1.0
 
 - Update badges.
