@@ -1,3 +1,9 @@
+# Release 1.2.1
+
+- Fix and remove Docker sections from py-pc-ci-pvt_no_docker-def
+
+______________________________________________________________________
+
 # Release 1.2.0
 
 - Update the secrets' references.
