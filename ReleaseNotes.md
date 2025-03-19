@@ -1,3 +1,9 @@
+# Release 1.2.2
+
+- Update py-wf-pypi-pub_no_docker-def.yaml with PYPI_API_TOKEN_PROD secret variable
+
+______________________________________________________________________
+
 # Release 1.2.1
 
 - Fix and remove Docker sections from py-pc-ci-pvt_no_docker-def
