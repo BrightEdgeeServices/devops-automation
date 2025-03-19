@@ -1,6 +1,7 @@
 # Release 1.2.2
 
 - Update py-wf-pypi-pub_no_docker-def.yaml with PYPI_API_TOKEN_PROD secret variable
+- Update py-pc-pypi-default.yaml with BEE and RTE master token variables
 
 ______________________________________________________________________
 
