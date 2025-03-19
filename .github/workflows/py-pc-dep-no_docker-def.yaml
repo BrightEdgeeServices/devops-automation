@@ -10,6 +10,10 @@ on:
         required: true
       GH_REPO_ACCESS_RTE_MASTER:
         required: true
+      RELEASE_EMAIL_USER:
+        required: true
+      RELEASE_EMAIL_PASSWORD:
+        required: true
 
 jobs:
   Build-and-Deploy:
