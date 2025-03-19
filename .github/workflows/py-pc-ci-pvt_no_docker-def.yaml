@@ -4,9 +4,9 @@ name: CI
 on:
   workflow_call:
     secrets:
-      PYPI_API_TOKEN_PROD:
+      GH_REPO_ACCESS_BEE_MASTER:
         required: true
-      RELEASE_EMAIL_USER:
+      GH_REPO_ACCESS_RTE_MASTER:
         required: true
       RELEASE_EMAIL_PASSWORD:
         required: true
@@ -16,16 +16,8 @@ jobs:
     runs-on: ${{matrix.os}}
     env:
       # GH_REPO_ACCESS_BY_OWN_APPS: ${{ secrets.GH_REPO_ACCESS_BY_OWN_APPS }}
-      INSTALLER_USER_ID:   ${{secrets.INSTALLER_USER_ID}}
-      INSTALLER_USER_PWD:  ${{secrets.INSTALLER_USER_PWD}}
-      MYSQL_DATABASE:      ${{vars.MYSQL_DATABASE}}
-      MYSQL_HOST:          ${{vars.MYSQL_HOST}}
-      MYSQL_ROOT_PASSWORD: ${{secrets.MYSQL_ROOT_PASSWORD }}
-      MYSQL_TCP_PORT:      ${{vars.MYSQL_TCP_PORT }}
-      MYSQL_PASSWORD:      ${{secrets.MYSQL_PASSWORD}}
-      MYSQL_PWD:           ${{secrets.MYSQL_PWD}}
-      MYSQL_USER:          ${{secrets.MYSQL_USER}}
-      PROJECT_NAME:        ${{vars.PROJECT_NAME }}
+      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER}}
+      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER}}
 
     strategy:
       fail-fast: true
