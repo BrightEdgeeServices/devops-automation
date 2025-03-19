@@ -102,7 +102,7 @@ jobs:
       # Configuration details needed:
       # Sender details: userid, password, server_address and server_port
       - name: Send release email notification
-        uses: betterfor/action-send-mail@master
+        uses: betterfor/action-send-mail@main
         with:
           server_address: smtp.gmail.com
           server_port:    465
