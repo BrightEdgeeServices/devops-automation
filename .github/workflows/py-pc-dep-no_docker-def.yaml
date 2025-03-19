@@ -21,7 +21,8 @@ jobs:
         python-version: [ '3.13' ]
 
     env:
-      TAG: ""
+      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER}}
+      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER}}
 
     steps:
       - name: Check out repository
