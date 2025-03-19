@@ -82,6 +82,6 @@ jobs:
       #          token: ${{ secrets.CODECOV_TOKEN }}
       #          slug: hendrikdutoit/DockerMySqlExample
 
-      - name: Tear down Docker Compose
-        if:   always()
-        run:  docker-compose -f docker-compose.yaml down
+#      - name: Tear down Docker Compose
+#        if:   always()
+#        run:  docker-compose -f docker-compose.yaml down
