@@ -42,9 +42,11 @@ jobs:
     permissions:
       id-token: write
       contents: write
-    if:      ${{ inputs.run_deploy == true }}
+    if:   ${{ inputs.run_deploy == true }}
     needs:
       - Pre-Commit
       - CI
-    uses:    RealTimeEvents/devops-automation/.github/workflows/py-pc-dep-no_docker-def.yaml@master
-    secrets: inherit
+    uses: RealTimeEvents/devops-automation/.github/workflows/py-pc-dep-no_docker-def.yaml@master
+    secrets:
+      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
+      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
