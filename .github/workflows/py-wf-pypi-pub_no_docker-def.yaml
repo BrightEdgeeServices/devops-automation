@@ -35,16 +35,22 @@ jobs:
     secrets: inherit
 
   CI:
-    uses:    RealTimeEvents/devops-automation/.github/workflows/py-pc-ci-pub_no_docker-def.yaml@master
-    secrets: inherit
+    uses: RealTimeEvents/devops-automation/.github/workflows/py-pc-ci-pub_no_docker-def.yaml@master
+    secrets:
+      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
+      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
 
   Build-and-Publish-to-PyPI:
     permissions:
       id-token: write
       contents: write
-    if:      ${{ inputs.run_deploy == true }}
+    if:   ${{ inputs.run_deploy == true }}
     needs:
       - Pre-Commit
       - CI
-    uses:    RealTimeEvents/devops-automation/.github/workflows/py-pc-pypi-default.yaml@master
-    secrets: inherit
+    uses: RealTimeEvents/devops-automation/.github/workflows/py-pc-pypi-default.yaml@master
+    secrets:
+      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
+      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
+      RELEASE_EMAIL_PASSWORD:    ${{secrets.RELEASE_EMAIL_PASSWORD }}
+      RELEASE_EMAIL_USER:        ${{secrets.RELEASE_EMAIL_USER }}
