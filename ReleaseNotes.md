@@ -2,7 +2,8 @@
 
 - Update py-wf-pypi-pub_no_docker-def.yaml with PYPI_API_TOKEN_PROD secret variable
 - Update py-pc-pypi-default.yaml with BEE and RTE master token variables
-- Add Poetry config secrets
+- Add py-pc-pypi-default.yaml Poetry config secrets
+- Add py-pc-ci-pub_no_docker-def.yaml Poetry config secrets
 
 ______________________________________________________________________
 
