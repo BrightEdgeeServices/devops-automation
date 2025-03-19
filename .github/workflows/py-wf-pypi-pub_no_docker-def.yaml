@@ -52,5 +52,6 @@ jobs:
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
+      PYPI_API_TOKEN_PROD:       ${{secrets.PYPI_API_TOKEN_PROD }}
       RELEASE_EMAIL_PASSWORD:    ${{secrets.RELEASE_EMAIL_PASSWORD }}
       RELEASE_EMAIL_USER:        ${{secrets.RELEASE_EMAIL_USER }}
