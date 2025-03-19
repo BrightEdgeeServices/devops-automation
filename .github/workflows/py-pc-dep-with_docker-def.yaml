@@ -5,6 +5,11 @@ name: Build-and-Deploy
 
 on:
   workflow_call:
+    secrets:
+      GH_REPO_ACCESS_BEE_MASTER:
+        required: true
+      GH_REPO_ACCESS_RTE_MASTER:
+        required: true
 
 jobs:
   Build-and-Deploy:

@@ -1,6 +1,7 @@
 # Release 1.2.1
 
 - Fix and remove Docker sections from py-pc-ci-pvt_no_docker-def
+- Configure secrets variables so that it is inherited/transferred between the reusable workflows.
 
 ______________________________________________________________________
 
