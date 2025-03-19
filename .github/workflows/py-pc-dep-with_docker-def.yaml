@@ -43,11 +43,10 @@ jobs:
       - name: Configure Poetry
         run:  |
               poetry config keyring.enabled false
-              # poetry config http-basic.github.com x-access-token ${{ secrets.GH_REPO_ACCESS_BY_OWN_APPS }}
-              # poetry config --list
-              poetry config http-basic.statsp __token__ ${{ secrets.GH_REPO_ACCESS_FRANZEM_STATSP }}
-              poetry source add --priority=explicit statsp https://github.com/franzem/statsp.git
-              poetry add git+https://github.com/franzem/statsp.git
+              poetry config http-basic.BEE __token__ ${{ secrets.GH_REPO_ACCESS_BEE_MASTER }}
+              poetry config http-basic.RTE __token__ ${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
+      #              poetry source add --priority=explicit RTE https://github.com/RealTimeEvents/FideRatingList.git
+      #              poetry add git+https://github.com/RealTimeEvents/FideRatingList.git
 
       - name: Install dependencies
         run:  |
