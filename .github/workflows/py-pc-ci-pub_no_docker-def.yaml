@@ -60,8 +60,8 @@ jobs:
           poetry config keyring.enabled false
           poetry config "http-basic.BEE" "__token__" ${{secrets.GH_REPO_ACCESS_BEE_MASTER}}
           poetry config "http-basic.RTE" "__token__" ${{secrets.GH_REPO_ACCESS_RTE_MASTER}}
-          poetry config http-basic.PoetryPrivate __token__ ${{ secrets.GH_REPO_ACCESS_CURR_USER }}
-          poetry source add --priority=explicit PoetryPrivate https://github.com/BrightEdgeeServices/PoetryPrivate.git
+          poetry source add --priority=explicit RTE https://github.com/BrightEdgeeServices/PoetryPrivate.git
+          poetry add --source RTE git+https://github.com/BrightEdgeeServices/PoetryPrivate.git@develop
       - name: Install dependencies
         run: |
           poetry install --with dev
