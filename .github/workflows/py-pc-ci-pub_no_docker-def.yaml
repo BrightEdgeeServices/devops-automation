@@ -64,7 +64,7 @@ jobs:
       #          poetry add --source BEE git+https://github.com/BrightEdgeeServices/PoetryPrivate.git@develop -vvv
       - name: Install dependencies
         run: |
-          poetry install --with dev -vvv
+          poetry install --with ci -vvv
 
       #      - name: Set up Docker
       #        uses: docker/setup-buildx-action@v3
