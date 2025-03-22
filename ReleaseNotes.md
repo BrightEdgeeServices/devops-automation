@@ -1,3 +1,10 @@
+# Release 1.3/0
+
+- Update py-pc-ci-pub_no_docker-def.yaml with Poetry configuration for private repositories
+- Update SetupGitHubAccess to auto create new branches.
+
+______________________________________________________________________
+
 # Release 1.2.2
 
 - Update py-wf-pypi-pub_no_docker-def.yaml with PYPI_API_TOKEN_PROD secret variable
