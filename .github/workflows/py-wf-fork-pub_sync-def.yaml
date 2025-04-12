@@ -1,14 +1,24 @@
-# py-wf-pypi-pub_with_docker-def.yaml
-name: Default Fork Sync
+# py-wf-dep-pvt_with_docker-def.yaml
+name: Default Deployment Pipeline
 
 on:
   workflow_call:
-    #    inputs:
-    #      run_deploy:
-    #        description: "Set to 'true' to run the Build-and-Publish-to-PyPI job if a tag was specified."
-    #        required:    true
-    #        default:     false
-    #        type:        boolean
+    inputs:
+      #      run_deploy:
+      #        description: "Set to 'true' to run the Build-and-Deploy job if a tag was specified."
+      #        required:    true
+      #        default:     false
+      #        type:        boolean
+      original_owner:
+        description: "Set to original owner of the fork."
+        required:    true
+        default:     ""
+        type:        string
+      original_repo_name:
+        description: "Set to original repo name of the fork."
+        required:    true
+        default:     ""
+        type:        string
     secrets:
       GH_REPO_ACCESS_BEE_MASTER:
         required: true
@@ -20,34 +30,37 @@ on:
 #        required: true
 #      MYSQL_USER:
 #        required: true
-#      PYPI_API_TOKEN_PROD:
-#        required: true
 #      RELEASE_EMAIL_USER:
 #        required: true
 #      RELEASE_EMAIL_PASSWORD:
 #        required: true
 
 jobs:
-  sync:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout fork
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          token:       ${{ secrets.GITHUB_TOKEN }}
+  #  Pre-Commit:
+  #    uses:    RealTimeEvents/devops-automation/.github/workflows/py-pc-precom-def.yaml@master
+  #    secrets: inherit
 
-      - name: Configure Git
-        run:  |
-              git config --global user.name 'github-actions'
-              git config --global user.email 'github-actions@github.com'
+  #  CI:
+  #    uses: RealTimeEvents/devops-automation/.github/workflows/py-pc-ci-pvt_with_docker-def.yaml@master
+  #    secrets:
+  #      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
+  #      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
 
-      - name: Fetch upstream and merge
-        run:  |
-              git remote add upstream https://github.com/original_owner/original_repository.git
-              git fetch upstream
-              git checkout main
-              git merge --no-edit upstream/main
-
-      - name: Push changes
-        run:  git push origin main
+  Update Fork:
+    permissions:
+      id-token: write
+      contents: write
+    #if:   ${{ inputs.run_deploy == true }}
+    #    needs:
+    #      - Pre-Commit
+    #      - CI
+    uses: RealTimeEvents/devops-automation/.github/workflows/py-pc-dep-fork-def.yaml@master
+    with:
+      #  run_deploy: ${{ startsWith(github.ref, 'refs/tags/') == true }}
+      original_owner:     $original_owner
+      original_repo_name: $original_repo_name
+    secrets:
+      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
+      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
+#      RELEASE_EMAIL_PASSWORD:    ${{secrets.RELEASE_EMAIL_PASSWORD }}
+#      RELEASE_EMAIL_USER:        ${{secrets.RELEASE_EMAIL_USER }}
