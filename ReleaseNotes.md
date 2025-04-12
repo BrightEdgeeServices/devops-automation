@@ -1,4 +1,16 @@
-# Release 1.3/0
+# Release 1.4.0
+
+- Removed the .github/ISSUE_TEMPLATE directory.
+  This will force the repository to use the
+  BrightEdgeeServices/.github/ISSUE_TEMPLATE directory, centralizing the maintenance of templates.
+- Add workflow to automate the update of forked repositories:
+  - py-pc-dep-fork-def.yaml
+  - py-wf-fork-pub_sync-def.yaml
+  - py-temp-fork-sync-def.yaml
+
+______________________________________________________________________
+
+# Release 1.3.0
 
 - Update py-pc-ci-pub_no_docker-def.yaml with Poetry configuration for private repositories
 - Update SetupGitHubAccess to auto create new branches.
