@@ -29,11 +29,11 @@ on:
 
 jobs:
   Pre-Commit:
-    uses:    RealTimeEvents/devops-automation/.github/workflows/py-pc-precom-def.yaml@master
+    uses:    BrightEdgeeServices/devops-automation/.github/workflows/py-pc-precom-def.yaml@master
     secrets: inherit
 
   CI:
-    uses: RealTimeEvents/devops-automation/.github/workflows/py-pc-ci-pvt_no_docker-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-ci-pvt_no_docker-def.yaml@master
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
@@ -46,7 +46,7 @@ jobs:
     needs:
       - Pre-Commit
       - CI
-    uses: RealTimeEvents/devops-automation/.github/workflows/py-pc-dep-no_docker-fork.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-dep-no_docker-fork.yaml@master
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}

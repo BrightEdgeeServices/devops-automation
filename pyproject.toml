@@ -39,10 +39,10 @@ requires-python = ">=3.10"
 
 [project.urls]
 # Documentation = "https://readthedocs.org"
-Issues = "https://github.com/RealTimeEvents/devops-automation/issues"
-Changelog = 'https://github.com/RealTimeEvents/devops-automation/blob/enhancement/master/ReleaseNotes.md'
-Homepage = 'https://github.com/RealTimeEvents/devops-automation'
-Repository = "https://github.com/RealTimeEvents/devops-automation.git"
+Issues = "https://github.com/BrightEdgeeServices/devops-automation/issues"
+Changelog = 'https://github.com/BrightEdgeeServices/devops-automation/blob/enhancement/master/ReleaseNotes.md'
+Homepage = 'https://github.com/BrightEdgeeServices/devops-automation'
+Repository = "https://github.com/BrightEdgeeServices/devops-automation.git"
 
 [tool.codespell]
 count = ''
