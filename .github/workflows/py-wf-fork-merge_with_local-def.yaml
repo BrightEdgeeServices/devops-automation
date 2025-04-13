@@ -36,7 +36,7 @@ jobs:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
 
-  Sync-with-Upstream:
+  Merge-with-Local:
     permissions:
       id-token: write
       contents: write
