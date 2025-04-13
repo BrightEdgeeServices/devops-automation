@@ -1,5 +1,5 @@
-# py-wf-dep-pvt_with_docker-def.yaml
-name: Default Deployment Pipeline
+# py-wf-fork-scheduled_sync_with_upstream-def.yaml
+name: Scheduled Sync with Upstream
 
 on:
   workflow_call:
@@ -54,7 +54,7 @@ jobs:
     #    needs:
     #      - Pre-Commit
     #      - CI
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-dep-fork-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-fork-sync_with_upstream-def.yaml@master
     with:
       #  run_deploy: ${{ startsWith(github.ref, 'refs/tags/') == true }}
       original_owner:     $original_owner

@@ -1,7 +1,5 @@
 # py-pc-dep-no_docker-def.yaml
-# ToDo
-# This is a copied version and has to be fixed
-name: Build-and-Deploy
+name: Merge with Upstream Fork
 
 on:
   workflow_call:
