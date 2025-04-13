@@ -1,7 +1,5 @@
-# py-pc-dep-no_docker-def.yaml
-# ToDo
-# This is a copied version and has to be fixed
-name: Sync-with-Upstream
+# py-pc-fork-merge_with_local-def.yaml
+name: Merge-into-local-fork
 
 on:
   workflow_call:
