@@ -7,9 +7,9 @@ jobs:
   Pre-Commit:
     uses: ./.github/workflows/01-pre-commit.yaml
 
-  Build-and-Publish:
+  New-Release:
     needs:
       - Pre-Commit
     if:      startsWith(github.ref, 'refs/tags/')
-    uses:    ./.github/workflows/03-build-and-publish.yaml
+    uses:    ./.github/workflows/03-publish-new-release.yaml
     secrets: inherit

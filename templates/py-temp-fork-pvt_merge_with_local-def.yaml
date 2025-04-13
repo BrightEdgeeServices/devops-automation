@@ -5,7 +5,7 @@ on:
   push:
 
 jobs:
-  python-template-deploy-private-no-docker:
+  python-template-merge-with-local-fork:
     permissions:
       id-token: write
       contents: write
