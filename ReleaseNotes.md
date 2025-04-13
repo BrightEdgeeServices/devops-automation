@@ -5,7 +5,10 @@
   BrightEdgeeServices/.github/ISSUE_TEMPLATE directory, centralizing the maintenance of templates.
 - Add workflow to automate the update of forked repositories:
   - py-pc-dep-fork-def.yaml
+  - py-pc-dep-no_docker-fork.yaml
+  - py-wf-dep-pvt_no_docker_fork_yaml
   - py-wf-fork-pub_sync-def.yaml
+  - py-temp-dep-pvt_no_docker-fork.yaml
   - py-temp-fork-sync-def.yaml
 
 ______________________________________________________________________
