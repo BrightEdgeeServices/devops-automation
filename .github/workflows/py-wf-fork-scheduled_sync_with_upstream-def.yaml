@@ -3,7 +3,7 @@ name: Scheduled Sync with Upstream
 
 on:
   workflow_call:
-    inputs:
+    #    inputs:
     #      run_deploy:
     #        description: "Set to 'true' to run the Build-and-Deploy job if a tag was specified."
     #        required:    true
@@ -46,7 +46,7 @@ jobs:
   #      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
   #      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
 
-  Update Fork:
+  Update-Fork:
     permissions:
       id-token: write
       contents: write
