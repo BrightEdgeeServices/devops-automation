@@ -1,4 +1,4 @@
-name: Production Pipeline
+name: New Release Pipeline
 
 on:
   push:

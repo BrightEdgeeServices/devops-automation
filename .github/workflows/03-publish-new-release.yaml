@@ -45,7 +45,7 @@ jobs:
     #      - name: Debug Environment
     #        run: env
 
-  Publish-New-Release:
+  New-Release:
     needs:   Merge
     runs-on: ${{ matrix.os }}
 
