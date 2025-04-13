@@ -1,7 +1,5 @@
-# py-wf-dep-pvt_no_docker-def.yaml
-# ToDo
-# This is a copied version and has to be fixed
-name: Default Deployment Pipeline
+# py-temp-fork-sync-def.yaml
+name: Synced forked copy with remote upstream
 
 on:
   workflow_call:
@@ -38,7 +36,7 @@ jobs:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
 
-  Build-and-Deploy:
+  Sync-with-Upstream:
     permissions:
       id-token: write
       contents: write
