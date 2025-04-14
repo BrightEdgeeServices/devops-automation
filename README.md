@@ -55,13 +55,13 @@ We regularly update our workflows to improve functionality and security. To ensu
 
 1. py-temp-dep-pvt_no_docker-def.yaml
 
-   | Type        | Description                              |
-   | ----------- | ---------------------------------------- |
-   | Language    | Python                                   |
-   | Type        | Template                                 |
-   | Task        | Deployment to production environment     |
-   | Description | No Docker container has to be configured |
-   | Variation   | Default                                  |
+   | Type        | Description                                                  |
+   | ----------- | ------------------------------------------------------------ |
+   | Language    | Python                                                       |
+   | Type        | Template                                                     |
+   | Task        | Deployment to production environment                         |
+   | Description | Private repository with no Docker container to be configured |
+   | Variation   | Default                                                      |
 
 1. py-temp-dep-pvt_with_docker-def.yaml
 
@@ -72,6 +72,26 @@ We regularly update our workflows to improve functionality and security. To ensu
    | Task        | Deployment to production environment    |
    | Description | A Docker container has to be configured |
    | Variation   | Default                                 |
+
+1. py-temp-fork-pvt_merge_with_local-def.yaml
+
+   | Type        | Description                             |
+   | ----------- | --------------------------------------- |
+   | Language    | Python                                  |
+   | Type        | Template                                |
+   | Task        | Fork                                    |
+   | Description | Merge private repository to local fork. |
+   | Variation   | Default                                 |
+
+1. py-temp-fork-scheduled_sync_with_upstream-def.yaml
+
+   | Type        | Description                                      |
+   | ----------- | ------------------------------------------------ |
+   | Language    | Python                                           |
+   | Type        | Template                                         |
+   | Task        | Fork                                             |
+   | Description | Scheduled task to sync the origin with the fork. |
+   | Variation   | Default                                          |
 
 1. py-temp-pypi-pub_custom_ci-def.yaml
 
