@@ -1,4 +1,4 @@
-# py-wf-fork-merge_with_local-def.yaml
+# py-wf-fork-merge_no_docker-def.yaml
 name: Merge with local forked copy
 
 on:
@@ -31,7 +31,7 @@ jobs:
     secrets: inherit
 
   CI:
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-ci-pvt_no_docker-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-ci-pvt_with_docker-def.yaml@master
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
@@ -44,7 +44,7 @@ jobs:
     needs:
       - Pre-Commit
       - CI
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-fork-merge_with_local-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-fork-merge-def.yaml@master
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
