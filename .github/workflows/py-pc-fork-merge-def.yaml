@@ -1,4 +1,4 @@
-# py-pc-fork-merge_with_local-def.yaml
+# py-pc-fork-merge-def.yaml
 name: Merge-into-local-fork
 
 on:
