@@ -57,7 +57,9 @@ jobs:
 
       - name: Configure Poetry
         uses: ./.github/actions/configure-poetry
-      #        with:
+        with:
+          GH_REPO_ACCESS_BEE_MASTER: ${{ secrets.GH_REPO_ACCESS_BEE_MASTER }}
+          GH_REPO_ACCESS_RTE_MASTER: ${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}      #        with:
       #          who-to-greet: 'Mona the Octocat'
 
       #      - name: Configure Poetry
