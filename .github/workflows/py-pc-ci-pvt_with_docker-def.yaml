@@ -32,7 +32,7 @@ jobs:
       #      MYSQL_PWD:           ${{secrets.MYSQL_PWD}}
       MYSQL_ROOT_PASSWORD: ${{secrets.MYSQL_ROOT_PASSWORD }}
       #      MYSQL_TCP_PORT:      ${{vars.MYSQL_TCP_PORT }}
-      MYSQL_USER:        ${{secrets.MYSQL_USERID}}
+      MYSQL_USER:          ${{secrets.MYSQL_USER}}
     #      PROJECT_NAME:        ${{vars.PROJECT_NAME }}
 
     strategy:
