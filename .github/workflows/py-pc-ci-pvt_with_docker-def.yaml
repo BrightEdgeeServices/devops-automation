@@ -10,7 +10,13 @@ on:
         required: true
       GH_REPO_ACCESS_RTE_MASTER:
         required: true
+      INSTALLER_USER_ID:
+        required: true
+      INSTALLER_USER_PWD:
+        required: true
       MYSQL_DATABASE:
+        required: true
+      MYSQL_HOST:
         required: true
       MYSQL_PASSWORD:
         required: true
@@ -18,22 +24,27 @@ on:
         required: true
       MYSQL_USER:
         required: true
+      PROJECT_NAME:
+        required: true
+#      RELEASE_EMAIL_USER:
+#        required: true
+#      RELEASE_EMAIL_PASSWORD:
+#        required: true
 
 jobs:
   CI:
     runs-on: ${{matrix.os}}
     env:
-      # GH_REPO_ACCESS_BY_OWN_APPS: ${{ secrets.GH_REPO_ACCESS_BY_OWN_APPS }}
-      #      INSTALLER_USER_ID:   ${{secrets.INSTALLER_USER_ID}}
-      #      INSTALLER_USER_PWD:  ${{secrets.INSTALLER_USER_PWD}}
+      INSTALLER_USER_ID:   ${{secrets.INSTALLER_USER_ID}}
+      INSTALLER_USER_PWD:  ${{secrets.INSTALLER_USER_PWD}}
       MYSQL_DATABASE:      ${{secrets.MYSQL_DATABASE}}
-      #        MYSQL_HOST:          ${{vars.MYSQL_HOST}}
+      MYSQL_HOST:          ${{secrets.MYSQL_HOST}}
       MYSQL_PASSWORD:      ${{secrets.MYSQL_PASSWORD}}
-      #      MYSQL_PWD:           ${{secrets.MYSQL_PWD}}
+      MYSQL_PWD:           ${{secrets.MYSQL_PWD}}
       MYSQL_ROOT_PASSWORD: ${{secrets.MYSQL_ROOT_PASSWORD }}
-      #      MYSQL_TCP_PORT:      ${{vars.MYSQL_TCP_PORT }}
+      MYSQL_TCP_PORT:      ${{secrets.MYSQL_TCP_PORT }}
       MYSQL_USER:          ${{secrets.MYSQL_USER}}
-    #      PROJECT_NAME:        ${{vars.PROJECT_NAME }}
+      PROJECT_NAME:        ${{secrets.PROJECT_NAME }}
 
     strategy:
       fail-fast: true
