@@ -1,5 +1,11 @@
 # Release 1.4.0
 
+- Add PYPI_API_TOKEN_PROD in py-wf-pypi-pub_with_docker-def.yaml
+
+______________________________________________________________________
+
+# Release 1.4.0
+
 - Removed the .github/ISSUE_TEMPLATE directory.
   This will force the repository to use the
   BrightEdgeeServices/.github/ISSUE_TEMPLATE directory, centralizing the maintenance of templates.
