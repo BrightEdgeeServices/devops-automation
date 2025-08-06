@@ -2,6 +2,7 @@
 
 - py-pc-ci-pvt_with_docker-def.yaml
   - Update "Configure Poetry" step.
+  - Fixed "Configure Poetry" step.
 - py-pc-dep-with_docker-def.yaml
   - Add RELEASE_EMAIL_PASSWORD and RELEASE_EMAIL_USER environment variables.
 - py-wf-dep-pvt_with_docker-def.yaml
