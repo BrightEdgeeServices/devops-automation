@@ -18,6 +18,10 @@ on:
         required: true
       INSTALLER_USER_PWD:
         required: true
+      MYSQL_DATABASE:
+        required: true
+      MYSQL_HOST:
+        required: true
       MYSQL_PASSWORD:
         required: true
       MYSQL_ROOT_PASSWORD:
