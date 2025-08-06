@@ -7,7 +7,7 @@ on:
   push:
 
 jobs:
-  python-template-pypi-public-no-docker:
+  py-temp-pypi-pub_no_docker-def:
     permissions:
       id-token: write
       contents: write

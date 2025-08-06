@@ -7,7 +7,7 @@ on:
   push:
 
 jobs:
-  python-template-deploy-private-no-docker:
+  py-temp-dep-pvt_no_docker-def:
     permissions:
       id-token: write
       contents: write

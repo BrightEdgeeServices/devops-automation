@@ -1,6 +1,4 @@
 # py-wf-dep-pvt_with_docker-def.yaml
-# ToDo
-# This is a copied version and has to be fixed
 name: Default Deployment Pipeline
 
 on:
@@ -15,6 +13,10 @@ on:
       GH_REPO_ACCESS_BEE_MASTER:
         required: true
       GH_REPO_ACCESS_RTE_MASTER:
+        required: true
+      INSTALLER_USER_ID:
+        required: true
+      INSTALLER_USER_PWD:
         required: true
       MYSQL_PASSWORD:
         required: true
@@ -37,6 +39,15 @@ jobs:
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
+      INSTALLER_USER_ID: ${{secrets.INSTALLER_USER_ID }}
+      INSTALLER_USER_PWD: ${{secrets.INSTALLER_USER_PWD }}
+      MYSQL_DATABASE: ${{secrets.MYSQL_DATABASE }}
+      MYSQL_HOST: ${{secrets.MYSQL_HOST }}
+      MYSQL_PASSWORD: ${{secrets.MYSQL_PASSWORD }}
+      MYSQL_ROOT_PASSWORD: ${{secrets.MYSQL_ROOT_PASSWORD }}
+      MYSQL_TCP_PORT: ${{secrets.MYSQL_TCP_PORT }}
+      MYSQL_USER: ${{secrets.MYSQL_USER }}
+      PROJECT_NAME: ${{secrets.PROJECT_NAME }}
 
   Build-and-Deploy:
     permissions:

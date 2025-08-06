@@ -5,7 +5,7 @@ on:
   push:
 
 jobs:
-  python-template-merge-with-local-fork:
+  py-temp-fork-pvt_merge_no_docker-def:
     permissions:
       id-token: write
       contents: write

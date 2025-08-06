@@ -7,7 +7,7 @@ on:
   workflow_dispatch:      # Allows manual trigger
 
 jobs:
-  Scheduled-fork-update-pull-template:
+  py-temp-fork-scheduled_sync_with_upstream-def:
     permissions:
       id-token: write
       contents: write
