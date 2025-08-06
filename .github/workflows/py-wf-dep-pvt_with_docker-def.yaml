@@ -1,6 +1,4 @@
 # py-wf-dep-pvt_with_docker-def.yaml
-# ToDo
-# This is a copied version and has to be fixed
 name: Default Deployment Pipeline
 
 on:

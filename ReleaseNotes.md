@@ -1,4 +1,29 @@
-# Release 1.4.0
+# Release 1.4.2
+
+- py-pc-dep-with_docker-def.yaml
+  - Add RELEASE_EMAIL_PASSWORD and RELEASE_EMAIL_USER environment variables.
+- py-wf-dep-pvt_with_docker-def.yaml
+  - Add RELEASE_EMAIL_PASSWORD and RELEASE_EMAIL_USER environment variables.
+  - Add INSTALLER_USER_ID, INSTALLER_USER_PWD, MYSQL_DATABASE, MYSQL_HOST, MYSQL_PASSWORD, MYSQL_ROOT_PASSWORD, MYSQL_TCP_PORT, MYSQL_USER, PROJECT_NAME
+- py-temp-dep-pvt_no_docker-def.yaml
+  - Rename job python-template-deploy-private-no-docker to py-temp-dep-pvt_no_docker-def
+- py-temp-dep-pvt_with_docker-def.yaml
+  - Rename job python-template-deploy-private-with-docker to py-temp-dep-pvt_with_docker-def
+  - Add RELEASE_EMAIL_PASSWORD and RELEASE_EMAIL_USER environment variables.
+- py-temp-fork-pvt_merge_no_docker-def.yaml
+  - Rename job python-template-merge-with-local-fork to py-temp-fork-pvt_merge_no_docker-def
+- py-temp-fork-pvt_merge_no_docker-def.yaml
+  - Rename job python-template-fork-merge-with-docker to py-temp-fork-pvt_merge_no_docker-def
+- py-temp-fork-scheduled_sync_with_upstream-def.yaml
+  - Rename scheduled-fork-update-pull-template to py-temp-fork-scheduled_sync_with_upstream-def
+- py-temp-pypi-pub_no_docker-def.yaml
+  - Rename job python-template-pypi-public-no-docker to py-temp-pypi-pub_no_docker-def
+- py-temp-pypi-pub_with_docker-def.yaml
+  - Rename job python-template-pypi-public-with-docker to py-temp-pypi-pub_with_docker-def
+
+______________________________________________________________________
+
+# Release 1.4.1
 
 - Add PYPI_API_TOKEN_PROD in py-wf-pypi-pub_with_docker-def.yaml
 
