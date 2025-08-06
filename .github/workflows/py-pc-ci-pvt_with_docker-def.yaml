@@ -77,19 +77,8 @@ jobs:
               echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
 
       - name: Configure Poetry
-        uses: ./.github/actions/configure-poetry
-        with:
-          GH_REPO_ACCESS_BEE_MASTER: ${{ secrets.GH_REPO_ACCESS_BEE_MASTER }}
-          GH_REPO_ACCESS_RTE_MASTER: ${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}      #        with:
-      #          who-to-greet: 'Mona the Octocat'
-
-      #      - name: Configure Poetry
-      #        run:  |
-      #              poetry config keyring.enabled false
-      #              poetry config http-basic.BEE __token__ ${{ secrets.GH_REPO_ACCESS_BEE_MASTER }}
-      #              poetry config http-basic.RTE __token__ ${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
-      #              poetry source add --priority=explicit RTE https://github.com/RealTimeEvents/FideRatingList.git
-      #              poetry add git+https://github.com/RealTimeEvents/FideRatingList.git
+        run: |
+          poetry config keyring.enabled false
 
       - name: Install dependencies
         run:  |
