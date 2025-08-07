@@ -80,6 +80,8 @@ jobs:
       - name: Configure Poetry
         run: |
           poetry config keyring.enabled false
+          poetry config "http-basic.BEE" "__token__" $GH_REPO_ACCESS_BEE_LOCAL_USER
+          poetry config "http-basic.RTE" "__token__" $GH_REPO_ACCESS_RTE_LOCAL_USER
 
       - name: Install dependencies
         run:  |
