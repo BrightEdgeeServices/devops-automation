@@ -79,6 +79,7 @@ jobs:
 
       - name: Configure Poetry
         run: |
+          echo "This is good"
           poetry config keyring.enabled false
           poetry config http-basic.BEE __token__ ${{ secrets.GH_REPO_ACCESS_BEE_MASTER }}
           poetry config http-basic.RTE __token__ ${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
