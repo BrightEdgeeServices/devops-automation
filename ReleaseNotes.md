@@ -3,6 +3,9 @@
 - py-pc-ci-pvt_with_docker-def.yaml
   - Update "Configure Poetry" step.
   - Fixed "Configure Poetry" step.
+  - Add creation of `logs` directory
+- py-pc-ci-pvt_no_docker-def.
+  - Add creation of `logs` directory
 - py-pc-dep-with_docker-def.yaml
   - Add RELEASE_EMAIL_PASSWORD and RELEASE_EMAIL_USER environment variables.
 - py-wf-dep-pvt_with_docker-def.yaml
