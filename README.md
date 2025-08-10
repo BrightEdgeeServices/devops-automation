@@ -133,6 +133,17 @@ We regularly update our workflows to improve functionality and security. To ensu
    | Description | A Docker container has to be configured |
    | Variation   | Default                                 |
 
+1. py-temp-release-after-merge_no_docker-def.yaml
+
+   | Type        | Description                                                                                                                     |
+   | ----------- | ------------------------------------------------------------------------------------------------------------------------------- |
+   | Language    | Python                                                                                                                          |
+   | Type        | Template                                                                                                                        |
+   | Task        | Release after PR merge                                                                                                          |
+   | Description | After a Pull Request is merged into master, creates a GitHub release and sends a notice. The tag is derived from pyproject.toml |
+   |             | [project].version (fallback [tool.poetry].version) and is prefixed with `v`.                                                    |
+   | Variation   | Default                                                                                                                         |
+
 [cicd_codestyle_img]: https://img.shields.io/badge/code%20style-black-000000.svg "Black"
 [cicd_codestyle_lnk]: https://github.com/psf/black "Black"
 [general_license_img]: https://img.shields.io/pypi/l/devops-automation "License"
