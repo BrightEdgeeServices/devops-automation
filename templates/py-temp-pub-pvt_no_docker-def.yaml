@@ -5,16 +5,20 @@ name: Python Template Publish Private No-Docker
 
 on:
   push:
+    branches-ignore:
+      - master
+      - main
 
 jobs:
   py-temp-dep-pvt_no_docker-def:
     permissions:
       id-token: write
       contents: write
-    #    if: github.event.pull_request.merged == true
+      pull-requests: write
+
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-wf-pub-pvt_no_docker-def.yaml@master
     with:
-      run_publish: ${{ startsWith(github.ref, 'refs/tags/') == true }}
+      run_publish: true
     # secrets: inherit
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
