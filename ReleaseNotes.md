@@ -1,5 +1,18 @@
 # Release 1.4.2
 
+# New Actions
+
+- py-temp-pub-pvt_no_docker-def.yaml
+  - Publish packages for use by other packages.
+- py-wf-pub-pvt_no_docker-def.yaml
+  - Used by py-temp-pub-pvt_no_docker-def.yaml
+  - Describe the workflow
+- py-pc-pub-no_docker-def.yaml
+  - Used by py-pc-pub-no_docker-def.yaml
+  - Describe th process
+
+# Updated Actions
+
 - py-pc-ci-pvt_with_docker-def.yaml
   - Update "Configure Poetry" step.
   - Fixed "Configure Poetry" step.
