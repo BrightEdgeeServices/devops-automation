@@ -106,6 +106,12 @@ jobs:
         with:
           fetch-depth: 0
 
+
+      - name: USername and Password
+        run: |
+          echo ${{ secrets.RELEASE_EMAIL_USER }}
+          echo ${{ secrets.RELEASE_EMAIL_PASSWORD }}
+
       - name: Send release email notification
         uses: betterfor/action-send-mail@main
         with:
