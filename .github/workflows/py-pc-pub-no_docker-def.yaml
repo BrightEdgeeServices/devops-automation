@@ -97,8 +97,6 @@ jobs:
         run:  |
               poetry install --with dev
 
-      # ToDo
-      # Deploy to production must be inserted here
       - name: Build and publish with Poetry
         run:  |
               poetry build
