@@ -40,6 +40,7 @@ jobs:
     permissions:
       id-token: write
       contents: write
+      pull-requests: write
     if:   ${{ inputs.run_publish == true }}
     needs:
       - Pre-Commit
