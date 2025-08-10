@@ -11,11 +11,11 @@ on:
       - master
 
 jobs:
-  release-after-merge:
+  Release-After-Merge:
     if: ${{ github.event.pull_request.merged == true }}
     permissions:
       contents: write
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-wf-rel-after-merge-def.yaml@master
     secrets:
-      RELEASE_EMAIL_USER:     ${{ secrets.RELEASE_EMAIL_USER }}
-      RELEASE_EMAIL_PASSWORD: ${{ secrets.RELEASE_EMAIL_PASSWORD }}
+      RELEASE_EMAIL_USER:     ${{vars.RELEASE_EMAIL_USER }}
+      RELEASE_EMAIL_PASSWORD: ${{secrets.RELEASE_EMAIL_PASSWORD }}
