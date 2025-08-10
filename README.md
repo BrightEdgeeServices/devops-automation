@@ -31,7 +31,7 @@ Discuss any changes with your colleagues to get consensus on any changes or addi
 - `<language>-<type>-<task>-<description>-<variation>`
   - where
     - language = `go (GoLang)` | `py (Python)`
-    - type = `pc (process)` | `temp (template)` | `wf (workflow)`
+    - type = `pc (process)` | `pub (publish)` | `temp (template)` | `wf (workflow)`
     - task = `ci (continuous integration)` | `dep (deploy)` | `precom (pre-commit) | pypi`
     - description = Short description where words are separated by "\_".
     - variation = `def (default)` | Variation description where words are separated by "\_".
@@ -92,6 +92,16 @@ We regularly update our workflows to improve functionality and security. To ensu
    | Task        | Fork                                             |
    | Description | Scheduled task to sync the origin with the fork. |
    | Variation   | Default                                          |
+
+1. py-temp-pub-pvt_no_docker-def.yaml
+
+   | Type        | Description                                             |
+   | ----------- | ------------------------------------------------------- |
+   | Language    | Python                                                  |
+   | Type        | Template                                                |
+   | Task        | Publish in GitHub                                       |
+   | Description | Publish in GitHub for use by other private repositories |
+   | Variation   | Default                                                 |
 
 1. py-temp-pypi-pub_custom_ci-def.yaml
 
