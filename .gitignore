@@ -6,7 +6,7 @@
 *-workspace
 **/*.egg-info/
 **/__pycache__/
-**/Archive/
+templates/legacy/
 **/desktop.ini
 **/*.py.isorted
 **/VersionArchive/
