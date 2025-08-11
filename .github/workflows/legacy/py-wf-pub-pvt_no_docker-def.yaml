@@ -1,4 +1,4 @@
-# py-wf-dep-pvt_no_docker-def.yaml
+# py-wf-pr-pvt_no_docker-def.yaml
 name: Default Publishing Pipeline
 
 on:
