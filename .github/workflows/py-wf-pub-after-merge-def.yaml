@@ -1,5 +1,5 @@
-# py-wf-rel-after-merge-def.yaml
-name: Release After PR Merge (Wrapper)
+# py-wf-pub-after-merge-def.yaml
+name: Publish After PR Merge (Wrapper)
 
 on:
   workflow_call:
