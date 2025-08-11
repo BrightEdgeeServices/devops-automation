@@ -45,7 +45,7 @@ jobs:
     needs:
       - Pre-Commit
       - CI
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-pr-def.yaml.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-pr-def.yaml@master
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
