@@ -1,4 +1,4 @@
-# py-pc-pub-no_docker-def.yaml
+# py-pc-pr-def.yaml
 name: PR-and-Build
 
 on:
