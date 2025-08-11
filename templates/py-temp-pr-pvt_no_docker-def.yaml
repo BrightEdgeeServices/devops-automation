@@ -1,4 +1,4 @@
-# py-temp-pub-pvt_no_docker-def.yaml
+# py-temp-pr-pvt_no_docker-def.yaml
 # This is a template and should not be changed unless you are familiar with the
 # reusable GitHub Actions strategy of the company.
 name: Python Template Publish Private No-Docker
@@ -8,6 +8,8 @@ on:
     branches-ignore:
       - master
       - main
+    tags:
+      - pr
 
 jobs:
   py-temp-dep-pvt_no_docker-def:
