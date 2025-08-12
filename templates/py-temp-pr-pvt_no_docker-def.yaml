@@ -19,8 +19,8 @@ jobs:
       pull-requests: write
 
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-wf-pr-pvt_no_docker-def.yaml@master
-    with:
-      run_publish: true
+#    with:
+#      run_publish: true
     # secrets: inherit
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}

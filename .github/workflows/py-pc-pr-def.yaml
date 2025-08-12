@@ -54,54 +54,6 @@ jobs:
               --body "$BODY"
           fi
 
-  Build-Only-After-PR:
-    if: ${{ github.ref_type != 'tag' }}
-    runs-on: ubuntu-latest
-    needs: Create-PR
-
-    permissions:
-      contents: write
-      id-token: write
-
-    strategy:
-      fail-fast: true
-      matrix:
-        python-version: [ "3.13" ]
-
-    env:
-      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER}}
-      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER}}
-
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Fetch full history to include tags
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python-version }}
-          architecture:   x64
-
-      - name: Install Poetry
-        run:  |
-              curl -sSL https://install.python-poetry.org | python3 -
-              echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
-
-      - name: Configure Poetry
-        run:  |
-              poetry config keyring.enabled false
-              poetry config http-basic.BEE __token__ ${{ secrets.GH_REPO_ACCESS_BEE_MASTER }}
-              poetry config http-basic.RTE __token__ ${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
-
-      - name: Install dependencies
-        run:  |
-              poetry install --with dev
-
-      - name: Build and publish with Poetry
-        run:  |
-              poetry build
 
   Build-Only-From-Tag:
     if: ${{ github.ref_type == 'tag' && github.ref_name == 'pr' }}
