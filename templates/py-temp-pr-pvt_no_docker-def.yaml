@@ -8,8 +8,8 @@ on:
     branches-ignore:
       - master
       - main
-#    tags:
-#      - pr
+    tags:
+      - pr
 
 jobs:
   py-temp-dep-pvt_no_docker-def:
