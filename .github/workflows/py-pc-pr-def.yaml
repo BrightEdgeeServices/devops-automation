@@ -11,7 +11,6 @@ on:
 
 jobs:
   Create-PR:
-#    if: ${{ github.ref_type != 'tag' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -44,9 +43,11 @@ jobs:
 
           echo "Attempting to create PR from '${BRANCH}' to '${BASE}'"
           # If a PR already exists for this head->base pair, skip creating a new one
-          if gh pr view --head "$BRANCH" --base "$BASE" >/dev/null 2>&1; then
+          COUNT=$(gh pr list --head "$BRANCH" --base "$BASE" --state open --json number --jq 'length')
+          if [ "$COUNT" -gt 0 ]; then
             echo "A pull request from '$BRANCH' to '$BASE' already exists. Skipping creation."
           else
+            # Create PR only if none exists
             gh pr create \
               --base "$BASE" \
               --head "$BRANCH" \
