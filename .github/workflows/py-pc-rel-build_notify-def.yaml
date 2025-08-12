@@ -10,6 +10,10 @@ on:
         required: false
         type: string
     secrets:
+      GH_REPO_ACCESS_BEE_MASTER:
+        required: true
+      GH_REPO_ACCESS_RTE_MASTER:
+        required: true
       RELEASE_EMAIL_USER:
         required: true
       RELEASE_EMAIL_PASSWORD:
