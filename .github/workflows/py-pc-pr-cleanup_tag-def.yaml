@@ -11,7 +11,6 @@ on:
 jobs:
 
   Cleanup-Delete-pr-Tag:
-    if: ${{ always() && github.ref_type == 'tag' && github.ref_name == 'pr' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
