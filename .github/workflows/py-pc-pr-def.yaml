@@ -11,7 +11,7 @@ on:
 
 jobs:
   Create-PR:
-    if: ${{ github.ref_type != 'tag' }}
+#    if: ${{ github.ref_type != 'tag' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
