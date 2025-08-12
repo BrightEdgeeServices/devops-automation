@@ -26,6 +26,7 @@ on:
 #        required: true
 
 jobs:
+
   Pre-Commit:
     uses:    BrightEdgeeServices/devops-automation/.github/workflows/py-pc-precom-def.yaml@master
     secrets: inherit
@@ -36,14 +37,31 @@ jobs:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
 
+  Detect-PR-Tag:
+    runs-on: ubuntu-latest
+    outputs:
+      has_pr_tag: ${{ steps.detect.outputs.has_pr_tag }}
+    steps:
+      - name: Check if tag 'pr' exists in remote
+        id: detect
+        env:
+          REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git ls-remote --exit-code --tags "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" refs/tags/pr >/dev/null 2>&1; then
+            echo "has_pr_tag=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_pr_tag=false" >> "$GITHUB_OUTPUT"
+          fi
   PR:
     permissions:
       id-token: write
       contents: write
       pull-requests: write
-    # Only run when the current ref is a tag named 'pr'
-    if:   ${{ github.ref_type == 'tag' && github.ref_name == 'pr' }}
+    # Run whenever the repository currently has a tag named 'pr'
+    if:   ${{ needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
     needs:
+      - Detect-PR-Tag
       - Pre-Commit
       - CI
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-pr-def.yaml@master
@@ -54,11 +72,7 @@ jobs:
   Cleanup-Delete-pr-Tag:
     permissions:
       contents: write
-    if: ${{ always() && github.ref_type == 'tag' && github.ref_name == 'pr' }}
-    needs:
-      - Pre-Commit
-      - CI
-      - PR
+    if: ${{ always() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-pr-cleanup_tag-def.yaml@master
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
