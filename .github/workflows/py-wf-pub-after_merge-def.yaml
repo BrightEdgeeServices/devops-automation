@@ -1,4 +1,4 @@
-# py-wf-pub-after-merge-def.yaml
+# py-wf-pub-after_merge-def.yaml
 name: Publish After PR Merge (Wrapper)
 
 on:
@@ -16,7 +16,7 @@ on:
 
 jobs:
   Release-and-Notify:
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-rel-notify-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-rel-build_notify-def.yaml@master
     with:
       tag_name: ${{ inputs.tag_name }}
     secrets:
