@@ -59,7 +59,7 @@ jobs:
       contents: write
       pull-requests: write
     # Run whenever the repository currently has a tag named 'pr'
-    if:   ${{ needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
+    if: ${{ always() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
     needs:
       - Detect-PR-Tag
       - Pre-Commit
