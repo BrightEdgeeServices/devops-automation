@@ -15,7 +15,7 @@ jobs:
     if: ${{ github.event.pull_request.merged == true }}
     permissions:
       contents: write
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-wf-pub-after-merge-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-wf-pub-after_merge-def.yaml@master
     secrets:
       RELEASE_EMAIL_USER:     ${{vars.RELEASE_EMAIL_USER }}
       RELEASE_EMAIL_PASSWORD: ${{secrets.RELEASE_EMAIL_PASSWORD }}
