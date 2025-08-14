@@ -88,7 +88,7 @@ jobs:
         run: |
           set -euo pipefail
           echo "Add release notes snippet in here." > ReleaseAmendment.md
-          echo "The first line must be buf, feature or hotfix" >> ReleaseAmendment.md
+          echo "The first line must be *bug*, *feature* or *hotfix*" >> ReleaseAmendment.md
 
       - name: Commit and push changes
         shell: bash
