@@ -8,7 +8,7 @@ on:
 
 jobs:
   Pre-Commit:
-    uses: ./.github/workflows/02-pre-commit.yaml
+    uses: ./.github/workflows/01-pre-commit.yaml
 
   Detect-PR-Tag:
     needs:
@@ -21,7 +21,7 @@ jobs:
     needs:
       - Pre-Commit
       - Detect-PR-Tag
-    uses: ./.github/workflows/01-amend-release-notes.yaml
+    uses: ./.github/workflows/02-amend-release-notes.yaml
 
   Merge:
     if: ${{ always() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
@@ -31,14 +31,14 @@ jobs:
     secrets: inherit
 
   Publish-Release:
-    if: ${{ always() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
+    if: ${{ success() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
     needs:
       - Merge
     uses: ./.github/workflows/04-publish-release.yaml
     secrets: inherit
 
   Send-Notice:
-    if: ${{ always() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
+    if: ${{ success() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
     needs:
       - Publish-Release
     uses: ./.github/workflows/05-send-notice.yaml
