@@ -1,0 +1,107 @@
+# 01-amend-release-notes.yaml
+name: Amend Release Notes
+
+on:
+  workflow_call:
+
+jobs:
+  New-Release:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: true
+      matrix:
+        python-version: [ '3.12' ]
+
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
+
+      - name: Decide version bump based on ReleaseAmendment.md first line and bump with Poetry
+        id: bump
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -f "ReleaseAmendment.md" ]; then
+            echo "ReleaseAmendment.md not found" >&2
+            exit 1
+          fi
+          FIRST_LINE=$(head -n 1 ReleaseAmendment.md | tr '[:upper:]' '[:lower:]')
+          BUMP="patch"
+          if echo "$FIRST_LINE" | grep -q "feature"; then
+            BUMP="minor"
+          fi
+          if echo "$FIRST_LINE" | grep -Eq "bug|hotfix"; then
+            BUMP="patch"
+          fi
+          echo "Selected bump: $BUMP based on first line: $FIRST_LINE"
+          poetry --version
+          poetry version "$BUMP"
+          NEW_VERSION=$(poetry version -s)
+          echo "new_version=$NEW_VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Amend ReleaseNotes.md with new header and amendment content
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -f "ReleaseNotes.md" ]; then
+            echo "ReleaseNotes.md not found" >&2
+            exit 1
+          fi
+          if [ ! -f "ReleaseAmendment.md" ]; then
+            echo "ReleaseAmendment.md not found" >&2
+            exit 1
+          fi
+          HEADER_LINE="#Release ${{ steps.bump.outputs.new_version }}"
+          SEP_LINE="______________________________________________________________________"
+          tmpfile=$(mktemp)
+          {
+            echo "$HEADER_LINE"
+            echo
+            # Append ReleaseAmendment.md without the first line (which signals version bump)
+            tail -n +2 ReleaseAmendment.md || true
+            echo
+            echo "$SEP_LINE"
+            echo
+            cat ReleaseNotes.md
+          } > "$tmpfile"
+          mv "$tmpfile" ReleaseNotes.md
+
+      - name: Reset ReleaseAmendment.md template
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "Add release notes snippet in here." > ReleaseAmendment.md
+          echo "The first line must be buf, feature or hotfix" >> ReleaseAmendment.md
+
+      - name: Commit and push changes
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pyproject.toml ReleaseNotes.md ReleaseAmendment.md
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: bump version to ${{ steps.bump.outputs.new_version }} and amend release notes; reset amendment template"
+          git push

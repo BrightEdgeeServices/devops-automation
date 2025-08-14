@@ -1,0 +1,47 @@
+# 03-merge.yaml
+name: Build-and-Publish
+
+on:
+  workflow_call:
+
+jobs:
+  Merge:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ 'ubuntu-latest' ]
+        python-version: [ '3.12' ]
+
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set Git identity
+        run:  |
+              git config --global user.name 'GitHub Action'
+              git config --global user.email 'action@github.com'
+
+      - name:              Merge into master
+        id:                merge
+        run:               |
+                           git checkout master
+                           git merge --no-ff $GITHUB_REF
+        continue-on-error: false
+
+      - name: Push to master
+        if:   steps.merge.outcome == 'success'
+        run:  |
+              git push origin master
+        env:
+          GH_TOKEN: ${{ secrets.GH_REPO_ACCESS_CURR_USER }}
+
+    #      - name: Debug Environment
+    #        run: env

@@ -1,3 +1,107 @@
+#Release 2.3.0
+
+## Overview
+
+- Date: 2025-08-14 16:31 (local)
+- Branch: `hendrik/bee-25-new-py-temp-pub-pvt_no_docker-defyaml-github-action`
+- Compared to: `master`
+
+## Summary of Changes
+
+- Refactored and modularized the publish-after-merge pipeline into reusable workflows:
+  - Added `.github/workflows/py-pc-build-def.yaml` (builds with Poetry)
+  - Added `.github/workflows/py-pc-release-def.yaml` (derives tag from `pyproject.toml` and creates GitHub Release)
+  - Added `.github/workflows/py-pc-notify-def.yaml` (sends release notification email)
+  - Updated wrapper `.github/workflows/py-wf-pub-after_merge-def.yaml` to orchestrate Build → Release → Notify
+- Introduced new end-to-end New Release Pipeline wrapper with gated stages:
+  - `.github/workflows/00-new-release-pipeline.yaml` now detects `pr` tag, amends release notes, merges, publishes, sends notice, and cleans up tag
+  - Uses reusable actions: `py-pc-pr-detect_tag-def.yaml` and `py-pc-pr-cleanup_tag-def.yaml`
+- Split and standardized pre-commit workflow naming:
+  - Renamed `01-pre-commit.yaml` to `02-pre-commit.yaml` and wired into the new pipeline
+- Added supporting wrappers for merge, publish, and notify:
+  - `.github/workflows/03-merge.yaml`, `.github/workflows/04-publish-release.yaml`, `.github/workflows/05-send-notice.yaml`
+- Replaced legacy combined workflow with modular equivalents:
+  - Replaced `.github/workflows/py-pc-rel-build_notify-def.yaml` with `.github/workflows/py-pc-notify-def.yaml`
+- Updated PR pipeline to consume reusable PR tag detection and cleanup actions
+  - `.github/workflows/py-wf-pr-pvt_no_docker-def.yaml`
+- Updated Release notes automation to compute semantic version bump and prepend notes
+  - `.github/workflows/01-amend-release-notes.yaml`
+- Bumped project metadata and release notes
+  - `pyproject.toml`, `ReleaseNotes.md`
+
+## Notes / Impact
+
+- Consumers should switch to the new modular publish-after-merge pattern via `.github/workflows/py-wf-pub-after_merge-def.yaml`.
+- Ensure repository secrets are configured: `GH_REPO_ACCESS_BEE_MASTER`, `GH_REPO_ACCESS_RTE_MASTER`, `RELEASE_EMAIL_USER`, `RELEASE_EMAIL_PASSWORD`.
+- The first line of this file is intentionally the release classification for automation and will be skipped when appending to ReleaseNotes.md.
+
+______________________________________________________________________
+
+# Release 2.2.0
+
+- Experimented with automation
+
+______________________________________________________________________
+
+#Release 2.1.0
+
+## Overview
+
+- Date: 2025-08-14 02:32 (local)
+- Branch: `hendrik/bee-25-new-py-temp-pub-pvt_no_docker-defyaml-github-action`
+- Compared to: `master`
+
+This document summarizes the differences between the current branch and `master` for the 2.0.1 release.
+
+## Pipeline Refactor
+
+- Refactored publish-after-merge pipeline into modular reusable workflows:
+  - Introduced separate workflows for Build, Release, and Notify.
+    - New: `.github/workflows/py-pc-build-def.yaml` (installs deps with Poetry and builds artifacts)
+    - New: `.github/workflows/py-pc-release-def.yaml` (creates GitHub Release; derives tag from `pyproject.toml` with optional input)
+    - New: `.github/workflows/py-pc-notify-def.yaml` (sends email notification using `betterfor/action-send-mail`)
+  - Updated wrapper workflow to orchestrate the three jobs in sequence (Build → Release → Notify):
+    - `.github/workflows/py-wf-pub-after_merge-def.yaml` now calls the new modular workflows and forwards required secrets/inputs.
+  - Deprecated and removed the combined workflow:
+    - Deleted: `.github/workflows/py-pc-rel-build_notify-def.yaml`
+
+## Enhancements and Standardization
+
+- Tag computation: Release workflow now robustly derives tag `v{version}` from `[project].version` or `[tool.poetry].version` in `pyproject.toml`, with optional override via `inputs.tag_name`.
+- Python versions: Build/Notify matrices target Python 3.13; Release uses Python 3.12 for tag computation.
+- Secrets and permissions normalized across reusable workflows (`GH_REPO_ACCESS_BEE_MASTER`, `GH_REPO_ACCESS_RTE_MASTER`, `RELEASE_EMAIL_USER`, `RELEASE_EMAIL_PASSWORD`).
+
+## CI Workflow Touch-ups (Minor)
+
+- `.github/workflows/01-pre-commit.yaml`
+- `.github/workflows/03-publish-new-release.yaml`
+- `.github/workflows/py-pc-ci-pub_no_docker-def.yaml`
+- `.github/workflows/py-pc-ci-pub_with_docker-def.yaml`
+- `.github/workflows/py-pc-ci-pvt_no_docker-def.yaml`
+- `.github/workflows/py-pc-ci-pvt_with_docker-def.yaml`
+- `.github/workflows/py-pc-pr-def.yaml`
+- `.github/workflows/py-pc-precom-def.yaml`
+
+## Configuration Updates
+
+- `pyproject.toml`: Bumped project version to `2.0.1`; maintained project metadata and dev tooling groups.
+- `.pre-commit-config.yaml`: Minor adjustment to align with repo standards.
+
+## Change Statistics (vs master)
+
+- 13 files changed, 132 insertions, 222 deletions
+- Key file movements:
+  - Deleted: `.github/workflows/py-pc-rel-build_notify-def.yaml`
+  - Added: `.github/workflows/py-pc-release-def.yaml`
+
+## Notes / Impact
+
+- Repositories consuming the publish-after-merge template should switch to the updated wrapper (`py-wf-pub-after_merge-def.yaml`), which now uses the three modular workflows on `master` of this repo.
+- Ensure required secrets (`GH_REPO_ACCESS_BEE_MASTER`, `GH_REPO_ACCESS_RTE_MASTER`, `RELEASE_EMAIL_USER`, `RELEASE_EMAIL_PASSWORD`) are configured in consuming repositories.
+- Release notes for the GitHub Release are still read from `ReleaseNotes.md`; this amendment documents the delta vs `master` for `2.0.1`.
+
+______________________________________________________________________
+
 # Release 2.0.0
 
 ______________________________________________________________________
