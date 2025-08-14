@@ -1,2 +1,2 @@
-Add release notes snippet in here.
-The first line must be *bug*, *feature* or *hotfix*
+bug
+This is a bug test
