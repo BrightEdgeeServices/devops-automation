@@ -74,13 +74,21 @@ jobs:
           {
             echo "$HEADER_LINE"
             echo
-            cat ReleaseAmendment.md
+            # Append ReleaseAmendment.md without the first line (which signals version bump)
+            tail -n +2 ReleaseAmendment.md || true
             echo
             echo "$SEP_LINE"
             echo
             cat ReleaseNotes.md
           } > "$tmpfile"
           mv "$tmpfile" ReleaseNotes.md
+
+      - name: Reset ReleaseAmendment.md template
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "Add release notes snippet in here." > ReleaseAmendment.md
+          echo "The first line must be buf, feature or hotfix" >> ReleaseAmendment.md
 
       - name: Commit and push changes
         shell: bash
@@ -90,10 +98,10 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add pyproject.toml ReleaseNotes.md
+          git add pyproject.toml ReleaseNotes.md ReleaseAmendment.md
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
           fi
-          git commit -m "chore: bump version to ${{ steps.bump.outputs.new_version }} and amend release notes"
+          git commit -m "chore: bump version to ${{ steps.bump.outputs.new_version }} and amend release notes; reset amendment template"
           git push
