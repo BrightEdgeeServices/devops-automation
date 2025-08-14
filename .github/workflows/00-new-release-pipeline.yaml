@@ -31,14 +31,14 @@ jobs:
     secrets: inherit
 
   Publish-Release:
-    if: ${{ always() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
+    if: ${{ success() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
     needs:
       - Merge
     uses: ./.github/workflows/04-publish-release.yaml
     secrets: inherit
 
   Send-Notice:
-    if: ${{ always() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
+    if: ${{ success() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
     needs:
       - Publish-Release
     uses: ./.github/workflows/05-send-notice.yaml
