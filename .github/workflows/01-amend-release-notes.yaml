@@ -68,7 +68,7 @@ jobs:
             echo "ReleaseAmendment.md not found" >&2
             exit 1
           fi
-          HEADER_LINE="#Release ${{ steps.bump.outputs.new_version }}"
+          HEADER_LINE="# Release ${{ steps.bump.outputs.new_version }}"
           SEP_LINE="______________________________________________________________________"
           tmpfile=$(mktemp)
           {
