@@ -5,31 +5,49 @@ on:
   push:
 
 jobs:
-  Amend-Release-Notes:
-    uses: ./.github/workflows/01-amend-release-notes.yaml
-
   Pre-Commit:
-    needs:
-      - Amend-Release-Notes
     uses: ./.github/workflows/02-pre-commit.yaml
 
-  Merge:
+  Detect-PR-Tag:
     needs:
       - Pre-Commit
-    if:      startsWith(github.ref, 'refs/tags/')
+    uses: ./.github/workflows/py-pc-pr-detect_tag-def.yaml
+    secrets: inherit
+
+  Amend-Release-Notes:
+    if: ${{ always() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
+    needs:
+      - Pre-Commit
+      - Detect-PR-Tag
+    uses: ./.github/workflows/01-amend-release-notes.yaml
+
+  Merge:
+    if: ${{ always() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
+    needs:
+      - Amend-Release-Notes
     uses:    ./.github/workflows/03-merge.yaml
     secrets: inherit
 
   Publish-Release:
+    if: ${{ always() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
     needs:
       - Merge
-    if: startsWith(github.ref, 'refs/tags/')
     uses: ./.github/workflows/04-publish-release.yaml
     secrets: inherit
 
   Send-Notice:
+    if: ${{ always() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
     needs:
       - Publish-Release
-    if: startsWith(github.ref, 'refs/tags/')
     uses: ./.github/workflows/05-send-notice.yaml
+    secrets: inherit
+
+  Cleanup-Delete-pr-Tag:
+    if: ${{ always() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
+    permissions:
+      contents: write
+    needs:
+      - Send-Notice
+      - Detect-PR-Tag
+    uses: ./.github/workflows/py-pc-pr-cleanup_tag-def.yaml
     secrets: inherit

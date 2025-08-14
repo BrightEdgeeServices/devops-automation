@@ -38,21 +38,8 @@ jobs:
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
 
   Detect-PR-Tag:
-    runs-on: ubuntu-latest
-    outputs:
-      has_pr_tag: ${{ steps.detect.outputs.has_pr_tag }}
-    steps:
-      - name: Check if tag 'pr' exists in remote
-        id: detect
-        env:
-          REPO: ${{ github.repository }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          if git ls-remote --exit-code --tags "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" refs/tags/pr >/dev/null 2>&1; then
-            echo "has_pr_tag=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "has_pr_tag=false" >> "$GITHUB_OUTPUT"
-          fi
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-pr-detect_tag-def.yaml@master
+    secrets: inherit
   PR:
     permissions:
       id-token: write
