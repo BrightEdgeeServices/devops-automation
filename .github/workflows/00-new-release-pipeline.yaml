@@ -8,7 +8,7 @@ on:
 
 jobs:
   Pre-Commit:
-    uses: ./.github/workflows/02-pre-commit.yaml
+    uses: 01-pre-commit.yaml
 
   Detect-PR-Tag:
     needs:
@@ -21,7 +21,7 @@ jobs:
     needs:
       - Pre-Commit
       - Detect-PR-Tag
-    uses: ./.github/workflows/01-amend-release-notes.yaml
+    uses: 02-amend-release-notes.yaml
 
   Merge:
     if: ${{ always() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}

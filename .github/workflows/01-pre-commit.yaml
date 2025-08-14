@@ -1,4 +1,4 @@
-# 02-pre-commit.yaml
+# 01-pre-commit.yaml
 name: Pre-Commit
 
 on:
