@@ -1,15 +1,35 @@
+# 00-new-release-pipeline.yaml
 name: New Release Pipeline
 
 on:
   push:
 
 jobs:
-  Pre-Commit:
-    uses: ./.github/workflows/01-pre-commit.yaml
+  Amend-Release-Notes:
+    uses: ./.github/workflows/01-amend-release-notes.yaml
 
-  New-Release:
+  Pre-Commit:
+    needs:
+      - Amend-Release-Notes
+    uses: ./.github/workflows/02-pre-commit.yaml
+
+  Merge:
     needs:
       - Pre-Commit
     if:      startsWith(github.ref, 'refs/tags/')
-    uses:    ./.github/workflows/03-publish-new-release.yaml
+    uses:    ./.github/workflows/03-merge.yaml
+    secrets: inherit
+
+  Publish-Release:
+    needs:
+      - Merge
+    if: startsWith(github.ref, 'refs/tags/')
+    uses: ./.github/workflows/04-publish-release.yaml
+    secrets: inherit
+
+  Send-Notice:
+    needs:
+      - Publish-Release
+    if: startsWith(github.ref, 'refs/tags/')
+    uses: ./.github/workflows/05-send-notice.yaml
     secrets: inherit
