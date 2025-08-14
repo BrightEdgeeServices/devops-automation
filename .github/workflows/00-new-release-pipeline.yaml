@@ -3,8 +3,8 @@ name: New Release Pipeline
 
 on:
   push:
-    tags-ignore:
-      - pr
+#    tags-ignore:
+#      - pr
 
 jobs:
   Pre-Commit:
