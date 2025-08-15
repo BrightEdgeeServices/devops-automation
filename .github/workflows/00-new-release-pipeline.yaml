@@ -3,8 +3,11 @@ name: New Release Pipeline
 
 on:
   push:
-#    tags-ignore:
-#      - pr
+    # Explicitly include all branches; without this, specifying tags-ignore restricts to tag pushes only.
+    branches:
+      - "**"
+    tags-ignore:
+      - pr
 
 jobs:
   Pre-Commit:
