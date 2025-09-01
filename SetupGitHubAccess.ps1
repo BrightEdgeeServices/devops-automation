@@ -8,7 +8,7 @@ param (
     [Parameter(Mandatory = $false)]
     [Switch]$Help,
 
-# Used to indicate that the code is called by Pester to avoid unwanted code execution during Pester testing.
+    # Used to indicate that the code is called by Pester to avoid unwanted code execution during Pester testing.
     [Parameter(Mandatory = $false)]
     [Switch]$Pester
 )
@@ -60,6 +60,10 @@ if (-not $Pester) {
         elseif ($Organization -eq "RTE")
         {
             $Organization = "RealTimeEvents"
+        }
+        elseif ($Organization -eq "URS")
+        {
+            $Organization = "Universal-Rating-System"
         }
 
         if (-not $RepoName) {
