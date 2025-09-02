@@ -1,6 +1,6 @@
 # Release 2.5.7
 
-The first line must be *bug*, *feature* or *hotfix*
+- Update VENV_ENVIRONMENT GitHub Actions secret
 
 ______________________________________________________________________
 
