@@ -18,7 +18,7 @@ repos:
         args: [ --markdown-linebreak-ext=md ]
 
   - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.22  # Use the ref you want to point at
+    rev: 0.7.22
     hooks:
       - id: mdformat
         args: [ --end-of-line, crlf, README.md, ReleaseNotes.md ]
@@ -34,6 +34,19 @@ repos:
         additional_dependencies: [ sphinx ]
         args: [ "--config", ".rstcheck.cfg" ]
 
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.20.0
+    hooks:
+      - id: pyupgrade
+        args: [ --py312-plus ]
+
+  - repo: https://github.com/pycqa/isort
+    rev: 6.0.1
+    hooks:
+      - id: isort
+        args: [ "--profile", "black", "--filter-files", "--force-single-line-imports",
+                "--force-alphabetical-sort-within-sections", "--py", "auto" ]
+
   - repo: https://github.com/codespell-project/codespell
     rev: v2.4.1
     hooks:
@@ -41,3 +54,16 @@ repos:
         args: [ --write, --toml, pyproject.toml ]
         additional_dependencies:
           - tomli
+
+  - repo: https://github.com/psf/black
+    rev: 25.1.0
+    hooks:
+    - id: black
+      language_version: python3
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.3.0
+    hooks:
+    - id: flake8
+      language_version: python3
+      exclude: 'templates'
