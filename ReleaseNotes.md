@@ -1,3 +1,10 @@
+# Release 2.5.2
+
+The first line must be *bug*, *feature* or *hotfix*
+The first line must be *bug*, *feature* or *hotfix*
+
+______________________________________________________________________
+
 # Release 2.5.1
 
 This is a bug test
