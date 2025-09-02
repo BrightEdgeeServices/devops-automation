@@ -34,6 +34,8 @@ on:
         required: true
       RELEASE_EMAIL_PASSWORD:
         required: true
+      VENV_ENVIRONMENT:
+        required: true
 
 jobs:
 
@@ -56,6 +58,7 @@ jobs:
       MYSQL_USER:                ${{secrets.MYSQL_USER}}
       RELEASE_EMAIL_USER:        ${{secrets.RELEASE_EMAIL_USER }}
       RELEASE_EMAIL_PASSWORD:    ${{secrets.RELEASE_EMAIL_PASSWORD }}
+      VENV_ENVIRONMENT:          ${{secrets.VENV_ENVIRONMENT }}
 
   Detect-PR-Tag:
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-pr-detect_tag-def.yaml@master

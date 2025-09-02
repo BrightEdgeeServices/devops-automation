@@ -28,6 +28,8 @@ on:
         required: true
       RELEASE_EMAIL_PASSWORD:
         required: true
+      VENV_ENVIRONMENT:
+        required: true
 
 jobs:
   CI:
@@ -45,6 +47,7 @@ jobs:
       MYSQL_USER: ${{secrets.MYSQL_USER}}
       RELEASE_EMAIL_USER: ${{secrets.RELEASE_EMAIL_USER }}
       RELEASE_EMAIL_PASSWORD: ${{secrets.RELEASE_EMAIL_PASSWORD }}
+      VENV_ENVIRONMENT: ${{secrets.VENV_ENVIRONMENT }}
 
     strategy:
       fail-fast: true
