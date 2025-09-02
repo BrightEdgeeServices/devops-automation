@@ -1,6 +1,6 @@
 # Release 2.5.5
 
-The first line must be *bug*, *feature* or *hotfix*
+This is a bug test
 
 ______________________________________________________________________
 
