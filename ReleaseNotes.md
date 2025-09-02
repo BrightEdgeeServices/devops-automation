@@ -1,3 +1,9 @@
+# Release 2.5.5
+
+The first line must be *bug*, *feature* or *hotfix*
+
+______________________________________________________________________
+
 # Release 2.5.4
 
 ## Overview
