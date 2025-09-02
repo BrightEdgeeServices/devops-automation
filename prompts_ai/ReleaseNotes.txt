@@ -1,0 +1,3 @@
+- Compile the release notes by summarizing the changes between the current branch and the master branch to ./ReleaseAmendment.md
+- Do not quote any branch name in the release notes.
+- Bump the version appropriately in the pyproject.toml file.
