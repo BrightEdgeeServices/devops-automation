@@ -36,4 +36,4 @@ jobs:
       MYSQL_USER:                ${{vars.MYSQL_USER}}
       RELEASE_EMAIL_USER:        ${{vars.RELEASE_EMAIL_USER }}
       RELEASE_EMAIL_PASSWORD:    ${{secrets.RELEASE_EMAIL_PASSWORD }}
-      VENV_ENVIRONMENT:          ${{secrets.VENV_ENVIRONMENT }}
+      VENV_ENVIRONMENT:          ${{vars.VENV_ENVIRONMENT }}
