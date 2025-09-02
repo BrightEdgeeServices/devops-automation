@@ -1,3 +1,9 @@
+# Release 2.5.7
+
+The first line must be *bug*, *feature* or *hotfix*
+
+______________________________________________________________________
+
 # Release 2.5.6
 
 The first line must be *bug*, *feature* or *hotfix*
