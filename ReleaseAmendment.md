@@ -1,9 +1,13 @@
-# Release 2.5.8
+# Release 2.5.10
 
 ## Summary of Changes
 
-- Secrets: Update VENV_ENVIRONMENT GitHub Actions secret type for improved consistency and security.
+- Build: Bump version to 2.5.10 in project metadata.
+- Docs: Prepare amendment file to be prefixed to the release notes.
+- Maintenance: Minor repository housekeeping updates.
 
 ## Change Statistics (vs master)
 
-- 4 files changed, 8 insertions, 3 deletions
+- 4 files changed, 16 insertions, 11 deletions
+
+______________________________________________________________________

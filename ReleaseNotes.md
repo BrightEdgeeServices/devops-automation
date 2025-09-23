@@ -1,3 +1,15 @@
+# Release 2.5.9
+
+## Summary of Changes
+
+- Secrets: Update VENV_ENVIRONMENT GitHub Actions secret type for improved consistency and security.
+
+## Change Statistics (vs master)
+
+- 4 files changed, 8 insertions, 3 deletions
+
+______________________________________________________________________
+
 # Release 2.5.7
 
 - Update VENV_ENVIRONMENT GitHub Actions secret
