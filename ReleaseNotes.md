@@ -1,6 +1,5 @@
 # Release 2.5.9
 
-
 ## Summary of Changes
 
 - Secrets: Update VENV_ENVIRONMENT GitHub Actions secret type for improved consistency and security.
