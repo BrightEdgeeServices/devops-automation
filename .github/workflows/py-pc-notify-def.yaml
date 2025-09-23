@@ -20,7 +20,7 @@ on:
         required: true
 
 jobs:
-  Notify:
+  Send-Notice:
     name: Send Release Notification
     runs-on: ubuntu-latest
     strategy:

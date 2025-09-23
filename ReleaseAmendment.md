@@ -1,13 +1,12 @@
-# Release 2.5.10
+# Release 2.5.12
 
 ## Summary of Changes
 
-- Build: Bump version to 2.5.10 in project metadata.
-- Docs: Prepare amendment file to be prefixed to the release notes.
-- Maintenance: Minor repository housekeeping updates.
+- Build: Bump version to 2.5.12 in project metadata.
+- Docs: Refresh release notes and amendment content for this release.
 
 ## Change Statistics (vs master)
 
-- 4 files changed, 16 insertions, 11 deletions
+- 3 files changed, 20 insertions, 14 deletions
 
 ______________________________________________________________________

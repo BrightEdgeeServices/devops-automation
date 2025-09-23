@@ -7,19 +7,33 @@ on:
 jobs:
 
   Send-Notice:
-    runs-on: ${{ matrix.os }}
-
+    name: Send Release Notification
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: true
       matrix:
-        os: [ 'ubuntu-latest' ]
-        python-version: [ '3.12' ]
+        python-version: [ '3.13' ]
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
+
+      - name: Resolve release tag
+        shell: bash
+        run: |
+          if [ -n "${{ inputs.tag_name }}" ]; then
+            echo "TAG_NAME=${{ inputs.tag_name }}" >> $GITHUB_ENV
+          else
+            TAG=$(git tag --sort=-creatordate | head -n 1)
+            if [ -z "$TAG" ]; then
+              TAG=$(git describe --tags --abbrev=0 2>/dev/null || true)
+            fi
+            echo "TAG_NAME=$TAG" >> $GITHUB_ENV
+          fi
+
+
 
       - name: Send release email notification
         uses: betterfor/action-send-mail@main
@@ -28,7 +42,7 @@ jobs:
           server_port: 465
           username: ${{ secrets.RELEASE_EMAIL_USER }}
           password: ${{ secrets.RELEASE_EMAIL_PASSWORD }}
-          subject: 'New Release: ${{ github.repository }} ${{ github.ref_name }}'
+          subject:        'New Release: ${{ github.repository }} ${{ env.TAG_NAME }}'
           to: rte-development@brightedge.co.za
           from: Development Messenger
           html_body: |
@@ -47,7 +61,7 @@ jobs:
             </tr>
             <tr>
               <td style="text-align: right; border-right-style: solid; border-bottom-style: dotted; border-right-width: 1px;border-bottom-width: 1px">Release:</td>
-              <td style="text-align: left; border-bottom-style: dotted; border-left-style: solid; border-left-width: 1px;border-bottom-width: 1px">${{ github.ref_name }}</td>
+              <td style="text-align: left; border-bottom-style: dotted; border-left-style: solid; border-left-width: 1px;border-bottom-width: 1px">${{ env.TAG_NAME }}</td>
             </tr>
             <tr>
               <td style="text-align: right; border-right-style: solid; border-bottom-style: dotted; border-right-width: 1px;border-bottom-width: 1px">Actor:</td>
@@ -59,9 +73,9 @@ jobs:
             </tr>
             <tr>
               <td style="text-align: right; border-right-style: solid; border-right-width: 1px">Release URL:</td>
-              <td style="text-align: left; border-left-style: solid; border-left-width: 1px"><a href="https://github.com/${{ github.repository }}/releases/tag/${{github.ref_name}}">Click here</a></td>
+              <td style="text-align: left; border-left-style: solid; border-left-width: 1px"><a href="https://github.com/${{ github.repository }}/releases/tag/${{ env.TAG_NAME }}">Click here</a></td>
             </tr>
-            </table><br>'
+            </table><br>
           # cc: a@example.com,b@example.com
           # bcc: c@example.com,d@example.com
           # Optional recipient of the email response
