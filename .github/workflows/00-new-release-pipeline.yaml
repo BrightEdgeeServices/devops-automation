@@ -36,7 +36,7 @@ jobs:
   Publish-Release:
     if: ${{ success() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
     needs:
-      - Merge
+      - Detect-PR-Tag
     uses: ./.github/workflows/04-publish-release.yaml
     secrets: inherit
 
