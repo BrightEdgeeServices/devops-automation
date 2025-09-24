@@ -1,9 +1,0 @@
-- Compile the release notes by summarizing the changes between the current branch and the master branch to ./ReleaseAmendment.md
-- The current contents of ./ReleaseAmendment.md must be replaced with the new release notes.
-- Do not quote any branch name in the release notes.
-- Bump the version appropriately in the pyproject.toml file.
-- The ./ReleaseAmendment.md will be prefixed to the ReleaseNotes.md file by a GitHub Actions workflow.
-  - It must therefore have the same format as the clauses in the ReleaseNotes.md to be prefixed.
-  - It must start with the heading "Release ?.?.?" where the "?" are replaced with the version number
-  - It must end with a divider to separate it from the previous release notes.
-- Do not mention the chore "dummy.txt" that was deleted.

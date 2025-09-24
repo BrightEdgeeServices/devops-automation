@@ -2,6 +2,36 @@
 
 ## Summary of Changes
 
+- Build: Bump version to 2.5.13 in project metadata.
+- CI: Update new release pipeline configuration in `.github/workflows/00-new-release-pipeline.yaml`.
+- CI: Enhance amend release notes workflow in `.github/workflows/02-amend-release-notes.yaml`.
+- CI: Streamline private CI workflow (no docker) in `.github/workflows/py-pc-ci-pvt_no_docker-def.yaml`.
+- CI: Simplify pre-commit workflow in `.github/workflows/py-pc-precom-def.yaml`.
+- CI: Tweak PR workflow for private repositories (no docker) in `.github/workflows/py-wf-pr-pvt_no_docker-def.yaml`.
+- Docs: Update README with clearer release notes instructions and workflow usage guidance.
+- Docs: Refresh `ReleaseAmendment.md` and `ReleaseNotes.md` content for this release.
+
+## Change Statistics (vs master)
+
+- Branch: `hendrik/bee-25-new-py-temp-pub-pvt_no_docker-defyaml-github-action`
+- 9 files changed, 102 insertions, 52 deletions
+- Files changed:
+  - .github/workflows/00-new-release-pipeline.yaml
+  - .github/workflows/02-amend-release-notes.yaml
+  - .github/workflows/py-pc-ci-pvt_no_docker-def.yaml
+  - .github/workflows/py-pc-precom-def.yaml
+  - .github/workflows/py-wf-pr-pvt_no_docker-def.yaml
+  - README.md
+  - ReleaseAmendment.md
+  - ReleaseNotes.md
+  - pyproject.toml
+
+______________________________________________________________________
+
+# Release 2.5.13
+
+## Summary of Changes
+
 - Build: Bump version to 2.5.12 in project metadata.
 - Docs: Refresh release notes and amendment content for this release.
 
