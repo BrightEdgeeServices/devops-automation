@@ -63,6 +63,7 @@ jobs:
   Detect-PR-Tag:
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-pr-detect_tag-def.yaml@master
     secrets: inherit
+
   PR:
     permissions:
       id-token: write
@@ -85,8 +86,6 @@ jobs:
     if: ${{ always() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
     needs:
       - Detect-PR-Tag
-      - Pre-Commit
-      - CI
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-pr-cleanup_tag-def.yaml@master
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}

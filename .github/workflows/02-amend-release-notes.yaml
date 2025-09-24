@@ -87,8 +87,33 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          echo "Add release notes snippet in here." > ReleaseAmendment.md
-          echo "The first line must be *bug*, *feature* or *hotfix*" >> ReleaseAmendment.md
+          echo "Insert the new release notes here
+          echo "# Release Note Generation Instructions" > ReleaseAmendment.md
+          echo "1.Commit the current changes.  You can run the `pushpy.ps1`" >> ReleaseAmendment.md
+          echo "1." >> ReleaseAmendment.md
+          echo "1." >> ReleaseAmendment.md
+          With AI" >> ReleaseAmendment.md
+          echo "Generate the release notes with the following AI prompt in your favourite AI tool like Cursor, Junie or Codex:" >> ReleaseAmendment.md
+          echo "```" >> ReleaseAmendment.md
+          echo "- Compile the release notes by describing the changes between the current branch and the master branch to ./ReleaseAmendment.md" >> ReleaseAmendment.md
+          echo "- The current contents of ./ReleaseAmendment.md must be replaced with the new release notes." >> ReleaseAmendment.md
+          echo "- Bump the version appropriately in the pyproject.toml file." >> ReleaseAmendment.md
+          echo "- The ./ReleaseAmendment.md will be prefixed to the ReleaseNotes.md file by a GitHub Actions workflow." >> ReleaseAmendment.md
+          echo "- It must therefore have the same format as the clauses in the ReleaseNotes.md to be prefixed." >> ReleaseAmendment.md
+          echo "- It must start with the heading "Release ?.?.?" where the "?" are replaced with the version number" >> ReleaseAmendment.md
+          echo "- It must end with a divider to separate it from the previous release notes." >> ReleaseAmendment.md
+          echo "- Do not mention the chore "dummy.txt" that was deleted." >> ReleaseAmendment.md
+          echo "- The last section must be a summary of the statistics.  It must include the names of the files that was changed, number of files that was changed, number of insertions, number of deletions and the branch name" >> ReleaseAmendment.md
+          echo "```" >> ReleaseAmendment.md
+          echo "---"  >> ReleaseAmendment.md
+          echo "## Manually"  >> ReleaseAmendment.md
+          echo "Use the following template and insert  (replace) it into the ReleaseAmendment.md (this) file" >> ReleaseAmendment.md
+          echo "```" >> ReleaseAmendment.md
+          echo "# Release ?.?.?" >> ReleaseAmendment.md
+          echo "## Summary of Changes" >> ReleaseAmendment.md
+          echo "- bla, bla, bla" >> ReleaseAmendment.md
+          echo "---" >> ReleaseAmendment.md
+          echo "```" >> ReleaseAmendment.md
 
       - name: Commit and push changes
         shell: bash

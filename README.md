@@ -7,6 +7,38 @@
 | PyPI         | [![][pypi_release_img]][pypi_release_lnk] [![][pypi_py_versions_img]][pypi_py_versions_lnk] [![][pypi_format_img]][pypi_format_lnk] [![][pypi_downloads_img]][pypi_downloads_lnk] |
 | Github       | [![][gh_issues_img]][gh_issues_lnk] [![][gh_last_commit_img]][gh_last_commit_lnk]                                                                                                 |
 
+## Updating ReleaseNotes Instructions
+
+1. Run the `pushpy.ps1` script or manually commit the current changes.
+1. Generate the release notes
+   1. By using the following AI prompt in your favourite AI tool like Cursor, Junie or Codex:
+
+      ```
+      - Compile the release notes and add them to the top of the ReleaseNotes.md file by comparing the differences between the current branch and the master branch.
+      - Bump the version appropriately in the pyproject.toml file using the SemVer (semver.org) rules.
+      - Follow the same format as the previous clauses in the ReleaseNotes.md
+      - The new notes must end with a divider to separate it from the previous release notes.
+      - Do not mention the chore "dummy.txt" that was deleted.
+      - The last section must be a summary of the statistics which include the names of the files that was changed, number of files that was changed, number of insertions, number of deletions and the branch name.
+      ```
+
+      or
+
+   1. Use the following template and manually update the ReleaseNotes.md file.
+
+      ```
+       # Release ?.?.?
+       ## Summary of Changes
+       - bla, bla, bla
+       ## Next Heading
+       - bla, bla, bla
+       ---
+      ```
+1. You can repeat step 1 multiple times.
+1. You can repeat step 2 multiple times but update the ReleaseNotes that has not been published.
+1. Run the `pushpr.ps1` script once you are ready to create the PR to publish the release. TOy can also manually create the tag, touch a file, commit and push the changes.
+1. Merge the PR in GitHub.
+
 ## Repository Structure
 
 - `.github/workflows/`
