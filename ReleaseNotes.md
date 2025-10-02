@@ -1,3 +1,23 @@
+# Release 2.7.0
+
+## Summary of Changes
+
+- Build: Bump version to 2.7.0 in project metadata.
+- CI: Update publish CI workflow with Docker in `.github/workflows/py-pc-ci-pub_with_docker-def.yaml`.
+- Templates: Minor adjustment to PR template with Docker in `templates/py-temp-pr-pvt_with_docker-def.yaml`.
+- Docs: Update `README.md` with refined instructions.
+
+## Change Statistics (vs master)
+
+- Branch: `hendrik/bee-25-new-py-temp-pub-pvt_no_docker-defyaml-github-action`
+- 3 files changed, 52 insertions, 20 deletions
+- Files changed:
+  - .github/workflows/py-pc-ci-pub_with_docker-def.yaml
+  - README.md
+  - templates/py-temp-pr-pvt_with_docker-def.yaml
+
+______________________________________________________________________
+
 # Release 2.6.0
 
 ## Summary of Changes
