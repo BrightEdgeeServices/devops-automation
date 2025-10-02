@@ -6,7 +6,7 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = 'devops-platform'
-version = "2.6.0"
+version = "2.7.0"
 description = 'Repository for GitHub Actions Workflows.'
 
 authors = [
