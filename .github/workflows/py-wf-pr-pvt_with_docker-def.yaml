@@ -1,11 +1,11 @@
-# py-wf-pr-pvt_no_docker-def.yaml
+# py-wf-pr-pvt_with_docker-def.yaml
 name: Pre-Commit, CI and PR (default)
 
 on:
   workflow_call:
 #    inputs:
-#      run_publish:
-#        description: "Set to 'true' to run the Build-and-Publish job tag was specified."
+#      run_deploy:
+#        description: "Set to 'true' to run the Build-and-Deploy job if a tag was specified."
 #        required:    true
 #        default:     false
 #        type:        boolean
@@ -30,6 +30,8 @@ on:
         required: true
       MYSQL_USER:
         required: true
+      PROJECT_NAME:
+        required: true
       RELEASE_EMAIL_USER:
         required: true
       RELEASE_EMAIL_PASSWORD:
@@ -44,7 +46,7 @@ jobs:
     secrets: inherit
 
   CI:
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-ci-pvt_no_docker-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-ci-pvt_with_docker-def.yaml@master
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
@@ -58,6 +60,7 @@ jobs:
       MYSQL_USER:                ${{secrets.MYSQL_USER}}
       RELEASE_EMAIL_USER:        ${{secrets.RELEASE_EMAIL_USER }}
       RELEASE_EMAIL_PASSWORD:    ${{secrets.RELEASE_EMAIL_PASSWORD }}
+      PROJECT_NAME:              ${{secrets.PROJECT_NAME }}
       VENV_ENVIRONMENT:          ${{secrets.VENV_ENVIRONMENT }}
 
   Detect-PR-Tag:

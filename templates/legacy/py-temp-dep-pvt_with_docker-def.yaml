@@ -1,4 +1,4 @@
-# py-temp-dep-pvt_with_docker-def.yaml
+# py-temp-pr-pvt_with_docker-def.yaml
 # This is a template and should not be changed unless you are familiar with the
 # reusable GitHub Actions strategy of the company.
 name: Python Template Deploy Private With-Docker

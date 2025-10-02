@@ -1,7 +1,7 @@
-# py-temp-pr-pvt_no_docker-def.yaml
+# py-temp-pr-pvt_with_docker-def.yaml
 # This is a template and should not be changed unless you are familiar with the
 # reusable GitHub Actions strategy of the company.
-name: Python Template PR Private No-Docker
+name: Python Template PR Private with Docker
 
 on:
   push:
@@ -12,14 +12,13 @@ on:
       - pr
 
 jobs:
-  py-temp-pr-pvt_no_docker-def:
+  py-temp-pr-pvt_with_docker-def:
     permissions:
       id-token: write
       contents: write
       pull-requests: write
-
     if: ${{ github.ref_type != 'tag' }}
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-wf-pr-pvt_no_docker-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-wf-pr-pvt_with_docker-def.yaml@master
 #    with:
 #      run_publish: true
     # secrets: inherit
@@ -34,6 +33,7 @@ jobs:
       MYSQL_ROOT_PASSWORD:       ${{secrets.MYSQL_ROOT_PASSWORD}}
       MYSQL_TCP_PORT:            ${{vars.MYSQL_TCP_PORT }}
       MYSQL_USER:                ${{vars.MYSQL_USER}}
+#      PROJECT_NAME:              ${{vars.PROJECT_NAME }}
       RELEASE_EMAIL_USER:        ${{vars.RELEASE_EMAIL_USER }}
       RELEASE_EMAIL_PASSWORD:    ${{secrets.RELEASE_EMAIL_PASSWORD }}
       VENV_ENVIRONMENT:          ${{vars.VENV_ENVIRONMENT }}
