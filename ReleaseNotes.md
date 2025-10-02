@@ -1,3 +1,21 @@
+# Release 2.8.1
+
+## Summary of Changes
+
+- Build: Bump version to 2.8.1 in project metadata.
+- CI: Update PR workflow with Docker in `.github/workflows/py-wf-pr-pvt_with_docker-def.yaml`.
+- Docs: Update `README.md` with improved guidance.
+
+## Change Statistics (vs master)
+
+- Branch: `hendrik/bee-26-feature-devops_automation-py-temp-pr-pvt_with_docker-defyaml`
+- 2 files changed, 10 insertions, 10 deletions
+- Files changed:
+  - .github/workflows/py-wf-pr-pvt_with_docker-def.yaml
+  - README.md
+
+______________________________________________________________________
+
 # Release 2.8.0
 
 ## Summary of Changes
