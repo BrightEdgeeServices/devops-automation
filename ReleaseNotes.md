@@ -1,3 +1,19 @@
+# Release 2.8.0
+
+## Summary of Changes
+
+- Build: Bump version to 2.8.0 in project metadata.
+- CI: Update private CI workflow with Docker in `.github/workflows/py-pc-ci-pvt_with_docker-def.yaml`.
+
+## Change Statistics (vs master)
+
+- Branch: `hendrik/bee-25-new-py-temp-pub-pvt_no_docker-defyaml-github-action`
+- 1 file changed, 1 insertion, 0 deletions
+- Files changed:
+  - .github/workflows/py-pc-ci-pvt_with_docker-def.yaml
+
+______________________________________________________________________
+
 # Release 2.7.0
 
 ## Summary of Changes
