@@ -18,8 +18,9 @@
 
 ### Detail Process
 
-1. Run the `pushpy.ps1` script or manually commit the current changes.
-1. Generate the release notes
+1. Run the `pushpy.ps1` script or manually commit the current changes. Run it until (repeatedly) all changes are satisfied.
+1. Generate the release notes. Can be generated repeatedly until all changes are accounted for in the ReleaseNotes. However, might be necessary to consolidate multiple runs into one ReleaseNote update.
+   published.
    1. By using the following AI prompt in your favourite AI tool like Cursor, Junie or Codex:
 
       ```
@@ -49,8 +50,6 @@
        - bla, bla, bla
        ---
       ```
-1. You can repeat step 1 multiple times.
-1. You can repeat step 2 multiple times but update the ReleaseNotes that has not been published.
 1. Run the `pushpr.ps1` script once you are ready to create the PR to publish the release. You can also manually create the tag, touch a file, commit and push the changes.
 1. Merge the PR in GitHub.
 
