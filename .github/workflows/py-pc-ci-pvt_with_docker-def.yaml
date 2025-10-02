@@ -29,6 +29,8 @@ on:
         required: true
       RELEASE_EMAIL_PASSWORD:
         required: true
+      PROJECT_NAME:
+        required: true
       VENV_ENVIRONMENT:
         required: true
 
