@@ -1,13 +1,22 @@
 # DevOps Platform Repository
 
-| **Category** | **Status' and Links**                                                                                                                                                             |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| General      | [![][general_maintenance_y_img]][general_maintenance_y_lnk] [![][general_semver_pic]][general_semver_link] [![][general_license_img]][general_license_lnk]                        |
-| CD/CI        | [![][cicd_codestyle_img]][cicd_codestyle_lnk]                                                                                                                                     |
-| PyPI         | [![][pypi_release_img]][pypi_release_lnk] [![][pypi_py_versions_img]][pypi_py_versions_lnk] [![][pypi_format_img]][pypi_format_lnk] [![][pypi_downloads_img]][pypi_downloads_lnk] |
-| Github       | [![][gh_issues_img]][gh_issues_lnk] [![][gh_last_commit_img]][gh_last_commit_lnk]                                                                                                 |
+| **Category** | **Status' and Links**                                                                                                                                      |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| General      | [![][general_maintenance_y_img]][general_maintenance_y_lnk] [![][general_semver_pic]][general_semver_link] [![][general_license_img]][general_license_lnk] |
+| CD/CI        | [![][cicd_codestyle_img]][cicd_codestyle_lnk]                                                                                                              |
+| PyPI         | [![][pypi_py_versions_img]][pypi_py_versions_lnk] [![][pypi_format_img]][pypi_format_lnk] [![][pypi_downloads_img]][pypi_downloads_lnk]                    |
+| Github       | [![][gh_issues_img]][gh_issues_lnk] [![][gh_last_commit_img]][gh_last_commit_lnk]                                                                          |
 
-## Updating ReleaseNotes Instructions
+## Deployment
+
+### High Level Process Description
+
+1. Push the changes until you are satisfied with your changes. Use `pushpy.ps1`. Monitor GutHub Actions. The workflow
+   must complete successfully.
+1. Generate the ReleaseNotes and do `pushpy.ps1`.
+1. Deploy the changes by executing `pushpr.ps1`. Monitor GutHub Actions for successful deployment.
+
+### Detail Process
 
 1. Run the `pushpy.ps1` script or manually commit the current changes.
 1. Generate the release notes
@@ -199,5 +208,3 @@ We regularly update our workflows to improve functionality and security. To ensu
 [pypi_format_lnk]: https://pypi.org/project/devops-automation/ "PyPI - Format"
 [pypi_py_versions_img]: https://img.shields.io/pypi/pyversions/devops-automation "PyPI - Supported Python Versions"
 [pypi_py_versions_lnk]: https://pypi.org/project/devops-automation/ "PyPI - Supported Python Versions"
-[pypi_release_img]: https://img.shields.io/pypi/v/devops-automation "Test status"
-[pypi_release_lnk]: https://pypi.org/project/devops-automation/ "Test status"
