@@ -1,3 +1,26 @@
+# Release 3.0.0
+
+## Summary of Changes
+
+- Build: Bump version to 3.0.0 in project metadata.
+- Templates: Update PR template with Docker to accept new MySQL port variables:
+  - MYSQL_TCP_PORT_EXTERNAL
+  - MYSQL_TCP_PORT_LOCAL_PROD
+- CI: Extend reusable workflows with Docker to pass through new MySQL port secrets:
+  - .github/workflows/py-pc-ci-pvt_with_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt_with_docker-def.yaml
+
+## Change Statistics (vs master)
+
+- Branch: `hendrik/bee-26-feature-devops_automation-py-temp-pr-pvt_with_docker-defyaml`
+- 3 files changed, 14 insertions, 0 deletions
+- Files changed:
+  - .github/workflows/py-pc-ci-pvt_with_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt_with_docker-def.yaml
+  - templates/py-temp-pr-pvt_with_docker-def.yaml
+
+______________________________________________________________________
+
 # Release 2.8.1
 
 ## Summary of Changes
