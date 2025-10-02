@@ -41,7 +41,7 @@
       ```
 1. You can repeat step 1 multiple times.
 1. You can repeat step 2 multiple times but update the ReleaseNotes that has not been published.
-1. Run the `pushpr.ps1` script once you are ready to create the PR to publish the release. TOy can also manually create the tag, touch a file, commit and push the changes.
+1. Run the `pushpr.ps1` script once you are ready to create the PR to publish the release. You can also manually create the tag, touch a file, commit and push the changes.
 1. Merge the PR in GitHub.
 
 ## Repository Structure
