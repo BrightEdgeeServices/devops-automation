@@ -97,6 +97,28 @@ jobs:
         run:  |
               poetry install --with dev
 
+      # Create the .env file that docker compose expects
+      - name: Create .env from GitHub Secrets
+        run: |
+          cat > .env <<'EOF'
+          GH_REPO_ACCESS_BEE_MASTER=${{ secrets.GH_REPO_ACCESS_BEE_MASTER }}
+          GH_REPO_ACCESS_RTE_MASTER=${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
+          INSTALLER_USER_ID=${{ secrets.INSTALLER_USER_ID }}
+          INSTALLER_USER_PWD=${{ secrets.INSTALLER_USER_PWD }}
+          MYSQL_DATABASE=${{ secrets.MYSQL_DATABASE }}
+          MYSQL_HOST=${{ secrets.MYSQL_HOST }}
+          MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }}
+          MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }}
+          MYSQL_TCP_PORT=${{ secrets.MYSQL_TCP_PORT }}
+          MYSQL_TCP_PORT_EXTERNAL=${{ env.MYSQL_TCP_PORT_EXTERNAL }}
+          MYSQL_TCP_PORT_LOCAL_PROD=${{ env.MYSQL_TCP_PORT_LOCAL_PROD }}
+          MYSQL_USER=${{ secrets.MYSQL_USER }}
+          PROJECT_NAME=${{ env.PROJECT_NAME }}
+          RELEASE_EMAIL_USER=${{ secrets.RELEASE_EMAIL_USER }}
+          RELEASE_EMAIL_PASSWORD=${{ secrets.RELEASE_EMAIL_PASSWORD }}
+          VENV_ENVIRONMENT=${{ secrets.VENV_ENVIRONMENT }}
+          EOF
+
       - name: Set up Docker
         uses: docker/setup-buildx-action@v3
 
