@@ -26,17 +26,17 @@ jobs:
 #      - Detect-PR-Tag
 #    uses: ./.github/workflows/02-amend-release-notes.yaml
 
-#  Merge:
-#    if: ${{ success() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
-#    needs:
-#      - Detect-PR-Tag
-#    uses:    ./.github/workflows/03-merge.yaml
-#    secrets: inherit
+  Merge:
+    if: ${{ success() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
+    needs:
+      - Detect-PR-Tag
+    uses:    ./.github/workflows/03-merge.yaml
+    secrets: inherit
 
   Publish-Release:
     if: ${{ success() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
     needs:
-      - Detect-PR-Tag
+      - Merge
     uses: ./.github/workflows/04-publish-release.yaml
     secrets: inherit
 
