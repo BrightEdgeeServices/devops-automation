@@ -35,6 +35,12 @@ on:
         required: true
       PROJECT_NAME:
         required: true
+      SOCKET_EVENT_SERVICE:
+        required: true
+      SOCKET_FIDE_PARSER_SERVICE:
+        required: true
+      SOCKET_RTEAPI:
+        required: true
       VENV_ENVIRONMENT:
         required: true
 
@@ -57,6 +63,9 @@ jobs:
       PROJECT_NAME: ${{secrets.PROJECT_NAME }}
       RELEASE_EMAIL_USER: ${{secrets.RELEASE_EMAIL_USER }}
       RELEASE_EMAIL_PASSWORD: ${{secrets.RELEASE_EMAIL_PASSWORD }}
+      SOCKET_EVENT_SERVICE: ${{secrets.SOCKET_EVENT_SERVICE }}
+      SOCKET_FIDE_PARSER_SERVICE: ${{secrets.SOCKET_FIDE_PARSER_SERVICE }}
+      SOCKET_RTEAPI: ${{secrets.SOCKET_RTEAPI }}
       VENV_ENVIRONMENT: ${{secrets.VENV_ENVIRONMENT }}
 
     strategy:
@@ -116,6 +125,9 @@ jobs:
           PROJECT_NAME=${{ env.PROJECT_NAME }}
           RELEASE_EMAIL_USER=${{ secrets.RELEASE_EMAIL_USER }}
           RELEASE_EMAIL_PASSWORD=${{ secrets.RELEASE_EMAIL_PASSWORD }}
+          SOCKET_EVENT_SERVICE=${{secrets.SOCKET_EVENT_SERVICE }}
+          SOCKET_FIDE_PARSER_SERVICE=${{secrets.SOCKET_FIDE_PARSER_SERVICE }}
+          SOCKET_RTEAPI=${{secrets.SOCKET_RTEAPI }}
           VENV_ENVIRONMENT=${{ secrets.VENV_ENVIRONMENT }}
           EOF
 
@@ -134,14 +146,6 @@ jobs:
         run:  |
               mkdir logs
               poetry run pytest --cov=./ --cov-report=xml --maxfail=1 tests/
-
-      #      - name: Upload coverage to Codecov
-      #        uses: codecov/codecov-action@v5
-      #        with:
-      #          files: coverage.xml
-      #          fail_ci_if_error: true
-      #          token: ${{ secrets.CODECOV_TOKEN }}
-      #          slug: hendrikdutoit/DockerMySqlExample
 
       - name: Tear down Docker Compose
         if:   always()

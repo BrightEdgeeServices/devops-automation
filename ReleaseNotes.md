@@ -1,3 +1,23 @@
+# Release 4.0.0
+
+## Summary of Changes
+
+- Build: Bump version to 4.0.0 in project metadata.
+- Templates: Update PR template with Docker in `templates/py-temp-pr-pvt_with_docker-def.yaml` to use repository variables for non-sensitive settings and align secret passthrough.
+- CI: Update private CI workflow with Docker in `.github/workflows/py-pc-ci-pvt_with_docker-def.yaml` to export additional environment variables to the `.env` file, ensure Python is set up via `actions/setup-python@v6`, and install Docker Compose on the runner.
+- CI: Synchronize PR reusable workflow secret passthrough in `.github/workflows/py-wf-pr-pvt_with_docker-def.yaml` for consistency with the template and CI.
+
+## Change Statistics (vs master)
+
+- Branch: `hendrik/bee-26-feature-devops_automation-py-temp-pr-pvt_with_docker-defyaml`
+- 3 files changed, 56 insertions, 40 deletions
+- Files changed:
+  - .github/workflows/py-pc-ci-pvt_with_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt_with_docker-def.yaml
+  - templates/py-temp-pr-pvt_with_docker-def.yaml
+
+______________________________________________________________________
+
 # Release 3.0.1
 
 ## Summary of Changes
