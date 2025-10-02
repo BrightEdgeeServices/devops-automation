@@ -18,19 +18,21 @@
 
 ### Detail Process
 
-1. Run the `pushpy.ps1` script or manually commit the current changes.
-1. Generate the release notes
+1. Run the `pushpy.ps1` script or manually commit the current changes. Run it until (repeatedly) all changes are satisfied.
+1. Generate the release notes. Can be generated repeatedly until all changes are accounted for in the ReleaseNotes. However, might be necessary to consolidate multiple runs into one ReleaseNote update.
+   published.
    1. By using the following AI prompt in your favourite AI tool like Cursor, Junie or Codex:
 
       ```
       - Compile the release notes and add them to the top of the ReleaseNotes.md file by comparing the differences between the current branch and the master branch.
+      - Choose appropriate headings to group the changes.
       - Bump the version appropriately in the pyproject.toml file using the SemVer (semver.org) rules.
-      - If an existing script in the templates directory changes, it is a "minor" version bump.
-      - If a new script is added to the templates directory, it is a "patch" version bump.
-      - Any changes to the .github/workflow directory is a minor version bump.
+      - If an existing script in the templates directory changes, it is a "major" version bump.
+      - If a new script is added to the templates directory, it is a "minor" version bump.
+      - Any changes to an existing script in the .github/workflow directory is a "patch" version bump.
+      - Any addition of a new script in the .github/workflow directory is a "minor" version bump.
       - Any other changes than the above, you decide on the bump.
-      - If a new script is added to the ./templates directory, it is a "patch" version bump.
-      - Follow the same format as the previous clauses in the ReleaseNotes.md
+      - Follow the same format for the new clause as the previous clauses in the ReleaseNotes.md
       - The new notes must end with a divider to separate it from the previous release notes.
       - Do not mention the chore "dummy.txt" that was deleted.
       - The last section must be a summary of the statistics which include the names of the files that was changed, number of files that was changed, number of insertions, number of deletions and the branch name.
@@ -48,8 +50,6 @@
        - bla, bla, bla
        ---
       ```
-1. You can repeat step 1 multiple times.
-1. You can repeat step 2 multiple times but update the ReleaseNotes that has not been published.
 1. Run the `pushpr.ps1` script once you are ready to create the PR to publish the release. You can also manually create the tag, touch a file, commit and push the changes.
 1. Merge the PR in GitHub.
 
