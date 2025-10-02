@@ -1,3 +1,19 @@
+# Release 3.0.1
+
+## Summary of Changes
+
+- Build: Bump version to 3.0.1 in project metadata.
+- CI: Update private CI workflow with Docker in `.github/workflows/py-pc-ci-pvt_with_docker-def.yaml`.
+
+## Change Statistics (vs master)
+
+- Branch: `hendrik/bee-26-feature-devops_automation-py-temp-pr-pvt_with_docker-defyaml`
+- 1 file changed, 22 insertions, 0 deletions
+- Files changed:
+  - .github/workflows/py-pc-ci-pvt_with_docker-def.yaml
+
+______________________________________________________________________
+
 # Release 3.0.0
 
 ## Summary of Changes
