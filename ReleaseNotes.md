@@ -1,3 +1,29 @@
+# Release 6.0.0
+
+## Summary of Changes
+
+- Build: Bump version to 6.0.0 in project metadata.
+- Templates: Add new publish release notification template in `templates/py-temp-pub-release_notify_after_merge-def.yaml`.
+- Templates: Update PR straight-through template in `templates/py-temp-pr-pvt_straight_through-def.yaml` to align with reusable workflow changes.
+- Templates: Update publish build and release notify template in `templates/py-temp-pub-build_release_notify_after_merge-def.yaml` to match renamed workflow.
+- CI: Add reusable workflow for release notification after merge in `.github/workflows/py-wf-pub-release_notify_after_merge-def.yaml`.
+- CI: Rename publish after-merge workflow to `.github/workflows/py-wf-pub-build_release_notify_after_merge-def.yaml` for clarity and consistency.
+- CI: Update PR straight-through reusable workflow in `.github/workflows/py-wf-pr-pvt_straight_through-def.yaml`.
+
+## Change Statistics (vs master)
+
+- Branch: `hendrik/rte-153-main_feature-devops-automation-straight-through-processing`
+- 6 files changed, 80 insertions, 5 deletions
+- Files changed:
+  - .github/workflows/py-wf-pr-pvt_straight_through-def.yaml
+  - .github/workflows/py-wf-pub-build_release_notify_after_merge-def.yaml
+  - .github/workflows/py-wf-pub-release_notify_after_merge-def.yaml
+  - templates/py-temp-pr-pvt_straight_through-def.yaml
+  - templates/py-temp-pub-build_release_notify_after_merge-def.yaml
+  - templates/py-temp-pub-release_notify_after_merge-def.yaml
+
+______________________________________________________________________
+
 # Release 5.0.0
 
 ## Summary of Changes
@@ -575,3 +601,33 @@ ______________________________________________________________________
 - No Release Notes will be kept according to a group decision.
 
 ______________________________________________________________________
+
+# Release 5.0.0
+
+﻿# Release 6.0.0
+
+## Summary of Changes
+
+- Build: Bump version to 6.0.0 in project metadata.
+- Templates: Add new publish release notification template in `templates/py-temp-pub-release_notify_after_merge-def.yaml`.
+- Templates: Update PR straight-through template in `templates/py-temp-pr-pvt_straight_through-def.yaml` to align with reusable workflow changes.
+- Templates: Update publish build and release notify template in `templates/py-temp-pub-build_release_notify_after_merge-def.yaml` to match renamed workflow.
+- CI: Add reusable workflow for release notification after merge in `.github/workflows/py-wf-pub-release_notify_after_merge-def.yaml`.
+- CI: Rename publish after-merge workflow to `.github/workflows/py-wf-pub-build_release_notify_after_merge-def.yaml` for clarity and consistency.
+- CI: Update PR straight-through reusable workflow in `.github/workflows/py-wf-pr-pvt_straight_through-def.yaml`.
+
+## Change Statistics (vs master)
+
+- Branch: `hendrik/rte-153-main_feature-devops-automation-straight-through-processing`
+- 6 files changed, 80 insertions, 5 deletions
+- Files changed:
+  - .github/workflows/py-wf-pr-pvt_straight_through-def.yaml
+  - .github/workflows/py-wf-pub-build_release_notify_after_merge-def.yaml
+  - .github/workflows/py-wf-pub-release_notify_after_merge-def.yaml
+  - templates/py-temp-pr-pvt_straight_through-def.yaml
+  - templates/py-temp-pub-build_release_notify_after_merge-def.yaml
+  - templates/py-temp-pub-release_notify_after_merge-def.yaml
+
+______________________________________________________________________
+
+# Release 5.0.0
