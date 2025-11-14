@@ -2,7 +2,7 @@
 # This template triggers a reusable workflow that creates a release and sends a notice
 # after a Pull Request is merged into master. The release tag is derived from
 # pyproject.toml's [project].version (or [tool.poetry].version as fallback), prefixed with 'v'.
-name: Release After Merge (No-Docker)
+name: Release After Merge
 
 on:
   pull_request:

@@ -1,3 +1,23 @@
+# Release 7.0.0
+
+## Summary of Changes
+
+- Build: Bump version to 7.0.0 in project metadata.
+- Templates: Add new publish build and release notify template copy in `templates/py-temp-pub-build_release_notify_after_merge-def copy.yaml`.
+- Templates: Update publish build and release notify template in `templates/py-temp-pub-build_release_notify_after_merge-def.yaml` to correct version references in notifications.
+- Templates: Update publish release notify template in `templates/py-temp-pub-release_notify_after_merge-def.yaml` to correct version references in notifications.
+
+## Change Statistics (vs master)
+
+- Branch: `hendrik/rte-153-main_feature-devops-automation-straight-through-processing`
+- 3 files changed, 25 insertions, 2 deletions
+- Files changed:
+  - templates/py-temp-pub-build_release_notify_after_merge-def copy.yaml
+  - templates/py-temp-pub-build_release_notify_after_merge-def.yaml
+  - templates/py-temp-pub-release_notify_after_merge-def.yaml
+
+______________________________________________________________________
+
 # Release 6.0.0
 
 ## Summary of Changes
