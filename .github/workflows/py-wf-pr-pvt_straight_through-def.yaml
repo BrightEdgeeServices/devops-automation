@@ -1,5 +1,5 @@
 # py-wf-pr-pvt_straight_through-def.yaml.yaml
-name: Pre-Commit, CI and PR (default)
+name: Straight Through Processing (default)
 
 on:
   workflow_call:

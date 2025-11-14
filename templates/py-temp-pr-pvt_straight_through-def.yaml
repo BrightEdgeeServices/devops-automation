@@ -1,4 +1,4 @@
-# py-temp-pr-pvt_no_docker-def.yaml
+# py-temp-pr-pvt_straight_through-def.yaml
 # This is a template and should not be changed unless you are familiar with the
 # reusable GitHub Actions strategy of the company.
 #
@@ -17,7 +17,7 @@ on:
       - pr
 
 jobs:
-  py-temp-pr-pvt_no_docker-def:
+  py-temp-pr-pvt_straight_through-def:
     permissions:
       id-token: write
       contents: write
