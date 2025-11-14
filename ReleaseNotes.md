@@ -1,3 +1,27 @@
+# Release 5.0.0
+
+## Summary of Changes
+
+- Build: Bump version to 5.0.0 in project metadata.
+- Templates: Remove outdated PR straight-through template in `templates/py-temp-pr-pvt_straight_through-def.yaml`.
+- CI: Tweak release pipeline in `.github/workflows/00-new-release-pipeline.yaml`.
+- CI: Update PR tag detection workflow in `.github/workflows/py-pc-pr-detect_tag-def.yaml` for improved reliability.
+- CI: Remove deprecated PR straight-through reusable workflow in `.github/workflows/py-wf-pr-pvt_straight_through-def.yaml`.
+- Chore: Refresh `.pre-commit-config.yaml` hooks and versions.
+
+## Change Statistics (vs master)
+
+- Branch: `HEAD (detached)`
+- 5 files changed, 14 insertions, 153 deletions
+- Files changed:
+  - .github/workflows/00-new-release-pipeline.yaml
+  - .github/workflows/py-pc-pr-detect_tag-def.yaml
+  - .github/workflows/py-wf-pr-pvt_straight_through-def.yaml
+  - .pre-commit-config.yaml
+  - templates/py-temp-pr-pvt_straight_through-def.yaml
+
+______________________________________________________________________
+
 # Release 4.0.0
 
 ## Summary of Changes
