@@ -9,7 +9,7 @@ on:
     outputs:
       has_pr_tag:
         description: "True if a tag named 'pr' exists on the remote repository"
-        value: ${{ jobs.detect.outputs.has_pr_tag }}
+        value: ${{ jobs.Detect-PR-Tag.outputs.has_pr_tag }}
 
 jobs:
   Detect-PR-Tag:
