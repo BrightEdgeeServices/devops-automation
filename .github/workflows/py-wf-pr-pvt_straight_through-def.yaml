@@ -3,12 +3,12 @@ name: Pre-Commit, CI and PR (default)
 
 on:
   workflow_call:
-#    inputs:
-#      run_publish:
-#        description: "Set to 'true' to run the Build-and-Publish job tag was specified."
-#        required:    true
-#        default:     false
-#        type:        boolean
+    #    inputs:
+    #      run_publish:
+    #        description: "Set to 'true' to run the Build-and-Publish job tag was specified."
+    #        required:    true
+    #        default:     false
+    #        type:        boolean
     secrets:
       GH_REPO_ACCESS_BEE_MASTER:
         required: true
@@ -38,9 +38,8 @@ on:
         required: true
 
 jobs:
-
   Pre-Commit:
-    uses:    BrightEdgeeServices/devops-automation/.github/workflows/py-pc-precom-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-precom-def.yaml@master
     secrets: inherit
 
   # ToDo: Remove CI job if not needed
@@ -76,7 +75,7 @@ jobs:
     needs:
       - Detect-PR-Tag
       - Pre-Commit
-      - CI
+      # - CI
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-pr-def.yaml@master
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
