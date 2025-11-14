@@ -1,4 +1,4 @@
-# py-wf-pr-pvt_no_docker-def.yaml
+# py-wf-pr-pvt_straight_through-def.yaml.yaml
 name: Pre-Commit, CI and PR (default)
 
 on:
