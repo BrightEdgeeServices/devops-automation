@@ -1,3 +1,46 @@
+### Release 7.0.1
+
+### Summary of Changes
+
+- CI: Introduced native Docker support in CI workflows to accommodate integration tests requiring a live Docker engine.
+- CI: Added `.github/workflows/py-pc-ci-pvt_with_native_docker-def.yaml` for private CI jobs using native Docker.
+- CI: Added `.github/workflows/py-wf-pr-pvt_with_native_docker-def.yaml` as a reusable PR workflow for native Docker
+  environments.
+- Templates: Added `templates/py-temp-pr-pvt_with_native_docker-def.yaml` to provide a starting point for repositories
+  requiring native Docker CI.
+- Maintenance: Updated version references and configuration across multiple workflow scripts for consistency.
+- Build: Bumped version to 7.0.1 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/rte-175-main_feature-devops-automation-fix-native-docker-ci`
+- 27 files changed, 374 insertions, 45 deletions
+- Files changed:
+  - .github/workflows/01-pre-commit.yaml
+  - .github/workflows/02-amend-release-notes.yaml
+  - .github/workflows/03-merge.yaml
+  - .github/workflows/04-publish-release.yaml
+  - .github/workflows/05-send-notice.yaml
+  - .github/workflows/py-pc-build-def.yaml
+  - .github/workflows/py-pc-ci-pub_no_docker-def.yaml
+  - .github/workflows/py-pc-ci-pub_with_docker-def.yaml
+  - .github/workflows/py-pc-ci-pvt_no_docker-def.yaml
+  - .github/workflows/py-pc-ci-pvt_with_docker-def.yaml
+  - .github/workflows/py-pc-ci-pvt_with_native_docker-def.yaml
+  - .github/workflows/py-pc-notify-def.yaml
+  - .github/workflows/py-pc-pr-def.yaml
+  - .github/workflows/py-pc-precom-def.yaml
+  - .github/workflows/py-pc-release-def.yaml
+  - .github/workflows/py-wf-pr-pvt_with_native_docker-def.yaml
+  - .pre-commit-config.yaml
+  - poetry.lock
+  - pyproject.toml
+  - templates/py-temp-pr-pvt_with_native_docker-def.yaml
+  - templates/py-temp-pub-build_release_notify_after_merge-def copy.yaml
+  - (and 6 hidden IDE configuration files in .github/.idea/)
+
+______________________________________________________________________
+
 # Release 7.0.0
 
 ## Summary of Changes
