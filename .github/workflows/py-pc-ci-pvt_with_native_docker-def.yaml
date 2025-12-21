@@ -103,6 +103,8 @@ jobs:
           poetry config keyring.enabled false
           poetry config http-basic.BEE __token__ ${{ secrets.GH_REPO_ACCESS_BEE_MASTER }}
           poetry config http-basic.RTE __token__ ${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
+          poetry config http-basic.rtecommon __token__ ${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
+          poetry config http-basic.rtedb __token__ ${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
 
       - name: Install dependencies
         run:  |

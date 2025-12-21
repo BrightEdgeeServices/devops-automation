@@ -1,3 +1,20 @@
+### Release 7.0.2
+
+### Summary of Changes
+
+- CI: Updated `.github/workflows/py-pc-ci-pvt_with_native_docker-def.yaml` to include hardcoded token references for `rtecommon` and `rtedb` repositories in Poetry configuration.
+- Build: Bumped version to 7.0.2 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `main_feature-devops-automation-Fix-rtecommon-rtedb-auth-in-CI`
+- 2 files changed, 3 insertions, 1 deletion
+- Files changed:
+  - .github/workflows/py-pc-ci-pvt_with_native_docker-def.yaml
+  - pyproject.toml
+
+______________________________________________________________________
+
 ### Release 7.0.1
 
 ### Summary of Changes
