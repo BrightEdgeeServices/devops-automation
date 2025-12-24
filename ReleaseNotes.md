@@ -1,3 +1,11 @@
+### Release 7.1.4
+
+### Summary of Changes
+
+- CI: Fixed a bug in the ESLint 9 patching script where `typescript-eslint` was not added if `@typescript-eslint/*` packages were already present due to substring matching. Changed to exact dependency name matching.
+
+______________________________________________________________________
+
 ### Release 7.1.3
 
 ### Summary of Changes

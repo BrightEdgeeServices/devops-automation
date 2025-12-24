@@ -54,7 +54,7 @@ jobs:
                                     if any('typescript' in x.lower() for x in d):
                                         needed.append('typescript-eslint')
                                     for dep in needed:
-                                        if not any(dep in x for x in d):
+                                        if not any(x == dep or x.startswith(f"{dep}@") for x in d):
                                             full_dep = f'{dep}@{ev}' if dep == '@eslint/js' else dep
                                             d.append(full_dep); ch = True
                                     h['additional_dependencies'] = d
