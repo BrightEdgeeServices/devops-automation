@@ -17,6 +17,12 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v6
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
@@ -24,12 +30,16 @@ jobs:
 
       - name: Patch Pre-Commit Config for ESLint 9
         run: |
-          pip install PyYAML
+          pip install ruamel.yaml
           python3 -c "import textwrap; exec(textwrap.dedent('''
-            import sys, yaml, os
+            import sys, os
+            from ruamel.yaml import YAML
+            yaml = YAML()
+            yaml.preserve_quotes = True
             path = '.pre-commit-config.yaml'
             if os.path.exists(path):
-                c = yaml.safe_load(open(path))
+                with open(path, 'r') as f:
+                    c = yaml.load(f)
                 if c and 'repos' in c:
                     ch = False
                     for r in c['repos']:
@@ -37,12 +47,25 @@ jobs:
                             for h in r.get('hooks', []):
                                 if h.get('id') == 'eslint':
                                     d = h.get('additional_dependencies', [])
-                                    if '@eslint/js' not in d:
-                                        d.append('@eslint/js'); h['additional_dependencies'] = d; ch = True
+                                    ev = next((x.split('@')[1] for x in d if x.startswith('eslint@')), '9.17.0')
+                                    for dep in ['@eslint/js', 'globals']:
+                                        if not any(dep in x for x in d):
+                                            full_dep = f'{dep}@{ev}' if dep == '@eslint/js' else dep
+                                            d.append(full_dep); ch = True
+                                    h['additional_dependencies'] = d
                     if ch:
-                        yaml.dump(c, open(path, 'w'), default_flow_style=False)
+                        with open(path, 'w') as f:
+                            yaml.dump(c, f)
                         print('Patched .pre-commit-config.yaml')
             '''))"
+          git add .pre-commit-config.yaml || true
+        shell: bash
+
+      - name: Install ESLint 9 dependencies at project level
+        run: |
+          if [ -f eslint.config.js ] || [ -f eslint.config.mjs ] || [ -f eslint.config.cjs ]; then
+            npm install --no-save @eslint/js globals
+          fi
         shell: bash
 
       - name: Run pre-commit checks
