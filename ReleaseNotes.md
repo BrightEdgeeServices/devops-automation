@@ -1,3 +1,12 @@
+### Release 7.1.7
+
+### Summary of Changes
+
+- CI: Improved robustness of the ESLint 9 patching script by switching to a here-doc approach. This resolves `IndentationError` and potential quoting issues in CI environments.
+- Build: Bumped version to 7.1.7 in `pyproject.toml`.
+
+______________________________________________________________________
+
 ### Release 7.1.6
 
 ### Summary of Changes
