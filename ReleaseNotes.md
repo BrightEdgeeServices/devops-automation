@@ -1,3 +1,13 @@
+### Release 7.1.3
+
+### Summary of Changes
+
+- CI: Improved ESLint 9 support in pre-commit workflows by automatically adding `typescript-eslint` when TypeScript is detected in the environment.
+- CI: Enhanced project-level dependency installation to include ALL `additional_dependencies` defined in the ESLint pre-commit hook, ensuring flat configuration files can correctly resolve all imported plugins and configs.
+- CI: Optimized patching logic to preserve formatting and indents in `.pre-commit-config.yaml`.
+
+______________________________________________________________________
+
 ### Release 7.1.2
 
 ### Summary of Changes

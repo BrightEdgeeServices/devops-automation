@@ -36,34 +36,45 @@ jobs:
             from ruamel.yaml import YAML
             yaml = YAML()
             yaml.preserve_quotes = True
+            yaml.indent(mapping=2, sequence=4, offset=2)
             path = '.pre-commit-config.yaml'
             if os.path.exists(path):
                 with open(path, 'r') as f:
                     c = yaml.load(f)
                 if c and 'repos' in c:
                     ch = False
+                    eslint_deps = []
                     for r in c['repos']:
                         if 'mirrors-eslint' in r.get('repo', ''):
                             for h in r.get('hooks', []):
                                 if h.get('id') == 'eslint':
                                     d = h.get('additional_dependencies', [])
                                     ev = next((x.split('@')[1] for x in d if x.startswith('eslint@')), '9.17.0')
-                                    for dep in ['@eslint/js', 'globals']:
+                                    needed = ['@eslint/js', 'globals']
+                                    if any('typescript' in x.lower() for x in d):
+                                        needed.append('typescript-eslint')
+                                    for dep in needed:
                                         if not any(dep in x for x in d):
                                             full_dep = f'{dep}@{ev}' if dep == '@eslint/js' else dep
                                             d.append(full_dep); ch = True
                                     h['additional_dependencies'] = d
+                                    eslint_deps = d
                     if ch:
                         with open(path, 'w') as f:
                             yaml.dump(c, f)
                         print('Patched .pre-commit-config.yaml')
+                    if eslint_deps:
+                        with open('.eslint_deps', 'w') as f_deps:
+                            f_deps.write(' '.join(eslint_deps))
             '''))"
           git add .pre-commit-config.yaml || true
         shell: bash
 
       - name: Install ESLint 9 dependencies at project level
         run: |
-          if [ -f eslint.config.js ] || [ -f eslint.config.mjs ] || [ -f eslint.config.cjs ]; then
+          if [ -f .eslint_deps ]; then
+            npm install --no-save $(cat .eslint_deps) --legacy-peer-deps
+          elif [ -f eslint.config.js ] || [ -f eslint.config.mjs ] || [ -f eslint.config.cjs ]; then
             npm install --no-save @eslint/js globals --legacy-peer-deps
           fi
         shell: bash
