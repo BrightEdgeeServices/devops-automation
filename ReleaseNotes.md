@@ -1,3 +1,11 @@
+### Release 7.1.2
+
+### Summary of Changes
+
+- CI: Added `--legacy-peer-deps` to the project-level ESLint dependency installation step in pre-commit workflows to resolve peer dependency conflicts.
+
+______________________________________________________________________
+
 ### Release 7.1.1
 
 ### Summary of Changes
