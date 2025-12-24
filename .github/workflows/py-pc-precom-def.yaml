@@ -22,5 +22,28 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - name: Patch Pre-Commit Config for ESLint 9
+        run: |
+          pip install PyYAML
+          python3 -c "import textwrap; exec(textwrap.dedent('''
+            import sys, yaml, os
+            path = '.pre-commit-config.yaml'
+            if os.path.exists(path):
+                c = yaml.safe_load(open(path))
+                if c and 'repos' in c:
+                    ch = False
+                    for r in c['repos']:
+                        if 'mirrors-eslint' in r.get('repo', ''):
+                            for h in r.get('hooks', []):
+                                if h.get('id') == 'eslint':
+                                    d = h.get('additional_dependencies', [])
+                                    if '@eslint/js' not in d:
+                                        d.append('@eslint/js'); h['additional_dependencies'] = d; ch = True
+                    if ch:
+                        yaml.dump(c, open(path, 'w'), default_flow_style=False)
+                        print('Patched .pre-commit-config.yaml')
+            '''))"
+        shell: bash
+
       - name: Run pre-commit checks
         uses: pre-commit/action@v3.0.1
