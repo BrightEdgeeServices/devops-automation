@@ -31,47 +31,47 @@ jobs:
       - name: Patch Pre-Commit Config for ESLint 9
         run: |
           pip install ruamel.yaml
-          python3 -c "import textwrap; exec(textwrap.dedent('''
-            import sys, os
-            from ruamel.yaml import YAML
-            yaml = YAML()
-            yaml.preserve_quotes = True
-            yaml.indent(mapping=2, sequence=4, offset=2)
-            path = '.pre-commit-config.yaml'
-            if os.path.exists(path):
-                with open(path, 'r') as f:
-                    c = yaml.load(f)
-                if c and 'repos' in c:
-                    ch = False
-                    eslint_deps = []
-                    for r in c['repos']:
-                        if 'mirrors-eslint' in r.get('repo', ''):
-                            for h in r.get('hooks', []):
-                                if h.get('id') == 'eslint':
-                                    d = h.get('additional_dependencies', [])
-                                    ev = next((x.split('@')[1] for x in d if x.startswith('eslint@')), '9.17.0')
-                                    needed = ['@eslint/js', 'globals']
-                                    if any('typescript' in x.lower() for x in d):
-                                        needed.append('typescript-eslint')
-                                    for dep in needed:
-                                        if not any(x == dep or x.startswith(f'{dep}@') for x in d):
-                                            full_dep = f'{dep}@{ev}' if dep == '@eslint/js' else dep
-                                            d.append(full_dep); ch = True
-                                    h['additional_dependencies'] = d
-                                    eslint_deps = d
-                    if ch:
-                        with open(path, 'w') as f:
-                            yaml.dump(c, f)
-                        # Remove trailing whitespace that ruamel might have added
-                        with open(path, 'r') as f:
-                            lines = [line.rstrip() for line in f]
-                        with open(path, 'w') as f:
-                            f.write('\n'.join(lines) + '\n')
-                        print('Patched .pre-commit-config.yaml')
-                    if eslint_deps:
-                        with open('.eslint_deps', 'w') as f_deps:
-                            f_deps.write(' '.join(eslint_deps))
-            '''))"
+          python3 -c "import sys, textwrap; exec(textwrap.dedent(sys.stdin.read()))" <<'EOF'
+          import sys, os
+          from ruamel.yaml import YAML
+          yaml = YAML()
+          yaml.preserve_quotes = True
+          yaml.indent(mapping=2, sequence=4, offset=2)
+          path = '.pre-commit-config.yaml'
+          if os.path.exists(path):
+              with open(path, 'r') as f:
+                  c = yaml.load(f)
+              if c and 'repos' in c:
+                  ch = False
+                  eslint_deps = []
+                  for r in c['repos']:
+                      if 'mirrors-eslint' in r.get('repo', ''):
+                          for h in r.get('hooks', []):
+                              if h.get('id') == 'eslint':
+                                  d = h.get('additional_dependencies', [])
+                                  ev = next((x.split('@')[1] for x in d if x.startswith('eslint@')), '9.17.0')
+                                  needed = ['@eslint/js', 'globals']
+                                  if any('typescript' in x.lower() for x in d):
+                                      needed.append('typescript-eslint')
+                                  for dep in needed:
+                                      if not any(x == dep or x.startswith(f"{dep}@") for x in d):
+                                          full_dep = f"{dep}@{ev}" if dep == "@eslint/js" else dep
+                                          d.append(full_dep); ch = True
+                                  h['additional_dependencies'] = d
+                                  eslint_deps = d
+                  if ch:
+                      with open(path, 'w') as f:
+                          yaml.dump(c, f)
+                      # Remove trailing whitespace that ruamel might have added
+                      with open(path, 'r') as f:
+                          lines = [line.rstrip() for line in f]
+                      with open(path, 'w') as f:
+                          f.write('\n'.join(lines) + '\n')
+                      print('Patched .pre-commit-config.yaml')
+                  if eslint_deps:
+                      with open('.eslint_deps', 'w') as f_deps:
+                          f_deps.write(' '.join(eslint_deps))
+          EOF
           git add .pre-commit-config.yaml || true
         shell: bash
 
