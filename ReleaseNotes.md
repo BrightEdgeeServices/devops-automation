@@ -1,3 +1,11 @@
+### Release 7.1.5
+
+### Summary of Changes
+
+- CI: Fixed a `SyntaxError` in the ESLint 9 patching script caused by incorrect quoting in an f-string within a shell-executed Python command.
+
+______________________________________________________________________
+
 ### Release 7.1.4
 
 ### Summary of Changes
