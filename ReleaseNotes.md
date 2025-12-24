@@ -1,3 +1,15 @@
+### Release 7.1.1
+
+### Summary of Changes
+
+- CI: Enhanced "Patch Pre-Commit Config for ESLint 9" to use `ruamel.yaml` for preserving formatting and to include `globals` dependency.
+- CI: Added project-level installation of ESLint 9 dependencies (`@eslint/js`, `globals`) in pre-commit workflows to resolve module resolution errors in `eslint.config.js`.
+- CI: Added `actions/setup-node@v4` to `py-pc-precom-def.yaml` to support ESLint 9 dependency installation.
+- CI: Added `git add .pre-commit-config.yaml` to pre-commit workflows to stage auto-patched configurations and avoid hook failures.
+- Build: Bumped version to 7.1.1 in `pyproject.toml`.
+
+______________________________________________________________________
+
 ### Release 7.1.0
 
 ### Summary of Changes
