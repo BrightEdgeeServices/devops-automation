@@ -1,7 +1,7 @@
-# py-temp-pr-pvt_with_docker-def.yaml
+# react-temp-pr-pvt_with_docker-def.yaml
 # This is a template and should not be changed unless you are familiar with the
 # reusable GitHub Actions strategy of the company.
-name: Python Template PR Private with Docker
+name: React Template PR Private with Docker
 
 on:
   push:
@@ -12,7 +12,7 @@ on:
       - pr
 
 jobs:
-  py-temp-pr-pvt_with_docker-def:
+  react-temp-pr-pvt_with_docker-def:
     permissions:
       id-token: write
       contents: write

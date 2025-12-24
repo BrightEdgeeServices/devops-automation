@@ -16,7 +16,7 @@ jobs:
   Detect-PR-Tag:
     needs:
       - Pre-Commit
-    uses: all-pc-pr-detect_tag-def.yaml
+    uses: ./.github/workflows/all-pc-pr-detect_tag-def.yaml
     secrets: inherit
 
   #  Amend-Release-Notes:
@@ -56,5 +56,5 @@ jobs:
     needs:
       - Send-Notice
       - Detect-PR-Tag
-    uses: all-pc-pr-cleanup_tag-def.yaml
+    uses: ./.github/workflows/all-pc-pr-cleanup_tag-def.yaml
     secrets: inherit

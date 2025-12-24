@@ -1,4 +1,4 @@
-# py-wf-pr-pvt_with_docker-def.yaml
+# react-wf-pr-pvt_with_docker-def.yaml
 name: Pre-Commit, CI and PR (default)
 
 on:

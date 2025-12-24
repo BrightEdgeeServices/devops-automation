@@ -16,11 +16,6 @@ jobs:
       contents: write
       pull-requests: write
 
-    strategy:
-      fail-fast: true
-      matrix:
-        python-version: [ '3.12' ]
-
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
