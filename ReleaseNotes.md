@@ -1,3 +1,12 @@
+### Release 7.1.6
+
+### Summary of Changes
+
+- CI: Fixed a bug in the ESLint 9 patching script where `ruamel.yaml` was introducing trailing whitespace in `.pre-commit-config.yaml`, causing the `trailing-whitespace` hook to fail in CI. Added a cleanup step to remove trailing whitespace after patching.
+- Build: Bumped version to 7.1.6 in `pyproject.toml`.
+
+______________________________________________________________________
+
 ### Release 7.1.5
 
 ### Summary of Changes
