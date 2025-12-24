@@ -1,4 +1,4 @@
-# py-pc-pr-def.yaml
+# all-pc-pr-def.yaml
 name: PR-and-Build
 
 on:
