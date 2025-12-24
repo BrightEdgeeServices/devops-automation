@@ -64,7 +64,7 @@ jobs:
       - name: Install ESLint 9 dependencies at project level
         run: |
           if [ -f eslint.config.js ] || [ -f eslint.config.mjs ] || [ -f eslint.config.cjs ]; then
-            npm install --no-save @eslint/js globals
+            npm install --no-save @eslint/js globals --legacy-peer-deps
           fi
         shell: bash
 
