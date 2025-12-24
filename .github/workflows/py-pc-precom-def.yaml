@@ -62,6 +62,11 @@ jobs:
                     if ch:
                         with open(path, 'w') as f:
                             yaml.dump(c, f)
+                        # Remove trailing whitespace that ruamel might have added
+                        with open(path, 'r') as f:
+                            lines = [line.rstrip() for line in f]
+                        with open(path, 'w') as f:
+                            f.write('\n'.join(lines) + '\n')
                         print('Patched .pre-commit-config.yaml')
                     if eslint_deps:
                         with open('.eslint_deps', 'w') as f_deps:
