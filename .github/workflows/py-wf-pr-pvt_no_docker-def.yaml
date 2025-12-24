@@ -61,7 +61,7 @@ jobs:
       VENV_ENVIRONMENT:          ${{secrets.VENV_ENVIRONMENT }}
 
   Detect-PR-Tag:
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-pr-detect_tag-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/all-pc-pr-detect_tag-def.yaml@master
     secrets: inherit
 
   PR:
@@ -75,7 +75,7 @@ jobs:
       - Detect-PR-Tag
       - Pre-Commit
       - CI
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-pr-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/all-pc-pr-def.yaml@master
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
@@ -86,7 +86,7 @@ jobs:
     if: ${{ always() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
     needs:
       - Detect-PR-Tag
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-pr-cleanup_tag-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/all-pc-pr-cleanup_tag-def.yaml@master
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}

@@ -1,3 +1,29 @@
+### Release 7.1.0
+
+### Summary of Changes
+
+- CI: Added standardized GitHub Actions workflows for React projects, including Pre-commit, CI (Docker-based), and Pull Request automation.
+- CI: Renamed Python-specific PR workflows to a generic naming convention (`all-pc-pr-*`) to support both Python and React.
+- Templates: Added a new React PR template `templates/react-temp-pr-pvt_with_docker-def.yaml`.
+- Maintenance: Fixed invalid workflow references in `.github/workflows/00-new-release-pipeline.yaml`.
+- Build: Bumped version to 7.1.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `main_feature-devops-automation-Support-React-Workflows`
+- Files changed:
+  - .github/workflows/00-new-release-pipeline.yaml
+  - .github/workflows/all-pc-pr-cleanup_tag-def.yaml
+  - .github/workflows/all-pc-pr-def.yaml
+  - .github/workflows/all-pc-pr-detect_tag-def.yaml
+  - .github/workflows/react-pc-ci-pvt_with_docker-def.yaml
+  - .github/workflows/react-pc-precom-def.yaml
+  - .github/workflows/react-wf-pr-pvt_with_docker-def.yaml
+  - pyproject.toml
+  - templates/react-temp-pr-pvt_with_docker-def.yaml
+
+______________________________________________________________________
+
 ### Release 7.0.2
 
 ### Summary of Changes

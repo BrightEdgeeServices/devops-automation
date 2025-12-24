@@ -1,4 +1,4 @@
-# py-pc-pr-cleanup_tag-def.yaml
+# all-pc-pr-cleanup_tag-def.yaml
 name: Cleanup PR Tag (default)
 
 on:

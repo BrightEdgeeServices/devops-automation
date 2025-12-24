@@ -1,4 +1,4 @@
-# py-pc-pr-detect_tag-def.yaml
+# all-pc-pr-detect_tag-def.yaml
 # Reusable workflow: Detect presence of 'pr' tag on remote
 name: Detect PR Tag
 permissions:

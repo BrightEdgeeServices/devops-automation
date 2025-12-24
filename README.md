@@ -76,7 +76,7 @@ Discuss any changes with your colleagues to get consensus on any changes or addi
 
 - `<language>-<type>-<task>-<description>-<variation>`
   - where
-    - language = `go (GoLang)` | `py (Python)`
+    - language = `go (GoLang)` | `py (Python)` | `react (React)`
     - type = `pc (process)` | `pub (publish)` | `temp (template)` | `wf (workflow)`
     - task = `ci (continuous integration)` | `dep (deploy)` | `precom (pre-commit) | pypi`
     - description = Short description where words are separated by "\_".
@@ -189,6 +189,16 @@ We regularly update our workflows to improve functionality and security. To ensu
    | Description | After a Pull Request is merged into master, creates a GitHub release and sends a notice. The tag is derived from pyproject.toml |
    |             | [project].version (fallback [tool.poetry].version) and is prefixed with `v`.                                                    |
    | Variation   | Default                                                                                                                         |
+
+1. react-temp-pr-pvt_with_docker-def.yaml
+
+   | Type        | Description                             |
+   | ----------- | --------------------------------------- |
+   | Language    | React                                   |
+   | Type        | Template                                |
+   | Task        | CI and PR automation                    |
+   | Description | A Docker container has to be configured |
+   | Variation   | Default                                 |
 
 [cicd_codestyle_img]: https://img.shields.io/badge/code%20style-black-000000.svg "Black"
 [cicd_codestyle_lnk]: https://github.com/psf/black "Black"
