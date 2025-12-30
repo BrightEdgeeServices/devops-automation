@@ -42,6 +42,19 @@ jobs:
             id-token: write
 
         steps:
+            - name: Validate required variables
+              run: |
+                  if [ -z "$ORIGINAL_OWNER" ] || [ -z "$ORIGINAL_REPO_NAME" ]; then
+                      echo "Error: ORIGINAL_OWNER and ORIGINAL_REPO_NAME repository variables must be set."
+                      echo "Please configure these variables in your repository settings:"
+                      echo "  - Settings > Secrets and variables > Actions > Variables"
+                      echo "  - Add variable: ORIGINAL_OWNER (e.g., 'BrightEdgeeServices')"
+                      echo "  - Add variable: ORIGINAL_REPO_NAME (e.g., 'devops-automation')"
+                      exit 1
+                  fi
+                  echo "✓ ORIGINAL_OWNER: $ORIGINAL_OWNER"
+                  echo "✓ ORIGINAL_REPO_NAME: $ORIGINAL_REPO_NAME"
+
             - name: Check out repository
               uses: actions/checkout@v4
               with:
