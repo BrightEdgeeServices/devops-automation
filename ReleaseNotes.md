@@ -1,3 +1,37 @@
+### Release 8.0.0
+
+### Summary of Changes
+
+- Templates: Renamed `py-temp-fork-scheduled_sync_with_upstream-def.yaml` to `all-temp-fork-scheduled_sync_with_upstream-daily.yaml` to clearly indicate daily scheduling frequency and make it language-agnostic.
+- Templates: Added new weekly scheduled sync template `all-temp-fork-scheduled_sync_with_upstream-weekly.yaml` for repositories that require weekly synchronization with upstream.
+- Templates: Added new monthly scheduled sync template `all-temp-fork-scheduled_sync_with_upstream-monthly.yaml` for repositories that require monthly synchronization with upstream.
+- Workflows: Renamed `py-wf-fork-scheduled_sync_with_upstream-def.yaml` to `all-wf-fork-scheduled_sync_with_upstream-def.yaml` to make it language-agnostic.
+- Workflows: Renamed `py-pc-fork-sync_with_upstream-def.yaml` to `all-pc-fork-sync_with_upstream-def.yaml` to make it language-agnostic.
+- Documentation: Updated README.md to document the three new multi-frequency fork sync templates and updated naming convention to include "all" as a language option.
+- Build: Bumped version to 8.0.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `main_feature-devops-automation-multi-frequency-fork-sync`
+- Files changed:
+  - .github/workflows/all-pc-fork-sync_with_upstream-def.yaml
+  - .github/workflows/all-wf-fork-scheduled_sync_with_upstream-def.yaml
+  - .github/workflows/legacy/linear-issue.md
+  - .github/workflows/legacy/linear-project-description.md
+  - .github/workflows/legacy/linear-sub-issue.md
+  - .github/workflows/legacy/py-pc-fork-sync_with_upstream-def.yaml
+  - .github/workflows/legacy/py-wf-fork-scheduled_sync_with_upstream-def.yaml
+  - README.md
+  - linear-issue.md
+  - templates/all-temp-fork-scheduled_sync_with_upstream-daily.yaml
+  - templates/all-temp-fork-scheduled_sync_with_upstream-monthly.yaml
+  - templates/all-temp-fork-scheduled_sync_with_upstream-weekly.yaml
+- Number of files changed: 12
+- Insertions: 555
+- Deletions: 160
+
+______________________________________________________________________
+
 ### Release 7.1.7
 
 ### Summary of Changes
