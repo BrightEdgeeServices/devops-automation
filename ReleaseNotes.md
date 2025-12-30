@@ -1,3 +1,23 @@
+### Release 8.0.1
+
+### Summary of Changes
+
+- Workflows: Added validation step to `all-pc-fork-sync_with_upstream-def.yaml` to check for required repository variables (`ORIGINAL_OWNER` and `ORIGINAL_REPO_NAME`) before attempting to sync with upstream. Provides clear error messages with setup instructions if variables are missing.
+- Templates: Fixed indentation formatting in `all-temp-fork-scheduled_sync_with_upstream-weekly.yaml`.
+- Build: Bumped version to 9.0.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `main_feature-devops-automation-multi-frequency-fork-sync`
+- Files changed:
+  - .github/workflows/all-pc-fork-sync_with_upstream-def.yaml
+  - templates/all-temp-fork-scheduled_sync_with_upstream-weekly.yaml
+- Number of files changed: 2
+- Insertions: 15
+- Deletions: 3
+
+______________________________________________________________________
+
 ### Release 8.0.0
 
 ### Summary of Changes
