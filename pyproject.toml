@@ -1,110 +1,112 @@
 [build-system]
-requires = [
-    "poetry-core>=2.0.0,<3.0.0",
-]
-build-backend = "poetry.core.masonry.api"
+    requires = [
+        "poetry-core>=2.0.0,<3.0.0",
+    ]
+    build-backend = "poetry.core.masonry.api"
 
 [project]
-name = 'devops-platform'
-version = "7.1.7"
-description = 'Repository for GitHub Actions Workflows.'
+    name = 'devops-platform'
+    version = "8.0.0"
+    description = 'Repository for GitHub Actions Workflows.'
 
-authors = [
-    { name = "Hendrik du Toit", email = "hendrik@brightedge.co.za" }
-]
-classifiers = [
-    "Development Status :: 4 - Beta",
-    "Intended Audience :: Developers",
-    "Intended Audience :: Information Technology",
-    "Intended Audience :: System Administrators",
-    "Topic :: Software Development :: Bug Tracking",
-    "Topic :: Software Development :: Build Tools",
-    "Topic :: Software Development :: Quality Assurance",
-    "Topic :: Software Development :: Testing",
-    'Programming Language :: Python :: 3.10',
-    'Programming Language :: Python :: 3.11',
-    'Programming Language :: Python :: 3.12'
-]
-dependencies = [
-]
-license = "Proprietary"
-license-files = ["LICENSE.txt"]
-maintainers = [
-    { name = 'Henru du Toit', email = 'henru@brightedge.co.za' },
-    { name = 'Dirk du Toit', email = 'dirk@brightedge.co.za' },
-]
-readme = { file = 'README.md', content-type = 'text/markdown' }
-#readme = "README.md"
-requires-python = ">=3.10"
+    authors = [
+        { name = "Hendrik du Toit", email = "hendrik@brightedge.co.za" },
+    ]
+    classifiers = [
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: Developers",
+        "Intended Audience :: Information Technology",
+        "Intended Audience :: System Administrators",
+        "Topic :: Software Development :: Bug Tracking",
+        "Topic :: Software Development :: Build Tools",
+        "Topic :: Software Development :: Quality Assurance",
+        "Topic :: Software Development :: Testing",
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
+    ]
+    dependencies = [
+    ]
+    license = "Proprietary"
+    license-files = [
+        "LICENSE.txt",
+    ]
+    maintainers = [
+        { name = 'Henru du Toit', email = 'henru@brightedge.co.za' },
+        { name = 'Dirk du Toit', email = 'dirk@brightedge.co.za' },
+    ]
+    readme = { file = 'README.md', content-type = 'text/markdown' }
+    #readme = "README.md"
+    requires-python = ">=3.10"
 
 [project.urls]
-# Documentation = "https://readthedocs.org"
-Issues = "https://github.com/BrightEdgeeServices/devops-automation/issues"
-Changelog = 'https://github.com/BrightEdgeeServices/devops-automation/blob/enhancement/master/ReleaseNotes.md'
-Homepage = 'https://github.com/BrightEdgeeServices/devops-automation'
-Repository = "https://github.com/BrightEdgeeServices/devops-automation.git"
+    # Documentation = "https://readthedocs.org"
+    Issues = "https://github.com/BrightEdgeeServices/devops-automation/issues"
+    Changelog = 'https://github.com/BrightEdgeeServices/devops-automation/blob/enhancement/master/ReleaseNotes.md'
+    Homepage = 'https://github.com/BrightEdgeeServices/devops-automation'
+    Repository = "https://github.com/BrightEdgeeServices/devops-automation.git"
 
 [tool.black]
-line-length = 120
-target-version = [
-    "py313",
-]
+    line-length = 120
+    target-version = [
+        "py313",
+    ]
 
 [tool.codespell]
-count = ''
-quiet-level = 2
-skip = 'documentation/Archive/*'
-ignore-words-list = 'space-holder'
-write-changes = ''
+    count = ''
+    quiet-level = 2
+    skip = 'documentation/Archive/*'
+    ignore-words-list = 'space-holder'
+    write-changes = ''
 
 [tool.coverage.run]
-source = [
-    "src",
-    "tests",
-]
+    source = [
+        "src",
+        "tests",
+    ]
 
 [tool.isort]
-profile = "black"
+    profile = "black"
 
 [tool.poetry.dependencies]
 
 [tool.poetry.group.dev]
-optional = true
+    optional = true
 
 [tool.poetry.group.dev.dependencies]
-black = ">=25.1.0"
-codecov = ">=2.1.13"
-flake8 = ">=7.1.1"
-isort = "^5.13.2"
-mdformat-gfm = ">=0.4.1"
-mdformat-frontmatter = ">=2.0.8"
-mdformat-footnote = ">=0.1.1"
-pre-commit = ">=4.0.1"
-pytest = ">=8.3.4"
-pytest-cov = ">=6.0.0"
-rstcheck = { extras = [
-    "sphinx",
-], version = ">=6.2.4" }
-sphinx = ">=8.1.3"
+    black = ">=25.1.0"
+    codecov = ">=2.1.13"
+    flake8 = ">=7.1.1"
+    isort = "^5.13.2"
+    mdformat-gfm = ">=0.4.1"
+    mdformat-frontmatter = ">=2.0.8"
+    mdformat-footnote = ">=0.1.1"
+    pre-commit = ">=4.0.1"
+    pytest = ">=8.3.4"
+    pytest-cov = ">=6.0.0"
+    rstcheck = { extras = [
+        "sphinx",
+    ], version = ">=6.2.4" }
+    sphinx = ">=8.1.3"
 
-#[tool.poetry]
-#packages = [
-#    { include = "dockermysqlexample", from = "src" }
-#]
+    #[tool.poetry]
+    #packages = [
+    #    { include = "dockermysqlexample", from = "src" }
+    #]
 
 [tool.pytest.ini_options]
-addopts = [
-    "-vv",
-    "--ignore-glob=*\\Archive",
-]
-filterwarnings = [
-#    "ignore::DeprecationWarning",
-]
-pythonpath = [
-    "src",
-    "tests",
-]
-testpaths = "tests"
-markers = [
-    "select: Run a selection of tests",
-]
+    addopts = [
+        "-vv",
+        "--ignore-glob=*\\Archive",
+    ]
+    filterwarnings = [
+        #    "ignore::DeprecationWarning",
+    ]
+    pythonpath = [
+        "src",
+        "tests",
+    ]
+    testpaths = "tests"
+    markers = [
+        "select: Run a selection of tests",
+    ]

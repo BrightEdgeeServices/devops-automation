@@ -76,7 +76,7 @@ Discuss any changes with your colleagues to get consensus on any changes or addi
 
 - `<language>-<type>-<task>-<description>-<variation>`
   - where
-    - language = `go (GoLang)` | `py (Python)` | `react (React)`
+    - language = `all (All Languages)` | `go (GoLang)` | `py (Python)` | `react (React)`
     - type = `pc (process)` | `pub (publish)` | `temp (template)` | `wf (workflow)`
     - task = `ci (continuous integration)` | `dep (deploy)` | `precom (pre-commit) | pypi`
     - description = Short description where words are separated by "\_".
@@ -129,15 +129,35 @@ We regularly update our workflows to improve functionality and security. To ensu
    | Description | Merge private repository to local fork. |
    | Variation   | Default                                 |
 
-1. py-temp-fork-scheduled_sync_with_upstream-def.yaml
+1. all-temp-fork-scheduled_sync_with_upstream-daily.yaml
 
-   | Type        | Description                                      |
-   | ----------- | ------------------------------------------------ |
-   | Language    | Python                                           |
-   | Type        | Template                                         |
-   | Task        | Fork                                             |
-   | Description | Scheduled task to sync the origin with the fork. |
-   | Variation   | Default                                          |
+   | Type        | Description                                              |
+   | ----------- | -------------------------------------------------------- |
+   | Language    | All                                                      |
+   | Type        | Template                                                 |
+   | Task        | Fork                                                     |
+   | Description | Scheduled task to sync the origin with the fork (daily). |
+   | Variation   | Daily                                                    |
+
+1. all-temp-fork-scheduled_sync_with_upstream-weekly.yaml
+
+   | Type        | Description                                               |
+   | ----------- | --------------------------------------------------------- |
+   | Language    | All                                                       |
+   | Type        | Template                                                  |
+   | Task        | Fork                                                      |
+   | Description | Scheduled task to sync the origin with the fork (weekly). |
+   | Variation   | Weekly                                                    |
+
+1. all-temp-fork-scheduled_sync_with_upstream-monthly.yaml
+
+   | Type        | Description                                                |
+   | ----------- | ---------------------------------------------------------- |
+   | Language    | All                                                        |
+   | Type        | Template                                                   |
+   | Task        | Fork                                                       |
+   | Description | Scheduled task to sync the origin with the fork (monthly). |
+   | Variation   | Monthly                                                    |
 
 1. py-temp-pub-pvt_no_docker-def.yaml
 
