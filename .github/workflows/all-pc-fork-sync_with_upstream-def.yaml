@@ -81,12 +81,21 @@ jobs:
 
             - name: Fetch upstream and merge
               run: |
-                  git remote add upstream https://github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git
+                  # Determine which token to use based on the original owner
+                  if [ "$ORIGINAL_OWNER" = "BrightEdgeeServices" ]; then
+                      UPSTREAM_TOKEN="$GH_REPO_ACCESS_BEE_MASTER"
+                  else
+                      UPSTREAM_TOKEN="$GH_REPO_ACCESS_RTE_MASTER"
+                  fi
+
+                  # Add upstream remote with authentication token
+                  git remote add upstream https://x-access-token:${UPSTREAM_TOKEN}@github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git
                   git fetch upstream
                   git checkout master
                   git merge --no-edit upstream/master
               env:
-                GH_TOKEN: ${{ secrets.GH_REPO_ACCESS_CURR_USER }}
+                  GH_REPO_ACCESS_BEE_MASTER: ${{ secrets.GH_REPO_ACCESS_BEE_MASTER }}
+                  GH_REPO_ACCESS_RTE_MASTER: ${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
 
             - name: Push changes
               run: git push origin master

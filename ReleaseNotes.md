@@ -1,10 +1,28 @@
+### Release 8.0.2
+
+### Summary of Changes
+
+- Workflows: Updated `all-pc-fork-sync_with_upstream-def.yaml` to include authentication token in the upstream remote URL for accessing private repositories. Added logic to automatically select the appropriate token (`GH_REPO_ACCESS_BEE_MASTER` for BrightEdgeeServices or `GH_REPO_ACCESS_RTE_MASTER` for other organizations) based on the original owner.
+- Build: Bumped version to 8.0.2 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `main_feature-devops-automation-multi-frequency-fork-sync`
+- Files changed:
+  - .github/workflows/all-pc-fork-sync_with_upstream-def.yaml
+- Number of files changed: 1
+- Insertions: 11
+- Deletions: 3
+
+______________________________________________________________________
+
 ### Release 8.0.1
 
 ### Summary of Changes
 
 - Workflows: Added validation step to `all-pc-fork-sync_with_upstream-def.yaml` to check for required repository variables (`ORIGINAL_OWNER` and `ORIGINAL_REPO_NAME`) before attempting to sync with upstream. Provides clear error messages with setup instructions if variables are missing.
 - Templates: Fixed indentation formatting in `all-temp-fork-scheduled_sync_with_upstream-weekly.yaml`.
-- Build: Bumped version to 9.0.0 in `pyproject.toml`.
+- Build: Bumped version to 8.0.1 in `pyproject.toml`.
 
 ### Change Statistics (vs master)
 
