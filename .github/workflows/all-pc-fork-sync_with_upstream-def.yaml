@@ -88,10 +88,20 @@ jobs:
                       UPSTREAM_TOKEN="$GH_REPO_ACCESS_RTE_MASTER"
                   fi
 
+                  # Remove upstream remote if it already exists
+                  git remote remove upstream 2>/dev/null || true
+
                   # Add upstream remote with authentication token
-                  git remote add upstream https://x-access-token:${UPSTREAM_TOKEN}@github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git
+                  UPSTREAM_URL="https://x-access-token:${UPSTREAM_TOKEN}@github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git"
+                  git remote add upstream "$UPSTREAM_URL"
+
+                  # Fetch from upstream
                   git fetch upstream
+
+                  # Checkout master branch
                   git checkout master
+
+                  # Merge upstream/master into master
                   git merge --no-edit upstream/master
               env:
                   GH_REPO_ACCESS_BEE_MASTER: ${{ secrets.GH_REPO_ACCESS_BEE_MASTER }}
