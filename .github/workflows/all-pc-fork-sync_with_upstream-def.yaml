@@ -85,6 +85,8 @@ jobs:
                   git fetch upstream
                   git checkout master
                   git merge --no-edit upstream/master
+              env:
+                GH_TOKEN: ${{ secrets.GH_REPO_ACCESS_CURR_USER }}
 
             - name: Push changes
               run: git push origin master
