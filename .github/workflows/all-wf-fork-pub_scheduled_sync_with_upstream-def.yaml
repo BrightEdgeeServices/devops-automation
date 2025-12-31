@@ -1,5 +1,6 @@
 # all-wf-fork-scheduled_sync_with_upstream-def.yaml
-name: Scheduled Sync with Upstream
+# This work flow does not work for private repositories.
+name: Scheduled Sync with Upstream Public Fork
 
 on:
     workflow_call:

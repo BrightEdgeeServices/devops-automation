@@ -1,5 +1,5 @@
-# all-temp-fork-scheduled_sync_with_upstream-monthly.yaml
-name: Template Scheduled Merge Fork with Upstream - Monthly
+# all-temp-fork-pub_scheduled_sync_with_upstream-monthly.yaml
+name: Template Scheduled Merge Public Fork with Upstream - Monthly
 
 on:
   schedule:
@@ -12,7 +12,7 @@ jobs:
       id-token: write
       contents: write
     #    if: github.event.pull_request.merged == true
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/all-wf-fork-scheduled_sync_with_upstream-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/all-wf-pub_fork-scheduled_sync_with_upstream-def.yaml@master
     #    with:
     #  run_deploy: ${{ startsWith(github.ref, 'refs/tags/') == true }}
     #      original_owner:     ${{ vars.ORIGINAL_OWNER }}
