@@ -92,21 +92,36 @@ jobs:
 
                   echo "Testing access to: https://github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME"
                   echo "Using token: $TOKEN_NAME"
+                  echo "Token length: ${#UPSTREAM_TOKEN} characters"
+
+                  # Test access using GitHub API first
+                  echo "Testing via GitHub API..."
+                  API_RESPONSE=$(curl -s -w "\n%{http_code}" -H "Authorization: token ${UPSTREAM_TOKEN}" "https://api.github.com/repos/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME")
+                  HTTP_CODE=$(echo "$API_RESPONSE" | tail -n1)
+
+                  if [ "$HTTP_CODE" = "200" ]; then
+                      echo "✓ API access successful - token has repository access"
+                  else
+                      echo "✗ API access failed with HTTP code: $HTTP_CODE"
+                      echo "Response: $(echo "$API_RESPONSE" | head -n-1)"
+                  fi
 
                   # Test access using git ls-remote
-                  if git ls-remote "https://x-access-token:${UPSTREAM_TOKEN}@github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git" >/dev/null 2>&1; then
-                      echo "✓ Token has access to the repository"
+                  echo ""
+                  echo "Testing via git ls-remote..."
+                  UPSTREAM_URL="https://x-access-token:${UPSTREAM_TOKEN}@github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git"
+
+                  if git ls-remote "$UPSTREAM_URL" >/dev/null 2>&1; then
+                      echo "✓ Git access successful - token can access repository via git"
                       echo "Available branches and tags:"
-                      git ls-remote "https://x-access-token:${UPSTREAM_TOKEN}@github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git" | head -10
+                      git ls-remote "$UPSTREAM_URL" | head -10
                   else
-                      echo "✗ Token does NOT have access to the repository"
-                      echo "Possible reasons:"
-                      echo "  - Repository does not exist at this location"
-                      echo "  - Token lacks required permissions (needs 'repo' scope)"
-                      echo "  - Token does not have access to the organization"
+                      echo "✗ Git access failed"
+                      echo "Attempting with verbose output:"
+                      git ls-remote "$UPSTREAM_URL" 2>&1 || true
                       echo ""
-                      echo "Attempting to fetch with verbose output:"
-                      git ls-remote "https://x-access-token:${UPSTREAM_TOKEN}@github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git" 2>&1 || true
+                      echo "Note: If API access succeeded but git access failed,"
+                      echo "the token format might need adjustment or git credentials may be interfering."
                       exit 1
                   fi
               env:
