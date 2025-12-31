@@ -1,4 +1,6 @@
 # all-temp-fork-pvt_scheduled_sync_with_upstream-weekly.yaml
+# ToDo
+# This work flow does not work for private repositories yet and has to be be further pursued.  I just gave up for the moment ;-).
 name: Template Scheduled Merge Private Fork with Upstream - Weekly
 
 on:
