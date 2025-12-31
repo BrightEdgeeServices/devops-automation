@@ -157,21 +157,30 @@ jobs:
                   # Remove upstream remote if it already exists
                   git remote remove upstream 2>/dev/null || true
 
-                  # Use GIT_ASKPASS to provide the token when git prompts for credentials
-                  # This is more reliable than embedding token in URL for some git versions
-                  GIT_ASKPASS_SCRIPT=$(mktemp)
-                  echo '#!/bin/sh' > "$GIT_ASKPASS_SCRIPT"
-                  echo "echo '$UPSTREAM_TOKEN'" >> "$GIT_ASKPASS_SCRIPT"
-                  chmod +x "$GIT_ASKPASS_SCRIPT"
-                  export GIT_ASKPASS="$GIT_ASKPASS_SCRIPT"
-                  export GIT_TERMINAL_PROMPT=0
+                  # Configure git credential helper to store credentials
+                  # Format: https://username:password@host
+                  # For GitHub, use token as username and token as password, or x-access-token as username
+                  git config --global credential.helper store
+                  CREDENTIAL_FILE="$HOME/.git-credentials"
 
-                  # Add upstream remote (git will use GIT_ASKPASS for authentication)
+                  # Store credentials for github.com with token
+                  # Try x-access-token format first
+                  echo "https://x-access-token:${UPSTREAM_TOKEN}@github.com" > "$CREDENTIAL_FILE"
+
+                  # Add upstream remote
                   UPSTREAM_REPO_URL="https://github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git"
                   git remote add upstream "$UPSTREAM_REPO_URL"
 
-                  # Fetch from upstream (will use GIT_ASKPASS for authentication)
-                  git fetch upstream
+                  # Try to fetch - if it fails, try alternative credential format
+                  if ! git fetch upstream 2>&1; then
+                      echo "First attempt failed, trying alternative credential format..."
+                      # Try token as username with empty password
+                      echo "https://${UPSTREAM_TOKEN}@github.com" > "$CREDENTIAL_FILE"
+                      # Remove and re-add remote to clear any cached credentials
+                      git remote remove upstream
+                      git remote add upstream "$UPSTREAM_REPO_URL"
+                      git fetch upstream
+                  fi
 
                   # Checkout master branch
                   git checkout master
@@ -179,8 +188,8 @@ jobs:
                   # Merge upstream/master into master
                   git merge --no-edit upstream/master
 
-                  # Cleanup
-                  rm -f "$GIT_ASKPASS_SCRIPT"
+                  # Cleanup credentials file
+                  rm -f "$CREDENTIAL_FILE"
               env:
                   GH_REPO_ACCESS_BEE_MASTER: ${{ secrets.GH_REPO_ACCESS_BEE_MASTER }}
                   GH_REPO_ACCESS_RTE_MASTER: ${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
