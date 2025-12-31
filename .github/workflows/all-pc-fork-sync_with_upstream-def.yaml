@@ -157,29 +157,20 @@ jobs:
                   # Remove upstream remote if it already exists
                   git remote remove upstream 2>/dev/null || true
 
-                  # Configure git credential helper to use the token
-                  # This method works better than embedding token in URL for some cases
-                  git config --global credential.helper store
-                  echo "https://x-access-token:${UPSTREAM_TOKEN}@github.com" > ~/.git-credentials
+                  # Use GIT_ASKPASS to provide the token when git prompts for credentials
+                  # This is more reliable than embedding token in URL for some git versions
+                  GIT_ASKPASS_SCRIPT=$(mktemp)
+                  echo '#!/bin/sh' > "$GIT_ASKPASS_SCRIPT"
+                  echo "echo '$UPSTREAM_TOKEN'" >> "$GIT_ASKPASS_SCRIPT"
+                  chmod +x "$GIT_ASKPASS_SCRIPT"
+                  export GIT_ASKPASS="$GIT_ASKPASS_SCRIPT"
+                  export GIT_TERMINAL_PROMPT=0
 
-                  # Use the URL that worked in the test step, or fall back to x-access-token format
-                  if [ -n "$UPSTREAM_URL" ]; then
-                      UPSTREAM_REPO_URL="$UPSTREAM_URL"
-                  else
-                      # Try x-access-token format first
-                      UPSTREAM_REPO_URL="https://x-access-token:${UPSTREAM_TOKEN}@github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git"
+                  # Add upstream remote (git will use GIT_ASKPASS for authentication)
+                  UPSTREAM_REPO_URL="https://github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git"
+                  git remote add upstream "$UPSTREAM_REPO_URL"
 
-                      # If that doesn't work, try token as username
-                      if ! git ls-remote "$UPSTREAM_REPO_URL" >/dev/null 2>&1; then
-                          UPSTREAM_REPO_URL="https://${UPSTREAM_TOKEN}@github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git"
-                      fi
-                  fi
-
-                  # Add upstream remote (without token in URL since we're using credential helper)
-                  UPSTREAM_REPO_URL_CLEAN="https://github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git"
-                  git remote add upstream "$UPSTREAM_REPO_URL_CLEAN"
-
-                  # Fetch from upstream
+                  # Fetch from upstream (will use GIT_ASKPASS for authentication)
                   git fetch upstream
 
                   # Checkout master branch
@@ -187,6 +178,9 @@ jobs:
 
                   # Merge upstream/master into master
                   git merge --no-edit upstream/master
+
+                  # Cleanup
+                  rm -f "$GIT_ASKPASS_SCRIPT"
               env:
                   GH_REPO_ACCESS_BEE_MASTER: ${{ secrets.GH_REPO_ACCESS_BEE_MASTER }}
                   GH_REPO_ACCESS_RTE_MASTER: ${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
