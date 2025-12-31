@@ -1,18 +1,18 @@
-# all-temp-fork-scheduled_sync_with_upstream-weekly.yaml
-name: Template Scheduled Merge Fork with Upstream - Weekly
+# all-temp-fork-pub_scheduled_sync_with_upstream-daily.yaml
+name: Template Scheduled Merge Public Fork with Upstream - Daily
 
 on:
   schedule:
-    - cron: '0 0 * * 0'  # Runs weekly on Sunday at midnight UTC
+    - cron: '0 0 * * *'  # Runs daily at midnight UTC
   workflow_dispatch:      # Allows manual trigger
 
 jobs:
-  all-temp-fork-scheduled_sync_with_upstream-weekly:
+  all-temp-fork-scheduled_sync_with_upstream-daily:
     permissions:
       id-token: write
       contents: write
     #    if: github.event.pull_request.merged == true
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/all-wf-fork-scheduled_sync_with_upstream-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/all-wf-fork-pub_scheduled_sync_with_upstream-def.yaml@master
     #    with:
     #  run_deploy: ${{ startsWith(github.ref, 'refs/tags/') == true }}
     #      original_owner:     ${{ vars.ORIGINAL_OWNER }}

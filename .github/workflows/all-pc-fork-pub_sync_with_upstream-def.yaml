@@ -1,5 +1,5 @@
-# all-pc-fork-sync_with_upstream-def.yaml
-name: Merge with Upstream Fork
+# all-pc-fork-pub_sync_with_upstream-def.yaml
+name: Merge with Upstream Public Fork
 
 on:
     workflow_call:
