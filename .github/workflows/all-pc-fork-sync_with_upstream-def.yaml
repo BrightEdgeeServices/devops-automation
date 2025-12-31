@@ -109,21 +109,38 @@ jobs:
                   # Test access using git ls-remote
                   echo ""
                   echo "Testing via git ls-remote..."
+
+                  # Try with x-access-token format first
                   UPSTREAM_URL="https://x-access-token:${UPSTREAM_TOKEN}@github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git"
 
                   if git ls-remote "$UPSTREAM_URL" >/dev/null 2>&1; then
-                      echo "✓ Git access successful - token can access repository via git"
+                      echo "✓ Git access successful with x-access-token format"
                       echo "Available branches and tags:"
                       git ls-remote "$UPSTREAM_URL" | head -10
                   else
-                      echo "✗ Git access failed"
-                      echo "Attempting with verbose output:"
-                      git ls-remote "$UPSTREAM_URL" 2>&1 || true
-                      echo ""
-                      echo "Note: If API access succeeded but git access failed,"
-                      echo "the token format might need adjustment or git credentials may be interfering."
-                      exit 1
+                      # Try alternative: token as username (some tokens work better this way)
+                      echo "Trying alternative authentication method (token as username)..."
+                      UPSTREAM_URL_ALT="https://${UPSTREAM_TOKEN}@github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git"
+
+                      if git ls-remote "$UPSTREAM_URL_ALT" >/dev/null 2>&1; then
+                          echo "✓ Git access successful with token as username"
+                          echo "Available branches and tags:"
+                          git ls-remote "$UPSTREAM_URL_ALT" | head -10
+                          UPSTREAM_URL="$UPSTREAM_URL_ALT"
+                      else
+                          echo "✗ Git access failed with both methods"
+                          echo "Attempting with verbose output:"
+                          git ls-remote "$UPSTREAM_URL" 2>&1 || true
+                          echo ""
+                          echo "Note: API access succeeded but git access failed."
+                          echo "This may indicate a git-specific authentication issue."
+                          echo "The workflow will continue but may fail at the fetch step."
+                          # Don't exit - let the fetch step handle the error
+                      fi
                   fi
+
+                  # Export the working URL for use in next step
+                  echo "UPSTREAM_URL=$UPSTREAM_URL" >> $GITHUB_ENV
               env:
                   GH_REPO_ACCESS_BEE_MASTER: ${{ secrets.GH_REPO_ACCESS_BEE_MASTER }}
                   GH_REPO_ACCESS_RTE_MASTER: ${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
@@ -140,9 +157,27 @@ jobs:
                   # Remove upstream remote if it already exists
                   git remote remove upstream 2>/dev/null || true
 
-                  # Add upstream remote with authentication token
-                  UPSTREAM_URL="https://x-access-token:${UPSTREAM_TOKEN}@github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git"
-                  git remote add upstream "$UPSTREAM_URL"
+                  # Configure git credential helper to use the token
+                  # This method works better than embedding token in URL for some cases
+                  git config --global credential.helper store
+                  echo "https://x-access-token:${UPSTREAM_TOKEN}@github.com" > ~/.git-credentials
+
+                  # Use the URL that worked in the test step, or fall back to x-access-token format
+                  if [ -n "$UPSTREAM_URL" ]; then
+                      UPSTREAM_REPO_URL="$UPSTREAM_URL"
+                  else
+                      # Try x-access-token format first
+                      UPSTREAM_REPO_URL="https://x-access-token:${UPSTREAM_TOKEN}@github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git"
+
+                      # If that doesn't work, try token as username
+                      if ! git ls-remote "$UPSTREAM_REPO_URL" >/dev/null 2>&1; then
+                          UPSTREAM_REPO_URL="https://${UPSTREAM_TOKEN}@github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git"
+                      fi
+                  fi
+
+                  # Add upstream remote (without token in URL since we're using credential helper)
+                  UPSTREAM_REPO_URL_CLEAN="https://github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git"
+                  git remote add upstream "$UPSTREAM_REPO_URL_CLEAN"
 
                   # Fetch from upstream
                   git fetch upstream
