@@ -79,6 +79,40 @@ jobs:
             #        env:
             #          GH_TOKEN: ${{ secrets.GH_REPO_ACCESS_CURR_USER }}
 
+            - name: Test upstream repository access
+              run: |
+                  # Determine which token to use based on the original owner
+                  if [ "$ORIGINAL_OWNER" = "BrightEdgeeServices" ]; then
+                      UPSTREAM_TOKEN="$GH_REPO_ACCESS_BEE_MASTER"
+                      TOKEN_NAME="GH_REPO_ACCESS_BEE_MASTER"
+                  else
+                      UPSTREAM_TOKEN="$GH_REPO_ACCESS_RTE_MASTER"
+                      TOKEN_NAME="GH_REPO_ACCESS_RTE_MASTER"
+                  fi
+
+                  echo "Testing access to: https://github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME"
+                  echo "Using token: $TOKEN_NAME"
+
+                  # Test access using git ls-remote
+                  if git ls-remote "https://x-access-token:${UPSTREAM_TOKEN}@github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git" >/dev/null 2>&1; then
+                      echo "✓ Token has access to the repository"
+                      echo "Available branches and tags:"
+                      git ls-remote "https://x-access-token:${UPSTREAM_TOKEN}@github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git" | head -10
+                  else
+                      echo "✗ Token does NOT have access to the repository"
+                      echo "Possible reasons:"
+                      echo "  - Repository does not exist at this location"
+                      echo "  - Token lacks required permissions (needs 'repo' scope)"
+                      echo "  - Token does not have access to the organization"
+                      echo ""
+                      echo "Attempting to fetch with verbose output:"
+                      git ls-remote "https://x-access-token:${UPSTREAM_TOKEN}@github.com/$ORIGINAL_OWNER/$ORIGINAL_REPO_NAME.git" 2>&1 || true
+                      exit 1
+                  fi
+              env:
+                  GH_REPO_ACCESS_BEE_MASTER: ${{ secrets.GH_REPO_ACCESS_BEE_MASTER }}
+                  GH_REPO_ACCESS_RTE_MASTER: ${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
+
             - name: Fetch upstream and merge
               run: |
                   # Determine which token to use based on the original owner
