@@ -14,6 +14,10 @@ on:
         required: true
       GH_REPO_ACCESS_RTE_MASTER:
         required: true
+      INSTALLER_USERID:
+        required: true
+      INSTALLER_PWD:
+        required: true
 #      MYSQL_PASSWORD:
 #        required: true
 #      MYSQL_ROOT_PASSWORD:
