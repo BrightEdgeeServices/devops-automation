@@ -25,7 +25,7 @@ jobs:
       MYSQL_PASSWORD: ${{secrets.MYSQL_PASSWORD}}
       MYSQL_PWD: ${{vars.MYSQL_PWD}}
       MYSQL_USER: ${{secrets.MYSQL_USER}}
-      PROJECT_NAME: ${{ vars.PROJECT_NAME }}
+      PROJECT_NAME: ${{vars.PROJECT_NAME }}
 
     strategy:
       fail-fast: true

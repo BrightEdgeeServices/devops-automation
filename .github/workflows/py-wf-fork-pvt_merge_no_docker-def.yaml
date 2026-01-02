@@ -34,6 +34,8 @@ on:
         required: true
       RELEASE_EMAIL_PASSWORD:
         required: true
+      VENV_ENVIRONMENT:
+        required: true
 
 jobs:
   Pre-Commit:
