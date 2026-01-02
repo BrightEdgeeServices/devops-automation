@@ -19,8 +19,12 @@ jobs:
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
       INSTALLER_USERID:          ${{vars.INSTALLER_USERID }}
       INSTALLER_PWD:             ${{secrets.INSTALLER_PWD }}
+      MYSQL_DATABASE:            ${{secrets.MYSQL_DATABASE }}
+      MYSQL_HOST:                ${{secrets.MYSQL_HOST }}
+      MYSQL_TCP_PORT:            ${{secrets.MYSQL_TCP_PORT }}
       MYSQL_PASSWORD:            ${{secrets.MYSQL_PASSWORD}}
       MYSQL_ROOT_PASSWORD:       ${{secrets.MYSQL_ROOT_PASSWORD}}
       MYSQL_USER:                ${{secrets.MYSQL_USER}}
+      VENV_ENVIRONMENT:          ${{secrets.VENV_ENVIRONMENT }}
       RELEASE_EMAIL_USER:        ${{secrets.RELEASE_EMAIL_USER }}
       RELEASE_EMAIL_PASSWORD:    ${{secrets.RELEASE_EMAIL_PASSWORD }}
