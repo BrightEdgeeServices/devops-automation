@@ -20,8 +20,8 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        os: [ 'ubuntu-latest' ]
-        python-version: [ '3.12' ]
+        os: ["ubuntu-latest"]
+        python-version: ["3.12"]
 
     permissions:
       contents: write
@@ -34,27 +34,42 @@ jobs:
           fetch-depth: 0
 
       - name: Set Git identity
-        run:  |
-              git config --global user.name 'GitHub Action'
-              git config --global user.email 'action@github.com'
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
 
-      - name:              Merge into master
-        id:                merge
-        run:               |
-                           git checkout master
-                           git merge --no-ff $GITHUB_REF
+      - name: Merge current branch into master
+        id: merge
+        run: |
+          # Get the current branch name that was pushed
+          CURRENT_BRANCH="${{ github.ref_name }}"
+          echo "Current branch: $CURRENT_BRANCH"
+          echo "Full ref: ${{ github.ref }}"
+
+          # Ensure we're working with the fork repository (origin), not upstream
+          echo "Repository: ${{ github.repository }}"
+          echo "Remote origin URL:"
+          git remote get-url origin
+
+          # Checkout master branch of the fork
+          git checkout master
+
+          # Merge the current branch into master
+          git merge --no-ff "$CURRENT_BRANCH"
         continue-on-error: false
 
-      - name: Push to master
-        if:   steps.merge.outcome == 'success'
-        run:  |
-              git push origin master
+      - name: Push to fork's master (not upstream)
+        if: steps.merge.outcome == 'success'
+        run: |
+          # Verify we're pushing to origin (the fork), not upstream
+          echo "Pushing to origin master (fork repository)"
+          git remote -v
+          git push origin master
         env:
           GH_TOKEN: ${{ secrets.GH_REPO_ACCESS_CURR_USER }}
 
   #      - name: Debug Environment
   #        run: env
-
 #  Build-and-Deploy:
 #    runs-on: ${{ matrix.os }}
 #
