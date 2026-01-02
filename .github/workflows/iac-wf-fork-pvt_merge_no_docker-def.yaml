@@ -42,7 +42,7 @@ jobs:
     uses:    BrightEdgeeServices/devops-automation/.github/workflows/py-pc-precom-def.yaml@master
     secrets: inherit
 
-# ToDo: This is a placeholder and has to be fixed
+# ToDo: This is a placeholder and has to be fixed for IaC
     # CI:
     # uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-ci-pvt_no_docker-def.yaml@master
     # secrets:
