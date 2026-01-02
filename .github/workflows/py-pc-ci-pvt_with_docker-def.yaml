@@ -9,9 +9,9 @@ on:
         required: true
       GH_REPO_ACCESS_RTE_MASTER:
         required: true
-      INSTALLER_USER_ID:
+      INSTALLER_USERID:
         required: true
-      INSTALLER_USER_PWD:
+      INSTALLER_PWD:
         required: true
       MYSQL_DATABASE:
         required: true
@@ -72,9 +72,9 @@ jobs:
       fail-fast: true
       matrix:
         #        python-version: ['3.8', '3.9', '3.10', '3.11']
-        python-version: [ '3.13' ]
+        python-version: ["3.13"]
         #        os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
-        os: [ 'ubuntu-latest' ]
+        os: ["ubuntu-latest"]
 
     steps:
       - name: Check out code
@@ -84,17 +84,17 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
-          architecture:   x64
+          architecture: x64
 
       - name: Install Docker Compose
-        run:  |
-              sudo apt-get update
-              sudo apt-get install -y docker-compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
 
       - name: Install Poetry
-        run:  |
-              curl -sSL https://install.python-poetry.org | python3 -
-              echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
 
       - name: Configure Poetry
         run: |
@@ -103,8 +103,8 @@ jobs:
           poetry config http-basic.RTE __token__ ${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
 
       - name: Install dependencies
-        run:  |
-              poetry install --with dev
+        run: |
+          poetry install --with dev
 
       # Create the .env file that docker compose expects
       - name: Create .env from GitHub Secrets
@@ -112,8 +112,8 @@ jobs:
           cat > .env <<'EOF'
           GH_REPO_ACCESS_BEE_MASTER=${{ secrets.GH_REPO_ACCESS_BEE_MASTER }}
           GH_REPO_ACCESS_RTE_MASTER=${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
-          INSTALLER_USER_ID=${{ secrets.INSTALLER_USER_ID }}
-          INSTALLER_USER_PWD=${{ secrets.INSTALLER_USER_PWD }}
+          INSTALLER_USERID=${{ secrets.INSTALLER_USER_ID }}
+          INSTALLER_PWD=${{ secrets.INSTALLER_USER_PWD }}
           MYSQL_DATABASE=${{ secrets.MYSQL_DATABASE }}
           MYSQL_HOST=${{ secrets.MYSQL_HOST }}
           MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }}
@@ -135,18 +135,18 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Start Docker Compose
-        run:  docker-compose -f docker-compose.yaml up -d
+        run: docker-compose -f docker-compose.yaml up -d
 
       - name: Wait for services to be ready
-        run:  |
-              echo "Waiting for services to start..."
-              sleep 10
+        run: |
+          echo "Waiting for services to start..."
+          sleep 10
 
       - name: Run pytest with coverage
-        run:  |
-              mkdir logs
-              poetry run pytest --cov=./ --cov-report=xml --maxfail=1 tests/
+        run: |
+          mkdir logs
+          poetry run pytest --cov=./ --cov-report=xml --maxfail=1 tests/
 
       - name: Tear down Docker Compose
-        if:   always()
-        run:  docker-compose -f docker-compose.yaml down
+        if: always()
+        run: docker-compose -f docker-compose.yaml down
