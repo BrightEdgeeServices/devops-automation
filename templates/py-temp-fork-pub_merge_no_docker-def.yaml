@@ -1,16 +1,16 @@
-﻿# py-temp-fork-pvt_merge_no_docker-def.yaml
+﻿# py-temp-fork-pub_merge_no_docker-def.yaml
 name: Python Template Merge no Docker with Local Fork
 
 on:
   push:
 
 jobs:
-  py-temp-fork-pvt_merge_no_docker-def:
+  py-temp-fork-pub_merge_no_docker-def:
     permissions:
       id-token: write
       contents: write
     #    if: github.event.pull_request.merged == true
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/iac-wf-fork-pvt_merge_no_docker-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-wf-fork-pub_merge_no_docker-def.yaml@master
     # with:
       # run_deploy: ${{ startsWith(github.ref, 'refs/tags/') == true }}
     # secrets: inherit
