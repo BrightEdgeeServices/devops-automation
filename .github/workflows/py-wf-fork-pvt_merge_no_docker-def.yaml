@@ -63,7 +63,7 @@ jobs:
     permissions:
       id-token: write
       contents: write
-    if:   ${{ inputs.run_deploy == true }}
+    # if:   ${{ inputs.run_deploy == true }}
     needs:
       - Pre-Commit
       - CI
