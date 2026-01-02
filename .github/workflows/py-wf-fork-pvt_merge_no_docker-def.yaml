@@ -1,5 +1,5 @@
-# py-wf-fork-merge_no_docker-def.yaml
-name: Merge with local forked copy
+# py-wf-fork-pvt_merge_no_docker-def.yaml
+name: Workflow for Merge no Docker with Local Fork
 
 on:
   workflow_call:
@@ -44,7 +44,7 @@ jobs:
     needs:
       - Pre-Commit
       - CI
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-fork-merge-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/all-pc-fork-merge-def.yaml@master
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
