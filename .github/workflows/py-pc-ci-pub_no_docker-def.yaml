@@ -16,8 +16,8 @@ jobs:
     runs-on: ${{matrix.os}}
     env:
       # GH_REPO_ACCESS_BY_OWN_APPS: ${{ secrets.GH_REPO_ACCESS_BY_OWN_APPS }}
-      INSTALLER_USER_ID: ${{secrets.INSTALLER_USER_ID}}
-      INSTALLER_USER_PWD: ${{secrets.INSTALLER_USER_PWD}}
+      INSTALLER_USERID: ${{secrets.INSTALLER_USERID}}
+      INSTALLER_PWD: ${{secrets.INSTALLER_PWD}}
       MYSQL_DATABASE: ${{vars.MYSQL_DATABASE}}
       MYSQL_HOST: ${{vars.MYSQL_HOST}}
       MYSQL_ROOT_PASSWORD: ${{secrets.MYSQL_ROOT_PASSWORD }}
@@ -31,9 +31,9 @@ jobs:
       fail-fast: true
       matrix:
         #        python-version: ['3.8', '3.9', '3.10', '3.11']
-        python-version: [ '3.13' ]
+        python-version: ["3.13"]
         #        os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
-        os: [ 'ubuntu-latest' ]
+        os: ["ubuntu-latest"]
 
     steps:
       - name: Check out code
@@ -88,7 +88,6 @@ jobs:
           fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: hendrikdutoit/DockerMySqlExample
-
 #      - name: Tear down Docker Compose
 #        if: always()
 #        run: docker-compose -f docker-compose.yaml down
