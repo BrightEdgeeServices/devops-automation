@@ -1,6 +1,4 @@
 # py-pc-ci-pub_no_docker-def.yaml
-# ToDo
-# This is a copied version and has to be fixed
 name: CI
 
 on:
@@ -10,22 +8,46 @@ on:
         required: true
       GH_REPO_ACCESS_RTE_MASTER:
         required: true
+      INSTALLER_USERID:
+        required: true
+      INSTALLER_PWD:
+        required: true
+      MYSQL_DATABASE:
+        required: true
+      MYSQL_HOST:
+        required: true
+      MYSQL_PASSWORD:
+        required: true
+      MYSQL_ROOT_PASSWORD:
+        required: true
+      MYSQL_TCP_PORT:
+        required: true
+      MYSQL_USER:
+        required: true
+      RELEASE_EMAIL_USER:
+        required: true
+      RELEASE_EMAIL_PASSWORD:
+        required: true
+      VENV_ENVIRONMENT:
+        required: true
 
 jobs:
   CI:
     runs-on: ${{matrix.os}}
     env:
-      # GH_REPO_ACCESS_BY_OWN_APPS: ${{ secrets.GH_REPO_ACCESS_BY_OWN_APPS }}
-      INSTALLER_USERID: ${{secrets.INSTALLER_USERID}}
-      INSTALLER_PWD: ${{secrets.INSTALLER_PWD}}
-      MYSQL_DATABASE: ${{vars.MYSQL_DATABASE}}
-      MYSQL_HOST: ${{vars.MYSQL_HOST}}
-      MYSQL_ROOT_PASSWORD: ${{secrets.MYSQL_ROOT_PASSWORD }}
-      MYSQL_TCP_PORT: ${{vars.MYSQL_TCP_PORT }}
+      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
+      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
+      INSTALLER_USERID: ${{secrets.INSTALLER_USERID }}
+      INSTALLER_PWD: ${{secrets.INSTALLER_PWD }}
+      MYSQL_DATABASE: ${{secrets.MYSQL_DATABASE }}
+      MYSQL_HOST: ${{secrets.MYSQL_HOST }}
       MYSQL_PASSWORD: ${{secrets.MYSQL_PASSWORD}}
-      MYSQL_PWD: ${{vars.MYSQL_PWD}}
+      MYSQL_ROOT_PASSWORD: ${{secrets.MYSQL_ROOT_PASSWORD}}
+      MYSQL_TCP_PORT: ${{secrets.MYSQL_TCP_PORT }}
       MYSQL_USER: ${{secrets.MYSQL_USER}}
-      PROJECT_NAME: ${{vars.PROJECT_NAME }}
+      RELEASE_EMAIL_USER: ${{secrets.RELEASE_EMAIL_USER }}
+      RELEASE_EMAIL_PASSWORD: ${{secrets.RELEASE_EMAIL_PASSWORD }}
+      VENV_ENVIRONMENT: ${{secrets.VENV_ENVIRONMENT }}
 
     strategy:
       fail-fast: true
@@ -45,11 +67,6 @@ jobs:
           python-version: ${{ matrix.python-version }}
           architecture: x64
 
-      #      - name: Install Docker Compose
-      #        run: |
-      #          sudo apt-get update
-      #          sudo apt-get install -y docker-compose
-
       - name: Install Poetry
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
@@ -58,27 +75,14 @@ jobs:
       - name: Configure Poetry
         run: |
           poetry config keyring.enabled false
-          poetry config "http-basic.BEE" "__token__" ${{secrets.GH_REPO_ACCESS_BEE_MASTER}}
-          poetry config "http-basic.RTE" "__token__" ${{secrets.GH_REPO_ACCESS_RTE_MASTER}}
-      #          poetry source add --priority=explicit BEE https://github.com/BrightEdgeeServices/PoetryPrivate.git -vvv
-      #          poetry add --source BEE git+https://github.com/BrightEdgeeServices/PoetryPrivate.git@develop -vvv
+
       - name: Install dependencies
         run: |
-          poetry install --with ci -vvv
-
-      #      - name: Set up Docker
-      #        uses: docker/setup-buildx-action@v3
-
-      #      - name: Start Docker Compose
-      #        run: docker-compose -f docker-compose.yaml up -d
-
-      #      - name: Wait for services to be ready
-      #        run: |
-      #          echo "Waiting for services to start..."
-      #          sleep 10
+          poetry install --with dev
 
       - name: Run pytest with coverage
         run: |
+          mkdir logs
           poetry run pytest --cov=./ --cov-report=xml --maxfail=1 tests/
 
       - name: Upload coverage to Codecov
