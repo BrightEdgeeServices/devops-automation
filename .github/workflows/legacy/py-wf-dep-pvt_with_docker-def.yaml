@@ -6,17 +6,17 @@ on:
     inputs:
       run_deploy:
         description: "Set to 'true' to run the Build-and-Deploy job if a tag was specified."
-        required:    true
-        default:     false
-        type:        boolean
+        required: true
+        default: false
+        type: boolean
     secrets:
       GH_REPO_ACCESS_BEE_MASTER:
         required: true
       GH_REPO_ACCESS_RTE_MASTER:
         required: true
-      INSTALLER_USER_ID:
+      INSTALLER_USERID:
         required: true
-      INSTALLER_USER_PWD:
+      INSTALLER_PWD:
         required: true
       MYSQL_DATABASE:
         required: true
@@ -39,7 +39,7 @@ on:
 
 jobs:
   Pre-Commit:
-    uses:    BrightEdgeeServices/devops-automation/.github/workflows/py-pc-precom-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-precom-def.yaml@master
     secrets: inherit
 
   CI:
@@ -47,8 +47,8 @@ jobs:
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
-      INSTALLER_USER_ID: ${{secrets.INSTALLER_USER_ID }}
-      INSTALLER_USER_PWD: ${{secrets.INSTALLER_USER_PWD }}
+      INSTALLER_USERID: ${{secrets.INSTALLER_USERID }}
+      INSTALLER_PWD: ${{secrets.INSTALLER_PWD }}
       MYSQL_DATABASE: ${{secrets.MYSQL_DATABASE }}
       MYSQL_HOST: ${{secrets.MYSQL_HOST }}
       MYSQL_PASSWORD: ${{secrets.MYSQL_PASSWORD }}
@@ -61,7 +61,7 @@ jobs:
     permissions:
       id-token: write
       contents: write
-    if:   ${{ inputs.run_deploy == true }}
+    if: ${{ inputs.run_deploy == true }}
     needs:
       - Pre-Commit
       - CI
@@ -69,5 +69,5 @@ jobs:
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
-      RELEASE_EMAIL_PASSWORD:    ${{secrets.RELEASE_EMAIL_PASSWORD }}
-      RELEASE_EMAIL_USER:        ${{secrets.RELEASE_EMAIL_USER }}
+      RELEASE_EMAIL_PASSWORD: ${{secrets.RELEASE_EMAIL_PASSWORD }}
+      RELEASE_EMAIL_USER: ${{secrets.RELEASE_EMAIL_USER }}

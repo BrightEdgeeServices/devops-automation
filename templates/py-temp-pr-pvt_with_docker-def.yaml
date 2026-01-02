@@ -25,8 +25,8 @@ jobs:
     secrets:
       GH_REPO_ACCESS_BEE_MASTER:  ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER:  ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
-      INSTALLER_USER_ID:          ${{vars.INSTALLER_USER_ID }}
-      INSTALLER_USER_PWD:         ${{secrets.INSTALLER_USER_PWD }}
+      INSTALLER_USERID:          ${{vars.INSTALLER_USERID }}
+      INSTALLER_PWD:         ${{secrets.INSTALLER_PWD }}
       MYSQL_DATABASE:             ${{vars.MYSQL_DATABASE }}
       MYSQL_HOST:                 ${{vars.MYSQL_HOST }}
       MYSQL_PASSWORD:             ${{secrets.MYSQL_PASSWORD}}
