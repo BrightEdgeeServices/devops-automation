@@ -18,6 +18,12 @@ on:
         required: true
       INSTALLER_PWD:
         required: true
+      MYSQL_DATABASE:
+        required: true
+      MYSQL_HOST:
+        required: true
+      MYSQL_TCP_PORT:
+        required: true
       MYSQL_PASSWORD:
         required: true
       MYSQL_ROOT_PASSWORD:
@@ -41,6 +47,15 @@ jobs:
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
       INSTALLER_USERID: ${{secrets.INSTALLER_USERID }}
       INSTALLER_PWD: ${{secrets.INSTALLER_PWD }}
+      MYSQL_DATABASE: ${{secrets.MYSQL_DATABASE }}
+      MYSQL_HOST: ${{secrets.MYSQL_HOST }}
+      MYSQL_TCP_PORT: ${{secrets.MYSQL_TCP_PORT }}
+      MYSQL_PASSWORD: ${{secrets.MYSQL_PASSWORD }}
+      MYSQL_ROOT_PASSWORD: ${{secrets.MYSQL_ROOT_PASSWORD }}
+      MYSQL_USER: ${{secrets.MYSQL_USER }}
+      RELEASE_EMAIL_USER: ${{secrets.RELEASE_EMAIL_USER }}
+      RELEASE_EMAIL_PASSWORD: ${{secrets.RELEASE_EMAIL_PASSWORD }}
+      VENV_ENVIRONMENT: ${{secrets.VENV_ENVIRONMENT }}
 
   Merge-with-Local:
     permissions:
