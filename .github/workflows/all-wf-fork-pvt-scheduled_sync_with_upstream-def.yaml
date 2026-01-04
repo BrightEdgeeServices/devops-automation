@@ -68,7 +68,7 @@ jobs:
         secrets:
             GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
             GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
-            ORIGINAL_OWNER: ${{vars.ORIGINAL_OWNER}}
-            ORIGINAL_REPO_NAME: ${{vars.ORIGINAL_REPO_NAME}}
+            ORIGINAL_OWNER: ${{secrets.ORIGINAL_OWNER}}
+            ORIGINAL_REPO_NAME: ${{secrets.ORIGINAL_REPO_NAME}}
 #      RELEASE_EMAIL_PASSWORD:    ${{secrets.RELEASE_EMAIL_PASSWORD }}
 #      RELEASE_EMAIL_USER:        ${{secrets.RELEASE_EMAIL_USER }}
