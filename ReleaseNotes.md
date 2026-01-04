@@ -1,3 +1,89 @@
+### Release 9.0.0
+
+### Summary of Changes
+
+- Templates: Updated workflow references in legacy templates to use standardized naming convention with hyphens and "-all" suffixes:
+  - `templates/legacy/py-temp-dep-pvt_no_docker-def.yaml`
+  - `templates/legacy/py-temp-dep-pvt_with_docker-def.yaml`
+  - `templates/legacy/py-temp-pub-pvt_no_docker-def.yaml`
+  - `templates/legacy/py-temp-pypi-pub_custom_ci-def.yaml`
+- Workflows: Standardized naming convention across workflows by renaming files to use hyphens instead of underscores and adding "-all" suffixes where appropriate. Updated workflow references throughout the codebase to match the new naming convention.
+- Workflows: Added new public repository PR workflow `.github/workflows/py-wf-pr-pub-no_docker-def.yaml` for public repositories.
+- Documentation: Updated README.md to reflect naming convention changes.
+- Build: Bumped version to 9.0.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-307-main_feature-devops-automation-fork-sync-templates`
+- Files changed:
+  - .github/workflows/00-new-release-pipeline.yaml
+  - .github/workflows/all-pc-fork-all-merge-def.yaml
+  - .github/workflows/all-pc-fork-pub-sync_with_upstream-def.yaml
+  - .github/workflows/all-pc-fork-pvt-sync_with_upstream-def.yaml
+  - .github/workflows/all-pc-notify-all-def.yaml
+  - .github/workflows/all-pc-pr-all-cleanup_tag-def.yaml
+  - .github/workflows/all-pc-pr-all-def.yaml
+  - .github/workflows/all-pc-pr-all-detect_tag-def.yaml
+  - .github/workflows/all-wf-fork-pub-scheduled_sync_with_upstream-def.yaml
+  - .github/workflows/all-wf-fork-pvt-scheduled_sync_with_upstream-def.yaml
+  - .github/workflows/iac-wf-fork-pvt-merge_no_docker-def.yaml
+  - .github/workflows/legacy/py-temp-fork-pvt_merge_no_docker-def.yaml
+  - .github/workflows/legacy/py-temp-fork-pvt_merge_with_docker-def.yaml
+  - .github/workflows/legacy/py-wf-dep-pvt_no_docker-def.yaml
+  - .github/workflows/legacy/py-wf-dep-pvt_with_docker-def.yaml
+  - .github/workflows/legacy/py-wf-fork-merge_with_docker-def.yaml
+  - .github/workflows/legacy/py-wf-pub-pvt_no_docker-def.yaml
+  - .github/workflows/legacy/py-wf-pypi-pub_no_docker-def.yaml
+  - .github/workflows/legacy/py-wf-pypi-pub_with_docker-def.yaml
+  - .github/workflows/py-pc-build-all-def.yaml
+  - .github/workflows/py-pc-ci-pub-no_docker-def.yaml
+  - .github/workflows/py-pc-ci-pub-with_docker-def.yaml
+  - .github/workflows/py-pc-ci-pvt-no_docker-def.yaml
+  - .github/workflows/py-pc-precom-all-def.yaml
+  - .github/workflows/py-pc-release-all-def.yaml
+  - .github/workflows/py-wf-fork-pub-merge_no_docker-def.yaml
+  - .github/workflows/py-wf-fork-pvt-merge_no_docker-def.yaml
+  - .github/workflows/py-wf-pr-pub-no_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt-no_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt_straight_through-def.yaml
+  - .github/workflows/py-wf-pr-pvt_with_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt_with_native_docker-def.yaml
+  - .github/workflows/py-wf-publish-pvt-build_release_notify_after_merge-def.yaml
+  - .github/workflows/py-wf-publish-pvt-release_notify_after_merge-def.yaml
+  - .github/workflows/react-pc-ci-pvt-with_docker-def.yaml
+  - .github/workflows/react-pc-precom-all-def.yaml
+  - .github/workflows/react-pc-release-all-def.yaml
+  - .github/workflows/react-wf-pr-pvt-with_docker-def.yaml
+  - .github/workflows/react-wf-publish-pvt-release_notify_after_merge-def.yaml
+  - README.md
+  - templates/all-temp-fork-pub-scheduled_sync_with_upstream-daily.yaml
+  - templates/all-temp-fork-pub-scheduled_sync_with_upstream-daily.yaml.yaml
+  - templates/all-temp-fork-pub-scheduled_sync_with_upstream-weekly.yaml
+  - templates/all-temp-fork-pvt-scheduled_sync_with_upstream-daily.yaml
+  - templates/all-temp-fork-pvt-scheduled_sync_with_upstream-monthly.yaml
+  - templates/all-temp-fork-pvt-scheduled_sync_with_upstream-weekly.yaml
+  - templates/iac-temp-fork-pvt-merge_no_docker-def.yaml
+  - templates/legacy/py-temp-dep-pvt_no_docker-def.yaml
+  - templates/legacy/py-temp-dep-pvt_with_docker-def.yaml
+  - templates/legacy/py-temp-pub-pvt_no_docker-def.yaml
+  - templates/legacy/py-temp-pypi-pub_custom_ci-def.yaml
+  - templates/py-temp-fork-pub-merge_no_docker-def.yaml
+  - templates/py-temp-fork-pvt-merge_no_docker-def.yaml
+  - templates/py-temp-pr-pub-no_docker-def.yaml
+  - templates/py-temp-pr-pvt-no_docker-def.yaml
+  - templates/py-temp-pr-pvt-straight_through-def.yaml
+  - templates/py-temp-pr-pvt-with_docker-def.yaml
+  - templates/py-temp-pr-pvt-with_native_docker-def.yaml
+  - templates/py-temp-pvt-publish-build_release_notify_after_merge-def.yaml.yaml
+  - templates/py-temp-pvt-publish-release_notify_after_merge-def.yaml
+  - templates/react-temp-pr-pvt-with_docker-def.yaml
+  - templates/react-temp-publish-pvt-release_notify_after_merge-def.yaml
+- Number of files changed: 62
+- Insertions: 382
+- Deletions: 331
+
+______________________________________________________________________
+
 ### Release 8.0.2
 
 ### Summary of Changes
