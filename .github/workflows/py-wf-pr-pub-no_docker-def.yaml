@@ -32,8 +32,6 @@ on:
         required: true
       MYSQL_USER:
         required: true
-      PYPI_API_TOKEN_PROD:
-        required: true
       RELEASE_EMAIL_USER:
         required: true
       RELEASE_EMAIL_PASSWORD:
