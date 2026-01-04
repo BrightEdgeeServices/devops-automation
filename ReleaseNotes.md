@@ -1,3 +1,21 @@
+### Release 9.3.2
+
+### Summary of Changes
+
+- Workflows: Updated `.github/workflows/py-wf-publish-pvt-build_release_notify_after_merge-def.yaml` to use public build workflow (`py-pc-build-pub-def.yaml`) instead of private build workflow, added `PYPI_API_TOKEN_PROD` as required input secret and to Build job secrets, and commented out `GH_REPO_ACCESS_BEE_MASTER` and `GH_REPO_ACCESS_RTE_MASTER` secrets in Build job.
+- Build: Bumped version to 9.3.2 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-307-main_feature-devops-automation-fork-sync-templates`
+- Files changed:
+  - .github/workflows/py-wf-publish-pvt-build_release_notify_after_merge-def.yaml
+- Number of files changed: 1
+- Insertions: 6
+- Deletions: 3
+
+______________________________________________________________________
+
 ### Release 9.3.1
 
 ### Summary of Changes
