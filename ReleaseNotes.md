@@ -1,3 +1,23 @@
+### Release 9.3.0
+
+### Summary of Changes
+
+- Templates: Updated secrets configuration in `templates/py-temp-publish-pub-build_release_notify_after_merge-def.yaml` by commenting out `GH_REPO_ACCESS_BEE_MASTER` and `GH_REPO_ACCESS_RTE_MASTER` secrets and adding `PYPI_API_TOKEN_PROD` secret.
+- Workflows: Updated secrets configuration in `.github/workflows/py-wf-publish-pub-build_release_notify_after_merge-def.yaml` by commenting out `GH_REPO_ACCESS_BEE_MASTER` and `GH_REPO_ACCESS_RTE_MASTER` secrets and adding `PYPI_API_TOKEN_PROD` secret.
+- Build: Bumped version to 10.0.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-307-main_feature-devops-automation-fork-sync-templates`
+- Files changed:
+  - .github/workflows/py-wf-publish-pub-build_release_notify_after_merge-def.yaml
+  - templates/py-temp-publish-pub-build_release_notify_after_merge-def.yaml
+- Number of files changed: 2
+- Insertions: 10
+- Deletions: 7
+
+______________________________________________________________________
+
 ### Release 9.2.1
 
 ### Summary of Changes
