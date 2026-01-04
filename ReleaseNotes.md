@@ -1,3 +1,21 @@
+### Release 9.2.0
+
+### Summary of Changes
+
+- Templates: Updated job name and permissions in `templates/py-temp-pr-pub-no_docker-def.yaml` to fix job naming convention (changed from `py-temp-pypi-pub_no_docker-def` to `py-temp-pr-pub-no_docker-def`) and added `pull-requests: write` permission.
+- Build: Bumped version to 10.0.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-307-main_feature-devops-automation-fork-sync-templates`
+- Files changed:
+  - templates/py-temp-pr-pub-no_docker-def.yaml
+- Number of files changed: 1
+- Insertions: 2
+- Deletions: 1
+
+______________________________________________________________________
+
 ### Release 9.1.0
 
 ### Summary of Changes
