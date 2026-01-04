@@ -1,0 +1,29 @@
+# all-pc-pr-all-cleanup_tag-def.yaml
+name: Cleanup PR Tag (default)
+
+on:
+  workflow_call:
+    secrets:
+      GH_REPO_ACCESS_BEE_MASTER:
+        required: true
+      GH_REPO_ACCESS_RTE_MASTER:
+        required: true
+jobs:
+  Cleanup-Delete-pr-Tag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Delete remote 'pr' tag via GitHub API (idempotent)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          code=$(curl -sS -L -X DELETE \
+            -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/git/refs/tags/pr \
+            -o /dev/null -w "%{http_code}")
+          if [ "$code" != "204" ] && [ "$code" != "404" ]; then
+            echo "Unexpected status deleting tag (HTTP $code)" >&2
+            exit 1
+          fi

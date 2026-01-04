@@ -210,7 +210,7 @@ We regularly update our workflows to improve functionality and security. To ensu
    |             | [project].version (fallback [tool.poetry].version) and is prefixed with `v`.                                                    |
    | Variation   | Default                                                                                                                         |
 
-1. react-temp-pr-pvt_with_docker-def.yaml
+1. react-temp-pr-pvt-with_docker-def.yaml
 
    | Type        | Description                             |
    | ----------- | --------------------------------------- |

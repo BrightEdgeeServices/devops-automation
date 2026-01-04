@@ -6,9 +6,9 @@ on:
     inputs:
       run_deploy:
         description: "Set to 'true' to run the Build-and-Publish-to-PyPI job if a tag was specified."
-        required:    true
-        default:     false
-        type:        boolean
+        required: true
+        default: false
+        type: boolean
     secrets:
       GH_REPO_ACCESS_BEE_MASTER:
         required: true
@@ -29,11 +29,11 @@ on:
 
 jobs:
   Pre-Commit:
-    uses:    BrightEdgeeServices/devops-automation/.github/workflows/py-pc-precom-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-precom-all-def.yaml@master
     secrets: inherit
 
   CI:
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-ci-pub_with_docker-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-ci-pub-with_docker-def.yaml@master
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
@@ -42,7 +42,7 @@ jobs:
     permissions:
       id-token: write
       contents: write
-    if:   ${{ inputs.run_deploy == true }}
+    if: ${{ inputs.run_deploy == true }}
     needs:
       - Pre-Commit
       - CI
@@ -50,6 +50,6 @@ jobs:
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
-      PYPI_API_TOKEN_PROD:       ${{secrets.PYPI_API_TOKEN_PROD }}
-      RELEASE_EMAIL_PASSWORD:    ${{secrets.RELEASE_EMAIL_PASSWORD }}
-      RELEASE_EMAIL_USER:        ${{secrets.RELEASE_EMAIL_USER }}
+      PYPI_API_TOKEN_PROD: ${{secrets.PYPI_API_TOKEN_PROD }}
+      RELEASE_EMAIL_PASSWORD: ${{secrets.RELEASE_EMAIL_PASSWORD }}
+      RELEASE_EMAIL_USER: ${{secrets.RELEASE_EMAIL_USER }}

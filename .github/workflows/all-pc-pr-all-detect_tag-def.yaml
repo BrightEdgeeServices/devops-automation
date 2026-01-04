@@ -1,0 +1,30 @@
+# all-pc-pr-all-detect_tag-def.yaml
+# Reusable workflow: Detect presence of 'pr' tag on remote
+name: Detect PR Tag
+permissions:
+  contents: read
+
+on:
+  workflow_call:
+    outputs:
+      has_pr_tag:
+        description: "True if a tag named 'pr' exists on the remote repository"
+        value: ${{ jobs.Detect-PR-Tag.outputs.has_pr_tag }}
+
+jobs:
+  Detect-PR-Tag:
+    runs-on: ubuntu-latest
+    outputs:
+      has_pr_tag: ${{ steps.detect.outputs.has_pr_tag }}
+    steps:
+      - name: Check if tag 'pr' exists in remote
+        id: detect
+        env:
+          REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git ls-remote --exit-code --tags "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" refs/tags/pr >/dev/null 2>&1; then
+            echo "has_pr_tag=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_pr_tag=false" >> "$GITHUB_OUTPUT"
+          fi

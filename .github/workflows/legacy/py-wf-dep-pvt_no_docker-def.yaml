@@ -1,4 +1,4 @@
-# py-wf-pr-pvt_no_docker-def.yaml
+# py-wf-pr-pvt-no_docker-def.yaml
 # ToDo
 # This is a copied version and has to be fixed
 name: Default Deployment Pipeline
@@ -8,9 +8,9 @@ on:
     inputs:
       run_deploy:
         description: "Set to 'true' to run the Build-and-Deploy job if a tag was specified."
-        required:    true
-        default:     false
-        type:        boolean
+        required: true
+        default: false
+        type: boolean
     secrets:
       GH_REPO_ACCESS_BEE_MASTER:
         required: true
@@ -29,11 +29,11 @@ on:
 
 jobs:
   Pre-Commit:
-    uses:    BrightEdgeeServices/devops-automation/.github/workflows/py-pc-precom-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-precom-all-def.yaml@master
     secrets: inherit
 
   CI:
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-ci-pvt_no_docker-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-ci-pvt-no_docker-def.yaml@master
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
@@ -42,7 +42,7 @@ jobs:
     permissions:
       id-token: write
       contents: write
-    if:   ${{ inputs.run_deploy == true }}
+    if: ${{ inputs.run_deploy == true }}
     needs:
       - Pre-Commit
       - CI
@@ -50,5 +50,5 @@ jobs:
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
-      RELEASE_EMAIL_PASSWORD:    ${{secrets.RELEASE_EMAIL_PASSWORD }}
-      RELEASE_EMAIL_USER:        ${{secrets.RELEASE_EMAIL_USER }}
+      RELEASE_EMAIL_PASSWORD: ${{secrets.RELEASE_EMAIL_PASSWORD }}
+      RELEASE_EMAIL_USER: ${{secrets.RELEASE_EMAIL_USER }}
