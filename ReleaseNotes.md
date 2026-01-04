@@ -1,3 +1,22 @@
+### Release 9.5.0
+
+### Summary of Changes
+
+- Templates: Added `ORIGINAL_OWNER` and `ORIGINAL_REPO_NAME` repository variables to `templates/all-temp-fork-pub-scheduled_sync_with_upstream-daily.yaml` and renamed `templates/all-temp-fork-pub-scheduled_sync_with_upstream-daily.yaml.yaml` to `templates/all-temp-fork-pub-scheduled_sync_with_upstream-monthly.yaml` with corrections to job name, workflow reference, and added repository variables.
+- Build: Bumped version to 10.0.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-307-main_feature-devops-automation-fork-sync-templates`
+- Files changed:
+  - templates/all-temp-fork-pub-scheduled_sync_with_upstream-daily.yaml
+  - templates/all-temp-fork-pub-scheduled_sync_with_upstream-monthly.yaml
+- Number of files changed: 2
+- Insertions: 7
+- Deletions: 3
+
+______________________________________________________________________
+
 ### Release 9.4.0
 
 ### Summary of Changes
