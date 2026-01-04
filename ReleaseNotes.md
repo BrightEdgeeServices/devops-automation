@@ -1,3 +1,21 @@
+### Release 9.2.1
+
+### Summary of Changes
+
+- Build: Cleaned up commented code in `pyproject.toml` by removing obsolete commented package configuration.
+- Build: Bumped version to 9.2.1 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-307-main_feature-devops-automation-fork-sync-templates`
+- Files changed:
+  - pyproject.toml
+- Number of files changed: 1
+- Insertions: 0
+- Deletions: 5
+
+______________________________________________________________________
+
 ### Release 9.2.0
 
 ### Summary of Changes
