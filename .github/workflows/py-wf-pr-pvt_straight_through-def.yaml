@@ -76,7 +76,7 @@ jobs:
       - Detect-PR-Tag
       - Pre-Commit
       # - CI
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/all-pc-pr-all-def-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/all-pc-pr-all-def.yaml@master
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}

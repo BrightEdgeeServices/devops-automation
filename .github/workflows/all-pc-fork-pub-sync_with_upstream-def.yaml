@@ -19,6 +19,10 @@ on:
                 required: true
             GH_REPO_ACCESS_RTE_MASTER:
                 required: true
+            ORIGINAL_OWNER:
+                required: true
+            ORIGINAL_REPO_NAME:
+                required: true
 #      RELEASE_EMAIL_USER:
 #        required: true
 #      RELEASE_EMAIL_PASSWORD:

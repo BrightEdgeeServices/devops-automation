@@ -26,7 +26,9 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        python-version: [ '3.13' ]
+        python-version: ["3.13"]
+    env:
+      TAG_NAME: ""
 
     steps:
       - name: Check out repository
@@ -35,59 +37,61 @@ jobs:
           fetch-depth: 0
 
       - name: Resolve release tag
+        id: resolve_tag
         shell: bash
         run: |
           if [ -n "${{ inputs.tag_name }}" ]; then
-            echo "TAG_NAME=${{ inputs.tag_name }}" >> $GITHUB_ENV
+            TAG="${{ inputs.tag_name }}"
           else
             TAG=$(git tag --sort=-creatordate | head -n 1)
             if [ -z "$TAG" ]; then
               TAG=$(git describe --tags --abbrev=0 2>/dev/null || true)
             fi
-            echo "TAG_NAME=$TAG" >> $GITHUB_ENV
           fi
-
-
+          if [ -z "$TAG" ]; then
+            TAG="unknown"
+          fi
+          echo "TAG_NAME=$TAG" >> $GITHUB_ENV
 
       - name: Send release email notification
         uses: betterfor/action-send-mail@main
         with:
           server_address: mail.realtimeevents.co
-          server_port:    465
-          username:       ${{ secrets.RELEASE_EMAIL_USER }}
-          password:       ${{ secrets.RELEASE_EMAIL_PASSWORD }}
-          subject:        'New Release: ${{ github.repository }} ${{ env.TAG_NAME }}'
-          to:             rte-development@brightedge.co.za
-          from:           Development Messenger
-          html_body:      |
-                          <table style="font-family: verdana;font-size:90%; border-collapse:collapse; border-style: double; border-color: 000000; border-width: 3px">
-                          <colgroup>
-                            <col style="text-align:right">
-                            <col style="text-align:left">
-                          </colgroup>
-                          <tr>
-                            <th style="text-align: center; border-bottom-style: double; border-right-style: double; border-right-width: 1px; border-bottom-width: 3px">Description</th>
-                            <th style="text-align: center; border-bottom-style: double; border-left-style: double; border-bottom-width: 3px; border-left-width: 1px">Detail</th>
-                          </tr>
-                          <tr>
-                            <td style="text-align: right; border-right-style: solid; border-bottom-style: dotted; border-right-width: 1px;border-bottom-width: 1px">Repository:</td>
-                            <td style="text-align: left; border-bottom-style: dotted; border-left-style: solid; border-left-width: 1px;border-bottom-width: 1px">${{ github.repository }}</td>
-                          </tr>
-                          <tr>
-                            <td style="text-align: right; border-right-style: solid; border-bottom-style: dotted; border-right-width: 1px;border-bottom-width: 1px">Release:</td>
-                            <td style="text-align: left; border-bottom-style: dotted; border-left-style: solid; border-left-width: 1px;border-bottom-width: 1px">${{ env.TAG_NAME }}</td>
-                          </tr>
-                          <tr>
-                            <td style="text-align: right; border-right-style: solid; border-bottom-style: dotted; border-right-width: 1px;border-bottom-width: 1px">Actor:</td>
-                            <td style="text-align: left; border-bottom-style: dotted; border-left-style: solid; border-left-width: 1px;border-bottom-width: 1px">${{ github.actor }}</td>
-                          </tr>
-                          <tr>
-                            <td style="text-align: right; border-right-style: solid; border-bottom-style: dotted; border-right-width: 1px;border-bottom-width: 1px">Workflow:</td>
-                            <td style="text-align: left; border-bottom-style: dotted; border-left-style: solid; border-left-width: 1px;border-bottom-width: 1px">${{ github.workflow }}</td>
-                          </tr>
-                          <tr>
-                            <td style="text-align: right; border-right-style: solid; border-right-width: 1px">Release URL:</td>
-                            <td style="text-align: left; border-left-style: solid; border-left-width: 1px"><a href="https://github.com/${{ github.repository }}/releases/tag/${{ env.TAG_NAME }}">Click here</a></td>
-                          </tr>
-                          </table><br>
-          priority:       normal
+          server_port: 465
+          username: ${{ secrets.RELEASE_EMAIL_USER }}
+          password: ${{ secrets.RELEASE_EMAIL_PASSWORD }}
+          subject: "New Release: ${{ github.repository }} ${{ env.TAG_NAME }}"
+          to: rte-development@brightedge.co.za
+          from: Development Messenger
+          html_body: |
+            <table style="font-family: verdana;font-size:90%; border-collapse:collapse; border-style: double; border-color: 000000; border-width: 3px">
+            <colgroup>
+              <col style="text-align:right">
+              <col style="text-align:left">
+            </colgroup>
+            <tr>
+              <th style="text-align: center; border-bottom-style: double; border-right-style: double; border-right-width: 1px; border-bottom-width: 3px">Description</th>
+              <th style="text-align: center; border-bottom-style: double; border-left-style: double; border-bottom-width: 3px; border-left-width: 1px">Detail</th>
+            </tr>
+            <tr>
+              <td style="text-align: right; border-right-style: solid; border-bottom-style: dotted; border-right-width: 1px;border-bottom-width: 1px">Repository:</td>
+              <td style="text-align: left; border-bottom-style: dotted; border-left-style: solid; border-left-width: 1px;border-bottom-width: 1px">${{ github.repository }}</td>
+            </tr>
+            <tr>
+              <td style="text-align: right; border-right-style: solid; border-bottom-style: dotted; border-right-width: 1px;border-bottom-width: 1px">Release:</td>
+              <td style="text-align: left; border-bottom-style: dotted; border-left-style: solid; border-left-width: 1px;border-bottom-width: 1px">${{ env.TAG_NAME }}</td>
+            </tr>
+            <tr>
+              <td style="text-align: right; border-right-style: solid; border-bottom-style: dotted; border-right-width: 1px;border-bottom-width: 1px">Actor:</td>
+              <td style="text-align: left; border-bottom-style: dotted; border-left-style: solid; border-left-width: 1px;border-bottom-width: 1px">${{ github.actor }}</td>
+            </tr>
+            <tr>
+              <td style="text-align: right; border-right-style: solid; border-bottom-style: dotted; border-right-width: 1px;border-bottom-width: 1px">Workflow:</td>
+              <td style="text-align: left; border-bottom-style: dotted; border-left-style: solid; border-left-width: 1px;border-bottom-width: 1px">${{ github.workflow }}</td>
+            </tr>
+            <tr>
+              <td style="text-align: right; border-right-style: solid; border-right-width: 1px">Release URL:</td>
+              <td style="text-align: left; border-left-style: solid; border-left-width: 1px"><a href="https://github.com/${{ github.repository }}/releases/tag/${{ env.TAG_NAME }}">Click here</a></td>
+            </tr>
+            </table><br>
+          priority: normal

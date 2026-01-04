@@ -60,7 +60,7 @@ jobs:
       VENV_ENVIRONMENT: ${{secrets.VENV_ENVIRONMENT }}
 
   Detect-PR-Tag:
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/all-pc-pr-all-detect_tag-def-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/all-pc-pr-all-detect_tag-def.yaml@master
     secrets: inherit
 
   PR:
