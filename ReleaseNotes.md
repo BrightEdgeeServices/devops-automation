@@ -1,3 +1,21 @@
+### Release 9.3.1
+
+### Summary of Changes
+
+- Workflows: Added `PYPI_API_TOKEN_PROD` secret to `.github/workflows/py-wf-publish-pub-build_release_notify_after_merge-def.yaml` for PyPI publishing functionality.
+- Build: Bumped version to 9.3.1 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-307-main_feature-devops-automation-fork-sync-templates`
+- Files changed:
+  - .github/workflows/py-wf-publish-pub-build_release_notify_after_merge-def.yaml
+- Number of files changed: 1
+- Insertions: 1
+- Deletions: 0
+
+______________________________________________________________________
+
 ### Release 9.3.0
 
 ### Summary of Changes
