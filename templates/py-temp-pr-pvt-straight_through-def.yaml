@@ -1,20 +1,32 @@
-# py-temp-pr-pvt-with_docker-def.yaml
+# py-temp-pr-pvt-straight_through-def.yaml
 # This is a template and should not be changed unless you are familiar with the
 # reusable GitHub Actions strategy of the company.
-name: Python Template Deploy Private With-Docker
+#
+# Use this template only in the following situations:
+# - You are creating a new repository and want to use the straight through
+#   approach in the beginning until the exact workflow is determined.
+# - There is geniunely no need for a CI job for the repository.
+name: Python Template PR Private No-Docker
 
 on:
   push:
+    branches-ignore:
+      - master
+      - main
+    tags:
+      - pr
 
 jobs:
-  py-temp-dep-pvt_with_docker-def:
+  py-temp-pr-pvt-straight_through-def:
     permissions:
       id-token: write
       contents: write
-    #    if: github.event.pull_request.merged == true
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-wf-dep-pvt_with_docker-def.yaml@master
-    with:
-      run_deploy: ${{ startsWith(github.ref, 'refs/tags/') == true }}
+      pull-requests: write
+
+    if: ${{ github.ref_type != 'tag' }}
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-wf-pr-pvt_straight_through-def.yaml@master
+#    with:
+#      run_publish: true
     # secrets: inherit
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
@@ -27,6 +39,6 @@ jobs:
       MYSQL_ROOT_PASSWORD:       ${{secrets.MYSQL_ROOT_PASSWORD}}
       MYSQL_TCP_PORT:            ${{vars.MYSQL_TCP_PORT }}
       MYSQL_USER:                ${{vars.MYSQL_USER}}
-      PROJECT_NAME:              ${{vars.PROJECT_NAME }}
       RELEASE_EMAIL_USER:        ${{vars.RELEASE_EMAIL_USER }}
       RELEASE_EMAIL_PASSWORD:    ${{secrets.RELEASE_EMAIL_PASSWORD }}
+      VENV_ENVIRONMENT:          ${{vars.VENV_ENVIRONMENT }}

@@ -39,7 +39,7 @@ on:
 
 jobs:
   Pre-Commit:
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-precom-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-precom-all-def.yaml@master
     secrets: inherit
 
   CI:

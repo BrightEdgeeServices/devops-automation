@@ -1,0 +1,52 @@
+# py-wf-publish-pvt-build_release_notify_after_merge-def.yaml
+name: Publish After PR Merge (Wrapper)
+
+on:
+  workflow_call:
+    inputs:
+      tag_name:
+        description: "Optional explicit tag name. If omitted, workflow derives v{version} from pyproject.toml"
+        required: false
+        type: string
+    secrets:
+      GH_REPO_ACCESS_BEE_MASTER:
+        required: true
+      GH_REPO_ACCESS_RTE_MASTER:
+        required: true
+      RELEASE_EMAIL_USER:
+        required: true
+      RELEASE_EMAIL_PASSWORD:
+        required: true
+
+jobs:
+  #  Build:
+  #    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-build-all-def.yaml@master
+  #    with:
+  #      tag_name: ${{ inputs.tag_name }}
+  #    secrets:
+  #      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
+  #      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
+  #      RELEASE_EMAIL_USER:     ${{ secrets.RELEASE_EMAIL_USER }}
+  #      RELEASE_EMAIL_PASSWORD: ${{ secrets.RELEASE_EMAIL_PASSWORD }}
+  #
+  Release:
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-release-def.yaml@master
+    #    needs: Build
+    with:
+      tag_name: ${{ inputs.tag_name }}
+    secrets:
+      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
+      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
+      RELEASE_EMAIL_USER: ${{ secrets.RELEASE_EMAIL_USER }}
+      RELEASE_EMAIL_PASSWORD: ${{ secrets.RELEASE_EMAIL_PASSWORD }}
+
+  Notify:
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-notify-def.yaml@master
+    needs: Release
+    with:
+      tag_name: ${{ inputs.tag_name }}
+    secrets:
+      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
+      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
+      RELEASE_EMAIL_USER: ${{ secrets.RELEASE_EMAIL_USER }}
+      RELEASE_EMAIL_PASSWORD: ${{ secrets.RELEASE_EMAIL_PASSWORD }}
