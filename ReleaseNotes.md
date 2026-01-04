@@ -1,25 +1,3 @@
-### Release 9.0.1
-
-### Summary of Changes
-
-- Workflows: Improved tag resolution logic and formatting in `all-pc-notify-all-def.yaml`:
-  - Added environment variable initialization for `TAG_NAME` to resolve linter warnings
-  - Added step ID for better traceability
-  - Consolidated tag resolution logic with fallback to "unknown" if no tag is found
-  - Standardized formatting (spacing, quotes, indentation)
-- Build: Bumped version to 9.0.1 in `pyproject.toml`.
-
-### Change Statistics (vs master)
-
-- Branch: `hendrik/urs-307-main_feature-devops-automation-fork-sync-templates`
-- Files changed:
-  - .github/workflows/all-pc-notify-all-def.yaml
-- Number of files changed: 1
-- Insertions: 97
-- Deletions: 0
-
-______________________________________________________________________
-
 ### Release 9.0.0
 
 ### Summary of Changes
