@@ -1,3 +1,24 @@
+### Release 9.4.0
+
+### Summary of Changes
+
+- Templates: Added `ORIGINAL_OWNER` and `ORIGINAL_REPO_NAME` repository variables to `templates/all-temp-fork-pub-scheduled_sync_with_upstream-weekly.yaml`.
+- Workflows: Added `ORIGINAL_OWNER` and `ORIGINAL_REPO_NAME` as required input secrets and repository variables to `.github/workflows/all-wf-fork-pub-scheduled_sync_with_upstream-def.yaml` and `.github/workflows/all-wf-fork-pvt-scheduled_sync_with_upstream-def.yaml`.
+- Build: Bumped version to 10.0.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-307-main_feature-devops-automation-fork-sync-templates`
+- Files changed:
+  - .github/workflows/all-wf-fork-pub-scheduled_sync_with_upstream-def.yaml
+  - .github/workflows/all-wf-fork-pvt-scheduled_sync_with_upstream-def.yaml
+  - templates/all-temp-fork-pub-scheduled_sync_with_upstream-weekly.yaml
+- Number of files changed: 3
+- Insertions: 14
+- Deletions: 0
+
+______________________________________________________________________
+
 ### Release 9.3.2
 
 ### Summary of Changes
