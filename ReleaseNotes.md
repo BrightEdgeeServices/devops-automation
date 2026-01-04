@@ -1,3 +1,22 @@
+### Release 9.5.1
+
+### Summary of Changes
+
+- Workflows: Changed `ORIGINAL_OWNER` and `ORIGINAL_REPO_NAME` from repository variables to secrets in `.github/workflows/all-wf-fork-pub-scheduled_sync_with_upstream-def.yaml` and `.github/workflows/all-wf-fork-pvt-scheduled_sync_with_upstream-def.yaml`.
+- Build: Bumped version to 9.5.1 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-307-main_feature-devops-automation-fork-sync-templates`
+- Files changed:
+  - .github/workflows/all-wf-fork-pub-scheduled_sync_with_upstream-def.yaml
+  - .github/workflows/all-wf-fork-pvt-scheduled_sync_with_upstream-def.yaml
+- Number of files changed: 2
+- Insertions: 4
+- Deletions: 4
+
+______________________________________________________________________
+
 ### Release 9.5.0
 
 ### Summary of Changes
