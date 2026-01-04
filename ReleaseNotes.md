@@ -1,3 +1,23 @@
+### Release 9.1.0
+
+### Summary of Changes
+
+- Templates: Updated secrets and variables configuration in `templates/py-temp-pr-pub-no_docker-def.yaml` to use repository variables instead of secrets where appropriate, added new configuration variables (INSTALLER_USERID, INSTALLER_PWD, MYSQL_DATABASE, MYSQL_HOST, MYSQL_TCP_PORT, VENV_ENVIRONMENT), and removed PYPI_API_TOKEN_PROD secret.
+- Workflows: Removed PYPI_API_TOKEN_PROD secret requirement from `.github/workflows/py-wf-pr-pub-no_docker-def.yaml`.
+- Build: Bumped version to 10.0.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-307-main_feature-devops-automation-fork-sync-templates`
+- Files changed:
+  - .github/workflows/py-wf-pr-pub-no_docker-def.yaml
+  - templates/py-temp-pr-pub-no_docker-def.yaml
+- Number of files changed: 2
+- Insertions: 8
+- Deletions: 6
+
+______________________________________________________________________
+
 ### Release 9.0.0
 
 ### Summary of Changes
