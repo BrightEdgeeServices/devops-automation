@@ -13,6 +13,8 @@ on:
         required: true
       GH_REPO_ACCESS_RTE_MASTER:
         required: true
+      PYPI_API_TOKEN_PROD:
+        required: true
       RELEASE_EMAIL_USER:
         required: true
       RELEASE_EMAIL_PASSWORD:
@@ -20,12 +22,13 @@ on:
 
 jobs:
   Build:
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-build-pvt-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-build-pub-def.yaml@master
     with:
       tag_name: ${{ inputs.tag_name }}
     secrets:
-      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
-      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
+      # GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
+      # GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
+      PYPI_API_TOKEN_PROD: ${{secrets.PYPI_API_TOKEN_PROD }}
       RELEASE_EMAIL_USER: ${{ secrets.RELEASE_EMAIL_USER }}
       RELEASE_EMAIL_PASSWORD: ${{ secrets.RELEASE_EMAIL_PASSWORD }}
 
