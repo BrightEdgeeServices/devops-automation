@@ -20,7 +20,7 @@ on:
 
 jobs:
   Build:
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-build-all-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-build-pvt-def.yaml@master
     with:
       tag_name: ${{ inputs.tag_name }}
     secrets:

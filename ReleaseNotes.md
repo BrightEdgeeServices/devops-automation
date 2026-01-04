@@ -57,7 +57,7 @@ ______________________________________________________________________
   - .github/workflows/legacy/py-wf-pub-pvt_no_docker-def.yaml
   - .github/workflows/legacy/py-wf-pypi-pub_no_docker-def.yaml
   - .github/workflows/legacy/py-wf-pypi-pub_with_docker-def.yaml
-  - .github/workflows/py-pc-build-all-def.yaml
+  - .github/workflows/py-pc-build-pvt-def.yaml
   - .github/workflows/py-pc-ci-pub-no_docker-def.yaml
   - .github/workflows/py-pc-ci-pub-with_docker-def.yaml
   - .github/workflows/py-pc-ci-pvt-no_docker-def.yaml
@@ -96,8 +96,8 @@ ______________________________________________________________________
   - templates/py-temp-pr-pvt-straight_through-def.yaml
   - templates/py-temp-pr-pvt-with_docker-def.yaml
   - templates/py-temp-pr-pvt-with_native_docker-def.yaml
-  - templates/py-temp-pvt-publish-build_release_notify_after_merge-def.yaml.yaml
-  - templates/py-temp-pvt-publish-release_notify_after_merge-def.yaml
+  - templates/py-pc-build-pvtpy-temp-publish-pvt-build_release_notify_after_merge-def-def.yaml.yaml
+  - templates/py-temp-publish-pvt-release_notify_after_merge-def.yaml
   - templates/react-temp-pr-pvt-with_docker-def.yaml
   - templates/react-temp-publish-pvt-release_notify_after_merge-def.yaml
 - Number of files changed: 62
@@ -312,7 +312,7 @@ ______________________________________________________________________
   - .github/workflows/03-merge.yaml
   - .github/workflows/04-publish-release.yaml
   - .github/workflows/05-send-notice.yaml
-  - .github/workflows/py-pc-build-all-def.yaml
+  - .github/workflows/py-pc-build-pvt-def.yaml
   - .github/workflows/py-pc-ci-pub-no_docker-def.yaml
   - .github/workflows/py-pc-ci-pub-with_docker-def.yaml
   - .github/workflows/py-pc-ci-pvt-no_docker-def.yaml
@@ -727,7 +727,7 @@ ______________________________________________________________________
 ## Summary of Changes
 
 - Refactored and modularized the publish-after-merge pipeline into reusable workflows:
-  - Added `.github/workflows/py-pc-build-all-def.yaml` (builds with Poetry)
+  - Added `.github/workflows/py-pc-build-pvt-def.yaml` (builds with Poetry)
   - Added `.github/workflows/py-pc-release-def.yaml` (derives tag from `pyproject.toml` and creates GitHub Release)
   - Added `.github/workflows/py-pc-notify-def.yaml` (sends release notification email)
   - Updated wrapper `.github/workflows/py-wf-pub-after_merge-def.yaml` to orchestrate Build → Release → Notify
@@ -775,7 +775,7 @@ This document summarizes the differences between the current branch and `master`
 
 - Refactored publish-after-merge pipeline into modular reusable workflows:
   - Introduced separate workflows for Build, Release, and Notify.
-    - New: `.github/workflows/py-pc-build-all-def.yaml` (installs deps with Poetry and builds artifacts)
+    - New: `.github/workflows/py-pc-build-pvt-def.yaml` (installs deps with Poetry and builds artifacts)
     - New: `.github/workflows/py-pc-release-def.yaml` (creates GitHub Release; derives tag from `pyproject.toml` with optional input)
     - New: `.github/workflows/py-pc-notify-def.yaml` (sends email notification using `betterfor/action-send-mail`)
   - Updated wrapper workflow to orchestrate the three jobs in sequence (Build → Release → Notify):
