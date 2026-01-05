@@ -1,3 +1,21 @@
+### Release 9.7.1
+
+### Summary of Changes
+
+- Workflows: Added `PROJECT_NAME` as required input secret to `.github/workflows/py-wf-fork-pub-merge_no_docker-def.yaml`.
+- Build: Bumped version to 9.7.1 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-310-feature-displayfx-remove-discontinued-workflow`
+- Files changed:
+  - .github/workflows/py-wf-fork-pub-merge_no_docker-def.yaml
+- Number of files changed: 1
+- Insertions: 2
+- Deletions: 0
+
+______________________________________________________________________
+
 ### Release 9.7.0
 
 ### Summary of Changes
