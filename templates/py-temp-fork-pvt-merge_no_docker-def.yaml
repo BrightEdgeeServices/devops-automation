@@ -21,10 +21,11 @@ jobs:
       INSTALLER_PWD:             ${{secrets.INSTALLER_PWD }}
       MYSQL_DATABASE:            ${{vars.MYSQL_DATABASE }}
       MYSQL_HOST:                ${{vars.MYSQL_HOST }}
-      MYSQL_TCP_PORT:            ${{vars.MYSQL_TCP_PORT }}
       MYSQL_PASSWORD:            ${{secrets.MYSQL_PASSWORD}}
       MYSQL_ROOT_PASSWORD:       ${{secrets.MYSQL_ROOT_PASSWORD}}
+      MYSQL_TCP_PORT:             ${{vars.MYSQL_TCP_PORT }}
       MYSQL_USER:                ${{vars.MYSQL_USER}}
+      PROJECT_NAME:               ${{vars.PROJECT_NAME }}
       RELEASE_EMAIL_USER:        ${{vars.RELEASE_EMAIL_USER }}
       RELEASE_EMAIL_PASSWORD:    ${{secrets.RELEASE_EMAIL_PASSWORD }}
       VENV_ENVIRONMENT:          ${{vars.VENV_ENVIRONMENT }}
