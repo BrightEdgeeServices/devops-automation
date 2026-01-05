@@ -5,8 +5,8 @@ name: Template Scheduled Merge Private Fork with Upstream - Daily
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Runs daily at midnight UTC
-  workflow_dispatch:      # Allows manual trigger
+    - cron: "0 0 * * *" # Runs daily at midnight UTC
+  workflow_dispatch: # Allows manual trigger
 
 jobs:
   all-temp-fork-pvt-scheduled_sync_with_upstream-daily:

@@ -1,3 +1,46 @@
+### Release 9.7.0
+
+### Summary of Changes
+
+- Templates: Added new IaC templates `templates/iac-temp-pr-pvt-straight_through-def.yaml` and `templates/iac-temp-publish-pvt-release_notify_after_merge-def.yaml` for Infrastructure as Code repositories.
+- Templates: Updated Python templates (`templates/py-temp-pr-pvt-straight_through-def.yaml`, `templates/py-temp-pr-pvt-with_docker-def.yaml`, `templates/py-temp-pr-pvt-with_native_docker-def.yaml`) to reference renamed workflows using hyphen naming convention.
+- Templates: Updated `templates/all-temp-fork-pvt-scheduled_sync_with_upstream-daily.yaml` to reference renamed workflows.
+- Workflows: Added new IaC workflows `.github/workflows/iac-pc-release-all-def.yaml`, `.github/workflows/iac-wf-pr-pvt-straight_through-def.yaml`, and `.github/workflows/iac-wf-publish-pvt-release_notify_after_merge-def.yaml` for Infrastructure as Code repositories.
+- Workflows: Renamed workflow files to use hyphen naming convention instead of underscores:
+  - `.github/workflows/py-pc-ci-pvt_with_docker-def.yaml` → `py-pc-ci-pvt-with_docker-def.yaml`
+  - `.github/workflows/py-pc-ci-pvt_with_native_docker-def.yaml` → `py-pc-ci-pvt-with_native_docker-def.yaml`
+  - `.github/workflows/py-wf-pr-pvt_straight_through-def.yaml` → `py-wf-pr-pvt-straight_through-def.yaml`
+  - `.github/workflows/py-wf-pr-pvt_with_docker-def.yaml` → `py-wf-pr-pvt-with_docker-def.yaml`
+  - `.github/workflows/py-wf-pr-pvt_with_native_docker-def.yaml` → `py-wf-pr-pvt-with_native_docker-def.yaml`
+- Workflows: Updated `.github/workflows/all-wf-fork-pub-scheduled_sync_with_upstream-def.yaml` and `.github/workflows/all-wf-fork-pvt-scheduled_sync_with_upstream-def.yaml` to reference renamed workflows and fixed comment indentation.
+- Build: Bumped version to 10.0.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-311-feature-rte_iac-remove-discontinued-workflow`
+- Files changed:
+  - .github/workflows/all-wf-fork-pub-scheduled_sync_with_upstream-def.yaml
+  - .github/workflows/all-wf-fork-pvt-scheduled_sync_with_upstream-def.yaml
+  - .github/workflows/iac-pc-release-all-def.yaml
+  - .github/workflows/iac-wf-pr-pvt-straight_through-def.yaml
+  - .github/workflows/iac-wf-publish-pvt-release_notify_after_merge-def.yaml
+  - .github/workflows/py-pc-ci-pvt-with_docker-def.yaml
+  - .github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt-straight_through-def.yaml
+  - .github/workflows/py-wf-pr-pvt-with_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml
+  - templates/all-temp-fork-pvt-scheduled_sync_with_upstream-daily.yaml
+  - templates/iac-temp-pr-pvt-straight_through-def.yaml
+  - templates/iac-temp-publish-pvt-release_notify_after_merge-def.yaml
+  - templates/py-temp-pr-pvt-straight_through-def.yaml
+  - templates/py-temp-pr-pvt-with_docker-def.yaml
+  - templates/py-temp-pr-pvt-with_native_docker-def.yaml
+- Number of files changed: 16
+- Insertions: 357
+- Deletions: 49
+
+______________________________________________________________________
+
 ### Release 9.6.0
 
 ### Summary of Changes
@@ -241,8 +284,8 @@ ______________________________________________________________________
   - .github/workflows/py-wf-fork-pvt-merge_no_docker-def.yaml
   - .github/workflows/py-wf-pr-pub-no_docker-def.yaml
   - .github/workflows/py-wf-pr-pvt-no_docker-def.yaml
-  - .github/workflows/py-wf-pr-pvt_straight_through-def.yaml
-  - .github/workflows/py-wf-pr-pvt_with_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt-straight_through-def.yaml
+  - .github/workflows/py-wf-pr-pvt-with_docker-def.yaml
   - .github/workflows/py-wf-pr-pvt_with_native_docker-def.yaml
   - .github/workflows/py-wf-publish-pvt-build_release_notify_after_merge-def.yaml
   - .github/workflows/py-wf-publish-pvt-release_notify_after_merge-def.yaml
@@ -490,7 +533,7 @@ ______________________________________________________________________
   - .github/workflows/py-pc-ci-pub-no_docker-def.yaml
   - .github/workflows/py-pc-ci-pub-with_docker-def.yaml
   - .github/workflows/py-pc-ci-pvt-no_docker-def.yaml
-  - .github/workflows/py-pc-ci-pvt_with_docker-def.yaml
+  - .github/workflows/py-pc-ci-pvt-with_docker-def.yaml
   - .github/workflows/py-pc-ci-pvt_with_native_docker-def.yaml
   - .github/workflows/py-pc-notify-def.yaml
   - .github/workflows/py-pc-pr-def.yaml
@@ -536,14 +579,14 @@ ______________________________________________________________________
 - Templates: Update publish build and release notify template in `templates/py-temp-pub-build_release_notify_after_merge-def.yaml` to match renamed workflow.
 - CI: Add reusable workflow for release notification after merge in `.github/workflows/py-wf-publish-pvt-release_notify_after_merge-def.yaml`.
 - CI: Rename publish after-merge workflow to `.github/workflows/py-wf-publish-pvt-build_release_notify_after_merge-def.yaml` for clarity and consistency.
-- CI: Update PR straight-through reusable workflow in `.github/workflows/py-wf-pr-pvt_straight_through-def.yaml`.
+- CI: Update PR straight-through reusable workflow in `.github/workflows/py-wf-pr-pvt-straight_through-def.yaml`.
 
 ## Change Statistics (vs master)
 
 - Branch: `hendrik/rte-153-main_feature-devops-automation-straight-through-processing`
 - 6 files changed, 80 insertions, 5 deletions
 - Files changed:
-  - .github/workflows/py-wf-pr-pvt_straight_through-def.yaml
+  - .github/workflows/py-wf-pr-pvt-straight_through-def.yaml
   - .github/workflows/py-wf-publish-pvt-build_release_notify_after_merge-def.yaml
   - .github/workflows/py-wf-publish-pvt-release_notify_after_merge-def.yaml
   - templates/py-temp-pr-pvt-straight_through-def.yaml
@@ -560,7 +603,7 @@ ______________________________________________________________________
 - Templates: Remove outdated PR straight-through template in `templates/py-temp-pr-pvt-straight_through-def.yaml`.
 - CI: Tweak release pipeline in `.github/workflows/00-new-release-pipeline.yaml`.
 - CI: Update PR tag detection workflow in `.github/workflows/py-pc-pr-detect_tag-def.yaml` for improved reliability.
-- CI: Remove deprecated PR straight-through reusable workflow in `.github/workflows/py-wf-pr-pvt_straight_through-def.yaml`.
+- CI: Remove deprecated PR straight-through reusable workflow in `.github/workflows/py-wf-pr-pvt-straight_through-def.yaml`.
 - Chore: Refresh `.pre-commit-config.yaml` hooks and versions.
 
 ## Change Statistics (vs master)
@@ -570,7 +613,7 @@ ______________________________________________________________________
 - Files changed:
   - .github/workflows/00-new-release-pipeline.yaml
   - .github/workflows/py-pc-pr-detect_tag-def.yaml
-  - .github/workflows/py-wf-pr-pvt_straight_through-def.yaml
+  - .github/workflows/py-wf-pr-pvt-straight_through-def.yaml
   - .pre-commit-config.yaml
   - templates/py-temp-pr-pvt-straight_through-def.yaml
 
@@ -582,15 +625,15 @@ ______________________________________________________________________
 
 - Build: Bump version to 4.0.0 in project metadata.
 - Templates: Update PR template with Docker in `templates/py-temp-pr-pvt-with_docker-def.yaml` to use repository variables for non-sensitive settings and align secret passthrough.
-- CI: Update private CI workflow with Docker in `.github/workflows/py-pc-ci-pvt_with_docker-def.yaml` to export additional environment variables to the `.env` file, ensure Python is set up via `actions/setup-python@v6`, and install Docker Compose on the runner.
-- CI: Synchronize PR reusable workflow secret passthrough in `.github/workflows/py-wf-pr-pvt_with_docker-def.yaml` for consistency with the template and CI.
+- CI: Update private CI workflow with Docker in `.github/workflows/py-pc-ci-pvt-with_docker-def.yaml` to export additional environment variables to the `.env` file, ensure Python is set up via `actions/setup-python@v6`, and install Docker Compose on the runner.
+- CI: Synchronize PR reusable workflow secret passthrough in `.github/workflows/py-wf-pr-pvt-with_docker-def.yaml` for consistency with the template and CI.
 
 ## Change Statistics (vs master)
 
 - Branch: `hendrik/bee-26-feature-devops_automation-py-temp-pr-pvt-with_docker-defyaml`
 - 3 files changed, 56 insertions, 40 deletions
 - Files changed:
-  - .github/workflows/py-pc-ci-pvt_with_docker-def.yaml
+  - .github/workflows/py-pc-ci-pvt-with_docker-def.yaml
   - .github/workflows/py-wf-pr-pvt_with_docker-def.yaml
   - templates/py-temp-pr-pvt-with_docker-def.yaml
 
@@ -601,14 +644,14 @@ ______________________________________________________________________
 ## Summary of Changes
 
 - Build: Bump version to 3.0.1 in project metadata.
-- CI: Update private CI workflow with Docker in `.github/workflows/py-pc-ci-pvt_with_docker-def.yaml`.
+- CI: Update private CI workflow with Docker in `.github/workflows/py-pc-ci-pvt-with_docker-def.yaml`.
 
 ## Change Statistics (vs master)
 
 - Branch: `hendrik/bee-26-feature-devops_automation-py-temp-pr-pvt-with_docker-defyaml`
 - 1 file changed, 22 insertions, 0 deletions
 - Files changed:
-  - .github/workflows/py-pc-ci-pvt_with_docker-def.yaml
+  - .github/workflows/py-pc-ci-pvt-with_docker-def.yaml
 
 ______________________________________________________________________
 
@@ -621,7 +664,7 @@ ______________________________________________________________________
   - MYSQL_TCP_PORT_EXTERNAL
   - MYSQL_TCP_PORT_LOCAL_PROD
 - CI: Extend reusable workflows with Docker to pass through new MySQL port secrets:
-  - .github/workflows/py-pc-ci-pvt_with_docker-def.yaml
+  - .github/workflows/py-pc-ci-pvt-with_docker-def.yaml
   - .github/workflows/py-wf-pr-pvt_with_docker-def.yaml
 
 ## Change Statistics (vs master)
@@ -629,7 +672,7 @@ ______________________________________________________________________
 - Branch: `hendrik/bee-26-feature-devops_automation-py-temp-pr-pvt-with_docker-defyaml`
 - 3 files changed, 14 insertions, 0 deletions
 - Files changed:
-  - .github/workflows/py-pc-ci-pvt_with_docker-def.yaml
+  - .github/workflows/py-pc-ci-pvt-with_docker-def.yaml
   - .github/workflows/py-wf-pr-pvt_with_docker-def.yaml
   - templates/py-temp-pr-pvt-with_docker-def.yaml
 
@@ -658,14 +701,14 @@ ______________________________________________________________________
 ## Summary of Changes
 
 - Build: Bump version to 2.8.0 in project metadata.
-- CI: Update private CI workflow with Docker in `.github/workflows/py-pc-ci-pvt_with_docker-def.yaml`.
+- CI: Update private CI workflow with Docker in `.github/workflows/py-pc-ci-pvt-with_docker-def.yaml`.
 
 ## Change Statistics (vs master)
 
 - Branch: `hendrik/bee-25-new-py-temp-pub-pvt_no_docker-defyaml-github-action`
 - 1 file changed, 1 insertion, 0 deletions
 - Files changed:
-  - .github/workflows/py-pc-ci-pvt_with_docker-def.yaml
+  - .github/workflows/py-pc-ci-pvt-with_docker-def.yaml
 
 ______________________________________________________________________
 
@@ -698,7 +741,7 @@ ______________________________________________________________________
 - CI: Enhance amend release notes workflow in `.github/workflows/02-amend-release-notes.yaml`.
 - CI: Adjust private CI workflows and pre-commit workflow for better consistency:
   - `.github/workflows/py-pc-ci-pvt-no_docker-def.yaml`
-  - `.github/workflows/py-pc-ci-pvt_with_docker-def.yaml`
+  - `.github/workflows/py-pc-ci-pvt-with_docker-def.yaml`
   - `.github/workflows/py-pc-precom-all-def.yaml`
   - `.github/workflows/py-wf-pr-pvt-no_docker-def.yaml`
 - CI: Add PR workflow variant with Docker in `.github/workflows/py-wf-pr-pvt_with_docker-def.yaml`.
@@ -717,7 +760,7 @@ ______________________________________________________________________
   - .github/workflows/00-new-release-pipeline.yaml
   - .github/workflows/02-amend-release-notes.yaml
   - .github/workflows/py-pc-ci-pvt-no_docker-def.yaml
-  - .github/workflows/py-pc-ci-pvt_with_docker-def.yaml
+  - .github/workflows/py-pc-ci-pvt-with_docker-def.yaml
   - .github/workflows/py-pc-precom-all-def.yaml
   - .github/workflows/py-wf-pr-pvt-no_docker-def.yaml
   - .github/workflows/py-wf-pr-pvt_with_docker-def.yaml
@@ -970,7 +1013,7 @@ This document summarizes the differences between the current branch and `master`
 - `.github/workflows/py-pc-ci-pub-no_docker-def.yaml`
 - `.github/workflows/py-pc-ci-pub-with_docker-def.yaml`
 - `.github/workflows/py-pc-ci-pvt-no_docker-def.yaml`
-- `.github/workflows/py-pc-ci-pvt_with_docker-def.yaml`
+- `.github/workflows/py-pc-ci-pvt-with_docker-def.yaml`
 - `.github/workflows/py-pc-pr-def.yaml`
 - `.github/workflows/py-pc-precom-all-def.yaml`
 
@@ -1013,7 +1056,7 @@ ______________________________________________________________________
 
 # Updated Actions
 
-- `py-pc-ci-pvt_with_docker-def.yaml`
+- `py-pc-ci-pvt-with_docker-def.yaml`
   - Update "Configure Poetry" step.
   - Fixed "Configure Poetry" step.
   - Add creation of `logs` directory
@@ -1142,14 +1185,14 @@ ______________________________________________________________________
 - Templates: Update publish build and release notify template in `templates/py-temp-pub-build_release_notify_after_merge-def.yaml` to match renamed workflow.
 - CI: Add reusable workflow for release notification after merge in `.github/workflows/py-wf-publish-pvt-release_notify_after_merge-def.yaml`.
 - CI: Rename publish after-merge workflow to `.github/workflows/py-wf-publish-pvt-build_release_notify_after_merge-def.yaml` for clarity and consistency.
-- CI: Update PR straight-through reusable workflow in `.github/workflows/py-wf-pr-pvt_straight_through-def.yaml`.
+- CI: Update PR straight-through reusable workflow in `.github/workflows/py-wf-pr-pvt-straight_through-def.yaml`.
 
 ## Change Statistics (vs master)
 
 - Branch: `hendrik/rte-153-main_feature-devops-automation-straight-through-processing`
 - 6 files changed, 80 insertions, 5 deletions
 - Files changed:
-  - .github/workflows/py-wf-pr-pvt_straight_through-def.yaml
+  - .github/workflows/py-wf-pr-pvt-straight_through-def.yaml
   - .github/workflows/py-wf-publish-pvt-build_release_notify_after_merge-def.yaml
   - .github/workflows/py-wf-publish-pvt-release_notify_after_merge-def.yaml
   - templates/py-temp-pr-pvt-straight_through-def.yaml

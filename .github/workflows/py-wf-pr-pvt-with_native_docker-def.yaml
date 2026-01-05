@@ -1,4 +1,4 @@
-# py-wf-pr-pvt_with_docker-def.yaml
+# py-wf-pr-pvt-with_docker-def.yaml
 name: Pre-Commit, CI and PR (default)
 
 on:
@@ -55,7 +55,7 @@ jobs:
     secrets: inherit
 
   CI:
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-ci-pvt_with_docker-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml@master
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
