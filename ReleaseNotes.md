@@ -1,3 +1,28 @@
+### Release 9.6.0
+
+### Summary of Changes
+
+- Templates: Added `PROJECT_NAME` repository variable and reordered `MYSQL_TCP_PORT` in `templates/py-temp-fork-pub-merge_no_docker-def.yaml` and `templates/py-temp-fork-pvt-merge_no_docker-def.yaml`. Added comment header to `templates/py-temp-fork-pub-merge_no_docker-def.yaml`.
+- Templates: Added new React template `templates/react-temp-fork-pvt-merge_with_docker-def.yaml` for React projects with Docker.
+- Workflows: Updated workflow name, reordered input secrets, and added `PROJECT_NAME` required input in `.github/workflows/py-wf-fork-pvt-merge_no_docker-def.yaml`.
+- Workflows: Added new React workflow `.github/workflows/react-wf-fork-pvt-merge_with_docker-def.yaml` for React projects with Docker fork merge operations.
+- Build: Bumped version to 10.0.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-309-feature-urs_frontend-remove-discontinued-workflow`
+- Files changed:
+  - .github/workflows/py-wf-fork-pvt-merge_no_docker-def.yaml
+  - .github/workflows/react-wf-fork-pvt-merge_with_docker-def.yaml
+  - templates/py-temp-fork-pub-merge_no_docker-def.yaml
+  - templates/py-temp-fork-pvt-merge_no_docker-def.yaml
+  - templates/react-temp-fork-pvt-merge_with_docker-def.yaml
+- Number of files changed: 5
+- Insertions: 138
+- Deletions: 5
+
+______________________________________________________________________
+
 ### Release 9.5.1
 
 ### Summary of Changes
