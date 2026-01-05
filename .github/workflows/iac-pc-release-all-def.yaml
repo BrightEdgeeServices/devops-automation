@@ -1,0 +1,96 @@
+# iac-pc-release-all-def.yaml
+# Reusable workflow: Create Release and Send Notice after PR merge
+name: Build Release And Notify
+
+on:
+  workflow_call:
+    inputs:
+      tag_name:
+        description: "Optional: Explicit tag name for the release (e.g., v1.2.3). If omitted, tag is derived from pyproject.toml"
+        required: false
+        type: string
+    secrets:
+      GH_REPO_ACCESS_BEE_MASTER:
+        required: true
+      GH_REPO_ACCESS_RTE_MASTER:
+        required: true
+      RELEASE_EMAIL_USER:
+        required: true
+      RELEASE_EMAIL_PASSWORD:
+        required: true
+
+jobs:
+  Release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      tag_name: ${{ steps.compute_tag.outputs.tag_name }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Compute tag name
+        id: compute_tag
+        shell: bash
+        run: |
+          if [ -n "${{ inputs.tag_name }}" ]; then
+            echo "Using provided tag: ${{ inputs.tag_name }}"
+            echo "tag_name=${{ inputs.tag_name }}" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          python - <<'PY'
+          import os
+          import pathlib
+          import sys
+          try:
+              import tomllib  # Python 3.11+
+          except ModuleNotFoundError:
+              print("tomllib is required to parse pyproject.toml", file=sys.stderr)
+              sys.exit(1)
+
+          pp = pathlib.Path("pyproject.toml")
+          if not pp.exists():
+              print("pyproject.toml not found in repository root", file=sys.stderr)
+              sys.exit(1)
+
+          data = tomllib.loads(pp.read_text(encoding="utf-8"))
+          version = None
+          # Preferred PEP621 location
+          project = data.get("project")
+          if isinstance(project, dict):
+              version = project.get("version")
+          # Fallback to Poetry legacy location if present
+          if not version:
+              tool = data.get("tool") or {}
+              poetry = tool.get("poetry") if isinstance(tool, dict) else None
+              if isinstance(poetry, dict):
+                  version = poetry.get("version")
+
+          if not version:
+              print("Version not found in pyproject.toml under [project].version or [tool.poetry].version", file=sys.stderr)
+              sys.exit(1)
+
+          tag = f"v{version}"
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as fh:
+              fh.write(f"tag_name={tag}\n")
+          print(f"Derived tag from pyproject.toml: {tag}")
+          PY
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name:  ${{ steps.compute_tag.outputs.tag_name }}
+          name:      ${{ steps.compute_tag.outputs.tag_name }}
+          body_path: ${{ github.workspace }}/ReleaseNotes.md
+          draft: false
+          prerelease: false

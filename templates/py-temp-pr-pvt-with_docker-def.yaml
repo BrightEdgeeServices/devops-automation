@@ -18,7 +18,7 @@ jobs:
       contents: write
       pull-requests: write
     if: ${{ github.ref_type != 'tag' }}
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-wf-pr-pvt_with_docker-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-wf-pr-pvt-with_docker-def.yaml@master
 #    with:
 #      run_publish: true
     # secrets: inherit

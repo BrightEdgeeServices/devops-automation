@@ -1,5 +1,5 @@
-# py-wf-pr-pvt_straight_through-def.yaml.yaml
-name: Straight Through Processing (default)
+# iac-wf-pr-pvt-straight_through-def.yaml.yaml
+name: IaC Template PR Private Straight Through
 
 on:
   workflow_call:
