@@ -1,3 +1,46 @@
+### Release 9.7.0
+
+### Summary of Changes
+
+- Templates: Added new IaC templates `templates/iac-temp-pr-pvt-straight_through-def.yaml` and `templates/iac-temp-publish-pvt-release_notify_after_merge-def.yaml` for Infrastructure as Code repositories.
+- Templates: Updated Python templates (`templates/py-temp-pr-pvt-straight_through-def.yaml`, `templates/py-temp-pr-pvt-with_docker-def.yaml`, `templates/py-temp-pr-pvt-with_native_docker-def.yaml`) to reference renamed workflows using hyphen naming convention.
+- Templates: Updated `templates/all-temp-fork-pvt-scheduled_sync_with_upstream-daily.yaml` to reference renamed workflows.
+- Workflows: Added new IaC workflows `.github/workflows/iac-pc-release-all-def.yaml`, `.github/workflows/iac-wf-pr-pvt-straight_through-def.yaml`, and `.github/workflows/iac-wf-publish-pvt-release_notify_after_merge-def.yaml` for Infrastructure as Code repositories.
+- Workflows: Renamed workflow files to use hyphen naming convention instead of underscores:
+  - `.github/workflows/py-pc-ci-pvt_with_docker-def.yaml` → `py-pc-ci-pvt-with_docker-def.yaml`
+  - `.github/workflows/py-pc-ci-pvt_with_native_docker-def.yaml` → `py-pc-ci-pvt-with_native_docker-def.yaml`
+  - `.github/workflows/py-wf-pr-pvt_straight_through-def.yaml` → `py-wf-pr-pvt-straight_through-def.yaml`
+  - `.github/workflows/py-wf-pr-pvt_with_docker-def.yaml` → `py-wf-pr-pvt-with_docker-def.yaml`
+  - `.github/workflows/py-wf-pr-pvt_with_native_docker-def.yaml` → `py-wf-pr-pvt-with_native_docker-def.yaml`
+- Workflows: Updated `.github/workflows/all-wf-fork-pub-scheduled_sync_with_upstream-def.yaml` and `.github/workflows/all-wf-fork-pvt-scheduled_sync_with_upstream-def.yaml` to reference renamed workflows and fixed comment indentation.
+- Build: Bumped version to 10.0.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-311-feature-rte_iac-remove-discontinued-workflow`
+- Files changed:
+  - .github/workflows/all-wf-fork-pub-scheduled_sync_with_upstream-def.yaml
+  - .github/workflows/all-wf-fork-pvt-scheduled_sync_with_upstream-def.yaml
+  - .github/workflows/iac-pc-release-all-def.yaml
+  - .github/workflows/iac-wf-pr-pvt-straight_through-def.yaml
+  - .github/workflows/iac-wf-publish-pvt-release_notify_after_merge-def.yaml
+  - .github/workflows/py-pc-ci-pvt-with_docker-def.yaml
+  - .github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt-straight_through-def.yaml
+  - .github/workflows/py-wf-pr-pvt-with_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml
+  - templates/all-temp-fork-pvt-scheduled_sync_with_upstream-daily.yaml
+  - templates/iac-temp-pr-pvt-straight_through-def.yaml
+  - templates/iac-temp-publish-pvt-release_notify_after_merge-def.yaml
+  - templates/py-temp-pr-pvt-straight_through-def.yaml
+  - templates/py-temp-pr-pvt-with_docker-def.yaml
+  - templates/py-temp-pr-pvt-with_native_docker-def.yaml
+- Number of files changed: 16
+- Insertions: 357
+- Deletions: 49
+
+______________________________________________________________________
+
 ### Release 9.6.0
 
 ### Summary of Changes
