@@ -1,3 +1,23 @@
+### Release 9.11.0
+
+### Summary of Changes
+
+- Templates: Fixed workflow reference in `templates/py-temp-fork-pub-merge_with_docker-def.yaml` to use the correct `py-wf-fork-pub-merge_with_docker-def.yaml` workflow and added `MYSQL_TCP_PORT_EXTERNAL` and `MYSQL_TCP_PORT_LOCAL_PROD` variables for Docker-based MySQL connections.
+- Workflows: Fixed header comment and improved formatting in `.github/workflows/py-wf-fork-pub-merge_with_docker-def.yaml` to correctly reference the Docker workflow.
+- Build: Bumped version to 10.0.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-314-feature-sqldbwrpr-remove-discontinued-workflow`
+- Files changed:
+  - .github/workflows/py-wf-fork-pub-merge_with_docker-def.yaml
+  - templates/py-temp-fork-pub-merge_with_docker-def.yaml
+- Number of files changed: 2
+- Insertions: 9
+- Deletions: 7
+
+______________________________________________________________________
+
 ### Release 9.10.0
 
 ### Summary of Changes
