@@ -1,3 +1,23 @@
+### Release 9.10.0
+
+### Summary of Changes
+
+- Templates: Added new public fork merge with Docker template `templates/py-temp-fork-pub-merge_with_docker-def.yaml` for Python projects using Docker in public repositories.
+- Workflows: Added new public fork merge reusable workflow `.github/workflows/py-wf-fork-pub-merge_with_docker-def.yaml` that orchestrates Pre-Commit, CI with Docker, and merge operations for public fork repositories.
+- Build: Bumped version to 9.10.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-314-feature-sqldbwrpr-remove-discontinued-workflow`
+- Files changed:
+  - .github/workflows/py-wf-fork-pub-merge_with_docker-def.yaml
+  - templates/py-temp-fork-pub-merge_with_docker-def.yaml
+- Number of files changed: 2
+- Insertions: 117
+- Deletions: 0
+
+______________________________________________________________________
+
 ### Release 9.9.1
 
 ### Summary of Changes
