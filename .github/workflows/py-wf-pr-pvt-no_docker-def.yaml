@@ -3,12 +3,6 @@ name: Pre-Commit, CI and PR (default)
 
 on:
   workflow_call:
-    #    inputs:
-    #      run_publish:
-    #        description: "Set to 'true' to run the Build-and-Publish job tag was specified."
-    #        required:    true
-    #        default:     false
-    #        type:        boolean
     secrets:
       GH_REPO_ACCESS_BEE_MASTER:
         required: true

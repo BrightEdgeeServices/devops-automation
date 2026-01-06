@@ -3,17 +3,6 @@ name: Merge with Upstream Private Fork
 
 on:
     workflow_call:
-        #    inputs:
-        #      original_owner:
-        #        description: "Set to original owner of the fork."
-        #        required:    true
-        #        default:     ""
-        #        type:        string
-        #      original_repo_name:
-        #        description: "Set to original repo name of the fork."
-        #        required:    true
-        #        default:     ""
-        #        type:        string
         secrets:
             GH_REPO_ACCESS_BEE_MASTER:
                 required: true
@@ -68,20 +57,6 @@ jobs:
               run: |
                   git config --global user.name 'GitHub Action'
                   git config --global user.email 'action@github.com'
-
-            #      - name:              Merge into master
-            #        id:                merge
-            #        run:               |
-            #                           git checkout master
-            #                           git merge --no-ff $GITHUB_REF
-            #        continue-on-error: false
-            #
-            #      - name: Push to master
-            #        if:   steps.merge.outcome == 'success'
-            #        run:  |
-            #              git push origin master
-            #        env:
-            #          GH_TOKEN: ${{ secrets.GH_REPO_ACCESS_CURR_USER }}
 
             - name: Test upstream repository access
               run: |
@@ -200,6 +175,3 @@ jobs:
 
             - name: Push changes
               run: git push origin master
-
-    #      - name: Debug Environment
-    #        run: env

@@ -1,25 +1,8 @@
 # all-wf-fork-pub-scheduled_sync_with_upstream-def.yaml
-# This work flow does not work for private repositories.
 name: Scheduled Sync with Upstream Public Fork
 
 on:
     workflow_call:
-        #    inputs:
-        #      run_deploy:
-        #        description: "Set to 'true' to run the Build-and-Deploy job if a tag was specified."
-        #        required:    true
-        #        default:     false
-        #        type:        boolean
-        #      original_owner:
-        #        description: "Set to original owner of the fork."
-        #        required:    true
-        #        default:     ""
-        #        type:        string
-        #      original_repo_name:
-        #        description: "Set to original repo name of the fork."
-        #        required:    true
-        #        default:     ""
-        #        type:        string
         secrets:
             GH_REPO_ACCESS_BEE_MASTER:
                 required: true
@@ -41,16 +24,6 @@ on:
 #        required: true
 
 jobs:
-    #  Pre-Commit:
-    #    uses:    BrightEdgeeServices/devops-automation/.github/workflows/py-pc-precom-all-def.yaml@master
-    #    secrets: inherit
-
-    #  CI:
-    #    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-ci-pvt-with_docker-def.yaml@master
-    #    secrets:
-    #      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
-    #      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
-
     Update-Fork:
         permissions:
             id-token: write
