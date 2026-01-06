@@ -12,7 +12,7 @@ jobs:
       id-token: write
       contents: write
     #    if: github.event.pull_request.merged == true
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-wf-fork-pub-merge_no_docker-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-wf-fork-pub-merge_with_docker-def.yaml@master
     # with:
       # run_deploy: ${{ startsWith(github.ref, 'refs/tags/') == true }}
     # secrets: inherit
@@ -26,6 +26,8 @@ jobs:
       MYSQL_PASSWORD:            ${{secrets.MYSQL_PASSWORD}}
       MYSQL_ROOT_PASSWORD:       ${{secrets.MYSQL_ROOT_PASSWORD}}
       MYSQL_TCP_PORT:            ${{vars.MYSQL_TCP_PORT }}
+      MYSQL_TCP_PORT_EXTERNAL:   ${{vars.MYSQL_TCP_PORT_EXTERNAL }}
+      MYSQL_TCP_PORT_LOCAL_PROD: ${{vars.MYSQL_TCP_PORT_LOCAL_PROD }}
       MYSQL_USER:                ${{vars.MYSQL_USER}}
       PROJECT_NAME:              ${{vars.PROJECT_NAME }}
       RELEASE_EMAIL_USER:        ${{vars.RELEASE_EMAIL_USER }}
