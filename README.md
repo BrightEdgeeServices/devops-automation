@@ -11,34 +11,21 @@
 
 ### High Level Process Description
 
-1. Push the changes until you are satisfied with your changes. Use `pushpy.ps1`. Monitor GutHub Actions. The workflow
+1. Push the changes until you are satisfied with your changes. Use `pushpy.ps1`. Monitor GitHub Actions. The workflow
    must complete successfully.
 1. Generate the ReleaseNotes and do `pushpy.ps1`.
-1. Deploy the changes by executing `pushpr.ps1`. Monitor GutHub Actions for successful deployment.
+1. Deploy the changes by executing `pushpr.ps1`. Monitor GitHub Actions for successful deployment.
 
 ### Detail Process
 
 1. Run the `pushpy.ps1` script or manually commit the current changes. Run it until (repeatedly) all changes are satisfied.
+
 1. Generate the release notes. Can be generated repeatedly until all changes are accounted for in the ReleaseNotes. However, might be necessary to consolidate multiple runs into one ReleaseNote update.
    published.
-   1. By using the following AI prompt in your favourite AI tool like Cursor, Junie or Codex:
 
-      ```
-      - Compile the release notes and add them to the top of the ReleaseNotes.md file by comparing the differences between the current branch and the master branch.
-      - Choose appropriate headings to group the changes.
-      - Bump the version appropriately in the pyproject.toml file using the SemVer (semver.org) rules.
-      - If an existing script in the templates directory changes, it is a "major" version bump.
-      - If a new script is added to the templates directory, it is a "minor" version bump.
-      - Any changes to an existing script in the .github/workflow directory is a "patch" version bump.
-      - Any addition of a new script in the .github/workflow directory is a "minor" version bump.
-      - Any other changes than the above, you decide on the bump.
-      - Follow the same format for the new clause as the previous clauses in the ReleaseNotes.md
-      - The new notes must end with a divider to separate it from the previous release notes.
-      - Do not mention the chore "dummy.txt" that was deleted.
-      - The last section must be a summary of the statistics which include the names of the files that was changed, number of files that was changed, number of insertions, number of deletions and the branch name.
-      ```
+   1. Use an AI prompt in your favourite AI tool like Cursor, Junie or Codex. The text for the prompt can be found [here](https://www.notion.so/Release-Update-General-2c0bc8e6c6f38076b4cee82e3cf243fa?source=copy_link).
 
-      or
+   alternatively
 
    1. Use the following template and manually update the ReleaseNotes.md file.
 
@@ -50,7 +37,9 @@
        - bla, bla, bla
        ---
       ```
+
 1. Run the `pushpr.ps1` script once you are ready to create the PR to publish the release. You can also manually create the tag, touch a file, commit and push the changes.
+
 1. Merge the PR in GitHub.
 
 ## Repository Structure
@@ -62,23 +51,27 @@
 
 ## Usage
 
-Each template workflow in `templates/` kick-off a reusable workflow in this repository's
-`.github/workflows/` directory.
-Each reusable workflow is designed to string together the desired combination of
-tasks to achieve the required workflow.
+- Each template workflow in `templates/` kick-off a reusable workflow in this repository's
+  `.github/workflows/` directory.
 
-Unless you are familiar with the workflow strategies, do not change the templates
-or any of the workflow scripts.
-Several repositories' CI/CD processes depend on these scripts and may break.
-Discuss any changes with your colleagues to get consensus on any changes or additions.
+- Each reusable workflow is designed to string together the desired combination of
+  tasks to achieve the required workflow.
+
+- Unless you are familiar with the workflow strategies, do not change the templates
+  or any of the workflow scripts.
+
+- Several repositories' CI/CD processes depend on these scripts and may break.
+
+- Discuss any changes with your colleagues to get consensus on any changes or additions.
 
 ## Naming Convention
 
-- `<language>-<type>-<task>-<description>-<variation>`
+- `<language>-<type>-<task>-<visibility>-<description>-<variation>`
   - where
     - language = `all (All Languages)` | `go (GoLang)` | `py (Python)` | `react (React)`
-    - type = `pc (process)` | `pub (publish)` | `temp (template)` | `wf (workflow)`
-    - task = `ci (continuous integration)` | `dep (deploy)` | `precom (pre-commit) | pypi`
+    - type = `pc` (process) | `temp` (template) | `wf` (workflow)
+    - task = `build` | `ci` (continuous integration) | `dep` (deploy) | `fork` | `notify` | `pr` (pull request) | `precom` (pre-commit) | `publish` | `release`
+    - visibility = `pvt` (private) | `pub` (public)
     - description = Short description where words are separated by "\_".
     - variation = `def (default)` | Variation description where words are separated by "\_".
 
@@ -96,129 +89,273 @@ We regularly update our workflows to improve functionality and security. To ensu
 1. Select the relevant template from `templates/` directory.
 1. Copy the template to the `.github/workflows` directory of your repository.
 1. Do not copy any of the workflow files from this repositories `.github/workflows` to the target repository.
+1. Refer to similar projects that already use these workflows for configuration examples.
 
 ## Available Templates
 
-1. py-temp-dep-pvt_no_docker-def.yaml
+1. all-temp-fork-pub-scheduled_sync_with_upstream-daily.yaml
+
+   | Type        | Description                                                     |
+   | ----------- | --------------------------------------------------------------- |
+   | Language    | All                                                             |
+   | Type        | Template                                                        |
+   | Task        | Fork                                                            |
+   | Visibility  | Public                                                          |
+   | Description | Scheduled task to sync the origin with the public fork (daily). |
+   | Variation   | Daily                                                           |
+
+1. all-temp-fork-pub-scheduled_sync_with_upstream-monthly.yaml
+
+   | Type        | Description                                                       |
+   | ----------- | ----------------------------------------------------------------- |
+   | Language    | All                                                               |
+   | Type        | Template                                                          |
+   | Task        | Fork                                                              |
+   | Visibility  | Public                                                            |
+   | Description | Scheduled task to sync the origin with the public fork (monthly). |
+   | Variation   | Monthly                                                           |
+
+1. all-temp-fork-pub-scheduled_sync_with_upstream-weekly.yaml
+
+   | Type        | Description                                                      |
+   | ----------- | ---------------------------------------------------------------- |
+   | Language    | All                                                              |
+   | Type        | Template                                                         |
+   | Task        | Fork                                                             |
+   | Visibility  | Public                                                           |
+   | Description | Scheduled task to sync the origin with the public fork (weekly). |
+   | Variation   | Weekly                                                           |
+
+1. all-temp-fork-pvt-scheduled_sync_with_upstream-daily.yaml
+
+   | Type        | Description                                                      |
+   | ----------- | ---------------------------------------------------------------- |
+   | Language    | All                                                              |
+   | Type        | Template                                                         |
+   | Task        | Fork                                                             |
+   | Visibility  | Private                                                          |
+   | Description | Scheduled task to sync the origin with the private fork (daily). |
+   | Variation   | Daily                                                            |
+
+1. all-temp-fork-pvt-scheduled_sync_with_upstream-monthly.yaml
+
+   | Type        | Description                                                        |
+   | ----------- | ------------------------------------------------------------------ |
+   | Language    | All                                                                |
+   | Type        | Template                                                           |
+   | Task        | Fork                                                               |
+   | Visibility  | Private                                                            |
+   | Description | Scheduled task to sync the origin with the private fork (monthly). |
+   | Variation   | Monthly                                                            |
+
+1. all-temp-fork-pvt-scheduled_sync_with_upstream-weekly.yaml
+
+   | Type        | Description                                                       |
+   | ----------- | ----------------------------------------------------------------- |
+   | Language    | All                                                               |
+   | Type        | Template                                                          |
+   | Task        | Fork                                                              |
+   | Visibility  | Private                                                           |
+   | Description | Scheduled task to sync the origin with the private fork (weekly). |
+   | Variation   | Weekly                                                            |
+
+1. iac-temp-fork-pvt-merge_no_docker-def.yaml
+
+   | Type        | Description                                         |
+   | ----------- | --------------------------------------------------- |
+   | Language    | IaC                                                 |
+   | Type        | Template                                            |
+   | Task        | Fork                                                |
+   | Visibility  | Private                                             |
+   | Description | Merge private repository to local fork (no Docker). |
+   | Variation   | Default                                             |
+
+1. iac-temp-pr-pvt-straight_through-def.yaml
+
+   | Type        | Description                                   |
+   | ----------- | --------------------------------------------- |
+   | Language    | IaC                                           |
+   | Type        | Template                                      |
+   | Task        | Pull Request                                  |
+   | Visibility  | Private                                       |
+   | Description | Straight through approach (no CI job needed). |
+   | Variation   | Default                                       |
+
+1. iac-temp-publish-pvt-release_notify_after_merge-def.yaml
+
+   | Type        | Description                                                                              |
+   | ----------- | ---------------------------------------------------------------------------------------- |
+   | Language    | IaC                                                                                      |
+   | Type        | Template                                                                                 |
+   | Task        | Publish                                                                                  |
+   | Visibility  | Private                                                                                  |
+   | Description | After a Pull Request is merged into master, creates a GitHub release and sends a notice. |
+   | Variation   | Default                                                                                  |
+
+1. py-temp-fork-pub-merge_no_docker-def.yaml
+
+   | Type        | Description                                        |
+   | ----------- | -------------------------------------------------- |
+   | Language    | Python                                             |
+   | Type        | Template                                           |
+   | Task        | Fork                                               |
+   | Visibility  | Public                                             |
+   | Description | Merge public repository to local fork (no Docker). |
+   | Variation   | Default                                            |
+
+1. py-temp-fork-pub-merge_with_docker-def.yaml
+
+   | Type        | Description                                          |
+   | ----------- | ---------------------------------------------------- |
+   | Language    | Python                                               |
+   | Type        | Template                                             |
+   | Task        | Fork                                                 |
+   | Visibility  | Public                                               |
+   | Description | Merge public repository to local fork (with Docker). |
+   | Variation   | Default                                              |
+
+1. py-temp-fork-pvt-merge_no_docker-def.yaml
+
+   | Type        | Description                                         |
+   | ----------- | --------------------------------------------------- |
+   | Language    | Python                                              |
+   | Type        | Template                                            |
+   | Task        | Fork                                                |
+   | Visibility  | Private                                             |
+   | Description | Merge private repository to local fork (no Docker). |
+   | Variation   | Default                                             |
+
+1. py-temp-pr-pub-no_docker-def.yaml
 
    | Type        | Description                                                  |
    | ----------- | ------------------------------------------------------------ |
    | Language    | Python                                                       |
    | Type        | Template                                                     |
-   | Task        | Deployment to production environment                         |
-   | Description | Private repository with no Docker container to be configured |
+   | Task        | Pull Request                                                 |
+   | Visibility  | Public                                                       |
+   | Description | Public repository with no Docker container to be configured. |
    | Variation   | Default                                                      |
 
-1. py-temp-dep-pvt_with_docker-def.yaml
+1. py-temp-pr-pub-with_docker-def.yaml
 
-   | Type        | Description                             |
-   | ----------- | --------------------------------------- |
-   | Language    | Python                                  |
-   | Type        | Template                                |
-   | Task        | Deployment to production environment    |
-   | Description | A Docker container has to be configured |
-   | Variation   | Default                                 |
+   | Type        | Description                                       |
+   | ----------- | ------------------------------------------------- |
+   | Language    | Python                                            |
+   | Type        | Template                                          |
+   | Task        | Pull Request                                      |
+   | Visibility  | Public                                            |
+   | Description | A Docker container has to be configured (public). |
+   | Variation   | Default                                           |
 
-1. py-temp-fork-pvt_merge_with_local-def.yaml
+1. py-temp-pr-pvt-no_docker-def.yaml
 
-   | Type        | Description                             |
-   | ----------- | --------------------------------------- |
-   | Language    | Python                                  |
-   | Type        | Template                                |
-   | Task        | Fork                                    |
-   | Description | Merge private repository to local fork. |
-   | Variation   | Default                                 |
+   | Type        | Description                                                   |
+   | ----------- | ------------------------------------------------------------- |
+   | Language    | Python                                                        |
+   | Type        | Template                                                      |
+   | Task        | Pull Request                                                  |
+   | Visibility  | Private                                                       |
+   | Description | Private repository with no Docker container to be configured. |
+   | Variation   | Default                                                       |
 
-1. all-temp-fork-scheduled_sync_with_upstream-daily.yaml
+1. py-temp-pr-pvt-straight_through-def.yaml
 
-   | Type        | Description                                              |
-   | ----------- | -------------------------------------------------------- |
-   | Language    | All                                                      |
-   | Type        | Template                                                 |
-   | Task        | Fork                                                     |
-   | Description | Scheduled task to sync the origin with the fork (daily). |
-   | Variation   | Daily                                                    |
+   | Type        | Description                                   |
+   | ----------- | --------------------------------------------- |
+   | Language    | Python                                        |
+   | Type        | Template                                      |
+   | Task        | Pull Request                                  |
+   | Visibility  | Private                                       |
+   | Description | Straight through approach (no CI job needed). |
+   | Variation   | Default                                       |
 
-1. all-temp-fork-scheduled_sync_with_upstream-weekly.yaml
+1. py-temp-pr-pvt-with_docker-def.yaml
 
-   | Type        | Description                                               |
-   | ----------- | --------------------------------------------------------- |
-   | Language    | All                                                       |
-   | Type        | Template                                                  |
-   | Task        | Fork                                                      |
-   | Description | Scheduled task to sync the origin with the fork (weekly). |
-   | Variation   | Weekly                                                    |
+   | Type        | Description                                        |
+   | ----------- | -------------------------------------------------- |
+   | Language    | Python                                             |
+   | Type        | Template                                           |
+   | Task        | Pull Request                                       |
+   | Visibility  | Private                                            |
+   | Description | A Docker container has to be configured (private). |
+   | Variation   | Default                                            |
 
-1. all-temp-fork-scheduled_sync_with_upstream-monthly.yaml
+1. py-temp-pr-pvt-with_native_docker-def.yaml
 
-   | Type        | Description                                                |
-   | ----------- | ---------------------------------------------------------- |
-   | Language    | All                                                        |
-   | Type        | Template                                                   |
-   | Task        | Fork                                                       |
-   | Description | Scheduled task to sync the origin with the fork (monthly). |
-   | Variation   | Monthly                                                    |
+   | Type        | Description                            |
+   | ----------- | -------------------------------------- |
+   | Language    | Python                                 |
+   | Type        | Template                               |
+   | Task        | Pull Request                           |
+   | Visibility  | Private                                |
+   | Description | Python Template PR Private with Docker |
+   | Variation   | Default                                |
 
-1. py-temp-pub-pvt_no_docker-def.yaml
+1. py-temp-publish-pub-build_release_notify_after_merge-def.yaml
 
-   | Type        | Description                                             |
-   | ----------- | ------------------------------------------------------- |
-   | Language    | Python                                                  |
-   | Type        | Template                                                |
-   | Task        | Publish in GitHub                                       |
-   | Description | Publish in GitHub for use by other private repositories |
-   | Variation   | Default                                                 |
+   | Type        | Description                                                                              |
+   | ----------- | ---------------------------------------------------------------------------------------- |
+   | Language    | Python                                                                                   |
+   | Type        | Template                                                                                 |
+   | Task        | Publish                                                                                  |
+   | Visibility  | Public                                                                                   |
+   | Description | After a Pull Request is merged into master, creates a GitHub release and sends a notice. |
+   | Variation   | Default                                                                                  |
 
-1. py-temp-pypi-pub_custom_ci-def.yaml
+1. py-temp-publish-pvt-build_release_notify_after_merge-def.yaml
 
-   | Type        | Description                                                          |
-   | ----------- | -------------------------------------------------------------------- |
-   | Language    | Python                                                               |
-   | Type        | Template                                                             |
-   | Task        | Publish to PyPI                                                      |
-   | Description | Refers to custom ci process in local directory of target repository. |
-   | Variation   | Default                                                              |
+   | Type        | Description                                                                              |
+   | ----------- | ---------------------------------------------------------------------------------------- |
+   | Language    | Python                                                                                   |
+   | Type        | Template                                                                                 |
+   | Task        | Publish                                                                                  |
+   | Visibility  | Private                                                                                  |
+   | Description | After a Pull Request is merged into master, creates a GitHub release and sends a notice. |
+   | Variation   | Default                                                                                  |
 
-1. py-temp-pypi-pub_no_docker-def.yaml
+1. py-temp-publish-pvt-release_notify_after_merge-def.yaml
 
-   | Type        | Description                             |
-   | ----------- | --------------------------------------- |
-   | Language    | Python                                  |
-   | Type        | Template                                |
-   | Task        | Publish to PyPI                         |
-   | Description | A Docker container has to be configured |
-   | Variation   | Default                                 |
+   | Type        | Description                                                                              |
+   | ----------- | ---------------------------------------------------------------------------------------- |
+   | Language    | Python                                                                                   |
+   | Type        | Template                                                                                 |
+   | Task        | Publish                                                                                  |
+   | Visibility  | Private                                                                                  |
+   | Description | After a Pull Request is merged into master, creates a GitHub release and sends a notice. |
+   | Variation   | Default                                                                                  |
 
-1. py-temp-pypi-pub_with_docker-def.yaml
+1. react-temp-fork-pvt-merge_with_docker-def.yaml
 
-   | Type        | Description                             |
-   | ----------- | --------------------------------------- |
-   | Language    | Python                                  |
-   | Type        | Template                                |
-   | Task        | Publish to PyPI                         |
-   | Description | A Docker container has to be configured |
-   | Variation   | Default                                 |
-
-1. py-temp-release-after-merge_no_docker-def.yaml
-
-   | Type        | Description                                                                                                                     |
-   | ----------- | ------------------------------------------------------------------------------------------------------------------------------- |
-   | Language    | Python                                                                                                                          |
-   | Type        | Template                                                                                                                        |
-   | Task        | Release after PR merge                                                                                                          |
-   | Description | After a Pull Request is merged into master, creates a GitHub release and sends a notice. The tag is derived from pyproject.toml |
-   |             | [project].version (fallback [tool.poetry].version) and is prefixed with `v`.                                                    |
-   | Variation   | Default                                                                                                                         |
+   | Type        | Description                                           |
+   | ----------- | ----------------------------------------------------- |
+   | Language    | React                                                 |
+   | Type        | Template                                              |
+   | Task        | Fork                                                  |
+   | Visibility  | Private                                               |
+   | Description | Merge private repository to local fork (with Docker). |
+   | Variation   | Default                                               |
 
 1. react-temp-pr-pvt-with_docker-def.yaml
 
-   | Type        | Description                             |
-   | ----------- | --------------------------------------- |
-   | Language    | React                                   |
-   | Type        | Template                                |
-   | Task        | CI and PR automation                    |
-   | Description | A Docker container has to be configured |
-   | Variation   | Default                                 |
+   | Type        | Description                                        |
+   | ----------- | -------------------------------------------------- |
+   | Language    | React                                              |
+   | Type        | Template                                           |
+   | Task        | Pull Request                                       |
+   | Visibility  | Private                                            |
+   | Description | A Docker container has to be configured (private). |
+   | Variation   | Default                                            |
+
+1. react-temp-publish-pvt-release_notify_after_merge-def.yaml
+
+   | Type        | Description                                                                              |
+   | ----------- | ---------------------------------------------------------------------------------------- |
+   | Language    | React                                                                                    |
+   | Type        | Template                                                                                 |
+   | Task        | Publish                                                                                  |
+   | Visibility  | Private                                                                                  |
+   | Description | After a Pull Request is merged into master, creates a GitHub release and sends a notice. |
+   | Variation   | Default                                                                                  |
 
 [cicd_codestyle_img]: https://img.shields.io/badge/code%20style-black-000000.svg "Black"
 [cicd_codestyle_lnk]: https://github.com/psf/black "Black"
