@@ -55,7 +55,7 @@ jobs:
       MYSQL_USER: ${{secrets.MYSQL_USER}}
       RELEASE_EMAIL_USER: ${{secrets.RELEASE_EMAIL_USER }}
       RELEASE_EMAIL_PASSWORD: ${{secrets.RELEASE_EMAIL_PASSWORD }}
-      # PROJECT_NAME: ${{vars.PROJECT_NAME }}
+      PROJECT_NAME: ${{secrets.PROJECT_NAME }}
       VENV_ENVIRONMENT: ${{secrets.VENV_ENVIRONMENT }}
 
     strategy:

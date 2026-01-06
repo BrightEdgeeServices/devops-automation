@@ -1,3 +1,22 @@
+### Release 9.9.1
+
+### Summary of Changes
+
+- Workflows: Enabled `PROJECT_NAME` secret in `.github/workflows/py-pc-ci-pub-with_docker-def.yaml` and `.github/workflows/py-wf-pr-pub-with_docker-def.yaml` by uncommenting and switching from repository variable to secret for public PR workflows with Docker.
+- Build: Bumped version to 9.9.1 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-314-feature-sqldbwrpr-remove-discontinued-workflow`
+- Files changed:
+  - .github/workflows/py-pc-ci-pub-with_docker-def.yaml
+  - .github/workflows/py-wf-pr-pub-with_docker-def.yaml
+- Number of files changed: 2
+- Insertions: 2
+- Deletions: 2
+
+______________________________________________________________________
+
 ### Release 9.9.0
 
 ### Summary of Changes
