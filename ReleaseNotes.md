@@ -1,3 +1,64 @@
+### Release 9.12.0
+
+### Summary of Changes
+
+- Templates: Removed commented-out blocks and unnecessary `secrets: inherit` from various template scripts in the `templates/` directory to improve clarity.
+- Workflows: Performed significant cleanup across `.github/workflows/` by removing extensive blocks of commented-out legacy code, simplifying the workflow definitions.
+- Documentation: Updated the "Available Templates" section in `README.md` to include "Visibility" (Public/Private) for each template and corrected minor typos in the process description.
+- Build: Bumped version to 10.0.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-307-main_feature-devops-automation-fork-sync-templates`
+- Files changed:
+  - .github/workflows/00-new-release-pipeline.yaml
+  - .github/workflows/03-merge.yaml
+  - .github/workflows/all-pc-fork-all-merge-def.yaml
+  - .github/workflows/all-pc-fork-pub-sync_with_upstream-def.yaml
+  - .github/workflows/all-pc-fork-pvt-sync_with_upstream-def.yaml
+  - .github/workflows/all-wf-fork-pub-scheduled_sync_with_upstream-def.yaml
+  - .github/workflows/all-wf-fork-pvt-scheduled_sync_with_upstream-def.yaml
+  - .github/workflows/iac-wf-fork-pvt-merge_no_docker-def.yaml
+  - .github/workflows/iac-wf-pr-pvt-straight_through-def.yaml
+  - .github/workflows/iac-wf-publish-pvt-release_notify_after_merge-def.yaml
+  - .github/workflows/py-wf-fork-pub-merge_no_docker-def.yaml
+  - .github/workflows/py-wf-fork-pub-merge_with_docker-def.yaml
+  - .github/workflows/py-wf-fork-pvt-merge_no_docker-def.yaml
+  - .github/workflows/py-wf-pr-pub-no_docker-def.yaml
+  - .github/workflows/py-wf-pr-pub-with_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt-no_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt-straight_through-def.yaml
+  - .github/workflows/py-wf-pr-pvt-with_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml
+  - .github/workflows/py-wf-publish-pvt-release_notify_after_merge-def.yaml
+  - .github/workflows/react-pc-ci-pvt-with_docker-def.yaml
+  - .github/workflows/react-wf-fork-pvt-merge_with_docker-def.yaml
+  - .github/workflows/react-wf-pr-pvt-with_docker-def.yaml
+  - .github/workflows/react-wf-publish-pvt-release_notify_after_merge-def.yaml
+  - README.md
+  - pyproject.toml
+  - templates/all-temp-fork-pub-scheduled_sync_with_upstream-daily.yaml
+  - templates/all-temp-fork-pub-scheduled_sync_with_upstream-monthly.yaml
+  - templates/all-temp-fork-pub-scheduled_sync_with_upstream-weekly.yaml
+  - templates/all-temp-fork-pvt-scheduled_sync_with_upstream-daily.yaml
+  - templates/all-temp-fork-pvt-scheduled_sync_with_upstream-monthly.yaml
+  - templates/all-temp-fork-pvt-scheduled_sync_with_upstream-weekly.yaml
+  - templates/iac-temp-fork-pvt-merge_no_docker-def.yaml
+  - templates/py-temp-fork-pub-merge_no_docker-def.yaml
+  - templates/py-temp-fork-pub-merge_with_docker-def.yaml
+  - templates/py-temp-fork-pvt-merge_no_docker-def.yaml
+  - templates/py-temp-pr-pub-no_docker-def.yaml
+  - templates/py-temp-pr-pub-with_docker-def.yaml
+  - templates/py-temp-pr-pvt-no_docker-def.yaml
+  - templates/py-temp-pr-pvt-straight_through-def.yaml
+  - templates/py-temp-pr-pvt-with_docker-def.yaml
+  - templates/py-temp-pr-pvt-with_native_docker-def.yaml
+- Number of files changed: 42
+- Insertions: 275
+- Deletions: 668
+
+______________________________________________________________________
+
 ### Release 9.11.0
 
 ### Summary of Changes

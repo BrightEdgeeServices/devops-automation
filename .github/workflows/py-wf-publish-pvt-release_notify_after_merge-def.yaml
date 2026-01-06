@@ -19,16 +19,6 @@ on:
         required: true
 
 jobs:
-  #  Build:
-  #    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-build-pvt-def.yaml@master
-  #    with:
-  #      tag_name: ${{ inputs.tag_name }}
-  #    secrets:
-  #      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
-  #      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
-  #      RELEASE_EMAIL_USER:     ${{ secrets.RELEASE_EMAIL_USER }}
-  #      RELEASE_EMAIL_PASSWORD: ${{ secrets.RELEASE_EMAIL_PASSWORD }}
-  #
   Release:
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-release-all-def.yaml@master
     #    needs: Build

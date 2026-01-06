@@ -19,13 +19,6 @@ jobs:
     uses: ./.github/workflows/all-pc-pr-all-detect_tag-def.yaml
     secrets: inherit
 
-  #  Amend-Release-Notes:
-  #    if: ${{ success() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
-  #    needs:
-  #      - Pre-Commit
-  #      - Detect-PR-Tag
-  #    uses: ./.github/workflows/02-amend-release-notes.yaml
-
   Merge:
     if: ${{ success() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
     needs:

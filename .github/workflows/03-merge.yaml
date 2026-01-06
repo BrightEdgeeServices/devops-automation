@@ -42,6 +42,3 @@ jobs:
               git push origin master
         env:
           GH_TOKEN: ${{ secrets.GH_REPO_ACCESS_CURR_USER }}
-
-    #      - name: Debug Environment
-    #        run: env

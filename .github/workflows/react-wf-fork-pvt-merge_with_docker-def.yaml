@@ -3,12 +3,6 @@ name: React workflow for Merge with Docker with Local Fork
 
 on:
   workflow_call:
-    #    inputs:
-    #      run_deploy:
-    #        description: "Set to 'true' to run the Build-and-Deploy job if a tag was specified."
-    #        required:    true
-    #        default:     false
-    #        type:        boolean
     secrets:
       GH_REPO_ACCESS_BEE_MASTER:
         required: true
@@ -81,7 +75,6 @@ jobs:
     permissions:
       id-token: write
       contents: write
-    # if:   ${{ inputs.run_deploy == true }}
     needs:
       - Pre-Commit
       - CI

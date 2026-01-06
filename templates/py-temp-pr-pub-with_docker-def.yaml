@@ -19,9 +19,6 @@ jobs:
       pull-requests: write
     if: ${{ github.ref_type != 'tag' }}
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-wf-pr-pub-with_docker-def.yaml@master
-#    with:
-#      run_publish: true
-    # secrets: inherit
     secrets:
       GH_REPO_ACCESS_BEE_MASTER:  ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER:  ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
