@@ -1,3 +1,23 @@
+### Release 9.8.0
+
+### Summary of Changes
+
+- Templates: Added new public PR with Docker template `templates/py-temp-pr-pub-with_docker-def.yaml` for Python projects using Docker.
+- Workflows: Added new public PR reusable workflow `.github/workflows/py-wf-pr-pub-with_docker-def.yaml` that orchestrates Pre-Commit, CI with Docker, and PR checks for public repositories.
+- Build: Bumped version to 9.8.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-314-feature-sqldbwrpr-remove-discontinued-workflow`
+- Files changed:
+  - .github/workflows/py-wf-pr-pub-with_docker-def.yaml
+  - templates/py-temp-pr-pub-with_docker-def.yaml
+- Number of files changed: 2
+- Insertions: 153
+- Deletions: 0
+
+______________________________________________________________________
+
 ### Release 9.7.1
 
 ### Summary of Changes
