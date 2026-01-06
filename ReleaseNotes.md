@@ -1,3 +1,24 @@
+### Release 9.9.0
+
+### Summary of Changes
+
+- Templates: Enabled `MYSQL_TCP_PORT_EXTERNAL` and `MYSQL_TCP_PORT_LOCAL_PROD` repository variables in `templates/py-temp-pr-pub-with_docker-def.yaml` so public PR pipelines can pass through external and local production MySQL ports to Docker-based CI.
+- Workflows: Updated `.github/workflows/py-pc-ci-pub-with_docker-def.yaml` to require `MYSQL_TCP_PORT_EXTERNAL` and `MYSQL_TCP_PORT_LOCAL_PROD` secrets and export them into the CI job environment, and updated `.github/workflows/py-wf-pr-pub-with_docker-def.yaml` to pass those secrets through to the CI workflow for public repositories.
+- Build: Bumped version to 10.0.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-314-feature-sqldbwrpr-remove-discontinued-workflow`
+- Files changed:
+  - .github/workflows/py-pc-ci-pub-with_docker-def.yaml
+  - .github/workflows/py-wf-pr-pub-with_docker-def.yaml
+  - templates/py-temp-pr-pub-with_docker-def.yaml
+- Number of files changed: 3
+- Insertions: 10
+- Deletions: 4
+
+______________________________________________________________________
+
 ### Release 9.8.0
 
 ### Summary of Changes
