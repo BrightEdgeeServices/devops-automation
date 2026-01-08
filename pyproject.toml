@@ -42,7 +42,7 @@
 [project.urls]
     # Documentation = "https://readthedocs.org"
     Issues = "https://github.com/BrightEdgeeServices/devops-automation/issues"
-    Changelog = 'https://github.com/BrightEdgeeServices/devops-automation/blob/enhancement/master/ReleaseNotes.md'
+changelog = 'https://github.com/BrightEdgeeServices/devops-automation/releases'
     Homepage = 'https://github.com/BrightEdgeeServices/devops-automation'
     Repository = "https://github.com/BrightEdgeeServices/devops-automation.git"
 
