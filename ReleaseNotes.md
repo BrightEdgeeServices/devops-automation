@@ -1,3 +1,22 @@
+### Release 9.12.1
+
+### Summary of Changes
+
+- Workflows: Updated `.github/workflows/py-wf-publish-pvt-build_release_notify_after_merge-def.yaml` to use the private build workflow (`py-pc-build-pvt-def.yaml`) instead of the public one, commented out `PYPI_API_TOKEN_PROD` requirement and secret (not needed for private repositories), and enabled `GH_REPO_ACCESS_BEE_MASTER` and `GH_REPO_ACCESS_RTE_MASTER` secrets for private repository access.
+- Build: Updated changelog URL in `pyproject.toml` to point to GitHub releases page and bumped version to 9.12.1.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-317-feature-fidewebtourparser-automate-build-test-deploy`
+- Files changed:
+  - .github/workflows/py-wf-publish-pvt-build_release_notify_after_merge-def.yaml
+  - pyproject.toml
+- Number of files changed: 2
+- Insertions: 7
+- Deletions: 7
+
+______________________________________________________________________
+
 ### Release 9.12.0
 
 ### Summary of Changes
