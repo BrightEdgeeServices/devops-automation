@@ -1,3 +1,21 @@
+### Release 9.12.2
+
+### Summary of Changes
+
+- Workflows: Added Poetry HTTP basic authentication configuration for BEE and RTE private repositories in `.github/workflows/py-pc-ci-pvt-no_docker-def.yaml` to enable access to private package repositories during dependency installation.
+- Build: Bumped version to 9.12.2 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-127-main_feature-fiderainglist-set-up-cicd-pipeline`
+- Files changed:
+  - .github/workflows/py-pc-ci-pvt-no_docker-def.yaml
+- Number of files changed: 1
+- Insertions: 2
+- Deletions: 0
+
+______________________________________________________________________
+
 ### Release 9.12.1
 
 ### Summary of Changes
