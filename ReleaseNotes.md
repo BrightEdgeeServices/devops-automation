@@ -1,3 +1,28 @@
+### Release 9.13.0
+
+### Summary of Changes
+
+- Templates: Added new private fork merge with Docker template `templates/py-temp-fork-pvt-merge_with_docker-def.yaml` for Python projects using Docker in private repositories. Updated existing template `templates/py-temp-fork-pvt-merge_no_docker-def.yaml` to include `MYSQL_TCP_PORT_EXTERNAL` and `MYSQL_TCP_PORT_LOCAL_PROD` variables and added documentation comment.
+- Workflows: Added new private fork merge reusable workflow `.github/workflows/py-wf-fork-pvt-merge_with_docker-def.yaml` that orchestrates Pre-Commit, CI with Docker, and merge operations for private fork repositories. Updated multiple private workflow files (`.github/workflows/py-pc-build-pvt-def.yaml`, `.github/workflows/py-pc-ci-pvt-no_docker-def.yaml`, `.github/workflows/py-pc-ci-pvt-with_docker-def.yaml`, `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml`) to add Poetry HTTP basic authentication configuration for additional private repositories (rtecommon, rtedb, rteapi, fideratinglist, fidewebtourparser, event_service).
+- Build: Bumped version to 10.0.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-127-main_feature-event_service-set-up-cicd-pipeline`
+- Files changed:
+  - .github/workflows/py-pc-build-pvt-def.yaml
+  - .github/workflows/py-pc-ci-pvt-no_docker-def.yaml
+  - .github/workflows/py-pc-ci-pvt-with_docker-def.yaml
+  - .github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml
+  - .github/workflows/py-wf-fork-pvt-merge_with_docker-def.yaml
+  - templates/py-temp-fork-pvt-merge_no_docker-def.yaml
+  - templates/py-temp-fork-pvt-merge_with_docker-def.yaml
+- Number of files changed: 7
+- Insertions: 146
+- Deletions: 0
+
+______________________________________________________________________
+
 ### Release 9.12.2
 
 ### Summary of Changes
