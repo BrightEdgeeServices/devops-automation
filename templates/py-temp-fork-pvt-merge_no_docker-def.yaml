@@ -1,4 +1,6 @@
 ﻿# py-temp-fork-pvt-merge_no_docker-def.yaml
+# This is a template and should not be changed unless you are familiar with the
+# reusable GitHub Actions strategy of the company.
 name: Python Template Merge no Docker with Local Fork
 
 on:
@@ -20,6 +22,8 @@ jobs:
       MYSQL_PASSWORD:            ${{secrets.MYSQL_PASSWORD}}
       MYSQL_ROOT_PASSWORD:       ${{secrets.MYSQL_ROOT_PASSWORD}}
       MYSQL_TCP_PORT:             ${{vars.MYSQL_TCP_PORT }}
+      MYSQL_TCP_PORT_EXTERNAL:   ${{vars.MYSQL_TCP_PORT_EXTERNAL }}
+      MYSQL_TCP_PORT_LOCAL_PROD: ${{vars.MYSQL_TCP_PORT_LOCAL_PROD }}
       MYSQL_USER:                ${{vars.MYSQL_USER}}
       PROJECT_NAME:               ${{vars.PROJECT_NAME }}
       RELEASE_EMAIL_USER:        ${{vars.RELEASE_EMAIL_USER }}
