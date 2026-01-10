@@ -1,3 +1,21 @@
+### Release 9.13.3
+
+### Summary of Changes
+
+- Workflows: Fixed invalid secret passing in `.github/workflows/py-wf-pr-pvt-with_docker-def.yaml` by replacing explicit `GH_REPO_ACCESS_BEE_MASTER` and `GH_REPO_ACCESS_RTE_MASTER` secret passing to `all-pc-pr-all-def.yaml` and `all-pc-pr-all-cleanup_tag-def.yaml` workflows with `secrets: inherit`, since these called workflows don't declare these secrets and use `GITHUB_TOKEN` instead.
+- Build: Bumped version to 9.13.3 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/urs-319-feature-user_management_service-remove-discontinued-workflow`
+- Files changed:
+  - .github/workflows/py-wf-pr-pvt-with_docker-def.yaml
+- Number of files changed: 1
+- Insertions: 2
+- Deletions: 6
+
+______________________________________________________________________
+
 ### Release 9.13.2
 
 ### Summary of Changes
