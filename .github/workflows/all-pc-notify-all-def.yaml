@@ -1,6 +1,6 @@
-# py-pc-release-def.yaml
+# all-pc-notify-all-def.yaml
 # Reusable workflow: Create Release and Send Notice after PR merge
-name: Build Release And Notify
+name: all-pc-notify-all-def
 
 on:
   workflow_call:

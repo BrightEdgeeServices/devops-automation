@@ -1,5 +1,5 @@
 # py-pc-precom-all-def.yaml
-name: Pre-Commit
+name: py-pc-precom-all-def
 
 on:
   workflow_call:

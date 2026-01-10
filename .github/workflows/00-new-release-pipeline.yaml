@@ -1,5 +1,5 @@
 # 00-new-release-pipeline.yaml
-name: New Release Pipeline
+name: 00-new-release-pipeline
 
 on:
   push:

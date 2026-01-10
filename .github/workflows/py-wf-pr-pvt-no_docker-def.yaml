@@ -1,5 +1,5 @@
 # py-wf-pr-pvt-no_docker-def.yaml
-name: Pre-Commit, CI and PR (default)
+name: py-wf-pr-pvt-no_docker-def
 
 on:
   workflow_call:
@@ -55,14 +55,14 @@ jobs:
   CI:
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-ci-pvt-no_docker-def.yaml@master
     secrets:
-      AUTHZ_CACHE_TTL_SEC:       ${{secrets.AUTHZ_CACHE_TTL_SEC}}
-      AUTHZ_HOST:                ${{secrets.AUTHZ_HOST}}
-      AUTHZ_MYSQL_DATABASE:      ${{secrets.AUTHZ_MYSQL_DATABASE}}
-      AUTHZ_MYSQL_HOST:          ${{secrets.AUTHZ_MYSQL_HOST}}
-      AUTHZ_MYSQL_PASSWORD:      ${{secrets.AUTHZ_MYSQL_PASSWORD}}
+      AUTHZ_CACHE_TTL_SEC: ${{secrets.AUTHZ_CACHE_TTL_SEC}}
+      AUTHZ_HOST: ${{secrets.AUTHZ_HOST}}
+      AUTHZ_MYSQL_DATABASE: ${{secrets.AUTHZ_MYSQL_DATABASE}}
+      AUTHZ_MYSQL_HOST: ${{secrets.AUTHZ_MYSQL_HOST}}
+      AUTHZ_MYSQL_PASSWORD: ${{secrets.AUTHZ_MYSQL_PASSWORD}}
       AUTHZ_MYSQL_ROOT_PASSWORD: ${{secrets.AUTHZ_MYSQL_ROOT_PASSWORD}}
-      AUTHZ_MYSQL_TCP_PORT:      ${{secrets.AUTHZ_MYSQL_TCP_PORT}}
-      AUTHZ_MYSQL_USER:          ${{secrets.AUTHZ_MYSQL_USER}}
+      AUTHZ_MYSQL_TCP_PORT: ${{secrets.AUTHZ_MYSQL_TCP_PORT}}
+      AUTHZ_MYSQL_USER: ${{secrets.AUTHZ_MYSQL_USER}}
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
       INSTALLER_USERID: ${{secrets.INSTALLER_USERID }}

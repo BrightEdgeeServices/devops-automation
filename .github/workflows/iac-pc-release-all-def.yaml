@@ -1,6 +1,6 @@
 # iac-pc-release-all-def.yaml
 # Reusable workflow: Create Release and Send Notice after PR merge
-name: Build Release And Notify
+name: iac-pc-release-all-def
 
 on:
   workflow_call:

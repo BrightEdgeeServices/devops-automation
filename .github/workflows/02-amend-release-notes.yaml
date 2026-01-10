@@ -1,5 +1,5 @@
 # 02-amend-release-notes.yaml
-name: Amend Release Notes
+name: 02-amend-release-notes
 
 on:
   workflow_call:
@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        python-version: [ '3.12' ]
+        python-version: ["3.12"]
 
     permissions:
       contents: write

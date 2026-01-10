@@ -1,5 +1,5 @@
 # py-wf-fork-pub-merge_no_docker-def.yaml
-name: Workflow for Merge no Docker with Local Fork
+name: py-wf-fork-pub-merge_no_docker-def
 
 on:
   workflow_call:

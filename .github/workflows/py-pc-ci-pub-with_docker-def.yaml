@@ -1,7 +1,7 @@
 # py-pc-ci-pub-with_docker-def.yaml
 # ToDo
 # This is a copied version and has to be fixed
-name: CI
+name: py-pc-ci-pub-with_docker-def
 
 on:
   workflow_call:

@@ -1,5 +1,5 @@
-# py-pc-fork-merge-def.yaml
-name: Merge-into-local-fork
+# all-pc-fork-pvt-merge-def.yaml
+name: all-pc-fork-pvt-merge-def
 
 on:
   workflow_call:

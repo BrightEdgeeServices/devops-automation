@@ -1,7 +1,8 @@
 # all-temp-fork-pvt-scheduled_sync_with_upstream-weekly.yaml
+# This is a template and should not be changed unless you are familiar with the reusable GitHub Actions strategy of the company.
 # ToDo
 # This work flow does not work for private repositories yet and has to be be further pursued.  I just gave up for the moment ;-).
-name: Template Scheduled Merge Private Fork with Upstream - Weekly
+name: all-temp-fork-pvt-scheduled_sync_with_upstream-weekly
 
 on:
   schedule:

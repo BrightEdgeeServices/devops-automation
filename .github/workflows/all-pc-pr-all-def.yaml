@@ -1,5 +1,5 @@
 # all-pc-pr-all-def.yaml
-name: PR-and-Build
+name: all-pc-pr-all-def
 
 on:
   workflow_call:

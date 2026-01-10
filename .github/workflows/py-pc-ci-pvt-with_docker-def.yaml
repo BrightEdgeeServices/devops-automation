@@ -1,6 +1,5 @@
 # py-pc-ci-pvt-with_docker-def.yaml
-
-name: CI
+name: py-pc-ci-pvt-with_docker-def
 
 on:
   workflow_call:

@@ -1,5 +1,5 @@
 # all-pc-fork-pvt-sync_with_upstream-def.yaml
-name: Merge with Upstream Private Fork
+name: all-pc-fork-pvt-sync_with_upstream-def
 
 on:
     workflow_call:

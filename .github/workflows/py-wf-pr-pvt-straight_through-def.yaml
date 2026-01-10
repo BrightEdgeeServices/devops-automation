@@ -1,5 +1,5 @@
-# py-wf-pr-pvt-straight_through-def.yaml.yaml
-name: Straight Through Processing (default)
+# py-wf-pr-pvt-straight_through-def.yaml
+name: py-wf-pr-pvt-straight_through-def
 
 on:
   workflow_call:

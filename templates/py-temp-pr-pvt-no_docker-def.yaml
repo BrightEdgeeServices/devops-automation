@@ -1,7 +1,7 @@
 # py-temp-pr-pvt-no_docker-def.yaml
 # This is a template and should not be changed unless you are familiar with the
 # reusable GitHub Actions strategy of the company.
-name: Python Template PR Private No-Docker
+name: py-temp-pr-pvt-no_docker-def
 
 on:
   push:

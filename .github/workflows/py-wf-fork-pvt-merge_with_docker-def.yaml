@@ -1,5 +1,5 @@
-# py-wf-fork-pub-merge_with_docker-def.yaml
-name: Workflow for Merge with Docker on Local Fork
+# py-wf-fork-pvt-merge_with_docker-def.yaml
+name: py-wf-fork-pvt-merge_with_docker-def
 
 on:
   workflow_call:

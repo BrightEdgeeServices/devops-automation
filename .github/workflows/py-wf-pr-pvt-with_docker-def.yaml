@@ -1,5 +1,5 @@
 # py-wf-pr-pvt-with_docker-def.yaml
-name: Pre-Commit, CI and PR (default)
+name: py-wf-pr-pvt-with_docker-def
 
 on:
   workflow_call:

@@ -1,5 +1,5 @@
 # py-wf-publish-pvt-build_release_notify_after_merge-def.yaml
-name: Publish After PR Merge (Wrapper)
+name: py-wf-publish-pvt-build_release_notify_after_merge-def
 
 on:
   workflow_call:

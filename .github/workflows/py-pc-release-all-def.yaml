@@ -1,6 +1,6 @@
-# py-pc-release-def.yaml
+# py-pc-release-all-def.yaml
 # Reusable workflow: Create Release and Send Notice after PR merge
-name: Build Release And Notify
+name: py-pc-release-all-def
 
 on:
   workflow_call:
@@ -36,7 +36,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: '3.12'
+          python-version: "3.12"
 
       - name: Compute tag name
         id: compute_tag
@@ -89,8 +89,8 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name:  ${{ steps.compute_tag.outputs.tag_name }}
-          name:      ${{ steps.compute_tag.outputs.tag_name }}
+          tag_name: ${{ steps.compute_tag.outputs.tag_name }}
+          name: ${{ steps.compute_tag.outputs.tag_name }}
           body_path: ${{ github.workspace }}/ReleaseNotes.md
           draft: false
           prerelease: false
