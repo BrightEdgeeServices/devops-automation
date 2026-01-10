@@ -3,11 +3,11 @@ name: Cleanup PR Tag (default)
 
 on:
   workflow_call:
-    secrets:
-      GH_REPO_ACCESS_BEE_MASTER:
-        required: true
-      GH_REPO_ACCESS_RTE_MASTER:
-        required: true
+    # secrets:
+    #   GH_REPO_ACCESS_BEE_MASTER:
+    #     required: true
+    #   GH_REPO_ACCESS_RTE_MASTER:
+    #     required: true
 jobs:
   Cleanup-Delete-pr-Tag:
     runs-on: ubuntu-latest

@@ -3,11 +3,11 @@ name: PR-and-Build
 
 on:
   workflow_call:
-    secrets:
-      GH_REPO_ACCESS_BEE_MASTER:
-        required: true
-      GH_REPO_ACCESS_RTE_MASTER:
-        required: true
+    # secrets:
+    #   GH_REPO_ACCESS_BEE_MASTER:
+    #     required: true
+    #   GH_REPO_ACCESS_RTE_MASTER:
+    #     required: true
 
 jobs:
   Create-PR:

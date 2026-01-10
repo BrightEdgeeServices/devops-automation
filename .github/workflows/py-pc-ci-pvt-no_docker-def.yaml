@@ -4,6 +4,22 @@ name: CI
 on:
   workflow_call:
     secrets:
+      AUTHZ_CACHE_TTL_SEC:
+        required: true
+      AUTHZ_HOST:
+        required: true
+      AUTHZ_MYSQL_DATABASE:
+        required: true
+      AUTHZ_MYSQL_HOST:
+        required: true
+      AUTHZ_MYSQL_PASSWORD:
+        required: true
+      AUTHZ_MYSQL_ROOT_PASSWORD:
+        required: true
+      AUTHZ_MYSQL_TCP_PORT:
+        required: true
+      AUTHZ_MYSQL_USER:
+        required: true
       GH_REPO_ACCESS_BEE_MASTER:
         required: true
       GH_REPO_ACCESS_RTE_MASTER:
@@ -35,6 +51,14 @@ jobs:
   CI:
     runs-on: ${{matrix.os}}
     env:
+      AUTHZ_CACHE_TTL_SEC:       ${{secrets.AUTHZ_CACHE_TTL_SEC}}
+      AUTHZ_HOST:                ${{secrets.AUTHZ_HOST}}
+      AUTHZ_MYSQL_DATABASE:      ${{secrets.AUTHZ_MYSQL_DATABASE}}
+      AUTHZ_MYSQL_HOST:          ${{secrets.AUTHZ_MYSQL_HOST}}
+      AUTHZ_MYSQL_PASSWORD:      ${{secrets.AUTHZ_MYSQL_PASSWORD}}
+      AUTHZ_MYSQL_ROOT_PASSWORD: ${{secrets.AUTHZ_MYSQL_ROOT_PASSWORD}}
+      AUTHZ_MYSQL_TCP_PORT:      ${{secrets.AUTHZ_MYSQL_TCP_PORT}}
+      AUTHZ_MYSQL_USER:          ${{secrets.AUTHZ_MYSQL_USER}}
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
       INSTALLER_USERID: ${{secrets.INSTALLER_USERID }}
