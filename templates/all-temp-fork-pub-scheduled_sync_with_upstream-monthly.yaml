@@ -1,5 +1,6 @@
 # all-temp-fork-pub-scheduled_sync_with_upstream-monthly.yaml
-name: Template Scheduled Merge Public Fork with Upstream - Monthly
+# This is a template and should not be changed unless you are familiar with the reusable GitHub Actions strategy of the company.
+name: all-temp-fork-pub-scheduled_sync_with_upstream-monthly
 
 on:
   schedule:
@@ -13,8 +14,8 @@ jobs:
       contents: write
     uses: BrightEdgeeServices/devops-automation/.github/workflows/all-wf-fork-pub-scheduled_sync_with_upstream-def.yaml@master
     secrets:
-      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
-      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
+      # GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
+      # GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
       # MYSQL_PASSWORD:            ${{secrets.MYSQL_PASSWORD}}
       # MYSQL_ROOT_PASSWORD:       ${{secrets.MYSQL_ROOT_PASSWORD}}
       # MYSQL_USER:                ${{secrets.MYSQL_USER}}

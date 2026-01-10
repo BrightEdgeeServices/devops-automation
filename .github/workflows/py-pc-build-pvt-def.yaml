@@ -1,6 +1,6 @@
-# py-pc-release-def.yaml
+# py-pc-build-pvt-def.yaml
 # Reusable workflow: Create Release and Send Notice after PR merge
-name: Build Release And Notify
+name: py-pc-build-pvt-def
 
 on:
   workflow_call:

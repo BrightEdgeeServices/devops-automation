@@ -1,13 +1,12 @@
-# iac-wf-pr-pvt-straight_through-def.yaml
-# This is a template and should not be changed unless you are familiar with the
-# reusable GitHub Actions strategy of the company.
+# iac-temp-pr-pvt-straight_through-def.yaml
+# This is a template and should not be changed unless you are familiar with the reusable GitHub Actions strategy of the company.
 #
 # ToDo: Update this template to use the new IaC workflow.
 # Use this template only in the following situations:
 # - You are creating a new IaC repository and want to use the straight through
 #   approach in the beginning until the exact workflow is determined.
 # - There is geniunely no need for a CI job for the repository.
-name: IaC Template PR Private Straight Through
+name: iac-temp-pr-pvt-straight_through-def
 
 on:
   push:

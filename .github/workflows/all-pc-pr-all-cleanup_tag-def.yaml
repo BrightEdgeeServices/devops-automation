@@ -1,13 +1,13 @@
 # all-pc-pr-all-cleanup_tag-def.yaml
-name: Cleanup PR Tag (default)
+name: all-pc-pr-all-cleanup_tag-def
 
 on:
   workflow_call:
-    secrets:
-      GH_REPO_ACCESS_BEE_MASTER:
-        required: true
-      GH_REPO_ACCESS_RTE_MASTER:
-        required: true
+    # secrets:
+    #   GH_REPO_ACCESS_BEE_MASTER:
+    #     required: true
+    #   GH_REPO_ACCESS_RTE_MASTER:
+    #     required: true
 jobs:
   Cleanup-Delete-pr-Tag:
     runs-on: ubuntu-latest

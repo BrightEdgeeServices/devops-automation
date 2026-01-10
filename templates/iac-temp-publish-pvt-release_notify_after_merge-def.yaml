@@ -1,8 +1,8 @@
-# py-temp-publish-pvt-release_notify_after_merge-def.yaml
+# iac-temp-publish-pvt-release_notify_after_merge-def.yaml
 # This template triggers a reusable workflow that creates a release and sends a notice
 # after a Pull Request is merged into master. The release tag is derived from
 # pyproject.toml's [project].version (or [tool.poetry].version as fallback), prefixed with 'v'.
-name: Release After Merge
+name: iac-temp-publish-pvt-release_notify_after_merge-def
 
 on:
   pull_request:

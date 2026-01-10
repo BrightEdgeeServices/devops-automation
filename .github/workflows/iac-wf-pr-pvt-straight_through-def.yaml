@@ -1,5 +1,5 @@
-# iac-wf-pr-pvt-straight_through-def.yaml.yaml
-name: IaC Template PR Private Straight Through
+# iac-wf-pr-pvt-straight_through-def.yaml
+name: iac-wf-pr-pvt-straight_through-def
 
 on:
   workflow_call:

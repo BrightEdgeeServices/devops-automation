@@ -1,13 +1,13 @@
 # all-pc-pr-all-def.yaml
-name: PR-and-Build
+name: all-pc-pr-all-def
 
 on:
   workflow_call:
-    secrets:
-      GH_REPO_ACCESS_BEE_MASTER:
-        required: true
-      GH_REPO_ACCESS_RTE_MASTER:
-        required: true
+    # secrets:
+    #   GH_REPO_ACCESS_BEE_MASTER:
+    #     required: true
+    #   GH_REPO_ACCESS_RTE_MASTER:
+    #     required: true
 
 jobs:
   Create-PR:

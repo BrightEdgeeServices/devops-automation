@@ -1,6 +1,5 @@
 # react-pc-ci-pvt-with_docker-def.yaml
-
-name: CI
+name: react-pc-ci-pvt-with_docker-def
 
 on:
   workflow_call:

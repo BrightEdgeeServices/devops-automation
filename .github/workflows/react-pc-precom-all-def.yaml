@@ -1,5 +1,5 @@
 # react-pc-precom-all-def.yaml
-name: Pre-Commit
+name: react-pc-precom-all-def
 
 on:
   workflow_call:

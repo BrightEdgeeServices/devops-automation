@@ -1,5 +1,6 @@
-﻿# iac-temp-fork-pvt-merge_no_docker-def.yaml
-name: Python Template Merge no Docker with Local Fork
+# iac-temp-fork-pvt-merge_no_docker-def.yaml
+# This is a template and should not be changed unless you are familiar with the reusable GitHub Actions strategy of the company.
+name: iac-temp-fork-pvt-merge_no_docker-def
 
 on:
   push:

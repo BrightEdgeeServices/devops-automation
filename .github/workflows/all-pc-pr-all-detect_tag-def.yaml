@@ -1,6 +1,6 @@
 # all-pc-pr-all-detect_tag-def.yaml
 # Reusable workflow: Detect presence of 'pr' tag on remote
-name: Detect PR Tag
+name: all-pc-pr-all-detect_tag-def
 permissions:
   contents: read
 

@@ -1,5 +1,5 @@
 # react-wf-fork-pvt-merge_with_docker-def.yaml
-name: React workflow for Merge with Docker with Local Fork
+name: react-wf-fork-pvt-merge_with_docker-def
 
 on:
   workflow_call:

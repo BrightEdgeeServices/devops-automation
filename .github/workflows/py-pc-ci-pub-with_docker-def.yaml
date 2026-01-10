@@ -1,15 +1,11 @@
 # py-pc-ci-pub-with_docker-def.yaml
 # ToDo
 # This is a copied version and has to be fixed
-name: CI
+name: py-pc-ci-pub-with_docker-def
 
 on:
   workflow_call:
     secrets:
-      GH_REPO_ACCESS_BEE_MASTER:
-        required: true
-      GH_REPO_ACCESS_RTE_MASTER:
-        required: true
       INSTALLER_USERID:
         required: true
       INSTALLER_PWD:
@@ -43,8 +39,6 @@ jobs:
   CI:
     runs-on: ${{matrix.os}}
     env:
-      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
-      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
       INSTALLER_USERID: ${{secrets.INSTALLER_USERID }}
       INSTALLER_PWD: ${{secrets.INSTALLER_PWD }}
       MYSQL_DATABASE: ${{secrets.MYSQL_DATABASE }}
@@ -91,9 +85,6 @@ jobs:
       - name: Configure Poetry
         run: |
           poetry config keyring.enabled false
-          # poetry config http-basic.PoetryPrivate __token__ ${{ secrets.GH_REPO_ACCESS_CURR_USER }}
-          # poetry source add --priority=explicit PoetryPrivate https://github.com/BrightEdgeeServices/PoetryPrivate.git
-          # poetry add git+https://github.com/BrightEdgeeServices/PoetryPrivate.git
 
       - name: Install dependencies
         run: |

@@ -1,5 +1,5 @@
 # react-wf-pr-pvt-with_docker-def.yaml
-name: Pre-Commit, CI and PR (default)
+name: react-wf-pr-pvt-with_docker-def
 
 on:
   workflow_call:

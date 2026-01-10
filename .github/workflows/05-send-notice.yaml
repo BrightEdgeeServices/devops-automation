@@ -1,5 +1,5 @@
 # 05-send-notice.yaml
-name: Send Notice
+name: 05-send-notice
 
 on:
   workflow_call:

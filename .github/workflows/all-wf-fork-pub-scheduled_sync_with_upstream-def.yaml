@@ -1,5 +1,5 @@
 # all-wf-fork-pub-scheduled_sync_with_upstream-def.yaml
-name: Scheduled Sync with Upstream Public Fork
+name: all-wf-fork-pub-scheduled_sync_with_upstream-def
 
 on:
     workflow_call:
@@ -39,9 +39,9 @@ jobs:
         #      original_owner:     $original_owner
         #      original_repo_name: $original_repo_name
         secrets:
-            GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
-            GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
+            # GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
+            # GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
             ORIGINAL_OWNER: ${{secrets.ORIGINAL_OWNER}}
             ORIGINAL_REPO_NAME: ${{secrets.ORIGINAL_REPO_NAME}}
-#      RELEASE_EMAIL_PASSWORD:    ${{secrets.RELEASE_EMAIL_PASSWORD }}
-#      RELEASE_EMAIL_USER:        ${{secrets.RELEASE_EMAIL_USER }}
+            # RELEASE_EMAIL_PASSWORD:    ${{secrets.RELEASE_EMAIL_PASSWORD }}
+            # RELEASE_EMAIL_USER:        ${{secrets.RELEASE_EMAIL_USER }}

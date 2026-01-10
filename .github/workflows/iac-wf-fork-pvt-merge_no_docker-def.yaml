@@ -1,5 +1,5 @@
-# py-wf-fork-pvt-merge_no_docker-def.yaml
-name: Workflow for Merge no Docker with Local Fork
+# iac-wf-fork-pvt-merge_no_docker-def.yaml
+name: iac-wf-fork-pvt-merge_no_docker-def
 
 on:
   workflow_call:

@@ -1,7 +1,7 @@
-# py-wf-pypi-pub_no_docker-def.yaml
+# py-wf-pr-pub-no_docker-def.yaml
 # ToDo
 # This is a copied version and has to be fixed
-name: Default PyPI Pipeline
+name: py-wf-pr-pub-no_docker-def
 
 on:
   workflow_call:

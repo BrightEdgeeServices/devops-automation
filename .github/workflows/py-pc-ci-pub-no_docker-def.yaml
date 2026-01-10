@@ -1,5 +1,5 @@
 # py-pc-ci-pub-no_docker-def.yaml
-name: CI
+name: py-pc-ci-pub-no_docker-def
 
 on:
   workflow_call:
