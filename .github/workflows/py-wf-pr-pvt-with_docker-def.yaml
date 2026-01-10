@@ -4,6 +4,22 @@ name: py-wf-pr-pvt-with_docker-def
 on:
   workflow_call:
     secrets:
+      AUTHZ_CACHE_TTL_SEC:
+        required: true
+      AUTHZ_HOST:
+        required: true
+      AUTHZ_MYSQL_DATABASE:
+        required: true
+      AUTHZ_MYSQL_HOST:
+        required: true
+      AUTHZ_MYSQL_PASSWORD:
+        required: true
+      AUTHZ_MYSQL_ROOT_PASSWORD:
+        required: true
+      AUTHZ_MYSQL_TCP_PORT:
+        required: true
+      AUTHZ_MYSQL_USER:
+        required: true
       GH_REPO_ACCESS_BEE_MASTER:
         required: true
       GH_REPO_ACCESS_RTE_MASTER:
