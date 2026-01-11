@@ -1,3 +1,21 @@
+### Release 9.13.4
+
+### Summary of Changes
+
+- Workflows: Fixed invalid secret passing in `.github/workflows/iac-wf-pr-pvt-straight_through-def.yaml` by replacing explicit `GH_REPO_ACCESS_BEE_MASTER` and `GH_REPO_ACCESS_RTE_MASTER` secret passing to `all-pc-pr-all-def.yaml` and `all-pc-pr-all-cleanup_tag-def.yaml` workflows with `secrets: inherit`, since these called workflows don't declare these secrets and use `GITHUB_TOKEN` instead.
+- Build: Bumped version to 9.13.4 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/rte-181-feature-rte_iac-document-infrastructure-naming-conventions`
+- Files changed:
+  - .github/workflows/iac-wf-pr-pvt-straight_through-def.yaml
+- Number of files changed: 1
+- Insertions: 2
+- Deletions: 6
+
+______________________________________________________________________
+
 ### Release 9.13.3
 
 ### Summary of Changes
