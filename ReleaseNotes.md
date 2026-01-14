@@ -1,3 +1,21 @@
+### Release 9.13.5
+
+### Summary of Changes
+
+- Workflows: Made AUTHZ secret declarations (`AUTHZ_CACHE_TTL_SEC`, `AUTHZ_HOST`, `AUTHZ_MYSQL_DATABASE`, `AUTHZ_MYSQL_HOST`, `AUTHZ_MYSQL_PASSWORD`, `AUTHZ_MYSQL_ROOT_PASSWORD`, `AUTHZ_MYSQL_TCP_PORT`, `AUTHZ_MYSQL_USER`) optional in `.github/workflows/py-wf-pr-pvt-with_docker-def.yaml` by changing `required: true` to `required: false`, allowing repositories without authorization services to use the template without providing these variables.
+- Build: Bumped version to 9.13.5 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/rte-181-feature-rte_iac-document-infrastructure-naming-conventions`
+- Files changed:
+  - .github/workflows/py-wf-pr-pvt-with_docker-def.yaml
+- Number of files changed: 1
+- Insertions: 8
+- Deletions: 8
+
+______________________________________________________________________
+
 ### Release 9.13.4
 
 ### Summary of Changes
