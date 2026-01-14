@@ -6,7 +6,7 @@
 
 [project]
     name = 'devops-platform'
-    version = "9.13.4"
+    version = "9.13.5"
     description = 'Repository for GitHub Actions Workflows.'
 
     authors = [
