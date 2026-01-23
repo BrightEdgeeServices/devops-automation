@@ -1,3 +1,23 @@
+### Release 9.14.1
+
+### Summary of Changes
+
+- Workflows: Added AUTHZ secret declarations (`AUTHZ_CACHE_TTL_SEC`, `AUTHZ_HOST`, `AUTHZ_MYSQL_DATABASE`, `AUTHZ_MYSQL_HOST`, `AUTHZ_MYSQL_PASSWORD`, `AUTHZ_MYSQL_ROOT_PASSWORD`, `AUTHZ_MYSQL_TCP_PORT`, `AUTHZ_MYSQL_USER`) to `.github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml` by adding them as optional secrets in the `workflow_call` section, allowing repositories with authorization services to pass these variables through the workflow.
+- Build: Updated black pre-commit hook version from 26.1.0 to 25.12.0 in `.pre-commit-config.yaml`.
+- Build: Bumped version to 9.14.1 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/rte-206-feature-rte_iac-perform-visual-comparison-validation`
+- Files changed:
+  - .github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml
+  - .pre-commit-config.yaml
+- Number of files changed: 2
+- Insertions: 17
+- Deletions: 1
+
+______________________________________________________________________
+
 ### Release 9.14.0
 
 ### Summary of Changes
