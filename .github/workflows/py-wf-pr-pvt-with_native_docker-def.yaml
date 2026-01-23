@@ -58,6 +58,20 @@ on:
         required: true
       VENV_ENVIRONMENT:
         required: true
+      MYSQL_IMAGE:
+        required: true
+      PYTEST_CONTAINER:
+        required: true
+      PYTEST_MYSQL_DATABASE:
+        required: true
+      PYTEST_MYSQL_HOST:
+        required: true
+      PYTEST_MYSQL_PWD:
+        required: true
+      PYTEST_MYSQL_ROOT_PASSWORD:
+        required: true
+      PYTEST_MYSQL_USER:
+        required: true
 
 jobs:
   Pre-Commit:
@@ -86,6 +100,13 @@ jobs:
       SOCKET_FIDE_PARSER_SERVICE: ${{secrets.SOCKET_FIDE_PARSER_SERVICE }}
       SOCKET_RTEAPI: ${{secrets.SOCKET_RTEAPI }}
       VENV_ENVIRONMENT: ${{secrets.VENV_ENVIRONMENT }}
+      MYSQL_IMAGE: ${{secrets.MYSQL_IMAGE }}
+      PYTEST_CONTAINER: ${{secrets.PYTEST_CONTAINER }}
+      PYTEST_MYSQL_DATABASE: ${{secrets.PYTEST_MYSQL_DATABASE }}
+      PYTEST_MYSQL_HOST: ${{secrets.PYTEST_MYSQL_HOST }}
+      PYTEST_MYSQL_PWD: ${{secrets.PYTEST_MYSQL_PWD }}
+      PYTEST_MYSQL_ROOT_PASSWORD: ${{secrets.PYTEST_MYSQL_ROOT_PASSWORD }}
+      PYTEST_MYSQL_USER: ${{secrets.PYTEST_MYSQL_USER }}
 
   Detect-PR-Tag:
     uses: BrightEdgeeServices/devops-automation/.github/workflows/all-pc-pr-all-detect_tag-def.yaml@master
