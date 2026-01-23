@@ -20,14 +20,14 @@ jobs:
     if: ${{ github.ref_type != 'tag' }}
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml@master
     secrets:
-      AUTHZ_CACHE_TTL_SEC:        ${{env.AUTHZ_CACHE_TTL_SEC}}
-      AUTHZ_HOST:                 ${{env.AUTHZ_HOST}}
-      AUTHZ_MYSQL_DATABASE:       ${{env.AUTHZ_MYSQL_DATABASE}}
-      AUTHZ_MYSQL_HOST:           ${{env.AUTHZ_MYSQL_HOST}}
-      AUTHZ_MYSQL_PASSWORD:       ${{env.AUTHZ_MYSQL_PASSWORD}}
-      AUTHZ_MYSQL_ROOT_PASSWORD:  ${{env.AUTHZ_MYSQL_ROOT_PASSWORD}}
-      AUTHZ_MYSQL_TCP_PORT:       ${{env.AUTHZ_MYSQL_TCP_PORT}}
-      AUTHZ_MYSQL_USER:           ${{env.AUTHZ_MYSQL_USER}}
+      AUTHZ_CACHE_TTL_SEC:        ${{vars.AUTHZ_CACHE_TTL_SEC}}
+      AUTHZ_HOST:                 ${{vars.AUTHZ_HOST}}
+      AUTHZ_MYSQL_DATABASE:       ${{vars.AUTHZ_MYSQL_DATABASE}}
+      AUTHZ_MYSQL_HOST:           ${{vars.AUTHZ_MYSQL_HOST}}
+      AUTHZ_MYSQL_PASSWORD:       ${{secrets.AUTHZ_MYSQL_PASSWORD}}
+      AUTHZ_MYSQL_ROOT_PASSWORD:  ${{secrets.AUTHZ_MYSQL_ROOT_PASSWORD}}
+      AUTHZ_MYSQL_TCP_PORT:       ${{vars.AUTHZ_MYSQL_TCP_PORT}}
+      AUTHZ_MYSQL_USER:           ${{vars.AUTHZ_MYSQL_USER}}
       GH_REPO_ACCESS_BEE_MASTER:  ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER:  ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
       INSTALLER_USERID:           ${{vars.INSTALLER_USERID }}

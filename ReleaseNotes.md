@@ -1,3 +1,21 @@
+### Release 9.14.0
+
+### Summary of Changes
+
+- Templates: Fixed invalid GitHub Actions context usage in `templates/py-temp-pr-pvt-with_native_docker-def.yaml` by replacing `env` context (which is not available in `secrets:` sections) with `vars` context for AUTHZ configuration variables and `secrets` context for AUTHZ password fields, ensuring proper workflow validation.
+- Build: Bumped version to 10.0.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/rte-206-feature-rte_iac-perform-visual-comparison-validation`
+- Files changed:
+  - templates/py-temp-pr-pvt-with_native_docker-def.yaml
+- Number of files changed: 1
+- Insertions: 8
+- Deletions: 8
+
+______________________________________________________________________
+
 ### Release 9.13.5
 
 ### Summary of Changes
