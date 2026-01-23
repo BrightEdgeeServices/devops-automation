@@ -1,3 +1,26 @@
+### Release 9.15.0
+
+### Summary of Changes
+
+- Templates: Added new pytest and MySQL configuration variables (`MYSQL_IMAGE`, `PYTEST_CONTAINER`, `PYTEST_MYSQL_DATABASE`, `PYTEST_MYSQL_HOST`, `PYTEST_MYSQL_PWD`, `PYTEST_MYSQL_ROOT_PASSWORD`, `PYTEST_MYSQL_USER`) to `templates/py-temp-pr-pvt-with_native_docker-def.yaml` to support Docker-based MySQL testing configurations in native Docker workflows.
+- Workflows: Added pytest and MySQL configuration secrets to `.github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml` and `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` by declaring them as required secrets in the `workflow_call` sections, passing them through to the CI job, and including them in the environment variables and `.env` file generation for Docker-based test execution.
+- Build: Updated black pre-commit hook version from 26.1.0 to 25.12.0 in `.pre-commit-config.yaml`.
+- Build: Bumped version to 9.15.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/rte-206-feature-rte_iac-perform-visual-comparison-validation`
+- Files changed:
+  - .github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml
+  - .pre-commit-config.yaml
+  - templates/py-temp-pr-pvt-with_native_docker-def.yaml
+- Number of files changed: 4
+- Insertions: 57
+- Deletions: 1
+
+______________________________________________________________________
+
 ### Release 9.14.2
 
 ### Summary of Changes
