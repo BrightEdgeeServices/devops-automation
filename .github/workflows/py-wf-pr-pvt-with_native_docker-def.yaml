@@ -60,8 +60,6 @@ on:
         required: true
       MYSQL_IMAGE:
         required: true
-      PYTEST_CONTAINER:
-        required: true
       PYTEST_MYSQL_DATABASE:
         required: true
       PYTEST_MYSQL_HOST:
@@ -97,7 +95,6 @@ jobs:
       SOCKET_RTEAPI: ${{secrets.SOCKET_RTEAPI }}
       VENV_ENVIRONMENT: ${{secrets.VENV_ENVIRONMENT }}
       MYSQL_IMAGE: ${{secrets.MYSQL_IMAGE }}
-      PYTEST_CONTAINER: ${{secrets.PYTEST_CONTAINER }}
       PYTEST_MYSQL_DATABASE: ${{secrets.PYTEST_MYSQL_DATABASE }}
       PYTEST_MYSQL_HOST: ${{secrets.PYTEST_MYSQL_HOST }}
       PYTEST_MYSQL_TCP_PORT: ${{secrets.PYTEST_MYSQL_TCP_PORT }}
