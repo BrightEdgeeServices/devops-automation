@@ -1,3 +1,25 @@
+### Release 10.0.0
+
+### Summary of Changes
+
+- Templates: Refined native Docker PR template `templates/py-temp-pr-pvt-with_native_docker-def.yaml` to pass a focused set of pytest/MySQL configuration variables (`MYSQL_IMAGE`, `PYTEST_MYSQL_DATABASE`, `PYTEST_MYSQL_HOST`, `PYTEST_MYSQL_TCP_PORT`) for Docker-based test environments, simplifying the previous broader secret set.
+- Workflows: Updated `.github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml` and `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` to align their `workflow_call` secrets, CI environment, and `.env` file generation with the refined pytest/MySQL variables, ensuring consistent secret declarations and usage across reusable workflows.
+- Build: Bumped version to 9.16.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/rte-206-feature-rte_iac-perform-visual-comparison-validation`
+- Files changed:
+  - .github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml
+  - .pre-commit-config.yaml
+  - templates/py-temp-pr-pvt-with_native_docker-def.yaml
+- Number of files changed: 4
+- Insertions: 6
+- Deletions: 22
+
+______________________________________________________________________
+
 ### Release 9.15.0
 
 ### Summary of Changes
