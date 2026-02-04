@@ -50,4 +50,7 @@ jobs:
       MYSQL_IMAGE:                ${{vars.MYSQL_IMAGE }}
       PYTEST_MYSQL_DATABASE:      ${{vars.PYTEST_MYSQL_DATABASE }}
       PYTEST_MYSQL_HOST:          ${{vars.PYTEST_MYSQL_HOST }}
+      PYTEST_MYSQL_PWD:           ${{secrets.PYTEST_MYSQL_PWD }}
+      PYTEST_MYSQL_ROOT_PASSWORD: ${{secrets.PYTEST_MYSQL_ROOT_PASSWORD }}
       PYTEST_MYSQL_TCP_PORT:      ${{vars.PYTEST_MYSQL_TCP_PORT }}
+      PYTEST_MYSQL_USER:          ${{vars.PYTEST_MYSQL_USER }}
