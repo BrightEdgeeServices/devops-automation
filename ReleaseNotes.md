@@ -1,25 +1,25 @@
-### Release 9.16.1
+### Release 9.16.2
 
 ### Summary of Changes
 
-- Workflows: Fixed invalid secret passing in `.github/workflows/py-wf-pr-pvt-no_docker-def.yaml` by replacing explicit `GH_REPO_ACCESS_BEE_MASTER` and `GH_REPO_ACCESS_RTE_MASTER` secret passing to `all-pc-pr-all-def.yaml` and `all-pc-pr-all-cleanup_tag-def.yaml` workflows with `secrets: inherit`, since these called workflows don't declare these secrets and use `GITHUB_TOKEN` instead.
+- Workflows: Fixed `.env` file generation in `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` by adding a `sed` command to strip leading whitespace from heredoc content. The YAML indentation was causing environment variable names to be prefixed with spaces, resulting in MySQL authentication failures (`Access denied for user 'root'`) because credentials couldn't be read correctly.
 - Build: Downgraded black pre-commit hook version from 26.1.0 to 25.12.0 in `.pre-commit-config.yaml`.
-- Build: Bumped version to 9.16.1 in `pyproject.toml`.
+- Build: Bumped version to 9.16.2 in `pyproject.toml`.
 
 ### Change Statistics (vs master)
 
 - Branch: `hendrik/rte-206-feature-rte_iac-perform-visual-comparison-validation`
 - Files changed:
-  - .github/workflows/py-wf-pr-pvt-no_docker-def.yaml
+  - .github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml
   - .pre-commit-config.yaml
   - poetry.lock
 - Number of files changed: 3
-- Insertions: 13
-- Deletions: 18
+- Insertions: 12
+- Deletions: 12
 
 ______________________________________________________________________
 
-### Release 10.0.0
+### Release 9.16.0
 
 ### Summary of Changes
 
