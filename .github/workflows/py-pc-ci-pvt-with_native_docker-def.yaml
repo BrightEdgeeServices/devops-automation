@@ -155,6 +155,23 @@ jobs:
           EOF
           sed -i 's/^[[:space:]]*//' .env
 
+      - name: Debug - Verify environment variables
+        run: |
+          echo "=== Checking environment variables ==="
+          echo "MYSQL_ROOT_PASSWORD length: ${#MYSQL_ROOT_PASSWORD}"
+          echo "MYSQL_ROOT_PASSWORD is set: $( [ -n "$MYSQL_ROOT_PASSWORD" ] && echo 'YES' || echo 'NO' )"
+          echo "MYSQL_PASSWORD length: ${#MYSQL_PASSWORD}"
+          echo "MYSQL_USER: $MYSQL_USER"
+          echo "MYSQL_DATABASE: $MYSQL_DATABASE"
+          echo "MYSQL_HOST: $MYSQL_HOST"
+          echo "MYSQL_TCP_PORT: $MYSQL_TCP_PORT"
+          echo ""
+          echo "=== .env file contents (values masked by GitHub) ==="
+          cat .env
+          echo ""
+          echo "=== .env file line count ==="
+          wc -l .env
+
       - name: Run pytest with coverage
         run: |
           mkdir logs
