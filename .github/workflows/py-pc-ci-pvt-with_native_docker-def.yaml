@@ -153,6 +153,7 @@ jobs:
           PYTEST_MYSQL_DATABASE=${{ secrets.PYTEST_MYSQL_DATABASE }}
           PYTEST_MYSQL_HOST=${{ secrets.PYTEST_MYSQL_HOST }}
           EOF
+          sed -i 's/^[[:space:]]*//' .env
 
       - name: Run pytest with coverage
         run: |
