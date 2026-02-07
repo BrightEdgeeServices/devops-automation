@@ -93,9 +93,7 @@ jobs:
       - Pre-Commit
       - CI
     uses: BrightEdgeeServices/devops-automation/.github/workflows/all-pc-pr-all-def.yaml@master
-    secrets:
-      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
-      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
+    secrets: inherit
 
   Cleanup-Delete-pr-Tag:
     permissions:
@@ -104,6 +102,4 @@ jobs:
     needs:
       - Detect-PR-Tag
     uses: BrightEdgeeServices/devops-automation/.github/workflows/all-pc-pr-all-cleanup_tag-def.yaml@master
-    secrets:
-      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
-      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
+    secrets: inherit
