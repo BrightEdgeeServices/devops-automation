@@ -183,6 +183,16 @@ jobs:
           echo "=== Checking if repo has .env file committed ==="
           if [ -f ".env.example" ]; then echo ".env.example exists"; cat .env.example; else echo "No .env.example"; fi
           git ls-files | grep -E "^\.env" || echo "No .env files tracked in git"
+          echo ""
+          echo "=== Checking actual Python settings object ==="
+          poetry run python -c "
+          from dma.configs.settings import env_settings
+          print(f'env_settings.MYSQL_ROOT_PASSWORD length: {len(env_settings.MYSQL_ROOT_PASSWORD)}')
+          print(f'env_settings.MYSQL_ROOT_PASSWORD is empty: {env_settings.MYSQL_ROOT_PASSWORD == \"\"}')
+          print(f'env_settings.MYSQL_PASSWORD length: {len(env_settings.MYSQL_PASSWORD)}')
+          print(f'env_settings.MYSQL_USER: {env_settings.MYSQL_USER}')
+          print(f'env_settings.MYSQL_HOST: {env_settings.MYSQL_HOST}')
+          "
 
       - name: Run pytest with coverage
         run: |
