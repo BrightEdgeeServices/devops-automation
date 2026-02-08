@@ -193,6 +193,29 @@ jobs:
           print(f'env_settings.MYSQL_USER: {env_settings.MYSQL_USER}')
           print(f'env_settings.MYSQL_HOST: {env_settings.MYSQL_HOST}')
           "
+          echo ""
+          echo "=== Checking password for special characters ==="
+          poetry run python -c "
+          import os
+          pwd = os.environ.get('MYSQL_ROOT_PASSWORD', '')
+          print(f'Has leading whitespace: {pwd != pwd.lstrip()}')
+          print(f'Has trailing whitespace: {pwd != pwd.rstrip()}')
+          print(f'Contains dollar sign: {chr(36) in pwd}')
+          print(f'Contains backslash: {chr(92) in pwd}')
+          print(f'Contains single quote: {chr(39) in pwd}')
+          print(f'Contains double quote: {chr(34) in pwd}')
+          print(f'Contains backtick: {chr(96) in pwd}')
+          print(f'Contains exclamation: {chr(33) in pwd}')
+          print(f'Is alphanumeric only: {pwd.isalnum()}')
+          print(f'ASCII repr (masked structure): ', end='')
+          # Print character types without revealing actual chars
+          for c in pwd:
+              if c.isalpha(): print('A', end='')
+              elif c.isdigit(): print('9', end='')
+              elif c.isspace(): print('_', end='')
+              else: print('!', end='')
+          print()
+          "
 
       - name: Run pytest with coverage
         run: |
