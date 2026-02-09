@@ -1,3 +1,32 @@
+### Release 9.17.0
+
+### Summary of Changes
+
+- Templates: Updated `templates/py-temp-pr-pvt-with_native_docker-def.yaml` to add Google credentials secret mapping (`GOOGLE_CREDENTIALS_PATH`, `GOOGLE_CREDENTIALS_CONTENTS`) for native Docker Python PR workflow calls.
+- Templates: Updated `templates/react-temp-pr-pvt-with_docker-def.yaml` to replace invalid `env` usage in `secrets:` with the correct `vars`/`secrets` contexts for AUTHZ values.
+- Workflows: Updated `.github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml` and `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` to require/pass Google credentials secrets and to generate the Google credentials file during CI before environment setup.
+- Workflows: Updated `.github/workflows/react-pc-ci-pvt-with_docker-def.yaml`, `.github/workflows/react-wf-fork-pvt-merge_with_docker-def.yaml`, and `.github/workflows/react-wf-pr-pvt-with_docker-def.yaml` to declare optional AUTHZ secrets and propagate them to downstream reusable workflows/CI environments.
+- Build: Bumped version to 9.17.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/rte-206-feature-rte_iac-perform-visual-comparison-validation`
+- Files changed:
+  - .github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml
+  - .github/workflows/react-pc-ci-pvt-with_docker-def.yaml
+  - .github/workflows/react-wf-fork-pvt-merge_with_docker-def.yaml
+  - .github/workflows/react-wf-pr-pvt-with_docker-def.yaml
+  - ReleaseNotes.md
+  - pyproject.toml
+  - templates/py-temp-pr-pvt-with_native_docker-def.yaml
+  - templates/react-temp-pr-pvt-with_docker-def.yaml
+- Number of files changed: 9
+- Insertions: 165
+- Deletions: 41
+
+______________________________________________________________________
+
 ### Release 9.16.3
 
 ### Summary of Changes
