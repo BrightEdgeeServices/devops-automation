@@ -1,3 +1,21 @@
+### Release 9.17.1
+
+### Summary of Changes
+
+- Workflows: Commented out the "Debug - Verify environment variables" step in `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` to reduce CI noise and avoid project-specific references (e.g. `dma.configs.settings`) in the shared workflow.
+- Build: Bumped version to 9.17.1 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `dirk/rte-251-feature-rte_iac-update-workflows-to-get-rtestack-into-master`
+- Files changed:
+  - .github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml
+- Number of files changed: 1
+- Insertions: 61
+- Deletions: 61
+
+______________________________________________________________________
+
 ### Release 9.17.0
 
 ### Summary of Changes
