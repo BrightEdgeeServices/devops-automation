@@ -130,13 +130,23 @@ jobs:
         run: |
           poetry install --with dev
 
-      # Create Google credentials file if provided
+      # Create Google credentials file (required)
       - name: Create Google credentials file
-        if: ${{ secrets.GOOGLE_CREDENTIALS_CONTENTS != '' }}
         run: |
-          CREDENTIALS_PATH="${{ secrets.GOOGLE_CREDENTIALS_PATH != '' }}"
+          if [ -z "${{ secrets.GOOGLE_CREDENTIALS_CONTENTS }}" ]; then
+            echo "ERROR: GOOGLE_CREDENTIALS_CONTENTS secret is not set or empty." >&2
+            exit 1
+          fi
+
+          if [ -n "$GOOGLE_CREDENTIALS_PATH" ]; then
+            CREDENTIALS_PATH="$GOOGLE_CREDENTIALS_PATH"
+          else
+            CREDENTIALS_PATH="$HOME/.config/gcloud/application_default_credentials.json"
+          fi
+
           CREDENTIALS_DIR=$(dirname "$CREDENTIALS_PATH")
           mkdir -p "$CREDENTIALS_DIR"
+
           echo '${{ secrets.GOOGLE_CREDENTIALS_CONTENTS }}' > "$CREDENTIALS_PATH"
           chmod 600 "$CREDENTIALS_PATH"
           echo "Created Google credentials file at: $CREDENTIALS_PATH"

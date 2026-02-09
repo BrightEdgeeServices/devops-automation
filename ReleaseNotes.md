@@ -1,3 +1,21 @@
+### Release 9.16.3
+
+### Summary of Changes
+
+- Build: Updated black pre-commit hook version from 26.1.0 to 25.12.0 in `.pre-commit-config.yaml`.
+- Build: Bumped version to 9.16.3 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/rte-206-feature-rte_iac-perform-visual-comparison-validation`
+- Files changed:
+  - .pre-commit-config.yaml
+- Number of files changed: 1
+- Insertions: 1
+- Deletions: 1
+
+______________________________________________________________________
+
 ### Release 9.16.2
 
 ### Summary of Changes
