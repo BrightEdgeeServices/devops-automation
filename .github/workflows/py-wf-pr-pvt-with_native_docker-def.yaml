@@ -24,6 +24,10 @@ on:
         required: true
       GH_REPO_ACCESS_RTE_MASTER:
         required: true
+      GOOGLE_CREDENTIALS_PATH:
+        required: true
+      GOOGLE_CREDENTIALS_CONTENTS:
+        required: true
       INSTALLER_USERID:
         required: true
       INSTALLER_PWD:
@@ -66,7 +70,6 @@ on:
         required: true
       PYTEST_MYSQL_TCP_PORT:
         required: true
-
 jobs:
   Pre-Commit:
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-precom-all-def.yaml@master
@@ -77,6 +80,8 @@ jobs:
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
+      GOOGLE_CREDENTIALS_PATH: ${{secrets.GOOGLE_CREDENTIALS_PATH }}
+      GOOGLE_CREDENTIALS_CONTENTS: ${{secrets.GOOGLE_CREDENTIALS_CONTENTS }}
       INSTALLER_USERID: ${{secrets.INSTALLER_USERID }}
       INSTALLER_PWD: ${{secrets.INSTALLER_PWD }}
       MYSQL_DATABASE: ${{secrets.MYSQL_DATABASE }}
