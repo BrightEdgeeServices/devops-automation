@@ -9,6 +9,10 @@ on:
         required: true
       GH_REPO_ACCESS_RTE_MASTER:
         required: true
+      GOOGLE_CREDENTIALS_PATH:
+        required: true
+      GOOGLE_CREDENTIALS_CONTENTS:
+        required: true
       INSTALLER_USERID:
         required: true
       INSTALLER_PWD:
@@ -57,6 +61,7 @@ jobs:
     env:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
+      GOOGLE_CREDENTIALS_PATH: ${{ secrets.GOOGLE_CREDENTIALS_PATH }}
       INSTALLER_USERID: ${{secrets.INSTALLER_USERID }}
       INSTALLER_PWD: ${{secrets.INSTALLER_PWD }}
       MYSQL_DATABASE: ${{secrets.MYSQL_DATABASE }}
@@ -124,6 +129,18 @@ jobs:
       - name: Install dependencies
         run: |
           poetry install --with dev
+
+      # Create Google credentials file if provided
+      - name: Create Google credentials file
+        if: ${{ secrets.GOOGLE_CREDENTIALS_CONTENTS != '' }}
+        run: |
+          CREDENTIALS_PATH="${{ secrets.GOOGLE_CREDENTIALS_PATH != '' }}"
+          CREDENTIALS_DIR=$(dirname "$CREDENTIALS_PATH")
+          mkdir -p "$CREDENTIALS_DIR"
+          echo '${{ secrets.GOOGLE_CREDENTIALS_CONTENTS }}' > "$CREDENTIALS_PATH"
+          chmod 600 "$CREDENTIALS_PATH"
+          echo "Created Google credentials file at: $CREDENTIALS_PATH"
+          echo "File size: $(wc -c < "$CREDENTIALS_PATH") bytes"
 
       # Create the .env file that docker compose expects
       - name: Create .env from GitHub Secrets

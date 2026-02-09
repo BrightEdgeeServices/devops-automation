@@ -20,34 +20,36 @@ jobs:
     if: ${{ github.ref_type != 'tag' }}
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml@master
     secrets:
-      AUTHZ_CACHE_TTL_SEC:        ${{vars.AUTHZ_CACHE_TTL_SEC}}
-      AUTHZ_HOST:                 ${{vars.AUTHZ_HOST}}
-      AUTHZ_MYSQL_DATABASE:       ${{vars.AUTHZ_MYSQL_DATABASE}}
-      AUTHZ_MYSQL_HOST:           ${{vars.AUTHZ_MYSQL_HOST}}
-      AUTHZ_MYSQL_PASSWORD:       ${{secrets.AUTHZ_MYSQL_PASSWORD}}
-      AUTHZ_MYSQL_ROOT_PASSWORD:  ${{secrets.AUTHZ_MYSQL_ROOT_PASSWORD}}
-      AUTHZ_MYSQL_TCP_PORT:       ${{vars.AUTHZ_MYSQL_TCP_PORT}}
-      AUTHZ_MYSQL_USER:           ${{vars.AUTHZ_MYSQL_USER}}
-      GH_REPO_ACCESS_BEE_MASTER:  ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
-      GH_REPO_ACCESS_RTE_MASTER:  ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
-      INSTALLER_USERID:           ${{vars.INSTALLER_USERID }}
-      INSTALLER_PWD:              ${{secrets.INSTALLER_PWD }}
-      MYSQL_DATABASE:             ${{vars.MYSQL_DATABASE }}
-      MYSQL_HOST:                 ${{vars.MYSQL_HOST }}
-      MYSQL_PASSWORD:             ${{secrets.MYSQL_PASSWORD}}
-      MYSQL_ROOT_PASSWORD:        ${{secrets.MYSQL_ROOT_PASSWORD}}
-      MYSQL_TCP_PORT:             ${{vars.MYSQL_TCP_PORT }}
-      MYSQL_TCP_PORT_EXTERNAL:    ${{vars.MYSQL_TCP_PORT_EXTERNAL }}
-      MYSQL_TCP_PORT_LOCAL_PROD:  ${{vars.MYSQL_TCP_PORT_LOCAL_PROD }}
-      MYSQL_USER:                 ${{vars.MYSQL_USER}}
-      PROJECT_NAME:               ${{vars.PROJECT_NAME }}
-      RELEASE_EMAIL_USER:         ${{vars.RELEASE_EMAIL_USER }}
-      RELEASE_EMAIL_PASSWORD:     ${{secrets.RELEASE_EMAIL_PASSWORD }}
-      SOCKET_EVENT_SERVICE:       ${{vars.SOCKET_EVENT_SERVICE }}
-      SOCKET_FIDE_PARSER_SERVICE: ${{vars.SOCKET_FIDE_PARSER_SERVICE }}
-      SOCKET_RTEAPI:              ${{vars.SOCKET_RTEAPI }}
-      VENV_ENVIRONMENT:           ${{vars.VENV_ENVIRONMENT }}
-      MYSQL_IMAGE:                ${{vars.MYSQL_IMAGE }}
-      PYTEST_MYSQL_DATABASE:      ${{vars.PYTEST_MYSQL_DATABASE }}
-      PYTEST_MYSQL_HOST:          ${{vars.PYTEST_MYSQL_HOST }}
-      PYTEST_MYSQL_TCP_PORT:      ${{vars.PYTEST_MYSQL_TCP_PORT }}
+      AUTHZ_CACHE_TTL_SEC:         ${{vars.AUTHZ_CACHE_TTL_SEC}}
+      AUTHZ_HOST:                  ${{vars.AUTHZ_HOST}}
+      AUTHZ_MYSQL_DATABASE:        ${{vars.AUTHZ_MYSQL_DATABASE}}
+      AUTHZ_MYSQL_HOST:            ${{vars.AUTHZ_MYSQL_HOST}}
+      AUTHZ_MYSQL_PASSWORD:        ${{secrets.AUTHZ_MYSQL_PASSWORD}}
+      AUTHZ_MYSQL_ROOT_PASSWORD:   ${{secrets.AUTHZ_MYSQL_ROOT_PASSWORD}}
+      AUTHZ_MYSQL_TCP_PORT:        ${{vars.AUTHZ_MYSQL_TCP_PORT}}
+      AUTHZ_MYSQL_USER:            ${{vars.AUTHZ_MYSQL_USER}}
+      GH_REPO_ACCESS_BEE_MASTER:   ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
+      GH_REPO_ACCESS_RTE_MASTER:   ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
+      GOOGLE_CREDENTIALS_PATH:     ${{vars.GOOGLE_CREDENTIALS_PATH }}
+      GOOGLE_CREDENTIALS_CONTENTS: ${{secrets.GOOGLE_CREDENTIALS_CONTENTS }}
+      INSTALLER_USERID:            ${{vars.INSTALLER_USERID }}
+      INSTALLER_PWD:               ${{secrets.INSTALLER_PWD }}
+      MYSQL_DATABASE:              ${{vars.MYSQL_DATABASE }}
+      MYSQL_HOST:                  ${{vars.MYSQL_HOST }}
+      MYSQL_PASSWORD:              ${{secrets.MYSQL_PASSWORD}}
+      MYSQL_ROOT_PASSWORD:         ${{secrets.MYSQL_ROOT_PASSWORD}}
+      MYSQL_TCP_PORT:              ${{vars.MYSQL_TCP_PORT }}
+      MYSQL_TCP_PORT_EXTERNAL:     ${{vars.MYSQL_TCP_PORT_EXTERNAL }}
+      MYSQL_TCP_PORT_LOCAL_PROD:   ${{vars.MYSQL_TCP_PORT_LOCAL_PROD }}
+      MYSQL_USER:                  ${{vars.MYSQL_USER}}
+      PROJECT_NAME:                ${{vars.PROJECT_NAME }}
+      RELEASE_EMAIL_USER:          ${{vars.RELEASE_EMAIL_USER }}
+      RELEASE_EMAIL_PASSWORD:      ${{secrets.RELEASE_EMAIL_PASSWORD }}
+      SOCKET_EVENT_SERVICE:        ${{vars.SOCKET_EVENT_SERVICE }}
+      SOCKET_FIDE_PARSER_SERVICE:  ${{vars.SOCKET_FIDE_PARSER_SERVICE }}
+      SOCKET_RTEAPI:               ${{vars.SOCKET_RTEAPI }}
+      VENV_ENVIRONMENT:            ${{vars.VENV_ENVIRONMENT }}
+      MYSQL_IMAGE:                 ${{vars.MYSQL_IMAGE }}
+      PYTEST_MYSQL_DATABASE:       ${{vars.PYTEST_MYSQL_DATABASE }}
+      PYTEST_MYSQL_HOST:           ${{vars.PYTEST_MYSQL_HOST }}
+      PYTEST_MYSQL_TCP_PORT:       ${{vars.PYTEST_MYSQL_TCP_PORT }}
