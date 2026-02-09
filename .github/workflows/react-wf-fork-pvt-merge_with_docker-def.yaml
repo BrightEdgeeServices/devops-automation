@@ -4,6 +4,22 @@ name: react-wf-fork-pvt-merge_with_docker-def
 on:
   workflow_call:
     secrets:
+      AUTHZ_CACHE_TTL_SEC:
+        required: false
+      AUTHZ_HOST:
+        required: false
+      AUTHZ_MYSQL_DATABASE:
+        required: false
+      AUTHZ_MYSQL_HOST:
+        required: false
+      AUTHZ_MYSQL_PASSWORD:
+        required: false
+      AUTHZ_MYSQL_ROOT_PASSWORD:
+        required: false
+      AUTHZ_MYSQL_TCP_PORT:
+        required: false
+      AUTHZ_MYSQL_USER:
+        required: false
       GH_REPO_ACCESS_BEE_MASTER:
         required: true
       GH_REPO_ACCESS_RTE_MASTER:
@@ -51,6 +67,14 @@ jobs:
   CI:
     uses: BrightEdgeeServices/devops-automation/.github/workflows/react-pc-ci-pvt-with_docker-def.yaml@master
     secrets:
+      AUTHZ_CACHE_TTL_SEC: ${{secrets.AUTHZ_CACHE_TTL_SEC}}
+      AUTHZ_HOST: ${{secrets.AUTHZ_HOST}}
+      AUTHZ_MYSQL_DATABASE: ${{secrets.AUTHZ_MYSQL_DATABASE}}
+      AUTHZ_MYSQL_HOST: ${{secrets.AUTHZ_MYSQL_HOST}}
+      AUTHZ_MYSQL_PASSWORD: ${{secrets.AUTHZ_MYSQL_PASSWORD}}
+      AUTHZ_MYSQL_ROOT_PASSWORD: ${{secrets.AUTHZ_MYSQL_ROOT_PASSWORD}}
+      AUTHZ_MYSQL_TCP_PORT: ${{secrets.AUTHZ_MYSQL_TCP_PORT}}
+      AUTHZ_MYSQL_USER: ${{secrets.AUTHZ_MYSQL_USER}}
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
       INSTALLER_USERID: ${{secrets.INSTALLER_USERID }}
