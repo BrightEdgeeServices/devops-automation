@@ -69,9 +69,7 @@
 - Each reusable workflow is designed to string together the desired combination of
   tasks to achieve the required workflow.
 
-- Public Python PR reusable workflow note: `.github/workflows/py-wf-pr-pub-no_docker-def.yaml`
-  now uses `secrets: inherit` for the `PR` and `Cleanup-Delete-pr-Tag` job calls to keep
-  downstream secret forwarding consistent.
+- Supported Python versions are `3.10` through `3.13` as defined in `pyproject.toml`.
 
 - Unless you are familiar with the workflow strategies, do not change the templates
   or any of the workflow scripts.
@@ -106,6 +104,13 @@ We regularly update our workflows to improve functionality and security. To ensu
 1. Copy the template to the `.github/workflows` directory of your repository.
 1. Do not copy any of the workflow files from this repositories `.github/workflows` to the target repository.
 1. Refer to similar projects that already use these workflows for configuration examples.
+
+## Private Dependency Setup
+
+1. Set a token for private RealTimeEvents repositories in your local environment (PowerShell: `$env:GH_REPO_ACCESS_RTE_LOCAL_USER="<your-token>"`).
+1. Run `SetupPrivateRepoAccess.ps1` to refresh Poetry source configuration and dependencies.
+1. Use the `$RepoDetailsList` in `SetupPrivateRepoAccess.ps1` to enable or disable repositories with the `active` flag.
+1. Keep `rtecommon` active unless your branch explicitly removes that dependency from `pyproject.toml`.
 
 ## Available Templates
 
