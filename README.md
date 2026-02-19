@@ -22,19 +22,31 @@
 
 1. Generate the release notes. This can be repeated until all changes are captured in `ReleaseNotes.md`. Consolidate multiple runs into a single release entry before publishing.
 
-   1. Use an AI prompt in your preferred tool (Cursor, Junie, or Codex). The default prompt is stored in `ai_prompts/Release-Update-General.txt`.
+   1. Use an AI prompt in your preferred tool (Cursor, Junie, or Codex). Use `ai_prompts/Release-Update-devops_automation.txt` for this repository. `ai_prompts/Release-Update-General.txt` remains available as a generic fallback.
 
    alternatively
 
    1. Use the following template and manually update the ReleaseNotes.md file.
 
       ```
-       # Release ?.?.?
-       ## Summary of Changes
-       - bla, bla, bla
-       ## Next Heading
-       - bla, bla, bla
-       ---
+      ### Release ?.?.?
+      - Date: YYYY-MM-DD HH:MM (local)
+
+      ### Summary of Changes
+      - Workflows: ...
+      - Templates: ...
+      - Build: Bumped version to ?.?.? in `pyproject.toml`.
+
+      ### Change Statistics (vs master)
+      - Branch: `your-branch-name`
+      - Files changed:
+        - path/to/file1
+        - path/to/file2
+      - Number of files changed: N
+      - Insertions: X
+      - Deletions: Y
+
+      ______________________________________________________________________
       ```
 
 1. Run the `pushpr.ps1` script once you are ready to create the PR to publish the release. You can also manually create the tag, touch a file, commit and push the changes.

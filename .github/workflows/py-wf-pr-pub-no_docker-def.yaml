@@ -5,12 +5,12 @@ name: py-wf-pr-pub-no_docker-def
 
 on:
   workflow_call:
-    inputs:
-      run_deploy:
-        description: "Set to 'true' to run the Build-and-Publish-to-PyPI job if a tag was specified."
-        required: true
-        default: false
-        type: boolean
+    # inputs:
+    #   run_deploy:
+    #     description: "Set to 'true' to run the Build-and-Publish-to-PyPI job if a tag was specified."
+    #     required: true
+    #     default: false
+    #     type: boolean
     secrets:
       INSTALLER_USERID:
         required: true
