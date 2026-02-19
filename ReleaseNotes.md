@@ -1,3 +1,28 @@
+### Release 9.18.0
+
+- Date: 2026-02-20 01:49 (local)
+
+### Summary of Changes
+
+- Tooling: Updated `.pre-commit-config.yaml` to bump the `isort` pre-commit hook from `7.0.0` to `8.0.0`.
+- Automation Scripts: Refactored `SetupPrivateRepoAccess.ps1` to configure Poetry sources using repository-specific names and to manage multiple private repositories through a `RepoDetailsList` with per-repo `active` flags.
+- Dependencies: Updated `pyproject.toml` and regenerated `poetry.lock` to register the explicit `rtecommon` Poetry source, add `rtecommon` as a direct dependency, and refresh locked dependency metadata.
+- Build: Bumped version to 9.18.0 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - .pre-commit-config.yaml
+  - SetupPrivateRepoAccess.ps1
+  - poetry.lock
+  - pyproject.toml
+- Number of files changed: 4
+- Insertions: 294
+- Deletions: 144
+
+______________________________________________________________________
+
 ### Release 9.17.4
 
 - Date: 2026-02-20 01:23 (local)
