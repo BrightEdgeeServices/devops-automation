@@ -27,7 +27,8 @@
         "Programming Language :: Python :: 3.13",
     ]
     dependencies = [
-    "pytest-cov (>=7.0.0,<8.0.0)"
+    "pytest-cov (>=7.0.0,<8.0.0)",
+    "rtecommon @ git+https://github.com/RealTimeEvents/rtecommon.git@master"
     ]
     license = "Proprietary"
     license-files = [
@@ -83,9 +84,6 @@ packages = [
 
 [tool.poetry.dependencies]
 rtecommon = {source = "rtecommon"}
-rtedb = {source = "rtedb"}
-fidewebtourparser = {source = "fidewebtourparser"}
-fideratinglist = {source = "fideratinglist"}
 
 [tool.poetry.group.dev]
     optional = true
@@ -107,24 +105,9 @@ fideratinglist = {source = "fideratinglist"}
     sphinx = ">=8.1.3"
 
 [[tool.poetry.source]]
-    name = "rtecommon"
-    url = "https://github.com/RealTimeEvents/rtecommon.git"
-    priority = "explicit"
-
-[[tool.poetry.source]]
-    name = "rtedb"
-    url = "https://github.com/RealTimeEvents/rtedb.git"
-    priority = "explicit"
-
-[[tool.poetry.source]]
-    name = "fidewebtourparser"
-    url = "https://github.com/RealTimeEvents/fidewebtourparser.git"
-    priority = "explicit"
-
-[[tool.poetry.source]]
-    name = "fideratinglist"
-    url = "https://github.com/RealTimeEvents/fideratinglist.git"
-    priority = "explicit"
+name = "rtecommon"
+url = "https://github.com/RealTimeEvents/rtecommon.git"
+priority = "explicit"
 
 [tool.pytest.ini_options]
     norecursedirs = ["tests/legacy"]
