@@ -1,3 +1,23 @@
+### Release 9.17.4
+
+- Date: 2026-02-20 01:23 (local)
+
+### Summary of Changes
+
+- Workflows: Updated `.github/workflows/py-wf-pr-pub-no_docker-def.yaml` so the `PR` and `Cleanup-Delete-pr-Tag` jobs use `secrets: inherit` when invoking reusable workflows.
+- Build: Bumped version to 9.17.4 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - .github/workflows/py-wf-pr-pub-no_docker-def.yaml
+- Number of files changed: 1
+- Insertions: 2
+- Deletions: 6
+
+______________________________________________________________________
+
 ### Release 9.17.3
 
 - Date: 2026-02-20 01:06 (local)
