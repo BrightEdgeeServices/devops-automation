@@ -1,3 +1,25 @@
+### Release 9.17.3
+
+- Date: 2026-02-20 01:06 (local)
+
+### Summary of Changes
+
+- Workflows: Updated `.github/workflows/py-wf-pr-pub-no_docker-def.yaml` by commenting out the `workflow_call` `run_deploy` input block so this reusable workflow no longer expects that input.
+- Automation Prompts: Added `ai_prompts/Release-Update-devops_automation.txt` with repository-specific release-note and SemVer bump instructions for branch-vs-master comparisons.
+- Build: Bumped version to 9.17.3 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - .github/workflows/py-wf-pr-pub-no_docker-def.yaml
+  - ai_prompts/Release-Update-devops_automation.txt
+- Number of files changed: 2
+- Insertions: 21
+- Deletions: 6
+
+______________________________________________________________________
+
 ### Release 9.17.2
 
 - Date: 2026-02-20 00:38 (local)
