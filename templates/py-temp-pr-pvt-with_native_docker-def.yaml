@@ -1,4 +1,4 @@
-# py-temp-pr-pvt-with_docker-def.yaml
+# py-temp-pr-pvt-with_native_docker-def.yaml
 # This is a template and should not be changed unless you are familiar with the
 # reusable GitHub Actions strategy of the company.
 name: py-temp-pr-pvt-with_native_docker-def
@@ -12,7 +12,7 @@ on:
       - pr
 
 jobs:
-  py-temp-pr-pvt-with_docker-def:
+  py-temp-pr-pvt-with_native_docker-def:
     permissions:
       id-token: write
       contents: write
