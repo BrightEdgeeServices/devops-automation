@@ -13,7 +13,7 @@
 
 1. Push the changes until you are satisfied with your changes. Use `pushpy.ps1`. Monitor GitHub Actions. The workflow
    must complete successfully.
-1. Generate the ReleaseNotes and do `pushpy.ps1`.
+1. Generate `ReleaseNotes.md`, commit the release updates, and run `pushpy.ps1` again if validation requires another pass.
 1. Deploy the changes by executing `pushpr.ps1`. Monitor GitHub Actions for successful deployment.
 
 ### Detail Process
@@ -68,6 +68,10 @@
 
 - Each reusable workflow is designed to string together the desired combination of
   tasks to achieve the required workflow.
+
+- Public Python PR reusable workflow note: `.github/workflows/py-wf-pr-pub-no_docker-def.yaml`
+  now uses `secrets: inherit` for the `PR` and `Cleanup-Delete-pr-Tag` job calls to keep
+  downstream secret forwarding consistent.
 
 - Unless you are familiar with the workflow strategies, do not change the templates
   or any of the workflow scripts.
