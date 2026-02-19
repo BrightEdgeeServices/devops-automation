@@ -1,3 +1,27 @@
+### Release 9.17.2
+
+- Date: 2026-02-20 00:38 (local)
+
+### Summary of Changes
+
+- Automation Prompts: Added `ai_prompts/Release-Update-General.txt` to standardize release-note generation instructions for branch-vs-master comparisons, semver bumping, and release note formatting.
+- Templates: Updated `templates/py-temp-pr-pub-no_docker-def.yaml` to call the public reusable workflow (`py-wf-pr-pub-no_docker-def.yaml`) and normalized secret alignment spacing for readability.
+- Templates: Corrected the file header comment and job identifier in `templates/py-temp-pr-pvt-with_native_docker-def.yaml` so the template name and job key match the native Docker variant.
+- Build: Bumped version to 9.17.2 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - ai_prompts/Release-Update-General.txt
+  - templates/py-temp-pr-pub-no_docker-def.yaml
+  - templates/py-temp-pr-pvt-with_native_docker-def.yaml
+- Number of files changed: 3
+- Insertions: 17
+- Deletions: 5
+
+______________________________________________________________________
+
 ### Release 9.17.1
 
 ### Summary of Changes
