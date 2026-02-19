@@ -20,10 +20,9 @@
 
 1. Run the `pushpy.ps1` script or manually commit the current changes. Run it until (repeatedly) all changes are satisfied.
 
-1. Generate the release notes. Can be generated repeatedly until all changes are accounted for in the ReleaseNotes. However, might be necessary to consolidate multiple runs into one ReleaseNote update.
-   published.
+1. Generate the release notes. This can be repeated until all changes are captured in `ReleaseNotes.md`. Consolidate multiple runs into a single release entry before publishing.
 
-   1. Use an AI prompt in your favourite AI tool like Cursor, Junie or Codex. The text for the prompt can be found [here](https://www.notion.so/Release-Update-General-2c0bc8e6c6f38076b4cee82e3cf243fa?source=copy_link).
+   1. Use an AI prompt in your preferred tool (Cursor, Junie, or Codex). The default prompt is stored in `ai_prompts/Release-Update-General.txt`.
 
    alternatively
 
@@ -48,6 +47,7 @@
   - Contains the actual workflow files.
   - Workflow names starting with digits are designated for this repository and should not be reused.
 - `templates/` - Contains template files for users to copy into their projects.
+- `ai_prompts/` - Contains reusable AI prompts for release-note and repository automation tasks.
 
 ## Usage
 
@@ -282,14 +282,14 @@ We regularly update our workflows to improve functionality and security. To ensu
 
 1. py-temp-pr-pvt-with_native_docker-def.yaml
 
-   | Type        | Description                            |
-   | ----------- | -------------------------------------- |
-   | Language    | Python                                 |
-   | Type        | Template                               |
-   | Task        | Pull Request                           |
-   | Visibility  | Private                                |
-   | Description | Python Template PR Private with Docker |
-   | Variation   | Default                                |
+   | Type        | Description                                                   |
+   | ----------- | ------------------------------------------------------------- |
+   | Language    | Python                                                        |
+   | Type        | Template                                                      |
+   | Task        | Pull Request                                                  |
+   | Visibility  | Private                                                       |
+   | Description | Python template for private PR workflows using native Docker. |
+   | Variation   | Default                                                       |
 
 1. py-temp-publish-pub-build_release_notify_after_merge-def.yaml
 
