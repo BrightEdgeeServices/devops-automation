@@ -22,7 +22,7 @@
 
 1. Generate the release notes. This can be repeated until all changes are captured in `ReleaseNotes.md`. Consolidate multiple runs into a single release entry before publishing.
 
-   1. Use an AI prompt in your preferred tool (Cursor, Junie, or Codex). Use `ai_prompts/Release-Update-devops_automation.txt` for this repository. `ai_prompts/Release-Update-General.txt` remains available as a generic fallback.
+   1. Use an AI prompt in your preferred tool (Cursor, Junie, or Codex). Use `ai_prompts/Release-Update-devops_automation.md` for this repository. `ai_prompts/Release-Update-General.md` remains available as a generic fallback.
 
    alternatively
 
@@ -59,7 +59,12 @@
   - Contains the actual workflow files.
   - Workflow names starting with digits are designated for this repository and should not be reused.
 - `templates/` - Contains template files for users to copy into their projects.
-- `ai_prompts/` - Contains reusable AI prompts for release-note and repository automation tasks.
+- `ai_prompts/` - Contains reusable AI prompts for release-note, issue drafting, and project-planning automation tasks.
+  - `Release-Update-devops_automation.md` - Repository-specific release-note and SemVer instructions.
+  - `Release-Update-General.md` - Generic release-note and SemVer instructions.
+  - `Issue-Main-Feature.md` - Prompt template for a Linear main-feature issue.
+  - `Issue-Feature.md` - Prompt template for a Linear sub-issue linked to a main feature.
+  - `Project-Create-a-new-Project.md` - Prompt template for creating a Linear project definition and milestones.
 
 ## Usage
 
