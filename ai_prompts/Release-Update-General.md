@@ -9,4 +9,12 @@
 - Do not alter previous release notes, always add a new set.
 - The last section must be a summary of the statistics which include the names of the files that was changed, number of files that was changed, number of insertions, number of deletions and the branch name.
 - Do not include any files excluded by .gitignore.
-- Ensure that the README.md is updated, this includes updating the current information, adding new relevant informatiion and remove irrelevant information.
+- Ensure the README has a file extension ".md"
+- Always insert a divider between the top sections.
+- If the README.md does not exist, create one.
+- Create or update the details of the README.md. It must have at minimum the following headers:
+  - Short description
+  - Module Overview with Key Features and Project Structure as subheadings
+  - Getting Started
+- Ensure that the README.md is updated. This includes updating the current information, adding new relevant information
+  and removing irrelevant information.
