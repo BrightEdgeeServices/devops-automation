@@ -18,12 +18,25 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          code=$(curl -sS -L -X DELETE \
+          response=$(curl -sS -L -X DELETE \
             -H "Authorization: Bearer $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/${{ github.repository }}/git/refs/tags/pr \
-            -o /dev/null -w "%{http_code}")
-          if [ "$code" != "204" ] && [ "$code" != "404" ]; then
+            -w "\n%{http_code}" \
+            https://api.github.com/repos/${{ github.repository }}/git/refs/tags/pr)
+          code=$(echo "$response" | tail -n1)
+          body=$(echo "$response" | sed '$d')
+
+          # 204 = success, 404 = tag doesn't exist (already deleted), 422 = validation error (often means tag doesn't exist)
+          if [ "$code" = "204" ]; then
+            echo "Successfully deleted 'pr' tag"
+          elif [ "$code" = "404" ]; then
+            echo "Tag 'pr' does not exist (already deleted or never existed)"
+          elif [ "$code" = "422" ]; then
+            echo "Tag 'pr' does not exist or cannot be deleted (HTTP 422)"
+            echo "Response: $body"
+            # Treat 422 as non-fatal (tag likely doesn't exist)
+          else
             echo "Unexpected status deleting tag (HTTP $code)" >&2
+            echo "Response: $body" >&2
             exit 1
           fi

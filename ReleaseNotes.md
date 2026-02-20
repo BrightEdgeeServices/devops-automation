@@ -1,3 +1,24 @@
+### Release 9.18.2
+
+- Date: 2026-02-20 16:35 (local)
+
+### Summary of Changes
+
+- Workflows: Updated `.github/workflows/all-pc-pr-all-cleanup_tag-def.yaml` to improve tag-deletion handling by capturing API response bodies, treating `404`/`422` as non-fatal when the `pr` tag is already absent, and failing only on unexpected HTTP statuses.
+- Documentation: Updated `README.md` with current PR tag cleanup behavior and minor wording fixes.
+- Build: Bumped version to 9.18.2 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - .github/workflows/all-pc-pr-all-cleanup_tag-def.yaml
+- Number of files changed: 1
+- Insertions: 17
+- Deletions: 4
+
+______________________________________________________________________
+
 ### Release 9.18.1
 
 - Date: 2026-02-20 16:24 (local)
