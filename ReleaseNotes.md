@@ -1,3 +1,29 @@
+### Release 9.18.1
+
+- Date: 2026-02-20 16:24 (local)
+
+### Summary of Changes
+
+- Automation Prompts: Added `ai_prompts/Issue-Feature.md`, `ai_prompts/Issue-Main-Feature.md`, and `ai_prompts/Project-Create-a-new-Project.md` to support Linear issue and project drafting workflows.
+- Automation Prompts: Renamed `ai_prompts/Release-Update-General.txt` to `ai_prompts/Release-Update-General.md` and `ai_prompts/Release-Update-devops_automation.txt` to `ai_prompts/Release-Update-devops_automation.md`.
+- Documentation: Updated `README.md` to reference the Markdown release-update prompts and document the expanded `ai_prompts/` catalog.
+- Build: Bumped version to 9.18.1 in `pyproject.toml`.
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - ai_prompts/Issue-Feature.md
+  - ai_prompts/Issue-Main-Feature.md
+  - ai_prompts/Project-Create-a-new-Project.md
+  - ai_prompts/Release-Update-General.md
+  - ai_prompts/Release-Update-devops_automation.md
+- Number of files changed: 5
+- Insertions: 142
+- Deletions: 0
+
+______________________________________________________________________
+
 ### Release 9.18.0
 
 - Date: 2026-02-20 01:49 (local)
