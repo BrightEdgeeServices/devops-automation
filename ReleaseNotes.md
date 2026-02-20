@@ -1,3 +1,36 @@
+### Release 9.18.3
+
+- Date: 2026-02-20 22:39 (local)
+
+______________________________________________________________________
+
+### Summary of Changes
+
+- Tooling: Updated `.pre-commit-config.yaml` so the `mdformat` hook now enforces LF line endings and adds `--number` for consistent ordered-list formatting in Markdown outputs.
+- Automation Prompts: Updated `ai_prompts/Issue-Feature.md`, `ai_prompts/Issue-Main-Feature.md`, and `ai_prompts/Project-Create-a-new-Project.md` with wording fixes and normalized instruction/checklist formatting.
+- Automation Prompts: Updated `ai_prompts/Release-Update-General.md` and `ai_prompts/Release-Update-devops_automation.md` to clarify wording and add explicit README/release-note requirements.
+- Documentation: Updated `README.md` with required sections (`Short description`, `Module Overview`, and `Getting Started`) and refreshed guidance formatting.
+- Build: Bumped version to 9.18.3 in `pyproject.toml`.
+
+______________________________________________________________________
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - .pre-commit-config.yaml
+  - README.md
+  - ai_prompts/Issue-Feature.md
+  - ai_prompts/Issue-Main-Feature.md
+  - ai_prompts/Project-Create-a-new-Project.md
+  - ai_prompts/Release-Update-General.md
+  - ai_prompts/Release-Update-devops_automation.md
+- Number of files changed: 7
+- Insertions: 393
+- Deletions: 377
+
+______________________________________________________________________
+
 ### Release 9.18.2
 
 - Date: 2026-02-20 16:35 (local)

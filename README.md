@@ -7,6 +7,35 @@
 | PyPI         | [![][pypi_py_versions_img]][pypi_py_versions_lnk] [![][pypi_format_img]][pypi_format_lnk] [![][pypi_downloads_img]][pypi_downloads_lnk]                    |
 | Github       | [![][gh_issues_img]][gh_issues_lnk] [![][gh_last_commit_img]][gh_last_commit_lnk]                                                                          |
 
+## Short description
+
+This repository provides reusable GitHub Actions workflows, workflow templates, and automation prompts used to standardize CI/CD implementation across projects.
+
+## Module Overview
+
+### Key Features
+
+- Reusable workflow implementations for CI, PR, publish, fork, and maintenance pipelines.
+- Template workflows in `templates/` that delegate execution to reusable workflows in `.github/workflows/`.
+- Prompt templates in `ai_prompts/` for release-note generation and Linear issue/project drafting.
+- Poetry and pre-commit based project tooling defined in `pyproject.toml` and `.pre-commit-config.yaml`.
+
+### Project Structure
+
+- `.github/workflows/` - Reusable workflow definitions executed by GitHub Actions.
+- `templates/` - Template workflow files to copy into downstream repositories.
+- `ai_prompts/` - Prompt templates for release updates, issue creation, and project planning.
+- `legacy/` - Repository-local output location used by prompt workflows.
+- `ReleaseNotes.md` - Historical release log for this repository.
+
+## Getting Started
+
+1. Clone the repository and ensure `Python 3.10+`, `poetry`, and `git` are installed.
+2. Run `poetry install` to install project dependencies.
+3. Run `pre-commit install` and `pre-commit run --all-files` before opening a PR.
+4. Copy a relevant template from `templates/` to your target repository's `.github/workflows/` directory.
+5. Use `pushpy.ps1` for validation pushes and `pushpr.ps1` to publish release-ready changes.
+
 ## Deployment
 
 ### High Level Process Description
