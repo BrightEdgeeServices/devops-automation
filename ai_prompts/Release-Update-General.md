@@ -4,10 +4,10 @@
 - Choose appropriate headings to group the changes.
 - Bump the version appropriately in the pyproject.toml or package.json file using the SemVer (semver.org) rules.
 - Follow the same format for the new clause as the previous clauses in the ReleaseNotes.md
-- The new notes must end with a divider to separate it from the previous release notes.
+- The new notes must end with a divider to separate them from the previous release notes.
 - Do not mention the chore "dummy.txt" that was deleted.
 - Do not alter previous release notes, always add a new set.
-- The last section must be a summary of the statistics which include the names of the files that was changed, number of files that was changed, number of insertions, number of deletions and the branch name.
+- The last section must be a summary of the statistics which include the names of the files that were changed, number of files that were changed, number of insertions, number of deletions and the branch name.
 - Do not include any files excluded by .gitignore.
 - Ensure the README has a file extension ".md"
 - Always insert a divider between the top sections.

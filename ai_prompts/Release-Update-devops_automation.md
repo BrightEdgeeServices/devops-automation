@@ -4,14 +4,14 @@
 - Bump the version appropriately in the pyproject.toml file using the SemVer (semver.org) rules.
 - If an existing script in the templates directory changes, it is a "major" version bump, except if it is related to a previous major version bump in the previous 3 days, it is a minor version bump.
 - If a new script is added to the templates directory, it is a "minor" version bump.
-- Any changes to an existing script in the .github/workflow directory is a "patch" version bump.
+- Any changes to an existing script in the .github/workflow directory are a "patch" version bump.
 - Any addition of a new script in the .github/workflow directory is a "minor" version bump.
 - Any other changes than the above, you decide on the bump.
 - Do not alter previous release notes, always add a new set.
 - Follow the same format for the new clause as the previous clauses in the ReleaseNotes.md
-- The new release notes must end with a divider to separate it from the previous release notes.
+- The new release notes must end with a divider to separate them from the previous release notes.
 - Do not mention the chore "dummy.txt" that was deleted.
-- The last section must be a summary of the statistics which include the names of the files that were changed, number of files that was changed, number of insertions, number of deletions and the branch name.
+- The last section must be a summary of the statistics which include the names of the files that were changed, number of files that were changed, number of insertions, number of deletions and the branch name.
 - Do not include any files excluded by .gitignore.
 - Ensure the README has a file extension ".md"
 - Always insert a divider between the top sections.
