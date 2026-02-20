@@ -1,6 +1,6 @@
 # DevOps Platform Repository
 
-| **Category** | **Status' and Links**                                                                                                                                      |
+| **Category** | **Status and Links**                                                                                                                                       |
 | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | General      | [![][general_maintenance_y_img]][general_maintenance_y_lnk] [![][general_semver_pic]][general_semver_link] [![][general_license_img]][general_license_lnk] |
 | CD/CI        | [![][cicd_codestyle_img]][cicd_codestyle_lnk]                                                                                                              |
@@ -68,7 +68,7 @@
 
 ## Usage
 
-- Each template workflow in `templates/` kick-off a reusable workflow in this repository's
+- Each template workflow in `templates/` kicks off a reusable workflow in this repository's
   `.github/workflows/` directory.
 
 - Each reusable workflow is designed to string together the desired combination of
@@ -107,8 +107,15 @@ We regularly update our workflows to improve functionality and security. To ensu
 1. Create a `.github/workflows` directory in your project if it doesn't already exist.
 1. Select the relevant template from `templates/` directory.
 1. Copy the template to the `.github/workflows` directory of your repository.
-1. Do not copy any of the workflow files from this repositories `.github/workflows` to the target repository.
+1. Do not copy any of the workflow files from this repository's `.github/workflows` to the target repository.
 1. Refer to similar projects that already use these workflows for configuration examples.
+
+## PR Tag Cleanup Behavior
+
+1. `.github/workflows/all-pc-pr-all-cleanup_tag-def.yaml` deletes the temporary `pr` tag through the GitHub API.
+1. HTTP `204` is treated as success.
+1. HTTP `404` and `422` are treated as non-fatal because they typically indicate the `pr` tag is already absent.
+1. Any other status code fails the workflow to surface unexpected cleanup errors.
 
 ## Private Dependency Setup
 
@@ -389,8 +396,8 @@ We regularly update our workflows to improve functionality and security. To ensu
 [general_license_lnk]: https://github.com/BrightEdgeeServices/devops-automation/blob/master/LICENSE "License"
 [general_maintenance_y_img]: https://img.shields.io/badge/Maintenance%20Intended-%E2%9C%94-green.svg?style=flat-square "Maintenance - intended"
 [general_maintenance_y_lnk]: http://unmaintained.tech/ "Maintenance - intended"
-[general_semver_link]: https://semver.org/ "Sentic Versioning - 2.0.0"
-[general_semver_pic]: https://img.shields.io/badge/Semantic%20Versioning-2.0.0-brightgreen.svg?style=flat-square "Sentic Versioning - 2.0.0"
+[general_semver_link]: https://semver.org/ "Semantic Versioning - 2.0.0"
+[general_semver_pic]: https://img.shields.io/badge/Semantic%20Versioning-2.0.0-brightgreen.svg?style=flat-square "Semantic Versioning - 2.0.0"
 [gh_issues_img]: https://img.shields.io/github/issues-raw/BrightEdgeeServices/devops-automation "GitHub - Issue Counter"
 [gh_issues_lnk]: https://github.com/BrightEdgeeServices/devops-automation/issues "GitHub - Issue Counter"
 [gh_last_commit_img]: https://img.shields.io/github/last-commit/BrightEdgeeServices/devops-automation/master "GitHub - Last Commit"
