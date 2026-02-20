@@ -30,14 +30,14 @@
 1. "Description of Feature or Improvement"
 2. "Proposed Solution"
 3. "Success Criteria"
-   \[ \] New tests are implemented for new functionality
-   \[ \] Old tests are adapted to for code changes.
-   \[ \] All tests are successful.
-   \[ \] ReleaseNotes are updated
+   - [ ] New tests are implemented for new functionality
+   - [ ] Old tests are adapted to for code changes.
+   - [ ] All tests are successful.
+   - [ ] ReleaseNotes are updated
 4. "Deployment Checks"
-   \[ \] Commented GitHub Workflows scripts for testing purposes are restored.
-   \[ \] CI is successful for all feature branches.
-   \[ \] Merged into master.
-   \[ \] ReleaseNotes are published.
-   \[ \] Deleted related development branches.
-   \[ \] Complete the project in Linear if done.
+   - [ ] Commented GitHub Workflows scripts for testing purposes are restored.
+   - [ ] CI is successful for all feature branches.
+   - [ ] Merged into master.
+   - [ ] ReleaseNotes are published.
+   - [ ] Deleted related development branches.
+   - [ ] Complete the project in Linear if done.
