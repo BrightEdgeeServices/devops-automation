@@ -1,4 +1,5 @@
 ﻿- Compile the release notes and add them to the top of the ReleaseNotes.md file by comparing the differences between the current branch and the master branch.
+
 - Choose appropriate headings to group the changes.
 - Bump the version appropriately in the pyproject.toml file using the SemVer (semver.org) rules.
 - If an existing script in the templates directory changes, it is a "major" version bump, except if it is related to a previous major version bump in the previous 3 days, it is a minor version bump.
