@@ -30,17 +30,17 @@ Example: "Write the solution to satisfy the problem description as above."
 2. “Proposed Solution” for the work subset.
 3. “Success Criteria”
    Define the measurable outcomes that determine whether this initiative is complete:
-   \[ \] New tests are implemented for new functionality
-   \[ \] Old tests are adapted to for code changes.
-   \[ \] All tests are successful.
+   - [ ] New tests are implemented for new functionality
+   - [ ] Old tests are adapted to for code changes.
+   - [ ] All tests are successful.
 4. “Completion Checks”: Add more if you think it is necessary
-   \[ \] Commented GitHub Workflows scripts for testing purposes are restored.
-   \[ \] Functions/methods/variables in modules are in alphabetical order (if possible).
-   \[ \] CI is successful.
-   \[ \] CodeCov above 99% or justifiably less.
-   \[ \] Commented code not useful any more is removed.
-   \[ \] Remove warnings, errors and spelling reported by IDE.
-   \[ \] Update / remove Todo’s
-   \[ \] Deleted related development branches.
-   \[ \] CodeCov above 99% or justifiably less.
-   \[ \] Merged into main_feature.
+   - [ ] Commented GitHub Workflows scripts for testing purposes are restored.
+   - [ ] Functions/methods/variables in modules are in alphabetical order (if possible).
+   - [ ] CI is successful.
+   - [ ] CodeCov above 99% or justifiably less.
+   - [ ] Commented code not useful any more is removed.
+   - [ ] Remove warnings, errors and spelling reported by IDE.
+   - [ ] Update / remove Todo’s
+   - [ ] Deleted related development branches.
+   - [ ] CodeCov above 99% or justifiably less.
+   - [ ] Merged into main_feature.
