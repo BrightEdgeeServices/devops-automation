@@ -83,7 +83,7 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-rtecommon = {source = "rtecommon"}
+rtecommon = {version = "*", source = "rtecommon"}
 
 [tool.poetry.group.dev]
     optional = true

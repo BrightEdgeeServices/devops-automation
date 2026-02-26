@@ -16,9 +16,8 @@
 - Ensure the README has a file extension ".md"
 - Always insert a divider between the top sections.
 - If the README.md does not exist, create one.
-- Create or update the details of the README.md. It must have at minimum the following headers:
+- It must have at minimum the following headers:
   - Short description
   - Module Overview with Key Features and Project Structure as subheadings
   - Getting Started
-- Ensure that the README.md is updated. This includes updating the current information, adding new relevant information
-  and removing irrelevant information.
+- Ensure that the README.md is updated by adding new relevant information.
