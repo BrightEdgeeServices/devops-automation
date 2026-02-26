@@ -1,3 +1,33 @@
+### Release 9.18.4
+
+- Date: 2026-02-26 15:24 (local)
+
+______________________________________________________________________
+
+### Summary of Changes
+
+- Automation Prompts: Updated `ai_prompts/Project-Create-a-new-Project.md` to normalize top-level numbering, nest scope details under `Scope & Constraints`, and clarify that the final four milestones are required unless specifically not requested.
+- Automation Prompts: Updated `ai_prompts/Release-Update-General.md` and `ai_prompts/Release-Update-devops_automation.md` to simplify README requirements and explicitly require adding new relevant information.
+- Dependencies: Updated `pyproject.toml` so `rtecommon` uses an explicit dependency declaration (`version = "*"` with `source = "rtecommon"`), and refreshed `poetry.lock` metadata hash accordingly.
+- Build: Bumped version to 9.18.4 in `pyproject.toml`.
+
+______________________________________________________________________
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - ai_prompts/Project-Create-a-new-Project.md
+  - ai_prompts/Release-Update-General.md
+  - ai_prompts/Release-Update-devops_automation.md
+  - poetry.lock
+  - pyproject.toml
+- Number of files changed: 5
+- Insertions: 22
+- Deletions: 24
+
+______________________________________________________________________
+
 ### Release 9.18.3
 
 - Date: 2026-02-20 22:39 (local)
