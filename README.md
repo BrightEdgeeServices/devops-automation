@@ -59,12 +59,17 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 
       ```
       ### Release ?.?.?
+
       - Date: YYYY-MM-DD HH:MM (local)
+
+      ______________________________________________________________________
 
       ### Summary of Changes
       - Workflows: ...
       - Templates: ...
       - Build: Bumped version to ?.?.? in `pyproject.toml`.
+
+      ______________________________________________________________________
 
       ### Change Statistics (vs master)
       - Branch: `your-branch-name`
@@ -77,6 +82,12 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 
       ______________________________________________________________________
       ```
+
+   2. Release-note guardrails:
+
+      - Compare your active branch against `master` to compile the statistics section.
+      - Exclude files ignored by `.gitignore` from the release-note statistics.
+      - Keep a divider between the top sections (`Date`, `Summary of Changes`, and `Change Statistics`).
 
 3. Run the `pushpr.ps1` script once you are ready to create the PR to publish the release. You can also manually create the tag, touch a file, commit and push the changes.
 
