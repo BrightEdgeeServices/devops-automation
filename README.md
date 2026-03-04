@@ -17,6 +17,7 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 
 - Reusable workflow implementations for CI, PR, publish, fork, and maintenance pipelines.
 - Template workflows in `templates/` that delegate execution to reusable workflows in `.github/workflows/`.
+- Private build workflow `.github/workflows/py-pc-build-pvt-def.yaml` now configures Poetry HTTP basic authentication for `sample_data_factory` using `GH_REPO_ACCESS_RTE_MASTER`.
 - Native-docker PR workflows propagate `RTEAPI_ES_PRESENCE_TTL_S`, `RTEAPI_ES_SSE_HEARTBEAT_S`, `RTEAPI_ES_SSE_PUBSUB_POLL_TIMEOUT_S`, `RTEAPI_ES_WS_HEARTBEAT_S`, `RTEAPI_ES_WS_PUBSUB_POLL_TIMEOUT_S`, and `RTEAPI_LOG_REQUESTS` from repository variables into called workflows and generated runtime `.env` values.
 - Native-docker CI in `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` no longer creates `RTEAPI_BASE_IMAGES_PATH`; runner bootstrap/setup should prepare that path when needed.
 - Prompt templates in `ai_prompts/` for release-note generation and Linear issue/project drafting.
@@ -169,6 +170,7 @@ We regularly update our workflows to improve functionality and security. To ensu
 2. Run `SetupPrivateRepoAccess.ps1` to refresh Poetry source configuration and dependencies.
 3. Use the `$RepoDetailsList` in `SetupPrivateRepoAccess.ps1` to enable or disable repositories with the `active` flag.
 4. Keep `rtecommon` active unless your branch explicitly removes that dependency from `pyproject.toml`.
+5. For `.github/workflows/py-pc-build-pvt-def.yaml`, ensure `GH_REPO_ACCESS_RTE_MASTER` has access to `sample_data_factory` so Poetry can authenticate during builds.
 
 ## Available Templates
 

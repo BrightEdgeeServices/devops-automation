@@ -1,3 +1,28 @@
+### Release 10.0.2
+
+- Date: 2026-03-04 18:03 (UTC+02:00)
+
+______________________________________________________________________
+
+### Summary of Changes
+
+- Workflows: Updated `.github/workflows/py-pc-build-pvt-def.yaml` to configure Poetry HTTP basic credentials for `sample_data_factory` using `GH_REPO_ACCESS_RTE_MASTER`.
+- Documentation: Updated `README.md` to document `sample_data_factory` credential setup for private build/dependency workflows.
+- Build: Bumped version to 10.0.2 in `pyproject.toml` (patch bump due to changes in an existing `.github/workflows/` script).
+
+______________________________________________________________________
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - .github/workflows/py-pc-build-pvt-def.yaml
+- Number of files changed: 1
+- Insertions: 1
+- Deletions: 0
+
+______________________________________________________________________
+
 ### Release 10.0.1
 
 - Date: 2026-03-04 16:40 (UTC+02:00)
