@@ -1,3 +1,37 @@
+### Release 9.18.5
+
+- Date: 2026-03-04 05:53 (UTC+02:00)
+
+______________________________________________________________________
+
+### Summary of Changes
+
+- Workflows: Updated `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` to configure Poetry credentials for `sample_data_factory` using `GH_REPO_ACCESS_RTE_MASTER`.
+- Tooling: Updated `.pre-commit-config.yaml` to bump the `isort` hook from `8.0.0` to `8.0.1`.
+- Documentation: Added `AGENTS.md` with repository-specific guidance for structure, testing, and credential handling.
+- Automation Prompts: Updated `ai_prompts/Release-Update-General.md` and `ai_prompts/Release-Update-devops_automation.md` to require a line-3 release timestamp that includes time-zone information.
+- Documentation: Updated `README.md` to document `AGENTS.md` and clarify release-note timestamp/time-zone requirements.
+- Build: Bumped version to 9.18.5 in `pyproject.toml`.
+
+______________________________________________________________________
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - .github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml
+  - .pre-commit-config.yaml
+  - AGENTS.md
+  - README.md
+  - ai_prompts/Release-Update-General.md
+  - ai_prompts/Release-Update-devops_automation.md
+  - pyproject.toml
+- Number of files changed: 7
+- Insertions: 67
+- Deletions: 5
+
+______________________________________________________________________
+
 ### Release 9.18.4
 
 - Date: 2026-02-26 15:24 (local)
