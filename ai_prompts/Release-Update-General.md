@@ -1,6 +1,5 @@
-- Compile the release notes by comparing the differences between the current branch (HEAD) and the "master" branch.
-- Add the compiled release notes to the top of the ReleaseNotes.md file.
-- Add a date-time stamp below the top heading on line 3
+- Compile the release notes and add them to the top of the ReleaseNotes.md file by comparing the differences between the current branch and the master branch.
+- Add a date-time stamp with the time zone below the top heading on line 3
 - Choose appropriate headings to group the changes.
 - Bump the version appropriately in the pyproject.toml or package.json file using the SemVer (semver.org) rules.
 - Follow the same format for the new clause as the previous clauses in the ReleaseNotes.md

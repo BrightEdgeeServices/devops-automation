@@ -27,6 +27,7 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 - `ai_prompts/` - Prompt templates for release updates, issue creation, and project planning.
 - `legacy/` - Repository-local output location used by prompt workflows.
 - `ReleaseNotes.md` - Historical release log for this repository.
+- `AGENTS.md` - Contributor and coding-agent guardrails for repository-specific workflows and testing practices.
 
 ## Getting Started
 
@@ -88,6 +89,7 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
       - Compare your active branch against `master` to compile the statistics section.
       - Exclude files ignored by `.gitignore` from the release-note statistics.
       - Keep a divider between the top sections (`Date`, `Summary of Changes`, and `Change Statistics`).
+      - Place the release timestamp directly below the top heading on line 3 and include the time zone (for example, `UTC+02:00`).
 
 3. Run the `pushpr.ps1` script once you are ready to create the PR to publish the release. You can also manually create the tag, touch a file, commit and push the changes.
 
