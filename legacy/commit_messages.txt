@@ -1,0 +1,2 @@
+Require RTEAPI_BASE_IMAGES_PATH and propagate it through reusable CI workflows
+Remove fallback/default handling for RTEAPI_BASE_IMAGES_PATH so startup and tests fail when the variable is missing, then wire the value from GitHub Actions Variables through the template and all called workflows. Also export it into CI job env, write it into the generated .env file, and validate/create the configured images directory before pytest.

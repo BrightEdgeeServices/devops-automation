@@ -39,6 +39,8 @@ on:
         required: true
       PROJECT_NAME:
         required: true
+      RTEAPI_BASE_IMAGES_PATH:
+        required: true
       SOCKET_EVENT_SERVICE:
         required: true
       SOCKET_FIDE_PARSER_SERVICE:
@@ -75,6 +77,7 @@ jobs:
       PROJECT_NAME: ${{secrets.PROJECT_NAME }}
       RELEASE_EMAIL_USER: ${{secrets.RELEASE_EMAIL_USER }}
       RELEASE_EMAIL_PASSWORD: ${{secrets.RELEASE_EMAIL_PASSWORD }}
+      RTEAPI_BASE_IMAGES_PATH: ${{secrets.RTEAPI_BASE_IMAGES_PATH }}
       SOCKET_EVENT_SERVICE: ${{secrets.SOCKET_EVENT_SERVICE }}
       SOCKET_FIDE_PARSER_SERVICE: ${{secrets.SOCKET_FIDE_PARSER_SERVICE }}
       SOCKET_RTEAPI: ${{secrets.SOCKET_RTEAPI }}
@@ -170,6 +173,7 @@ jobs:
           MYSQL_TCP_PORT_LOCAL_PROD=${{ env.MYSQL_TCP_PORT_LOCAL_PROD }}
           MYSQL_USER=${{ secrets.MYSQL_USER }}
           PROJECT_NAME=${{ env.PROJECT_NAME }}
+          RTEAPI_BASE_IMAGES_PATH=${{ secrets.RTEAPI_BASE_IMAGES_PATH }}
           RELEASE_EMAIL_USER=${{ secrets.RELEASE_EMAIL_USER }}
           RELEASE_EMAIL_PASSWORD=${{ secrets.RELEASE_EMAIL_PASSWORD }}
           SOCKET_EVENT_SERVICE=${{secrets.SOCKET_EVENT_SERVICE }}
@@ -182,6 +186,14 @@ jobs:
           PYTEST_MYSQL_HOST=${{ secrets.PYTEST_MYSQL_HOST }}
           EOF
           sed -i 's/^[[:space:]]*//' .env
+
+      - name: Ensure image storage path exists
+        run: |
+          if [ -z "$RTEAPI_BASE_IMAGES_PATH" ]; then
+            echo "ERROR: RTEAPI_BASE_IMAGES_PATH is not set." >&2
+            exit 1
+          fi
+          mkdir -p "$RTEAPI_BASE_IMAGES_PATH"
 
       # - name: Debug - Verify environment variables
       #   run: |

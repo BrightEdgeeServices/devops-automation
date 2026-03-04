@@ -54,6 +54,8 @@ on:
         required: true
       RELEASE_EMAIL_PASSWORD:
         required: true
+      RTEAPI_BASE_IMAGES_PATH:
+        required: true
       SOCKET_EVENT_SERVICE:
         required: true
       SOCKET_FIDE_PARSER_SERVICE:
@@ -95,6 +97,7 @@ jobs:
       PROJECT_NAME: ${{secrets.PROJECT_NAME }}
       RELEASE_EMAIL_USER: ${{secrets.RELEASE_EMAIL_USER }}
       RELEASE_EMAIL_PASSWORD: ${{secrets.RELEASE_EMAIL_PASSWORD }}
+      RTEAPI_BASE_IMAGES_PATH: ${{secrets.RTEAPI_BASE_IMAGES_PATH }}
       SOCKET_EVENT_SERVICE: ${{secrets.SOCKET_EVENT_SERVICE }}
       SOCKET_FIDE_PARSER_SERVICE: ${{secrets.SOCKET_FIDE_PARSER_SERVICE }}
       SOCKET_RTEAPI: ${{secrets.SOCKET_RTEAPI }}
