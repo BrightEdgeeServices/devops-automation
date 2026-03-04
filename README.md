@@ -18,6 +18,7 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 - Reusable workflow implementations for CI, PR, publish, fork, and maintenance pipelines.
 - Template workflows in `templates/` that delegate execution to reusable workflows in `.github/workflows/`.
 - Native-docker PR workflows propagate `RTEAPI_ES_PRESENCE_TTL_S`, `RTEAPI_ES_SSE_HEARTBEAT_S`, `RTEAPI_ES_SSE_PUBSUB_POLL_TIMEOUT_S`, `RTEAPI_ES_WS_HEARTBEAT_S`, `RTEAPI_ES_WS_PUBSUB_POLL_TIMEOUT_S`, and `RTEAPI_LOG_REQUESTS` from repository variables into called workflows and generated runtime `.env` values.
+- Native-docker CI in `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` no longer creates `RTEAPI_BASE_IMAGES_PATH`; runner bootstrap/setup should prepare that path when needed.
 - Prompt templates in `ai_prompts/` for release-note generation and Linear issue/project drafting.
 - Poetry and pre-commit based project tooling defined in `pyproject.toml` and `.pre-commit-config.yaml`.
 
@@ -37,7 +38,8 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 3. Run `pre-commit install` and `pre-commit run --all-files` before opening a PR.
 4. Copy a relevant template from `templates/` to your target repository's `.github/workflows/` directory.
 5. For native-docker PR workflows, define the required repository variables (`RTEAPI_BASE_IMAGES_PATH`, `RTEAPI_ES_*`, and `RTEAPI_LOG_REQUESTS`) before running the workflow.
-6. Use `pushpy.ps1` for validation pushes and `pushpr.ps1` to publish release-ready changes.
+6. For private native-docker CI, ensure the `RTEAPI_BASE_IMAGES_PATH` directory exists on the runner before jobs that read/write base images.
+7. Use `pushpy.ps1` for validation pushes and `pushpr.ps1` to publish release-ready changes.
 
 ## Deployment
 

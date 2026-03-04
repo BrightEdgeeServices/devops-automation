@@ -1,3 +1,28 @@
+### Release 10.0.1
+
+- Date: 2026-03-04 16:40 (UTC+02:00)
+
+______________________________________________________________________
+
+### Summary of Changes
+
+- Workflows: Updated `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` by removing the `Ensure image storage path exists` step that validated and created `RTEAPI_BASE_IMAGES_PATH`.
+- Documentation: Updated `README.md` to document that native-docker CI no longer creates `RTEAPI_BASE_IMAGES_PATH` automatically.
+- Build: Bumped version to 10.0.1 in `pyproject.toml` (patch bump due to changes in an existing `.github/workflows/` script).
+
+______________________________________________________________________
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - .github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml
+- Number of files changed: 1
+- Insertions: 0
+- Deletions: 8
+
+______________________________________________________________________
+
 ### Release 10.0.0
 
 - Date: 2026-03-04 07:54 (UTC+02:00)
