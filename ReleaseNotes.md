@@ -1,3 +1,36 @@
+### Release 10.0.0
+
+- Date: 2026-03-04 07:54 (UTC+02:00)
+
+______________________________________________________________________
+
+### Summary of Changes
+
+- Templates: Updated `templates/py-temp-pr-pvt-with_native_docker-def.yaml` to pass `RTEAPI_ES_*` and `RTEAPI_LOG_REQUESTS` variables into the reusable PR workflow.
+- Workflows: Updated `.github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml` and `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` to declare, map, and export the new `RTEAPI_ES_*` and `RTEAPI_LOG_REQUESTS` values through job environments and generated `.env` values.
+- Automation Prompts: Added `ai_prompts/Workflow-Add-environment-variable.md` and `ai_prompts/pushpr-git-commit-message.md` to support environment-variable workflow updates and commit-message drafting automation.
+- Documentation: Updated `README.md` with the newly required `RTEAPI_ES_*` and `RTEAPI_LOG_REQUESTS` repository variables for native-docker PR workflows.
+- Build: Bumped version to 10.0.0 in `pyproject.toml` (major bump due to changes in an existing `templates/` workflow script).
+
+______________________________________________________________________
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - .github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml
+  - README.md
+  - ai_prompts/Workflow-Add-environment-variable.md
+  - ai_prompts/pushpr-git-commit-message.md
+  - pyproject.toml
+  - templates/py-temp-pr-pvt-with_native_docker-def.yaml
+- Number of files changed: 7
+- Insertions: 64
+- Deletions: 2
+
+______________________________________________________________________
+
 ### Release 9.18.5
 
 - Date: 2026-03-04 05:53 (UTC+02:00)

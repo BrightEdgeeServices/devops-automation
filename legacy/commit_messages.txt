@@ -1,2 +1,0 @@
-Wire RTEAPI event-streaming and request-log variables through reusable CI workflows
-Add RTEAPI_ES_PRESENCE_TTL_S, RTEAPI_ES_SSE_HEARTBEAT_S, RTEAPI_ES_SSE_PUBSUB_POLL_TIMEOUT_S, RTEAPI_ES_WS_HEARTBEAT_S, RTEAPI_ES_WS_PUBSUB_POLL_TIMEOUT_S, and RTEAPI_LOG_REQUESTS to the template workflow and propagate them through all called workflows into CI job env and generated .env values, with sources mapped from GitHub Actions Variables at template level.
