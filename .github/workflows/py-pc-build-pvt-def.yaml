@@ -64,6 +64,7 @@ jobs:
           poetry config http-basic.fideratinglist __token__ ${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
           poetry config http-basic.fidewebtourparser __token__ ${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
           poetry config http-basic.event_service __token__ ${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
+          poetry config http-basic.sample_data_factory __token__ ${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
 
       - name: Install dependencies
         run: |
