@@ -45,6 +45,7 @@ jobs:
       PROJECT_NAME:                ${{vars.PROJECT_NAME }}
       RELEASE_EMAIL_USER:          ${{vars.RELEASE_EMAIL_USER }}
       RELEASE_EMAIL_PASSWORD:      ${{secrets.RELEASE_EMAIL_PASSWORD }}
+      RTEAPI_BASE_IMAGES_PATH:     ${{vars.RTEAPI_BASE_IMAGES_PATH }}
       SOCKET_EVENT_SERVICE:        ${{vars.SOCKET_EVENT_SERVICE }}
       SOCKET_FIDE_PARSER_SERVICE:  ${{vars.SOCKET_FIDE_PARSER_SERVICE }}
       SOCKET_RTEAPI:               ${{vars.SOCKET_RTEAPI }}
