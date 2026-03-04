@@ -211,14 +211,6 @@ jobs:
           EOF
           sed -i 's/^[[:space:]]*//' .env
 
-      - name: Ensure image storage path exists
-        run: |
-          if [ -z "$RTEAPI_BASE_IMAGES_PATH" ]; then
-            echo "ERROR: RTEAPI_BASE_IMAGES_PATH is not set." >&2
-            exit 1
-          fi
-          mkdir -p "$RTEAPI_BASE_IMAGES_PATH"
-
       # - name: Debug - Verify environment variables
       #   run: |
       #     echo "=== Checking shell environment variables ==="
