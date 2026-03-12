@@ -21,6 +21,3 @@ jobs:
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
       RELEASE_EMAIL_USER: ${{vars.RELEASE_EMAIL_USER }}
       RELEASE_EMAIL_PASSWORD: ${{secrets.RELEASE_EMAIL_PASSWORD }}
-
-  secrets:
-    # ... rest of secrets
