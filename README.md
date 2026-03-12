@@ -17,6 +17,7 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 
 - Reusable workflow implementations for CI, PR, publish, fork, and maintenance pipelines.
 - Template workflows in `templates/` that delegate execution to reusable workflows in `.github/workflows/`.
+- Publish-after-merge templates in `templates/` skip release publishing when the merged pull request was created by `dependabot[bot]`.
 - Private build workflow `.github/workflows/py-pc-build-pvt-def.yaml` now configures Poetry HTTP basic authentication for `sample_data_factory` using `GH_REPO_ACCESS_RTE_MASTER`.
 - Native-docker PR workflows propagate `RTEAPI_ES_PRESENCE_TTL_S`, `RTEAPI_ES_SSE_HEARTBEAT_S`, `RTEAPI_ES_SSE_PUBSUB_POLL_TIMEOUT_S`, `RTEAPI_ES_WS_HEARTBEAT_S`, `RTEAPI_ES_WS_PUBSUB_POLL_TIMEOUT_S`, and `RTEAPI_LOG_REQUESTS` from repository variables into called workflows and generated runtime `.env` values.
 - Native-docker CI in `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` no longer creates `RTEAPI_BASE_IMAGES_PATH`; runner bootstrap/setup should prepare that path when needed.
@@ -38,9 +39,10 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 2. Run `poetry install` to install project dependencies.
 3. Run `pre-commit install` and `pre-commit run --all-files` before opening a PR.
 4. Copy a relevant template from `templates/` to your target repository's `.github/workflows/` directory.
-5. For native-docker PR workflows, define the required repository variables (`RTEAPI_BASE_IMAGES_PATH`, `RTEAPI_ES_*`, and `RTEAPI_LOG_REQUESTS`) before running the workflow.
-6. For private native-docker CI, ensure the `RTEAPI_BASE_IMAGES_PATH` directory exists on the runner before jobs that read/write base images.
-7. Use `pushpy.ps1` for validation pushes and `pushpr.ps1` to publish release-ready changes.
+5. Publish-after-merge templates do not publish releases for merges performed by `dependabot[bot]`.
+6. For native-docker PR workflows, define the required repository variables (`RTEAPI_BASE_IMAGES_PATH`, `RTEAPI_ES_*`, and `RTEAPI_LOG_REQUESTS`) before running the workflow.
+7. For private native-docker CI, ensure the `RTEAPI_BASE_IMAGES_PATH` directory exists on the runner before jobs that read/write base images.
+8. Use `pushpy.ps1` for validation pushes and `pushpr.ps1` to publish release-ready changes.
 
 ## Deployment
 
@@ -374,36 +376,36 @@ We regularly update our workflows to improve functionality and security. To ensu
 
 19. py-temp-publish-pub-build_release_notify_after_merge-def.yaml
 
-    | Type        | Description                                                                              |
-    | ----------- | ---------------------------------------------------------------------------------------- |
-    | Language    | Python                                                                                   |
-    | Type        | Template                                                                                 |
-    | Task        | Publish                                                                                  |
-    | Visibility  | Public                                                                                   |
-    | Description | After a Pull Request is merged into master, creates a GitHub release and sends a notice. |
-    | Variation   | Default                                                                                  |
+    | Type        | Description                                                                                                        |
+    | ----------- | ------------------------------------------------------------------------------------------------------------------ |
+    | Language    | Python                                                                                                             |
+    | Type        | Template                                                                                                           |
+    | Task        | Publish                                                                                                            |
+    | Visibility  | Public                                                                                                             |
+    | Description | After a Pull Request is merged into master, creates a GitHub release and sends a notice for non-Dependabot merges. |
+    | Variation   | Default                                                                                                            |
 
 20. py-temp-publish-pvt-build_release_notify_after_merge-def.yaml
 
-    | Type        | Description                                                                              |
-    | ----------- | ---------------------------------------------------------------------------------------- |
-    | Language    | Python                                                                                   |
-    | Type        | Template                                                                                 |
-    | Task        | Publish                                                                                  |
-    | Visibility  | Private                                                                                  |
-    | Description | After a Pull Request is merged into master, creates a GitHub release and sends a notice. |
-    | Variation   | Default                                                                                  |
+    | Type        | Description                                                                                                        |
+    | ----------- | ------------------------------------------------------------------------------------------------------------------ |
+    | Language    | Python                                                                                                             |
+    | Type        | Template                                                                                                           |
+    | Task        | Publish                                                                                                            |
+    | Visibility  | Private                                                                                                            |
+    | Description | After a Pull Request is merged into master, creates a GitHub release and sends a notice for non-Dependabot merges. |
+    | Variation   | Default                                                                                                            |
 
 21. py-temp-publish-pvt-release_notify_after_merge-def.yaml
 
-    | Type        | Description                                                                              |
-    | ----------- | ---------------------------------------------------------------------------------------- |
-    | Language    | Python                                                                                   |
-    | Type        | Template                                                                                 |
-    | Task        | Publish                                                                                  |
-    | Visibility  | Private                                                                                  |
-    | Description | After a Pull Request is merged into master, creates a GitHub release and sends a notice. |
-    | Variation   | Default                                                                                  |
+    | Type        | Description                                                                                                        |
+    | ----------- | ------------------------------------------------------------------------------------------------------------------ |
+    | Language    | Python                                                                                                             |
+    | Type        | Template                                                                                                           |
+    | Task        | Publish                                                                                                            |
+    | Visibility  | Private                                                                                                            |
+    | Description | After a Pull Request is merged into master, creates a GitHub release and sends a notice for non-Dependabot merges. |
+    | Variation   | Default                                                                                                            |
 
 22. react-temp-fork-pvt-merge_with_docker-def.yaml
 

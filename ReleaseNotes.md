@@ -1,3 +1,32 @@
+### Release 11.0.0
+
+- Date: 2026-03-13 00:11 (UTC+02:00)
+
+______________________________________________________________________
+
+### Summary of Changes
+
+- Templates: Updated `templates/py-temp-publish-pub-build_release_notify_after_merge-def.yaml`, `templates/py-temp-publish-pvt-build_release_notify_after_merge-def.yaml`, and `templates/py-temp-publish-pvt-release_notify_after_merge-def.yaml` so publish-after-merge jobs do not run when the merged pull request actor is `dependabot[bot]`.
+- Documentation: Updated `README.md` to document that publish-after-merge templates skip automated release publishing for Dependabot-authored merges.
+- Build: Bumped version to 11.0.0 in `pyproject.toml` (major bump due to changes in existing `templates/` workflow scripts).
+
+______________________________________________________________________
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - README.md
+  - pyproject.toml
+  - templates/py-temp-publish-pub-build_release_notify_after_merge-def.yaml
+  - templates/py-temp-publish-pvt-build_release_notify_after_merge-def.yaml
+  - templates/py-temp-publish-pvt-release_notify_after_merge-def.yaml
+- Number of files changed: 5
+- Insertions: 17
+- Deletions: 12
+
+______________________________________________________________________
+
 ### Release 10.0.2
 
 - Date: 2026-03-04 18:03 (UTC+02:00)
