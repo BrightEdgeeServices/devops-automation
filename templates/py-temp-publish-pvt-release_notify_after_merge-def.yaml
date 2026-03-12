@@ -12,12 +12,12 @@ on:
 
 jobs:
   Release-After-Merge:
-    if: ${{ github.event.pull_request.merged == true }}
+    if: ${{ github.event.pull_request.merged == true && github.actor != 'dependabot[bot]' }}
     permissions:
       contents: write
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-wf-publish-pvt-release_notify_after_merge-def.yaml@master
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
-      RELEASE_EMAIL_USER:     ${{vars.RELEASE_EMAIL_USER }}
+      RELEASE_EMAIL_USER: ${{vars.RELEASE_EMAIL_USER }}
       RELEASE_EMAIL_PASSWORD: ${{secrets.RELEASE_EMAIL_PASSWORD }}
