@@ -17,7 +17,8 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 
 - Reusable workflow implementations for CI, PR, publish, fork, and maintenance pipelines.
 - Template workflows in `templates/` that delegate execution to reusable workflows in `.github/workflows/`.
-- Publish-after-merge templates in `templates/` skip release publishing when the merged pull request was created by `dependabot[bot]`.
+- Private IAC and React publish-after-merge templates in `templates/` skip release publishing when the merged pull request actor is `dependabot[bot]`.
+- `templates/py-temp-publish-pvt-build_release_notify_after_merge-def.yaml` no longer includes the trailing placeholder `secrets` block after the job definition.
 - Private build workflow `.github/workflows/py-pc-build-pvt-def.yaml` now configures Poetry HTTP basic authentication for `sample_data_factory` using `GH_REPO_ACCESS_RTE_MASTER`.
 - Native-docker PR workflows propagate `RTEAPI_ES_PRESENCE_TTL_S`, `RTEAPI_ES_SSE_HEARTBEAT_S`, `RTEAPI_ES_SSE_PUBSUB_POLL_TIMEOUT_S`, `RTEAPI_ES_WS_HEARTBEAT_S`, `RTEAPI_ES_WS_PUBSUB_POLL_TIMEOUT_S`, and `RTEAPI_LOG_REQUESTS` from repository variables into called workflows and generated runtime `.env` values.
 - Native-docker CI in `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` no longer creates `RTEAPI_BASE_IMAGES_PATH`; runner bootstrap/setup should prepare that path when needed.
@@ -28,7 +29,7 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 
 - `.github/workflows/` - Reusable workflow definitions executed by GitHub Actions.
 - `templates/` - Template workflow files to copy into downstream repositories.
-- `ai_prompts/` - Prompt templates for release updates, issue creation, and project planning.
+- `ai_prompts/` - Prompt templates for release updates, issue creation, project planning, and repository-specific Codex guidance.
 - `legacy/` - Repository-local output location used by prompt workflows.
 - `ReleaseNotes.md` - Historical release log for this repository.
 - `AGENTS.md` - Contributor and coding-agent guardrails for repository-specific workflows and testing practices.
@@ -111,6 +112,7 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 - `ai_prompts/` - Contains reusable AI prompts for release-note, issue drafting, and project-planning automation tasks.
   - `Release-Update-devops_automation.md` - Repository-specific release-note and SemVer instructions.
   - `Release-Update-General.md` - Generic release-note and SemVer instructions.
+  - `AGENTS.md` - Repository-specific Codex instructions for workflow updates, testing, and verification.
   - `Issue-Main-Feature.md` - Prompt template for a Linear main-feature issue.
   - `Issue-Feature.md` - Prompt template for a Linear sub-issue linked to a main feature.
   - `Project-Create-a-new-Project.md` - Prompt template for creating a Linear project definition and milestones.

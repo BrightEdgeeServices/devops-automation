@@ -1,3 +1,35 @@
+### Release 12.0.0
+
+- Date: 2026-03-20 17:26 (UTC+02:00)
+
+______________________________________________________________________
+
+### Summary of Changes
+
+- Templates: Updated `templates/iac-temp-publish-pvt-release_notify_after_merge-def.yaml` and `templates/react-temp-publish-pvt-release_notify_after_merge-def.yaml` so release-after-merge jobs do not run when the merged pull request actor is `dependabot[bot]`.
+- Templates: Removed the stray placeholder `secrets` block from `templates/py-temp-publish-pvt-build_release_notify_after_merge-def.yaml`.
+- Automation Prompts: Added `ai_prompts/AGENTS.md` with repository-specific Codex instructions covering workflow orchestration, testing, safety, and Python standards.
+- Documentation: Updated `README.md` to document the publish-after-merge template guardrails, the private Python build-release template cleanup, and the new repository-specific Codex instructions.
+- Build: Bumped version to 12.0.0 in `pyproject.toml` (major bump due to changes in existing `templates/` workflow scripts).
+
+______________________________________________________________________
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - README.md
+  - ai_prompts/AGENTS.md
+  - pyproject.toml
+  - templates/iac-temp-publish-pvt-release_notify_after_merge-def.yaml
+  - templates/py-temp-publish-pvt-build_release_notify_after_merge-def.yaml
+  - templates/react-temp-publish-pvt-release_notify_after_merge-def.yaml
+- Number of files changed: 6
+- Insertions: 193
+- Deletions: 10
+
+______________________________________________________________________
+
 ### Release 11.0.0
 
 - Date: 2026-03-13 00:11 (UTC+02:00)
