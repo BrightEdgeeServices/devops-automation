@@ -20,6 +20,10 @@ on:
         required: false
       AUTHZ_MYSQL_USER:
         required: false
+      AUTHZ_SERVICE_USERID:
+        required: true
+      AUTHZ_SERVICE_CLIENT_PASSWORD:
+        required: true
       GH_REPO_ACCESS_BEE_MASTER:
         required: true
       GH_REPO_ACCESS_RTE_MASTER:
@@ -35,6 +39,10 @@ on:
       DEV_AUTO_MYSQL_TCP_PORT:
         required: true
       DEV_AUTO_OVERRIDE:
+        required: true
+      ES_SERVICE_USERID:
+        required: true
+      ES_SERVICE_CLIENT_PASSWORD:
         required: true
       INSTALLER_USERID:
         required: true
@@ -54,7 +62,11 @@ on:
         required: true
       MYSQL_PASSWORD:
         required: true
+      MYSQL_PWD:
+        required: true
       MYSQL_ROOT_PASSWORD:
+        required: true
+      MYSQL_ROOT_USER:
         required: true
       MYSQL_TCP_PORT:
         required: true
@@ -90,9 +102,9 @@ on:
         required: true
       SOCKET_RTEAPI:
         required: true
-      UMS_SERVICE_PASSWORD:
+      UMS_SERVICE_USERID:
         required: true
-      UMS_SERVICE_USER:
+      UMS_SERVICE_CLIENT_PASSWORD:
         required: true
       VENV_ENVIRONMENT:
         required: true
@@ -108,12 +120,16 @@ jobs:
     secrets:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
+      AUTHZ_SERVICE_USERID: ${{secrets.AUTHZ_SERVICE_USERID }}
+      AUTHZ_SERVICE_CLIENT_PASSWORD: ${{secrets.AUTHZ_SERVICE_CLIENT_PASSWORD }}
       GOOGLE_CREDENTIALS_PATH: ${{secrets.GOOGLE_CREDENTIALS_PATH }}
       GOOGLE_CREDENTIALS_CONTENTS: ${{secrets.GOOGLE_CREDENTIALS_CONTENTS }}
       DEV_E2E_MYSQL_TCP_PORT: ${{secrets.DEV_E2E_MYSQL_TCP_PORT }}
       DEV_AUTO_MYSQL_HOST: ${{secrets.DEV_AUTO_MYSQL_HOST }}
       DEV_AUTO_MYSQL_TCP_PORT: ${{secrets.DEV_AUTO_MYSQL_TCP_PORT }}
       DEV_AUTO_OVERRIDE: ${{secrets.DEV_AUTO_OVERRIDE }}
+      ES_SERVICE_USERID: ${{secrets.ES_SERVICE_USERID }}
+      ES_SERVICE_CLIENT_PASSWORD: ${{secrets.ES_SERVICE_CLIENT_PASSWORD }}
       INSTALLER_USERID: ${{secrets.INSTALLER_USERID }}
       INSTALLER_PWD: ${{secrets.INSTALLER_PWD }}
       LOG_BACKUP_COUNT: ${{secrets.LOG_BACKUP_COUNT }}
@@ -123,7 +139,9 @@ jobs:
       MYSQL_DATABASE: ${{secrets.MYSQL_DATABASE }}
       MYSQL_HOST: ${{secrets.MYSQL_HOST }}
       MYSQL_PASSWORD: ${{secrets.MYSQL_PASSWORD}}
+      MYSQL_PWD: ${{secrets.MYSQL_PWD}}
       MYSQL_ROOT_PASSWORD: ${{secrets.MYSQL_ROOT_PASSWORD}}
+      MYSQL_ROOT_USER: ${{secrets.MYSQL_ROOT_USER }}
       MYSQL_TCP_PORT: ${{secrets.MYSQL_TCP_PORT }}
       MYSQL_TCP_PORT_EXTERNAL: ${{secrets.MYSQL_TCP_PORT_EXTERNAL }}
       MYSQL_TCP_PORT_LOCAL_PROD: ${{secrets.MYSQL_TCP_PORT_LOCAL_PROD }}
@@ -141,8 +159,8 @@ jobs:
       SOCKET_EVENT_SERVICE: ${{secrets.SOCKET_EVENT_SERVICE }}
       SOCKET_FIDE_PARSER_SERVICE: ${{secrets.SOCKET_FIDE_PARSER_SERVICE }}
       SOCKET_RTEAPI: ${{secrets.SOCKET_RTEAPI }}
-      UMS_SERVICE_PASSWORD: ${{secrets.UMS_SERVICE_PASSWORD }}
-      UMS_SERVICE_USER: ${{secrets.UMS_SERVICE_USER }}
+      UMS_SERVICE_USERID: ${{secrets.UMS_SERVICE_USERID }}
+      UMS_SERVICE_CLIENT_PASSWORD: ${{secrets.UMS_SERVICE_CLIENT_PASSWORD }}
       VENV_ENVIRONMENT: ${{secrets.VENV_ENVIRONMENT }}
       MYSQL_IMAGE: ${{secrets.MYSQL_IMAGE }}
 
