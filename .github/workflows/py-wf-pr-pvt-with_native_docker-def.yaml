@@ -92,12 +92,6 @@ on:
         required: true
       MYSQL_IMAGE:
         required: true
-      PYTEST_MYSQL_DATABASE:
-        required: true
-      PYTEST_MYSQL_HOST:
-        required: true
-      PYTEST_MYSQL_TCP_PORT:
-        required: true
 jobs:
   Pre-Commit:
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-precom-all-def.yaml@master
@@ -142,9 +136,6 @@ jobs:
       SOCKET_RTEAPI: ${{secrets.SOCKET_RTEAPI }}
       VENV_ENVIRONMENT: ${{secrets.VENV_ENVIRONMENT }}
       MYSQL_IMAGE: ${{secrets.MYSQL_IMAGE }}
-      PYTEST_MYSQL_DATABASE: ${{secrets.PYTEST_MYSQL_DATABASE }}
-      PYTEST_MYSQL_HOST: ${{secrets.PYTEST_MYSQL_HOST }}
-      PYTEST_MYSQL_TCP_PORT: ${{secrets.PYTEST_MYSQL_TCP_PORT }}
 
   Detect-PR-Tag:
     uses: BrightEdgeeServices/devops-automation/.github/workflows/all-pc-pr-all-detect_tag-def.yaml@master
