@@ -63,5 +63,7 @@ jobs:
       SOCKET_EVENT_SERVICE:        ${{vars.SOCKET_EVENT_SERVICE }}
       SOCKET_FIDE_PARSER_SERVICE:  ${{vars.SOCKET_FIDE_PARSER_SERVICE }}
       SOCKET_RTEAPI:               ${{vars.SOCKET_RTEAPI }}
+      UMS_SERVICE_PASSWORD:        ${{secrets.UMS_SERVICE_PASSWORD }}
+      UMS_SERVICE_USER:            ${{vars.UMS_SERVICE_USER }}
       VENV_ENVIRONMENT:            ${{vars.VENV_ENVIRONMENT }}
       MYSQL_IMAGE:                 ${{vars.MYSQL_IMAGE }}
