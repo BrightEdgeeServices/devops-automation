@@ -1,3 +1,33 @@
+### Release 13.4.0
+
+- Date: 2026-03-26 23:18 (UTC+02:00)
+
+______________________________________________________________________
+
+### Summary of Changes
+
+- Workflows: Updated `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` and `.github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml` to require and pass through `AUTHZ_SERVICE_CLIENT_ID`, `AUTHZ_SERVICE_CLIENT_SECRET`, `ES_SERVICE_CLIENT_ID`, `ES_SERVICE_CLIENT_SECRET`, `MYSQL_PWD`, `MYSQL_ROOT_USER`, `UMS_SERVICE_CLIENT_ID`, and `UMS_SERVICE_CLIENT_SECRET` for the native-docker CI and PR flows.
+- Templates: Updated `templates/py-temp-pr-pvt-with_native_docker-def.yaml` to forward the renamed service credential inputs plus `MYSQL_PWD` and `MYSQL_ROOT_USER` into the reusable native-docker PR workflow.
+- Documentation: Updated `README.md` to document the expanded native-docker PR and CI credential requirements and clarify how the template maps the new variables and secrets.
+- Build: Bumped version to 13.4.0 in `pyproject.toml` (minor bump because the existing native-docker template change is related to the 13.0.0 major release published on 2026-03-26 and falls within the 3-day exception window).
+
+______________________________________________________________________
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - .github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml
+  - README.md
+  - pyproject.toml
+  - templates/py-temp-pr-pvt-with_native_docker-def.yaml
+- Number of files changed: 5
+- Insertions: 109
+- Deletions: 59
+
+______________________________________________________________________
+
 ### Release 13.3.1
 
 - Date: 2026-03-26 18:14 (UTC+02:00)
