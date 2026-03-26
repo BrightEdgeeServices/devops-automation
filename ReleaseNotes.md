@@ -1,3 +1,44 @@
+### Release 13.0.0
+
+- Date: 2026-03-26 03:16 (UTC+02:00)
+
+______________________________________________________________________
+
+### Summary of Changes
+
+- Automation: Expanded `.github/dependabot.yaml` to check Poetry dependencies, GitHub Actions workflows, and Docker assets on a weekly schedule with scoped commit messages and a pull-request limit.
+- Workflows: Updated `.github/workflows/legacy/py-pc-dep-no_docker-def.yaml`, `.github/workflows/legacy/py-pc-dep-with_docker-def.yaml`, and `.github/workflows/legacy/py-pc-pypi-default.yaml` to use `actions/checkout@v6`.
+- Workflows: Updated `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` and `.github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml` to require and pass through `LOG_BACKUP_COUNT`, `LOG_DIR`, `LOG_LEVEL_CONSOLE`, and `LOG_LEVEL_FILE`.
+- Templates: Updated `templates/py-temp-pr-pvt-with_native_docker-def.yaml` to forward the `LOG_*` repository variables into the reusable native-docker PR workflow.
+- Templates: Cleaned up alignment in `templates/py-temp-publish-pvt-build_release_notify_after_merge-def.yaml` for the release email secret mapping.
+- Tooling: Updated `.pre-commit-config.yaml` and `poetry.lock` to move the Black pre-commit mirror and locked Black dependency to `26.3.1`, including the related lockfile dependency refresh.
+- Documentation: Updated `README.md` to document the expanded Dependabot coverage and the required native-docker `LOG_*` variables.
+- Build: Bumped version to 13.0.0 in `pyproject.toml` (major bump due to changes in existing `templates/` workflow scripts, with no related major bump in the previous 3 days).
+
+______________________________________________________________________
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - .github/dependabot.yaml
+  - .github/workflows/legacy/py-pc-dep-no_docker-def.yaml
+  - .github/workflows/legacy/py-pc-dep-with_docker-def.yaml
+  - .github/workflows/legacy/py-pc-pypi-default.yaml
+  - .github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml
+  - .pre-commit-config.yaml
+  - README.md
+  - poetry.lock
+  - pyproject.toml
+  - templates/py-temp-pr-pvt-with_native_docker-def.yaml
+  - templates/py-temp-publish-pvt-build_release_notify_after_merge-def.yaml
+- Number of files changed: 12
+- Insertions: 174
+- Deletions: 50
+
+______________________________________________________________________
+
 ### Release 12.0.0
 
 - Date: 2026-03-20 17:26 (UTC+02:00)

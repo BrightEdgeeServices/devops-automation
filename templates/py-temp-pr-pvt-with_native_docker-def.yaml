@@ -34,6 +34,10 @@ jobs:
       GOOGLE_CREDENTIALS_CONTENTS: ${{secrets.GOOGLE_CREDENTIALS_CONTENTS }}
       INSTALLER_USERID:            ${{vars.INSTALLER_USERID }}
       INSTALLER_PWD:               ${{secrets.INSTALLER_PWD }}
+      LOG_BACKUP_COUNT:            ${{vars.LOG_BACKUP_COUNT }}
+      LOG_DIR:                     ${{vars.LOG_DIR }}
+      LOG_LEVEL_CONSOLE:           ${{vars.LOG_LEVEL_CONSOLE }}
+      LOG_LEVEL_FILE:              ${{vars.LOG_LEVEL_FILE }}
       MYSQL_DATABASE:              ${{vars.MYSQL_DATABASE }}
       MYSQL_HOST:                  ${{vars.MYSQL_HOST }}
       MYSQL_PASSWORD:              ${{secrets.MYSQL_PASSWORD}}
