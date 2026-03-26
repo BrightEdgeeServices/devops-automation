@@ -23,6 +23,8 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 - Private build workflow `.github/workflows/py-pc-build-pvt-def.yaml` now configures Poetry HTTP basic authentication for `sample_data_factory` using `GH_REPO_ACCESS_RTE_MASTER`.
 - Native-docker PR and CI workflows now require `DEV_AUTO_MYSQL_HOST`, `DEV_AUTO_MYSQL_TCP_PORT`, and `DEV_AUTO_OVERRIDE` alongside `LOG_BACKUP_COUNT`, `LOG_DIR`, `LOG_LEVEL_CONSOLE`, and `LOG_LEVEL_FILE`.
 - The private native-docker PR template forwards `DEV_AUTO_MYSQL_HOST`, `DEV_AUTO_MYSQL_TCP_PORT`, and `DEV_AUTO_OVERRIDE` from repository variables into the reusable workflow.
+- Native-docker PR and CI reusable workflows no longer require `PYTEST_MYSQL_DATABASE`, `PYTEST_MYSQL_HOST`, or `PYTEST_MYSQL_TCP_PORT`.
+- The private native-docker PR template no longer forwards `PYTEST_MYSQL_*` repository variables into the reusable workflow.
 - Native-docker PR workflows propagate `RTEAPI_ES_PRESENCE_TTL_S`, `RTEAPI_ES_SSE_HEARTBEAT_S`, `RTEAPI_ES_SSE_PUBSUB_POLL_TIMEOUT_S`, `RTEAPI_ES_WS_HEARTBEAT_S`, `RTEAPI_ES_WS_PUBSUB_POLL_TIMEOUT_S`, and `RTEAPI_LOG_REQUESTS` from repository variables into called workflows and generated runtime `.env` values.
 - Native-docker CI in `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` no longer creates `RTEAPI_BASE_IMAGES_PATH`; runner bootstrap/setup should prepare that path when needed.
 - Prompt templates in `ai_prompts/` for release-note generation and Linear issue/project drafting.
@@ -45,8 +47,8 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 04. Copy a relevant template from `templates/` to your target repository's `.github/workflows/` directory.
 05. Publish-after-merge templates do not publish releases for merges performed by `dependabot[bot]`.
 06. Dependabot is configured to scan Poetry, GitHub Actions, and Docker definitions weekly from the repository root.
-07. For native-docker PR workflows, define the required repository variables (`DEV_AUTO_MYSQL_HOST`, `DEV_AUTO_MYSQL_TCP_PORT`, `DEV_AUTO_OVERRIDE`, `RTEAPI_BASE_IMAGES_PATH`, `RTEAPI_ES_*`, `RTEAPI_LOG_REQUESTS`, `LOG_BACKUP_COUNT`, `LOG_DIR`, `LOG_LEVEL_CONSOLE`, and `LOG_LEVEL_FILE`) before running the workflow.
-08. For native-docker CI workflows, provide matching `DEV_AUTO_*` and `LOG_*` secrets alongside the existing installer and database credentials.
+07. For native-docker PR workflows, define the required repository variables (`DEV_AUTO_MYSQL_HOST`, `DEV_AUTO_MYSQL_TCP_PORT`, `DEV_AUTO_OVERRIDE`, `RTEAPI_BASE_IMAGES_PATH`, `RTEAPI_ES_*`, `RTEAPI_LOG_REQUESTS`, `LOG_BACKUP_COUNT`, `LOG_DIR`, `LOG_LEVEL_CONSOLE`, and `LOG_LEVEL_FILE`) before running the workflow; `PYTEST_MYSQL_*` repository variables are no longer required for this path.
+08. For native-docker CI workflows, provide matching `DEV_AUTO_*` and `LOG_*` secrets alongside the existing installer and database credentials; `PYTEST_MYSQL_*` secrets are no longer required by the reusable workflow.
 09. For private native-docker CI, ensure the `RTEAPI_BASE_IMAGES_PATH` directory exists on the runner before jobs that read/write base images.
 10. Use `pushpy.ps1` for validation pushes and `pushpr.ps1` to publish release-ready changes.
 
