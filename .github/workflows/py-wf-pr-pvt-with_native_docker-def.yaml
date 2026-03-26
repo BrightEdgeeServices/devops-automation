@@ -28,6 +28,8 @@ on:
         required: true
       GOOGLE_CREDENTIALS_CONTENTS:
         required: true
+      DEV_E2E_MYSQL_TCP_PORT:
+        required: true
       DEV_AUTO_MYSQL_HOST:
         required: true
       DEV_AUTO_MYSQL_TCP_PORT:
@@ -104,6 +106,7 @@ jobs:
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
       GOOGLE_CREDENTIALS_PATH: ${{secrets.GOOGLE_CREDENTIALS_PATH }}
       GOOGLE_CREDENTIALS_CONTENTS: ${{secrets.GOOGLE_CREDENTIALS_CONTENTS }}
+      DEV_E2E_MYSQL_TCP_PORT: ${{secrets.DEV_E2E_MYSQL_TCP_PORT }}
       DEV_AUTO_MYSQL_HOST: ${{secrets.DEV_AUTO_MYSQL_HOST }}
       DEV_AUTO_MYSQL_TCP_PORT: ${{secrets.DEV_AUTO_MYSQL_TCP_PORT }}
       DEV_AUTO_OVERRIDE: ${{secrets.DEV_AUTO_OVERRIDE }}
