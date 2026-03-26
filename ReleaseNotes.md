@@ -1,3 +1,33 @@
+### Release 13.1.0
+
+- Date: 2026-03-26 03:44 (UTC+02:00)
+
+______________________________________________________________________
+
+### Summary of Changes
+
+- Workflows: Updated `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` and `.github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml` to require and pass through `DEV_AUTO_MYSQL_HOST`, `DEV_AUTO_MYSQL_TCP_PORT`, and `DEV_AUTO_OVERRIDE` for native-docker CI and PR execution.
+- Templates: Updated `templates/py-temp-pr-pvt-with_native_docker-def.yaml` to forward the `DEV_AUTO_*` repository variables into the reusable native-docker PR workflow.
+- Documentation: Updated `README.md` to document the additional native-docker `DEV_AUTO_*` repository variables and secrets.
+- Build: Bumped version to 13.1.0 in `pyproject.toml` (minor bump because the existing native-docker template change is related to the 13.0.0 major release published on 2026-03-26 and falls within the 3-day exception window).
+
+______________________________________________________________________
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - .github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml
+  - README.md
+  - pyproject.toml
+  - templates/py-temp-pr-pvt-with_native_docker-def.yaml
+- Number of files changed: 5
+- Insertions: 29
+- Deletions: 4
+
+______________________________________________________________________
+
 ### Release 13.0.0
 
 - Date: 2026-03-26 03:16 (UTC+02:00)
