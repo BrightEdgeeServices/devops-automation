@@ -1,3 +1,31 @@
+### Release 13.3.1
+
+- Date: 2026-03-26 18:14 (UTC+02:00)
+
+______________________________________________________________________
+
+### Summary of Changes
+
+- Workflows: Updated `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` and `.github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml` to require and pass through `UMS_SERVICE_USER` and `UMS_SERVICE_PASSWORD` for the native-docker CI and PR flows.
+- Documentation: Updated `README.md` to document the new `UMS_SERVICE_USER` and `UMS_SERVICE_PASSWORD` secret requirements for native-docker PR and CI workflows.
+- Build: Bumped version to 13.3.1 in `pyproject.toml` (patch bump because only existing `.github/workflows/` scripts changed).
+
+______________________________________________________________________
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - .github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml
+  - README.md
+  - pyproject.toml
+- Number of files changed: 4
+- Insertions: 18
+- Deletions: 4
+
+______________________________________________________________________
+
 ### Release 13.3.0
 
 - Date: 2026-03-26 17:53 (UTC+02:00)
