@@ -32,6 +32,14 @@ on:
         required: true
       INSTALLER_PWD:
         required: true
+      LOG_BACKUP_COUNT:
+        required: true
+      LOG_DIR:
+        required: true
+      LOG_LEVEL_CONSOLE:
+        required: true
+      LOG_LEVEL_FILE:
+        required: true
       MYSQL_DATABASE:
         required: true
       MYSQL_HOST:
@@ -98,6 +106,10 @@ jobs:
       GOOGLE_CREDENTIALS_CONTENTS: ${{secrets.GOOGLE_CREDENTIALS_CONTENTS }}
       INSTALLER_USERID: ${{secrets.INSTALLER_USERID }}
       INSTALLER_PWD: ${{secrets.INSTALLER_PWD }}
+      LOG_BACKUP_COUNT: ${{secrets.LOG_BACKUP_COUNT }}
+      LOG_DIR: ${{secrets.LOG_DIR }}
+      LOG_LEVEL_CONSOLE: ${{secrets.LOG_LEVEL_CONSOLE }}
+      LOG_LEVEL_FILE: ${{secrets.LOG_LEVEL_FILE }}
       MYSQL_DATABASE: ${{secrets.MYSQL_DATABASE }}
       MYSQL_HOST: ${{secrets.MYSQL_HOST }}
       MYSQL_PASSWORD: ${{secrets.MYSQL_PASSWORD}}
