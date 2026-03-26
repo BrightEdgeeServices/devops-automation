@@ -24,6 +24,8 @@ on:
         required: true
       AUTHZ_SERVICE_CLIENT_SECRET:
         required: true
+      COMMIT_BATCH_SIZE:
+        required: true
       GH_REPO_ACCESS_BEE_MASTER:
         required: true
       GH_REPO_ACCESS_RTE_MASTER:
@@ -122,6 +124,7 @@ jobs:
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
       AUTHZ_SERVICE_CLIENT_ID: ${{secrets.AUTHZ_SERVICE_CLIENT_ID }}
       AUTHZ_SERVICE_CLIENT_SECRET: ${{secrets.AUTHZ_SERVICE_CLIENT_SECRET }}
+      COMMIT_BATCH_SIZE: ${{secrets.COMMIT_BATCH_SIZE }}
       GOOGLE_CREDENTIALS_PATH: ${{secrets.GOOGLE_CREDENTIALS_PATH }}
       GOOGLE_CREDENTIALS_CONTENTS: ${{secrets.GOOGLE_CREDENTIALS_CONTENTS }}
       DEV_E2E_MYSQL_TCP_PORT: ${{secrets.DEV_E2E_MYSQL_TCP_PORT }}
