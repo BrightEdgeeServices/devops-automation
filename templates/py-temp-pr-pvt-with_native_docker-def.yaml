@@ -28,6 +28,7 @@ jobs:
       AUTHZ_MYSQL_ROOT_PASSWORD:   ${{secrets.AUTHZ_MYSQL_ROOT_PASSWORD}}
       AUTHZ_MYSQL_TCP_PORT:        ${{vars.AUTHZ_MYSQL_TCP_PORT}}
       AUTHZ_MYSQL_USER:            ${{vars.AUTHZ_MYSQL_USER}}
+      DEV_E2E_MYSQL_TCP_PORT:      ${{vars.DEV_E2E_MYSQL_TCP_PORT}}
       DEV_AUTO_MYSQL_HOST:         ${{vars.DEV_AUTO_MYSQL_HOST}}
       DEV_AUTO_MYSQL_TCP_PORT:     ${{vars.DEV_AUTO_MYSQL_TCP_PORT}}
       DEV_AUTO_OVERRIDE:           ${{vars.DEV_AUTO_OVERRIDE}}
