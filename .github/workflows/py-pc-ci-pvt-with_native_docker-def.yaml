@@ -75,6 +75,10 @@ on:
         required: true
       SOCKET_RTEAPI:
         required: true
+      UMS_SERVICE_PASSWORD:
+        required: true
+      UMS_SERVICE_USER:
+        required: true
       VENV_ENVIRONMENT:
         required: true
       MYSQL_IMAGE:
@@ -117,6 +121,8 @@ jobs:
       SOCKET_EVENT_SERVICE: ${{secrets.SOCKET_EVENT_SERVICE }}
       SOCKET_FIDE_PARSER_SERVICE: ${{secrets.SOCKET_FIDE_PARSER_SERVICE }}
       SOCKET_RTEAPI: ${{secrets.SOCKET_RTEAPI }}
+      UMS_SERVICE_PASSWORD: ${{secrets.UMS_SERVICE_PASSWORD }}
+      UMS_SERVICE_USER: ${{secrets.UMS_SERVICE_USER }}
       VENV_ENVIRONMENT: ${{secrets.VENV_ENVIRONMENT }}
       MYSQL_IMAGE: ${{secrets.MYSQL_IMAGE }}
 
@@ -226,6 +232,8 @@ jobs:
           SOCKET_EVENT_SERVICE=${{secrets.SOCKET_EVENT_SERVICE }}
           SOCKET_FIDE_PARSER_SERVICE=${{secrets.SOCKET_FIDE_PARSER_SERVICE }}
           SOCKET_RTEAPI=${{secrets.SOCKET_RTEAPI }}
+          UMS_SERVICE_PASSWORD=${{ secrets.UMS_SERVICE_PASSWORD }}
+          UMS_SERVICE_USER=${{ secrets.UMS_SERVICE_USER }}
           VENV_ENVIRONMENT=${{ secrets.VENV_ENVIRONMENT }}
           MYSQL_IMAGE=${{ secrets.MYSQL_IMAGE }}
           EOF
