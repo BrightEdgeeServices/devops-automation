@@ -30,6 +30,7 @@ jobs:
       AUTHZ_MYSQL_USER:                    ${{vars.AUTHZ_MYSQL_USER}}
       AUTHZ_SERVICE_CLIENT_ID:             ${{vars.AUTHZ_SERVICE_CLIENT_ID}}
       AUTHZ_SERVICE_CLIENT_SECRET:         ${{secrets.AUTHZ_SERVICE_CLIENT_SECRET}}
+      COMMIT_BATCH_SIZE:                   ${{vars.COMMIT_BATCH_SIZE}}
       DEV_E2E_MYSQL_TCP_PORT:              ${{vars.DEV_E2E_MYSQL_TCP_PORT}}
       DEV_AUTO_MYSQL_HOST:                 ${{vars.DEV_AUTO_MYSQL_HOST}}
       DEV_AUTO_MYSQL_TCP_PORT:             ${{vars.DEV_AUTO_MYSQL_TCP_PORT}}

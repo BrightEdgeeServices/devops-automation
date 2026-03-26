@@ -1,3 +1,33 @@
+### Release 13.5.0
+
+- Date: 2026-03-27 00:14 (UTC+02:00)
+
+______________________________________________________________________
+
+### Summary of Changes
+
+- Workflows: Updated `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` and `.github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml` to require and pass through `COMMIT_BATCH_SIZE` for the private native-docker CI and PR flows; the CI workflow also now writes `GOOGLE_CREDENTIALS_CONTENTS` through a step environment variable with `printf` when creating the credentials file.
+- Templates: Updated `templates/py-temp-pr-pvt-with_native_docker-def.yaml` to forward `COMMIT_BATCH_SIZE` from repository variables into the reusable native-docker PR workflow.
+- Documentation: Updated `README.md` to document the new `COMMIT_BATCH_SIZE` requirement for the native-docker PR and CI workflow path.
+- Build: Bumped version to 13.5.0 in `pyproject.toml` (minor bump because the existing native-docker template change is related to the 13.0.0 major release published on 2026-03-26 and falls within the 3-day exception window).
+
+______________________________________________________________________
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - .github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml
+  - README.md
+  - pyproject.toml
+  - templates/py-temp-pr-pvt-with_native_docker-def.yaml
+- Number of files changed: 5
+- Insertions: 21
+- Deletions: 11
+
+______________________________________________________________________
+
 ### Release 13.4.0
 
 - Date: 2026-03-26 23:18 (UTC+02:00)
