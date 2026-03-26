@@ -9,9 +9,9 @@ on:
         required: true
       GH_REPO_ACCESS_RTE_MASTER:
         required: true
-      AUTHZ_SERVICE_USERID:
+      AUTHZ_SERVICE_CLIENT_ID:
         required: true
-      AUTHZ_SERVICE_CLIENT_PASSWORD:
+      AUTHZ_SERVICE_CLIENT_SECRET:
         required: true
       GOOGLE_CREDENTIALS_PATH:
         required: true
@@ -25,9 +25,9 @@ on:
         required: true
       DEV_AUTO_OVERRIDE:
         required: true
-      ES_SERVICE_USERID:
+      ES_SERVICE_CLIENT_ID:
         required: true
-      ES_SERVICE_CLIENT_PASSWORD:
+      ES_SERVICE_CLIENT_SECRET:
         required: true
       INSTALLER_USERID:
         required: true
@@ -87,9 +87,9 @@ on:
         required: true
       SOCKET_RTEAPI:
         required: true
-      UMS_SERVICE_USERID:
+      UMS_SERVICE_CLIENT_ID:
         required: true
-      UMS_SERVICE_CLIENT_PASSWORD:
+      UMS_SERVICE_CLIENT_SECRET:
         required: true
       VENV_ENVIRONMENT:
         required: true
@@ -101,15 +101,15 @@ jobs:
     env:
       GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
-      AUTHZ_SERVICE_USERID: ${{secrets.AUTHZ_SERVICE_USERID }}
-      AUTHZ_SERVICE_CLIENT_PASSWORD: ${{secrets.AUTHZ_SERVICE_CLIENT_PASSWORD }}
+      AUTHZ_SERVICE_CLIENT_ID: ${{secrets.AUTHZ_SERVICE_CLIENT_ID }}
+      AUTHZ_SERVICE_CLIENT_SECRET: ${{secrets.AUTHZ_SERVICE_CLIENT_SECRET }}
       GOOGLE_CREDENTIALS_PATH: ${{ secrets.GOOGLE_CREDENTIALS_PATH }}
       DEV_E2E_MYSQL_TCP_PORT: ${{secrets.DEV_E2E_MYSQL_TCP_PORT }}
       DEV_AUTO_MYSQL_HOST: ${{secrets.DEV_AUTO_MYSQL_HOST }}
       DEV_AUTO_MYSQL_TCP_PORT: ${{secrets.DEV_AUTO_MYSQL_TCP_PORT }}
       DEV_AUTO_OVERRIDE: ${{secrets.DEV_AUTO_OVERRIDE }}
-      ES_SERVICE_USERID: ${{secrets.ES_SERVICE_USERID }}
-      ES_SERVICE_CLIENT_PASSWORD: ${{secrets.ES_SERVICE_CLIENT_PASSWORD }}
+      ES_SERVICE_CLIENT_ID: ${{secrets.ES_SERVICE_CLIENT_ID }}
+      ES_SERVICE_CLIENT_SECRET: ${{secrets.ES_SERVICE_CLIENT_SECRET }}
       INSTALLER_USERID: ${{secrets.INSTALLER_USERID }}
       INSTALLER_PWD: ${{secrets.INSTALLER_PWD }}
       LOG_BACKUP_COUNT: ${{secrets.LOG_BACKUP_COUNT }}
@@ -139,8 +139,8 @@ jobs:
       SOCKET_EVENT_SERVICE: ${{secrets.SOCKET_EVENT_SERVICE }}
       SOCKET_FIDE_PARSER_SERVICE: ${{secrets.SOCKET_FIDE_PARSER_SERVICE }}
       SOCKET_RTEAPI: ${{secrets.SOCKET_RTEAPI }}
-      UMS_SERVICE_USERID: ${{secrets.UMS_SERVICE_USERID }}
-      UMS_SERVICE_CLIENT_PASSWORD: ${{secrets.UMS_SERVICE_CLIENT_PASSWORD }}
+      UMS_SERVICE_CLIENT_ID: ${{secrets.UMS_SERVICE_CLIENT_ID }}
+      UMS_SERVICE_CLIENT_SECRET: ${{secrets.UMS_SERVICE_CLIENT_SECRET }}
       VENV_ENVIRONMENT: ${{secrets.VENV_ENVIRONMENT }}
       MYSQL_IMAGE: ${{secrets.MYSQL_IMAGE }}
 
@@ -219,14 +219,14 @@ jobs:
           cat > .env <<'EOF'
           GH_REPO_ACCESS_BEE_MASTER=${{ secrets.GH_REPO_ACCESS_BEE_MASTER }}
           GH_REPO_ACCESS_RTE_MASTER=${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
-          AUTHZ_SERVICE_USERID=${{ secrets.AUTHZ_SERVICE_USERID }}
-          AUTHZ_SERVICE_CLIENT_PASSWORD=${{ secrets.AUTHZ_SERVICE_CLIENT_PASSWORD }}
+          AUTHZ_SERVICE_CLIENT_ID=${{ secrets.AUTHZ_SERVICE_CLIENT_ID }}
+          AUTHZ_SERVICE_CLIENT_SECRET=${{ secrets.AUTHZ_SERVICE_CLIENT_SECRET }}
           DEV_E2E_MYSQL_TCP_PORT=${{ secrets.DEV_E2E_MYSQL_TCP_PORT }}
           DEV_AUTO_MYSQL_HOST=${{ secrets.DEV_AUTO_MYSQL_HOST }}
           DEV_AUTO_MYSQL_TCP_PORT=${{ secrets.DEV_AUTO_MYSQL_TCP_PORT }}
           DEV_AUTO_OVERRIDE=${{ secrets.DEV_AUTO_OVERRIDE }}
-          ES_SERVICE_USERID=${{ secrets.ES_SERVICE_USERID }}
-          ES_SERVICE_CLIENT_PASSWORD=${{ secrets.ES_SERVICE_CLIENT_PASSWORD }}
+          ES_SERVICE_CLIENT_ID=${{ secrets.ES_SERVICE_CLIENT_ID }}
+          ES_SERVICE_CLIENT_SECRET=${{ secrets.ES_SERVICE_CLIENT_SECRET }}
           INSTALLER_USERID=${{ secrets.INSTALLER_USERID }}
           INSTALLER_PWD=${{ secrets.INSTALLER_PWD }}
           LOG_BACKUP_COUNT=${{ secrets.LOG_BACKUP_COUNT }}
@@ -256,8 +256,8 @@ jobs:
           SOCKET_EVENT_SERVICE=${{secrets.SOCKET_EVENT_SERVICE }}
           SOCKET_FIDE_PARSER_SERVICE=${{secrets.SOCKET_FIDE_PARSER_SERVICE }}
           SOCKET_RTEAPI=${{secrets.SOCKET_RTEAPI }}
-          UMS_SERVICE_USERID=${{ secrets.UMS_SERVICE_USERID }}
-          UMS_SERVICE_CLIENT_PASSWORD=${{ secrets.UMS_SERVICE_CLIENT_PASSWORD }}
+          UMS_SERVICE_CLIENT_ID=${{ secrets.UMS_SERVICE_CLIENT_ID }}
+          UMS_SERVICE_CLIENT_SECRET=${{ secrets.UMS_SERVICE_CLIENT_SECRET }}
           VENV_ENVIRONMENT=${{ secrets.VENV_ENVIRONMENT }}
           MYSQL_IMAGE=${{ secrets.MYSQL_IMAGE }}
           EOF

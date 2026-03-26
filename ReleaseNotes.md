@@ -6,7 +6,7 @@ ______________________________________________________________________
 
 ### Summary of Changes
 
-- Workflows: Updated `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` and `.github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml` to require and pass through `AUTHZ_SERVICE_USERID`, `AUTHZ_SERVICE_CLIENT_PASSWORD`, `ES_SERVICE_USERID`, `ES_SERVICE_CLIENT_PASSWORD`, `UMS_SERVICE_USERID`, and `UMS_SERVICE_CLIENT_PASSWORD` for the native-docker CI and PR flows.
+- Workflows: Updated `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` and `.github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml` to require and pass through `AUTHZ_SERVICE_CLIENT_ID`, `AUTHZ_SERVICE_CLIENT_SECRET`, `ES_SERVICE_CLIENT_ID`, `ES_SERVICE_CLIENT_SECRET`, `UMS_SERVICE_CLIENT_ID`, and `UMS_SERVICE_CLIENT_SECRET` for the native-docker CI and PR flows.
 - Documentation: Updated `README.md` to document the renamed service credential inputs for native-docker PR and CI workflows.
 - Build: Bumped version to 13.3.1 in `pyproject.toml` (patch bump because only existing `.github/workflows/` scripts changed).
 

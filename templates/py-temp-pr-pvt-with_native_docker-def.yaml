@@ -28,14 +28,14 @@ jobs:
       AUTHZ_MYSQL_ROOT_PASSWORD:           ${{secrets.AUTHZ_MYSQL_ROOT_PASSWORD}}
       AUTHZ_MYSQL_TCP_PORT:                ${{vars.AUTHZ_MYSQL_TCP_PORT}}
       AUTHZ_MYSQL_USER:                    ${{vars.AUTHZ_MYSQL_USER}}
-      AUTHZ_SERVICE_USERID:                ${{vars.AUTHZ_SERVICE_USERID}}
-      AUTHZ_SERVICE_CLIENT_PASSWORD:       ${{secrets.AUTHZ_SERVICE_CLIENT_PASSWORD}}
+      AUTHZ_SERVICE_CLIENT_ID:             ${{vars.AUTHZ_SERVICE_CLIENT_ID}}
+      AUTHZ_SERVICE_CLIENT_SECRET:         ${{secrets.AUTHZ_SERVICE_CLIENT_SECRET}}
       DEV_E2E_MYSQL_TCP_PORT:              ${{vars.DEV_E2E_MYSQL_TCP_PORT}}
       DEV_AUTO_MYSQL_HOST:                 ${{vars.DEV_AUTO_MYSQL_HOST}}
       DEV_AUTO_MYSQL_TCP_PORT:             ${{vars.DEV_AUTO_MYSQL_TCP_PORT}}
       DEV_AUTO_OVERRIDE:                   ${{vars.DEV_AUTO_OVERRIDE}}
-      ES_SERVICE_USERID:                   ${{vars.ES_SERVICE_USERID}}
-      ES_SERVICE_CLIENT_PASSWORD:          ${{secrets.ES_SERVICE_CLIENT_PASSWORD}}
+      ES_SERVICE_CLIENT_ID:                ${{vars.ES_SERVICE_CLIENT_ID}}
+      ES_SERVICE_CLIENT_SECRET:            ${{secrets.ES_SERVICE_CLIENT_SECRET}}
       GH_REPO_ACCESS_BEE_MASTER:           ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
       GH_REPO_ACCESS_RTE_MASTER:           ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
       GOOGLE_CREDENTIALS_PATH:             ${{vars.GOOGLE_CREDENTIALS_PATH }}
@@ -69,7 +69,7 @@ jobs:
       SOCKET_EVENT_SERVICE:                ${{vars.SOCKET_EVENT_SERVICE }}
       SOCKET_FIDE_PARSER_SERVICE:          ${{vars.SOCKET_FIDE_PARSER_SERVICE }}
       SOCKET_RTEAPI:                       ${{vars.SOCKET_RTEAPI }}
-      UMS_SERVICE_CLIENT_PASSWORD:         ${{secrets.UMS_SERVICE_CLIENT_PASSWORD }}
-      UMS_SERVICE_USERID:                  ${{vars.UMS_SERVICE_USERID }}
+      UMS_SERVICE_CLIENT_ID:               ${{vars.UMS_SERVICE_CLIENT_ID }}
+      UMS_SERVICE_CLIENT_SECRET:           ${{secrets.UMS_SERVICE_CLIENT_SECRET }}
       VENV_ENVIRONMENT:                    ${{vars.VENV_ENVIRONMENT }}
       MYSQL_IMAGE:                         ${{vars.MYSQL_IMAGE }}
