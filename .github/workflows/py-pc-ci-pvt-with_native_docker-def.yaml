@@ -15,6 +15,8 @@ on:
         required: true
       COMMIT_BATCH_SIZE:
         required: true
+      COMPOSE_PROJECT_NAME:
+        required: true
       GOOGLE_CREDENTIALS_PATH:
         required: true
       GOOGLE_CREDENTIALS_CONTENTS:
@@ -104,6 +106,7 @@ jobs:
       AUTHZ_SERVICE_CLIENT_ID: ${{secrets.AUTHZ_SERVICE_CLIENT_ID }}
       AUTHZ_SERVICE_CLIENT_SECRET: ${{secrets.AUTHZ_SERVICE_CLIENT_SECRET }}
       COMMIT_BATCH_SIZE: ${{secrets.COMMIT_BATCH_SIZE }}
+      COMPOSE_PROJECT_NAME: ${{secrets.COMPOSE_PROJECT_NAME }}
       DEV_E2E_MYSQL_TCP_PORT: ${{secrets.DEV_E2E_MYSQL_TCP_PORT }}
       DEV_AUTO_MYSQL_HOST: ${{secrets.DEV_AUTO_MYSQL_HOST }}
       DEV_AUTO_MYSQL_TCP_PORT: ${{secrets.DEV_AUTO_MYSQL_TCP_PORT }}
@@ -227,6 +230,7 @@ jobs:
           AUTHZ_SERVICE_CLIENT_ID=${{ secrets.AUTHZ_SERVICE_CLIENT_ID }}
           AUTHZ_SERVICE_CLIENT_SECRET=${{ secrets.AUTHZ_SERVICE_CLIENT_SECRET }}
           COMMIT_BATCH_SIZE=${{ secrets.COMMIT_BATCH_SIZE }}
+          COMPOSE_PROJECT_NAME=${{ secrets.COMPOSE_PROJECT_NAME }}
           DEV_E2E_MYSQL_TCP_PORT=${{ secrets.DEV_E2E_MYSQL_TCP_PORT }}
           DEV_AUTO_MYSQL_HOST=${{ secrets.DEV_AUTO_MYSQL_HOST }}
           DEV_AUTO_MYSQL_TCP_PORT=${{ secrets.DEV_AUTO_MYSQL_TCP_PORT }}
