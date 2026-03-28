@@ -1,3 +1,33 @@
+### Release 13.6.0
+
+- Date: 2026-03-29 00:29 (UTC+02:00)
+
+______________________________________________________________________
+
+### Summary of Changes
+
+- Workflows: Updated `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` and `.github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml` to require and pass through `COMPOSE_PROJECT_NAME` for the private native-docker CI and PR flows.
+- Templates: Updated `templates/py-temp-pr-pvt-with_native_docker-def.yaml` to forward `COMPOSE_PROJECT_NAME` from repository variables into the reusable native-docker PR workflow.
+- Documentation: Updated `README.md` to document the new `COMPOSE_PROJECT_NAME` requirement for the native-docker PR and CI workflow path and the template variable forwarding.
+- Build: Bumped version to 13.6.0 in `pyproject.toml` (minor bump because the existing native-docker template change is related to the 13.0.0 major release published on 2026-03-26 and falls within the 3-day exception window).
+
+______________________________________________________________________
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - .github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml
+  - README.md
+  - pyproject.toml
+  - templates/py-temp-pr-pvt-with_native_docker-def.yaml
+- Number of files changed: 5
+- Insertions: 13
+- Deletions: 5
+
+______________________________________________________________________
+
 ### Release 13.5.0
 
 - Date: 2026-03-27 00:14 (UTC+02:00)
