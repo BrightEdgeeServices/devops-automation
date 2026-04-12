@@ -1,3 +1,34 @@
+### Release 13.6.1
+
+- Date: 2026-04-12 04:22 (UTC+02:00)
+
+______________________________________________________________________
+
+### Summary of Changes
+
+- Workflows: Updated `.github/workflows/py-pc-ci-pub-no_docker-def.yaml` and `.github/workflows/py-pc-ci-pub-with_docker-def.yaml` to upload coverage with `codecov/codecov-action@v6`.
+- Workflows: Updated `.github/workflows/py-pc-ci-pvt-no_docker-def.yaml` and `.github/workflows/py-wf-pr-pvt-no_docker-def.yaml` to require `PROJECT_NAME` and export it from repository variables in the private no-docker CI and PR flows.
+- Documentation: Updated `README.md` to document the `PROJECT_NAME` requirement for private no-docker workflows and the Codecov v6 upgrade in the public CI workflows.
+- Build: Bumped version to 13.6.1 in `pyproject.toml` (patch bump because only existing `.github/workflows/` scripts changed for this release; the deleted `dummy.txt` chore is excluded from the release notes).
+
+______________________________________________________________________
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - .github/workflows/py-pc-ci-pub-no_docker-def.yaml
+  - .github/workflows/py-pc-ci-pub-with_docker-def.yaml
+  - .github/workflows/py-pc-ci-pvt-no_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt-no_docker-def.yaml
+  - README.md
+  - pyproject.toml
+- Number of files changed: 6
+- Insertions: 14
+- Deletions: 4
+
+______________________________________________________________________
+
 ### Release 13.6.0
 
 - Date: 2026-03-29 00:29 (UTC+02:00)
