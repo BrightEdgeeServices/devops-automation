@@ -3,6 +3,10 @@ name: py-wf-pr-pvt-no_docker-def
 
 on:
   workflow_call:
+    inputs:
+      project_name:
+        required: true
+        type: string
     secrets:
       AUTHZ_CACHE_TTL_SEC:
         required: true
@@ -53,7 +57,9 @@ jobs:
     secrets: inherit
 
   CI:
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-ci-pvt-no_docker-def.yaml@master
+    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-ci-pvt-no_docker-def.yaml@hendrik/rte-334-pass-project-name-to-reusable-ci
+    with:
+      project_name: ${{ inputs.project_name }}
     secrets:
       AUTHZ_CACHE_TTL_SEC: ${{secrets.AUTHZ_CACHE_TTL_SEC}}
       AUTHZ_HOST: ${{secrets.AUTHZ_HOST}}

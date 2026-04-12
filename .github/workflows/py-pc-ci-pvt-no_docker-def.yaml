@@ -3,6 +3,10 @@ name: py-pc-ci-pvt-no_docker-def
 
 on:
   workflow_call:
+    inputs:
+      project_name:
+        required: true
+        type: string
     secrets:
       AUTHZ_CACHE_TTL_SEC:
         required: true
@@ -69,6 +73,7 @@ jobs:
       MYSQL_ROOT_PASSWORD: ${{secrets.MYSQL_ROOT_PASSWORD}}
       MYSQL_TCP_PORT: ${{secrets.MYSQL_TCP_PORT }}
       MYSQL_USER: ${{secrets.MYSQL_USER}}
+      PROJECT_NAME: ${{inputs.project_name}}
       RELEASE_EMAIL_USER: ${{secrets.RELEASE_EMAIL_USER }}
       RELEASE_EMAIL_PASSWORD: ${{secrets.RELEASE_EMAIL_PASSWORD }}
       VENV_ENVIRONMENT: ${{secrets.VENV_ENVIRONMENT }}
