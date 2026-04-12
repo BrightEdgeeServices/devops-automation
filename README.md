@@ -17,6 +17,8 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 
 - Reusable workflow implementations for CI, PR, publish, fork, and maintenance pipelines.
 - Template workflows in `templates/` that delegate execution to reusable workflows in `.github/workflows/`.
+- Public CI workflows `.github/workflows/py-pc-ci-pub-no_docker-def.yaml` and `.github/workflows/py-pc-ci-pub-with_docker-def.yaml` now upload coverage with `codecov/codecov-action@v6`.
+- Private no-docker workflows `.github/workflows/py-pc-ci-pvt-no_docker-def.yaml` and `.github/workflows/py-wf-pr-pvt-no_docker-def.yaml` now require the `PROJECT_NAME` repository variable and export it into the job environment.
 - Dependabot now checks Poetry dependencies, GitHub Actions workflows, and Docker assets weekly through `.github/dependabot.yaml`.
 - Private IAC and React publish-after-merge templates in `templates/` skip release publishing when the merged pull request actor is `dependabot[bot]`.
 - `templates/py-temp-publish-pvt-build_release_notify_after_merge-def.yaml` no longer includes the trailing placeholder `secrets` block after the job definition.
@@ -50,7 +52,9 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 07. For native-docker PR workflows, define the required repository variables (`AUTHZ_SERVICE_CLIENT_ID`, `COMMIT_BATCH_SIZE`, `COMPOSE_PROJECT_NAME`, `DEV_AUTO_MYSQL_HOST`, `DEV_AUTO_MYSQL_TCP_PORT`, `DEV_AUTO_OVERRIDE`, `DEV_E2E_MYSQL_TCP_PORT`, `ES_SERVICE_CLIENT_ID`, `LOG_BACKUP_COUNT`, `LOG_DIR`, `LOG_LEVEL_*`, `MYSQL_ROOT_USER`, `RTEAPI_BASE_IMAGES_PATH`, `RTEAPI_ES_*`, `RTEAPI_LOG_REQUESTS`, and `UMS_SERVICE_CLIENT_ID`) and provide the `AUTHZ_SERVICE_CLIENT_SECRET`, `ES_SERVICE_CLIENT_SECRET`, `MYSQL_PWD`, and `UMS_SERVICE_CLIENT_SECRET` secrets before running the workflow; `PYTEST_MYSQL_*` repository variables are no longer required for this path.
 08. For native-docker CI workflows, provide matching `AUTHZ_SERVICE_CLIENT_ID`, `COMMIT_BATCH_SIZE`, `COMPOSE_PROJECT_NAME`, `DEV_AUTO_*`, `DEV_E2E_MYSQL_TCP_PORT`, `ES_SERVICE_CLIENT_ID`, `LOG_*`, `MYSQL_ROOT_USER`, and `UMS_SERVICE_CLIENT_ID` values alongside the existing installer and database credentials, plus the `AUTHZ_SERVICE_CLIENT_SECRET`, `ES_SERVICE_CLIENT_SECRET`, `MYSQL_PWD`, and `UMS_SERVICE_CLIENT_SECRET` secrets; `PYTEST_MYSQL_*` secrets are no longer required by the reusable workflow.
 09. For private native-docker CI, ensure the `RTEAPI_BASE_IMAGES_PATH` directory exists on the runner before jobs that read/write base images.
-10. Use `pushpy.ps1` for validation pushes and `pushpr.ps1` to publish release-ready changes.
+10. For private no-docker CI and PR workflows, define the `PROJECT_NAME` repository variable because the reusable workflows now require it and publish it into the job environment.
+11. Public CI workflows that upload coverage now rely on `codecov/codecov-action@v6`.
+12. Use `pushpy.ps1` for validation pushes and `pushpr.ps1` to publish release-ready changes.
 
 ## Deployment
 
