@@ -1,3 +1,30 @@
+### Release 14.0.0
+
+- Date: 2026-04-12 04:29 (UTC+02:00)
+
+______________________________________________________________________
+
+### Summary of Changes
+
+- Templates: Updated `templates/py-temp-pr-pvt-no_docker-def.yaml` to forward `PROJECT_NAME` from repository variables into the reusable private no-docker PR workflow.
+- Documentation: Updated `README.md` to document the private no-docker PR template passthrough for `PROJECT_NAME`.
+- Build: Bumped version to 14.0.0 in `pyproject.toml` (major bump due to changes in an existing `templates/` workflow script, with no related major bump in the previous 3 days).
+
+______________________________________________________________________
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - README.md
+  - pyproject.toml
+  - templates/py-temp-pr-pvt-no_docker-def.yaml
+- Number of files changed: 3
+- Insertions: 4
+- Deletions: 2
+
+______________________________________________________________________
+
 ### Release 13.6.1
 
 - Date: 2026-04-12 04:22 (UTC+02:00)
