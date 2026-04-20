@@ -122,12 +122,12 @@ jobs:
   CI:
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml@master
     secrets:
-      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
-      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
       AUTHZ_SERVICE_CLIENT_ID: ${{secrets.AUTHZ_SERVICE_CLIENT_ID }}
       AUTHZ_SERVICE_CLIENT_SECRET: ${{secrets.AUTHZ_SERVICE_CLIENT_SECRET }}
       COMMIT_BATCH_SIZE: ${{secrets.COMMIT_BATCH_SIZE }}
       COMPOSE_PROJECT_NAME: ${{secrets.COMPOSE_PROJECT_NAME }}
+      GH_REPO_ACCESS_BEE_MASTER: ${{secrets.GH_REPO_ACCESS_BEE_MASTER }}
+      GH_REPO_ACCESS_RTE_MASTER: ${{secrets.GH_REPO_ACCESS_RTE_MASTER }}
       GOOGLE_CREDENTIALS_PATH: ${{secrets.GOOGLE_CREDENTIALS_PATH }}
       GOOGLE_CREDENTIALS_CONTENTS: ${{secrets.GOOGLE_CREDENTIALS_CONTENTS }}
       DEV_E2E_MYSQL_TCP_PORT: ${{secrets.DEV_E2E_MYSQL_TCP_PORT }}
