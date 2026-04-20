@@ -1,3 +1,32 @@
+### Release 14.0.1
+
+- Date: 2026-04-20 04:42 (UTC+02:00)
+
+______________________________________________________________________
+
+### Summary of Changes
+
+- Workflows: Updated `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` so the generated `.env` writes `AUTHZ_SERVICE_CLIENT_ID` from the workflow input context instead of the secret context for the private native-docker CI path.
+- Workflows: Updated `.github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml` to keep the forwarded secret ordering aligned with the reusable private native-docker CI workflow.
+- Documentation: Updated `README.md` to document the private native-docker CI `.env` sourcing change and the aligned secret forwarding in the private native-docker PR wrapper.
+- Build: Bumped version to 14.0.1 in `pyproject.toml` (patch bump because only existing `.github/workflows/` scripts changed for this release; the deleted `dummy.txt` chore is excluded from the release notes).
+
+______________________________________________________________________
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - .github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml
+  - .github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml
+  - README.md
+  - pyproject.toml
+- Number of files changed: 4
+- Insertions: 10
+- Deletions: 9
+
+______________________________________________________________________
+
 ### Release 14.0.0
 
 - Date: 2026-04-12 04:29 (UTC+02:00)
