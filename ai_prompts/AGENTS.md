@@ -113,37 +113,30 @@ If a docker configuration is present:
 - Use plan mode for verification steps, not just building
 - Write detailed steps to reduce ambiguity
 - Plan in small steps that are broken up that can be given to an LLM
-- When asked to plan, look for a rondfok file within the project you are working on, and create a .md file in there containing the plan
+- When asked to plan, look for a tasks/ folder within the project you are working on, and create a <codex session id>.md file in there containing the plan
 
-### 2. Subagent Strategy
-
-- Use subagents liberally to keep the main context window clean
-- Offload research, exploration, and parallel analysis to subagents
-- For complex problems, throw more at it via subagents
-- One task per subagent for focused execution
-
-### 3. Self-Improvement Loop
+### 2. Self-Improvement Loop
 
 - After any correction from the user: update `tasks/lessons.md` with the pattern
 - Write rules for yourself that prevent the same mistake
 - Ruthlessly iterate on these lessons until the mistake rate drops
 - Review lessons at session start for a relevant project
 
-### 4. Verification Before Done
+### 3. Verification Before Done
 
 - Never mark a task complete without proving it works
 - Diff behaviour between main and your changes when relevant
 - Ask yourself: "Would a staff engineer approve this?"
 - Run tests, check logs, demonstrate correctness
 
-### 5. Demanding Elegance (Balanced)
+### 4. Demanding Elegance (Balanced)
 
 - For non-trivial changes: pause and ask "is there a more elegant way?"
 - If a fix feels hacky: "Knowing everything I know now, implement the elegant solution"
 - Skip this for simple, obvious fixes; don't overengineer
 - Challenge your own work before presenting it
 
-### 6. Autonomous Bug Fixing
+### 5. Autonomous Bug Fixing
 
 - When given a bug report: fix it. Don't ask for hand-holding
 - Point at logs, errors, failing tests; then resolve them
@@ -158,6 +151,7 @@ If a docker configuration is present:
 4. **Explain Changes**: High-level summary at each step
 5. **Document Results**: Add a review section to `tasks/todo.md`
 6. **Capture Lessons**: Update `tasks/lessons.md` after corrections
+7. **Git**: The tasks/ folder contents should never be pushed to git
 
 ## Core Principles
 
