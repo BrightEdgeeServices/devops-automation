@@ -1,3 +1,43 @@
+### Release 15.0.0
+
+- Date: 2026-04-25 03:11 (UTC+02:00)
+
+______________________________________________________________________
+
+### Summary of Changes
+
+- Workflows: Updated `.github/workflows/04-publish-release.yaml`, `.github/workflows/iac-pc-release-all-def.yaml`, `.github/workflows/py-pc-release-all-def.yaml`, and `.github/workflows/react-pc-release-all-def.yaml` to use `softprops/action-gh-release@v3`.
+- Workflows: Updated `.github/workflows/py-pc-ci-pvt-no_docker-def.yaml` and `.github/workflows/py-pc-ci-pvt-with_docker-def.yaml` to configure Poetry authentication for `sample_data_factory` with `GH_REPO_ACCESS_RTE_MASTER` instead of `rtedb`.
+- Templates: Updated `templates/py-temp-publish-pvt-release_notify_after_merge-def.yaml` to align the private release-notify-after-merge secret mappings with the reusable workflow call formatting.
+- Prompts: Updated `ai_prompts/AGENTS.md` to move planning output into project-local `tasks/` session files and to keep the `tasks/` directory out of git.
+- Dependencies: Raised the development `pytest` requirement to `>=9.0.3` in `pyproject.toml` and refreshed `poetry.lock` accordingly.
+- Documentation: Updated `README.md` to document the GitHub release action v3 upgrade, the additional `sample_data_factory` Poetry authentication in private CI workflows, the `pytest` 9.0.3 requirement, and the `tasks/` planning guidance for AI prompts.
+- Build: Bumped version to 15.0.0 in `pyproject.toml` (major bump because `templates/py-temp-publish-pvt-release_notify_after_merge-def.yaml` is an existing `templates/` script, and the most recent related major release was 11.0.0 on 2026-03-13, which is outside the 3-day exception window).
+
+______________________________________________________________________
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - .github/workflows/04-publish-release.yaml
+  - .github/workflows/iac-pc-release-all-def.yaml
+  - .github/workflows/py-pc-ci-pvt-no_docker-def.yaml
+  - .github/workflows/py-pc-ci-pvt-with_docker-def.yaml
+  - .github/workflows/py-pc-release-all-def.yaml
+  - .github/workflows/react-pc-release-all-def.yaml
+  - README.md
+  - ReleaseNotes.md
+  - ai_prompts/AGENTS.md
+  - poetry.lock
+  - pyproject.toml
+  - templates/py-temp-publish-pvt-release_notify_after_merge-def.yaml
+- Number of files changed: 12
+- Insertions: 82
+- Deletions: 39
+
+______________________________________________________________________
+
 ### Release 14.0.1
 
 - Date: 2026-04-20 04:42 (UTC+02:00)
