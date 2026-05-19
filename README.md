@@ -19,6 +19,9 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 - Template workflows in `templates/` that delegate execution to reusable workflows in `.github/workflows/`.
 - Repository-level `AGENTS.md` guidance now mirrors the detailed project instructions for planning, task tracking, verification, Python testing standards, environment variables, and logging.
 - Prompt-level `ai_prompts/AGENTS.md` guidance now clarifies sub-repository scope, local `tasks/` planning output, README edit restrictions, fixture organization, and Docker setup caution.
+- `.dockerignore` now keeps build contexts focused by excluding local environments, generated output, caches, repository metadata, tests, and documentation.
+- `SetToLocalRepo.ps1` and `SetToRemoteRepo.ps1` switch Poetry dependencies between editable local repositories and GitHub-hosted sources.
+- `SetUpDocker.ps1` centralizes Docker Compose setup, project-name normalization, optional variant selection, and local `.env` regeneration before container startup.
 - Release workflows `.github/workflows/04-publish-release.yaml`, `.github/workflows/iac-pc-release-all-def.yaml`, `.github/workflows/py-pc-release-all-def.yaml`, and `.github/workflows/react-pc-release-all-def.yaml` now use `softprops/action-gh-release@v3`.
 - Public CI workflows `.github/workflows/py-pc-ci-pub-no_docker-def.yaml` and `.github/workflows/py-pc-ci-pub-with_docker-def.yaml` now upload coverage with `codecov/codecov-action@v6`.
 - Private no-docker workflows `.github/workflows/py-pc-ci-pvt-no_docker-def.yaml` and `.github/workflows/py-wf-pr-pvt-no_docker-def.yaml` now require the `PROJECT_NAME` repository variable and export it into the job environment.
@@ -39,7 +42,8 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 - Native-docker CI in `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` no longer creates `RTEAPI_BASE_IMAGES_PATH`; runner bootstrap/setup should prepare that path when needed.
 - Prompt templates in `ai_prompts/` for release-note generation and Linear issue/project drafting.
 - `ai_prompts/AGENTS.md` now directs plan files into project-local `tasks/` session markdown files and explicitly keeps that directory out of git.
-- Poetry and pre-commit based project tooling defined in `pyproject.toml` and `.pre-commit-config.yaml`; pre-commit now tracks `isort` 9.0.0a3 and `black-pre-commit-mirror` 26.5.1.
+- Poetry and pre-commit based project tooling defined in `pyproject.toml` and `.pre-commit-config.yaml`; pre-commit now tracks `isort` 9.0.0a3 and `black-pre-commit-mirror` 26.5.1, skips `legacy/`, and includes the end-of-file fixer.
+- Package metadata now supports Python 3.10 through 3.14 and classifies the project as production/stable console tooling.
 - The direct `rtecommon` runtime dependency has been removed from `pyproject.toml`, and `poetry.lock` has been regenerated with Poetry 2.4.1.
 - `SetupDotEnv.ps1` now writes `.env` relative to the script location and fails fast when required installer, logging, and MySQL environment variables are missing.
 - `SetupPrivateRepoAccess.ps1` now uses a temporary Poetry directory on the appropriate drive, restores the original temp environment variables afterward, and includes inactive `rteapi` and `sample_data_factory` repository entries.
@@ -50,6 +54,8 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 - `templates/` - Template workflow files to copy into downstream repositories.
 - `ai_prompts/` - Prompt templates for release updates, issue creation, project planning, and repository-specific Codex guidance.
 - `legacy/` - Repository-local output location used by prompt workflows.
+- `SetToLocalRepo.ps1` / `SetToRemoteRepo.ps1` - Helpers for switching Poetry dependency sources during local development.
+- `SetUpDocker.ps1` - Docker Compose setup helper for local and end-to-end workflow support.
 - `ReleaseNotes.md` - Historical release log for this repository.
 - `AGENTS.md` - Contributor and coding-agent guardrails for repository-specific workflows and testing practices.
 
@@ -57,7 +63,7 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 
 01. Clone the repository and ensure `Python 3.10+`, `poetry`, and `git` are installed.
 02. Run `poetry install` to install project dependencies.
-03. Use `pytest` 9.0.3 or newer for local validation so your environment matches the repository constraint in `pyproject.toml`.
+03. Use Python 3.10 through 3.14 and `pytest` 9.0.2 or newer for local validation so your environment matches the repository constraint in `pyproject.toml`.
 04. For private CI workflows, ensure `GH_REPO_ACCESS_RTE_MASTER` can authenticate packages such as `sample_data_factory` in addition to the existing private repositories.
 05. Release workflows in this repository expect `softprops/action-gh-release@v3`.
 06. When using the repository AI prompts for planning, store session plans in a local `tasks/` directory and keep that directory out of git.
@@ -74,6 +80,8 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 17. Do not rely on `rtecommon` as a direct runtime dependency of this package; add explicit downstream dependencies where a consuming project requires them.
 18. Run `SetupDotEnv.ps1` from the repository root to regenerate `.env`; required installer, logging, and MySQL variables must be set before running it.
 19. Run `SetupPrivateRepoAccess.ps1` when local Poetry source credentials need to be refreshed; the script now isolates Poetry temp files and restores the original temp environment after it completes.
+20. Use `SetToLocalRepo.ps1` or `SetToRemoteRepo.ps1` when switching related Poetry dependencies between editable local checkouts and GitHub sources.
+21. Run `SetUpDocker.ps1` only when you intend to rebuild the local Docker Compose environment; it can remove containers and volumes before startup.
 
 ## Deployment
 
