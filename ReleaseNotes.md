@@ -1,3 +1,87 @@
+### Release 15.1.0
+
+- Date: 2026-05-19 21:31 (UTC+02:00)
+
+______________________________________________________________________
+
+### Repository Governance
+
+- Agent Guidance: Expanded `AGENTS.md` into the repository-standard instruction set covering scope, environment variables, Docker safety, testing rules, workflow orchestration, task management, Python standards, and logging expectations.
+- Agent Guidance: Updated `ai_prompts/AGENTS.md` to clarify sub-repository scope, README edit restrictions, fixture organization, Docker setup caution, and task commit-message guidance.
+- Repository Metadata: Removed `.github/CODEOWNERS` and refreshed tracked `.github/.idea/` project metadata.
+- Ignore Rules: Added `.dockerignore` and expanded `.gitignore` for common local, generated, cache, Terraform, Node, Python, coverage, Docker, and task-planning artifacts.
+
+______________________________________________________________________
+
+### Development Tooling
+
+- Tooling: Updated `.pre-commit-config.yaml` to add `end-of-file-fixer`, skip `legacy/` for Python/text hooks, comment out the `rstcheck` hook, and use `isort` 9.0.0a3 plus `black-pre-commit-mirror` 26.5.1.
+- Tooling: Simplified `.flake8` by removing the explicit `VersionArchive` and `Archive` exclusions.
+- Dependency Updates: Switched Dependabot's Python package ecosystem from `poetry` to `pip`.
+
+______________________________________________________________________
+
+### Setup and Environment Scripts
+
+- Setup Scripts: Updated `InstallDevEnv.ps1` to validate Python >= 3.10 and < 3.15, regenerate Poetry locks without cache, run install/update/sync steps, and report pre-commit setup stages.
+- Setup Scripts: Added `InstallPy.ps1` for organization-aware GitHub remote setup, Poetry installation, development dependency installation, and pre-commit initialization.
+- Setup Scripts: Added `SetToLocalRepo.ps1` and `SetToRemoteRepo.ps1` to switch Poetry dependencies between editable local checkouts and GitHub-hosted sources.
+- Setup Scripts: Added `SetUpDocker.ps1` to normalize Docker Compose project names, support optional compose variants, regenerate local setup files, and rebuild containers.
+- Setup Scripts: Updated `SetupDotEnv.ps1` to create `.env` relative to the script location and fail fast when required installer, logging, and MySQL environment variables are missing.
+- Setup Scripts: Updated `SetupPrivateRepoAccess.ps1` to isolate Poetry temp files on the appropriate drive, restore temp environment variables after execution, and include inactive `rteapi` and `sample_data_factory` repository entries.
+
+______________________________________________________________________
+
+### Package Metadata and Dependencies
+
+- Build: Updated `pyproject.toml` package metadata for production/stable console tooling, Python 3.10 through 3.14 support, normalized README/license metadata, and legacy/test-data spell-check exclusions.
+- Dependencies: Removed the direct `rtecommon` runtime dependency and private Poetry source, added local-development dependency examples, and refreshed `poetry.lock`.
+- Dependencies: Adjusted development dependencies to include `pluggy`, `pygments`, `docker`, and `twine`, with `pytest` constrained at `>=9.0.2`.
+- Build: Bumped version to 15.1.0 in `pyproject.toml` (minor bump because the branch adds new setup/local-repository scripts and Docker ignore support, with no changed `templates/` scripts and no changed `.github/workflows/` scripts).
+
+______________________________________________________________________
+
+### Documentation
+
+- Documentation: Updated `README.md` to document the expanded agent guidance, new Docker ignore rules, dependency source switching scripts, Docker setup helper, Python 3.14 support, pre-commit behavior, setup script behavior, and refreshed project structure.
+
+______________________________________________________________________
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - .dockerignore
+  - .flake8
+  - .github/.idea/.github.iml
+  - .github/.idea/copilot.data.migration.ask2agent.xml
+  - .github/.idea/inspectionProfiles/Project_Default.xml
+  - .github/.idea/inspectionProfiles/profiles_settings.xml
+  - .github/.idea/misc.xml
+  - .github/.idea/modules.xml
+  - .github/CODEOWNERS
+  - .github/dependabot.yaml
+  - .gitignore
+  - .pre-commit-config.yaml
+  - AGENTS.md
+  - InstallDevEnv.ps1
+  - InstallPy.ps1
+  - README.md
+  - ReleaseNotes.md
+  - SetToLocalRepo.ps1
+  - SetToRemoteRepo.ps1
+  - SetUpDocker.ps1
+  - SetupDotEnv.ps1
+  - SetupPrivateRepoAccess.ps1
+  - ai_prompts/AGENTS.md
+  - poetry.lock
+  - pyproject.toml
+- Number of files changed: 25
+- Insertions: 822
+- Deletions: 234
+
+______________________________________________________________________
+
 ### Release 15.0.1
 
 - Date: 2026-05-19 21:22 (UTC+02:00)
