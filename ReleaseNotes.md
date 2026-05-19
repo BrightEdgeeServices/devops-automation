@@ -1,3 +1,41 @@
+### Release 15.0.1
+
+- Date: 2026-05-19 21:22 (UTC+02:00)
+
+______________________________________________________________________
+
+### Summary of Changes
+
+- Agent Guidance: Expanded `AGENTS.md` into the repository-standard instruction set covering scope, environment variables, Docker safety, testing rules, workflow orchestration, task management, Python standards, and logging expectations.
+- Agent Guidance: Updated `ai_prompts/AGENTS.md` to clarify sub-repository scope, README edit restrictions, fixture organization, Docker setup caution, and task commit-message guidance.
+- Tooling: Updated `.pre-commit-config.yaml` to use `isort` 9.0.0a3 and `black-pre-commit-mirror` 26.5.1.
+- Setup Scripts: Updated `SetupDotEnv.ps1` to create `.env` relative to the script location and fail fast when required installer, logging, or MySQL environment variables are missing.
+- Tooling: Updated `SetupPrivateRepoAccess.ps1` to isolate Poetry temp files on the appropriate drive, restore the original temp environment variables after execution, and include inactive `rteapi` and `sample_data_factory` repository entries.
+- Dependencies: Removed the direct `rtecommon` runtime dependency from `pyproject.toml` and refreshed `poetry.lock` with Poetry 2.4.1.
+- Documentation: Updated `README.md` to document the expanded agent guidance, pre-commit hook versions, private repository access setup changes, and the removed direct `rtecommon` dependency while preserving the required project overview sections.
+- Build: Bumped version to 15.0.1 in `pyproject.toml` (patch bump because the branch contains no changed `templates/` scripts or `.github/workflows/` scripts, and the remaining changes are backwards-compatible documentation, tooling, and dependency metadata updates).
+
+______________________________________________________________________
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - .pre-commit-config.yaml
+  - AGENTS.md
+  - README.md
+  - ReleaseNotes.md
+  - SetupDotEnv.ps1
+  - SetupPrivateRepoAccess.ps1
+  - ai_prompts/AGENTS.md
+  - poetry.lock
+  - pyproject.toml
+- Number of files changed: 9
+- Insertions: 324
+- Deletions: 137
+
+______________________________________________________________________
+
 ### Release 15.0.0
 
 - Date: 2026-04-25 03:11 (UTC+02:00)
