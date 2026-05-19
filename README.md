@@ -17,6 +17,8 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 
 - Reusable workflow implementations for CI, PR, publish, fork, and maintenance pipelines.
 - Template workflows in `templates/` that delegate execution to reusable workflows in `.github/workflows/`.
+- Repository-level `AGENTS.md` guidance now mirrors the detailed project instructions for planning, task tracking, verification, Python testing standards, environment variables, and logging.
+- Prompt-level `ai_prompts/AGENTS.md` guidance now clarifies sub-repository scope, local `tasks/` planning output, README edit restrictions, fixture organization, and Docker setup caution.
 - Release workflows `.github/workflows/04-publish-release.yaml`, `.github/workflows/iac-pc-release-all-def.yaml`, `.github/workflows/py-pc-release-all-def.yaml`, and `.github/workflows/react-pc-release-all-def.yaml` now use `softprops/action-gh-release@v3`.
 - Public CI workflows `.github/workflows/py-pc-ci-pub-no_docker-def.yaml` and `.github/workflows/py-pc-ci-pub-with_docker-def.yaml` now upload coverage with `codecov/codecov-action@v6`.
 - Private no-docker workflows `.github/workflows/py-pc-ci-pvt-no_docker-def.yaml` and `.github/workflows/py-wf-pr-pvt-no_docker-def.yaml` now require the `PROJECT_NAME` repository variable and export it into the job environment.
@@ -37,7 +39,10 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 - Native-docker CI in `.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml` no longer creates `RTEAPI_BASE_IMAGES_PATH`; runner bootstrap/setup should prepare that path when needed.
 - Prompt templates in `ai_prompts/` for release-note generation and Linear issue/project drafting.
 - `ai_prompts/AGENTS.md` now directs plan files into project-local `tasks/` session markdown files and explicitly keeps that directory out of git.
-- Poetry and pre-commit based project tooling defined in `pyproject.toml` and `.pre-commit-config.yaml`.
+- Poetry and pre-commit based project tooling defined in `pyproject.toml` and `.pre-commit-config.yaml`; pre-commit now tracks `isort` 9.0.0a3 and `black-pre-commit-mirror` 26.5.1.
+- The direct `rtecommon` runtime dependency has been removed from `pyproject.toml`, and `poetry.lock` has been regenerated with Poetry 2.4.1.
+- `SetupDotEnv.ps1` now writes `.env` relative to the script location and fails fast when required installer, logging, and MySQL environment variables are missing.
+- `SetupPrivateRepoAccess.ps1` now uses a temporary Poetry directory on the appropriate drive, restores the original temp environment variables afterward, and includes inactive `rteapi` and `sample_data_factory` repository entries.
 
 ### Project Structure
 
@@ -56,7 +61,7 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 04. For private CI workflows, ensure `GH_REPO_ACCESS_RTE_MASTER` can authenticate packages such as `sample_data_factory` in addition to the existing private repositories.
 05. Release workflows in this repository expect `softprops/action-gh-release@v3`.
 06. When using the repository AI prompts for planning, store session plans in a local `tasks/` directory and keep that directory out of git.
-07. Run `pre-commit install` and `pre-commit run --all-files` before opening a PR.
+07. Run `pre-commit install` and `pre-commit run --all-files` before opening a PR; local hooks use `isort` 9.0.0a3 and `black-pre-commit-mirror` 26.5.1.
 08. Copy a relevant template from `templates/` to your target repository's `.github/workflows/` directory.
 09. Publish-after-merge templates do not publish releases for merges performed by `dependabot[bot]`.
 10. Dependabot is configured to scan Poetry, GitHub Actions, and Docker definitions weekly from the repository root.
@@ -66,6 +71,9 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 14. For private no-docker CI and PR workflows, define the `PROJECT_NAME` repository variable because the reusable workflows require it, and `templates/py-temp-pr-pvt-no_docker-def.yaml` now forwards it into the reusable private PR workflow.
 15. Public CI workflows that upload coverage now rely on `codecov/codecov-action@v6`.
 16. Use `pushpy.ps1` for validation pushes and `pushpr.ps1` to publish release-ready changes.
+17. Do not rely on `rtecommon` as a direct runtime dependency of this package; add explicit downstream dependencies where a consuming project requires them.
+18. Run `SetupDotEnv.ps1` from the repository root to regenerate `.env`; required installer, logging, and MySQL variables must be set before running it.
+19. Run `SetupPrivateRepoAccess.ps1` when local Poetry source credentials need to be refreshed; the script now isolates Poetry temp files and restores the original temp environment after it completes.
 
 ## Deployment
 
