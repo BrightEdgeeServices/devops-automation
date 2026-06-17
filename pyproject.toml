@@ -6,42 +6,40 @@
 
 [project]
     name = "devops-platform"
-    version = "15.0.0"
+    version = "15.1.0"
     description = "Repository for GitHub Actions Workflows."
 
     authors = [
-        { name = "Hendrik du Toit", email = "hendrik@brightedge.co.za" },
+        { name = "Hendrik du Toit", email = "hendrik@brightedge.co.za" }
     ]
     classifiers = [
-        "Development Status :: 4 - Beta",
-        "Intended Audience :: Developers",
-        "Intended Audience :: Information Technology",
-        "Intended Audience :: System Administrators",
-        "Topic :: Software Development :: Bug Tracking",
-        "Topic :: Software Development :: Build Tools",
+        "Development Status :: 5 - Production/Stable",
+        "Environment :: Console",
+        "Framework :: Pytest",
         "Topic :: Software Development :: Quality Assurance",
+        "License :: Other/Proprietary License",
         "Topic :: Software Development :: Testing",
+        "Operating System :: POSIX :: Linux",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+	"Topic :: Software Development :: Testing",
     ]
     dependencies = [
     "pytest-cov (>=7.0.0,<8.0.0)",
-    "rtecommon @ git+https://github.com/RealTimeEvents/rtecommon.git@master"
     ]
     license = "Proprietary"
-    license-files = [
-        "LICENSE.txt",
-    ]
+    license-files = ["LICENSE.txt"]
     maintainers = [
         { name = "Hendrik du Toit", email = "hendrikdt@citiqprepaid.co.za" },
-        { name = "Henru du Toit', email = 'henru@brightedge.co.za" },
-        { name = "Dirk du Toit', email = 'dirk@brightedge.co.za" },
+        { name = "Henru du Toit", email = "henru@brightedge.co.za" },
+        { name = "Dirk du Toit", email = "dirk@brightedge.co.za" },
     ]
-    readme = { file = 'README.md', content-type = 'text/markdown' }
-    #readme = "README.md"
-    requires-python = ">=3.10"
+    readme = { file = "README.md", content-type = "text/markdown" }
+    requires-python = ">=3.10,<3.15"
 
 [project.urls]
     # Documentation = "https://readthedocs.org"
@@ -53,7 +51,11 @@
 [tool.black]
     line-length = 120
     target-version = [
+        "py310",
+        "py311",
+        "py312",
         "py313",
+        "py314",
     ]
     extend-exclude = """
     (
@@ -64,7 +66,7 @@
 [tool.codespell]
     count = ""
     quiet-level = 2
-    skip = "working/*"
+    skip = "working/*,legacy/*,poetry.lock,tests/test_data/*"
     ignore-words-list = "space-holder"
     write-changes = ""
 
@@ -83,7 +85,12 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-rtecommon = {version = "*", source = "rtecommon"}
+# DO NOT REMOVE THE BELOW - Henru
+# rtecommon = { path = "../rtecommon", develop = true }
+# fidewebtourparser = { path = "../fidewebtourparser", develop = true }
+# fideratinglist = { path = "../fideratinglist", develop = true }
+# rtedb = { path = "../rtedb", develop = true }
+# sample-data-factory = { path = "../sample_data_factory", develop = true }
 
 [tool.poetry.group.dev]
     optional = true
@@ -96,26 +103,21 @@ rtecommon = {version = "*", source = "rtecommon"}
     mdformat-gfm = ">=0.4.1"
     mdformat-frontmatter = ">=2.0.8"
     mdformat-footnote = ">=0.1.1"
+    pluggy = ">=1.6.0,<2.0.0"
     pre-commit = ">=4.0.1"
-    pytest = ">=9.0.3"
+    pygments = "^2.19.1"
+    pytest = ">=9.0.2"
     pytest-cov = ">=6.0.0"
-    rstcheck = { extras = [
-        "sphinx",
-    ], version = ">=6.2.4" }
-    sphinx = ">=8.1.3"
-
-[[tool.poetry.source]]
-name = "rtecommon"
-url = "https://github.com/RealTimeEvents/rtecommon.git"
-priority = "explicit"
+    docker = ">=7.1.0"
+    twine = ">=6.1.0"
 
 [tool.pytest.ini_options]
     norecursedirs = ["tests/legacy"]
     addopts = [
         "-vv",
-        "--ignore-glob=*\\Archive",
-    "--ignore=/legacy",
-    "--ignore=tests/legacy",
+        "--ignore-glob=*/Archive",
+        "--ignore=/legacy",
+        "--ignore=tests/legacy",
     ]
     filterwarnings = [
         #    "ignore::DeprecationWarning",

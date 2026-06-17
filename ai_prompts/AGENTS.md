@@ -6,14 +6,14 @@ Project-specific instructions for Codex when working in this repository.
 
 ## Scope
 
-These instructions apply to the entire repository rooted at this file.
+These instructions apply to the entire repository rooted at this file, including sub repositories.
 
 ## Repository
 
 - Core application code lives in `src/[repo]/` where [repo] is the name of the particular repo.
 - The environment is driven by environment variables. The $env:PROJECT_DIR holds the base directory for each repo.
 - Tests are in `tests/` (`unit/`, `e2e/`, `helpers/`, `test_data/`).
-- Legacy/archived code is in `legacy/` and `tests/legacy/` (excluded from normal test runs).
+- Legacy/archived code is in `legacy/` and are excluded from normal test runs.
 - SQL/bootstrap assets are in `scripts/` and `data/`.
 
 ## Working norms
@@ -22,6 +22,7 @@ These instructions apply to the entire repository rooted at this file.
 - Do not change behaviour unless explicitly requested.
 - Keep naming, code style, and structure consistent with nearby files.
 - If requirements are unclear, ask before making irreversible changes.
+- Do not update the README.md unless explicitly requested.
 
 ## Safety
 
@@ -46,9 +47,6 @@ These instructions apply to the entire repository rooted at this file.
 - `poetry run python src/ums/main.py` starts the service.
 - `poetry run pytest` runs the active test suite.
 - `poetry run pytest --cov=src --cov=tests --cov-report=term-missing` runs tests with coverage output.
-- `poetry run black src tests` formats Python code.
-- `poetry run isort src tests` sorts imports (Black-compatible profile).
-- `poetry run flake8 src tests` runs lint checks.
 - `poetry run pre-commit run --all-files` runs the same hooks used in CI.
 - `.env` file is created by the `SetupDotEnv.ps1` in the repo root directory. Do not edit the `.env` file direct. Amend
   the `SetupDotEnv.ps1` script and then run it to update the `.env` file.
@@ -59,8 +57,8 @@ If a docker configuration is present:
 
 - An external Docker is used for end-to-end testing.
 - Units test creates its own Docker container and database instance for testing.
-- IF in a Windows environment, the external Docker container is created by running the `SetUpDocker.ps1` script, which calls several other scripts. This
-  script can be amended as needed. BE careful, this will destroy the database and might not be desirable. Ask before running this script.
+- If in a Windows environment, the external Docker container is created by running the `SetUpDocker.ps1` script, which calls several other scripts. This
+  script can be amended as needed. Be careful, this will destroy the database and might not be desirable. Ask before running this script.
 - SQL/bootstrap assets are in `scripts/` and `data/`.
 
 ## Testing for Python
@@ -76,7 +74,8 @@ If a docker configuration is present:
 - The test method name is the name of the test function followed by a description in snake_case.
 - Tests must be named in the format `test_*.py`.
 - Prefer deterministic unit tests
-- Use fixtures from `tests/conftest.py` and `tests/test_data/fixture_data.py`.
+- Use fixtures from `tests/conftest.py`. Group new fixtures in `tests/fixtures/` and reference them in `tests/conftest.py`.
+- Test data are located in `tests/test_data/fixture_data.py`.
 - Do not assign default values to any variable. If the actual value is not available, the code must crash.
 
 **Unit Testing Guidelines**
@@ -152,6 +151,7 @@ If a docker configuration is present:
 5. **Document Results**: Add a review section to `tasks/todo.md`
 6. **Capture Lessons**: Update `tasks/lessons.md` after corrections
 7. **Git**: The tasks/ folder contents should never be pushed to git
+8. **Git Message"**: Write a description for each time a task is completed to use as the message for the relevant git commit. The first line is the "heading" and the next lines a concise summary of the change that was made".
 
 ## Core Principles
 
