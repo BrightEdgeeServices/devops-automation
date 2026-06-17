@@ -35,7 +35,7 @@ jobs:
       - name: Send release email notification
         uses: betterfor/action-send-mail@main
         with:
-          server_address: mail.realtimeevents.co
+          server_address: mail.realtimeevents.io
           server_port: 465
           username: ${{ vars.RELEASE_EMAIL_USER }}
           password: ${{ secrets.RELEASE_EMAIL_PASSWORD }}
