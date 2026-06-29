@@ -17,6 +17,7 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 
 - Reusable workflow implementations for CI, PR, publish, fork, and maintenance pipelines.
 - Template workflows in `templates/` that delegate execution to reusable workflows in `.github/workflows/`.
+- Public no-docker PR template `templates/py-temp-pr-pub-no_docker-def.yaml` now forwards `AUTHZ_CACHE_TTL_SEC` and `AUTHZ_HOST` from repository variables to the reusable workflow.
 - Repository-level `AGENTS.md` guidance now mirrors the detailed project instructions for planning, task tracking, verification, Python testing standards, environment variables, and logging.
 - Prompt-level `ai_prompts/AGENTS.md` guidance now clarifies sub-repository scope, local `tasks/` planning output, README edit restrictions, fixture organization, and Docker setup caution.
 - `.dockerignore` now keeps build contexts focused by excluding local environments, generated output, caches, repository metadata, tests, and documentation.
@@ -69,19 +70,20 @@ This repository provides reusable GitHub Actions workflows, workflow templates, 
 06. When using the repository AI prompts for planning, store session plans in a local `tasks/` directory and keep that directory out of git.
 07. Run `pre-commit install` and `pre-commit run --all-files` before opening a PR; local hooks use `isort` 9.0.0a3 and `black-pre-commit-mirror` 26.5.1.
 08. Copy a relevant template from `templates/` to your target repository's `.github/workflows/` directory.
-09. Publish-after-merge templates do not publish releases for merges performed by `dependabot[bot]`.
-10. Dependabot is configured to scan Poetry, GitHub Actions, and Docker definitions weekly from the repository root.
-11. For native-docker PR workflows, define the required repository variables (`AUTHZ_SERVICE_CLIENT_ID`, `COMMIT_BATCH_SIZE`, `COMPOSE_PROJECT_NAME`, `DEV_AUTO_MYSQL_HOST`, `DEV_AUTO_MYSQL_TCP_PORT`, `DEV_AUTO_OVERRIDE`, `DEV_E2E_MYSQL_TCP_PORT`, `ES_SERVICE_CLIENT_ID`, `LOG_BACKUP_COUNT`, `LOG_DIR`, `LOG_LEVEL_*`, `MYSQL_ROOT_USER`, `RTEAPI_BASE_IMAGES_PATH`, `RTEAPI_ES_*`, `RTEAPI_LOG_REQUESTS`, and `UMS_SERVICE_CLIENT_ID`) and provide the `AUTHZ_SERVICE_CLIENT_SECRET`, `ES_SERVICE_CLIENT_SECRET`, `MYSQL_PWD`, and `UMS_SERVICE_CLIENT_SECRET` secrets before running the workflow; `PYTEST_MYSQL_*` repository variables are no longer required for this path.
-12. For native-docker CI workflows, pass `AUTHZ_SERVICE_CLIENT_ID` through the calling workflow and verify the generated `.env` resolves it correctly from the workflow context, alongside matching `COMMIT_BATCH_SIZE`, `COMPOSE_PROJECT_NAME`, `DEV_AUTO_*`, `DEV_E2E_MYSQL_TCP_PORT`, `ES_SERVICE_CLIENT_ID`, `LOG_*`, `MYSQL_ROOT_USER`, and `UMS_SERVICE_CLIENT_ID` values and the existing installer and database credentials; provide the `AUTHZ_SERVICE_CLIENT_SECRET`, `ES_SERVICE_CLIENT_SECRET`, `MYSQL_PWD`, and `UMS_SERVICE_CLIENT_SECRET` secrets as before, and note that `PYTEST_MYSQL_*` secrets are no longer required by the reusable workflow.
-13. For private native-docker CI, ensure the `RTEAPI_BASE_IMAGES_PATH` directory exists on the runner before jobs that read/write base images.
-14. For private no-docker CI and PR workflows, define the `PROJECT_NAME` repository variable because the reusable workflows require it, and `templates/py-temp-pr-pvt-no_docker-def.yaml` now forwards it into the reusable private PR workflow.
-15. Public CI workflows that upload coverage now rely on `codecov/codecov-action@v6`.
-16. Use `pushpy.ps1` for validation pushes and `pushpr.ps1` to publish release-ready changes.
-17. Do not rely on `rtecommon` as a direct runtime dependency of this package; add explicit downstream dependencies where a consuming project requires them.
-18. Run `SetupDotEnv.ps1` from the repository root to regenerate `.env`; required installer, logging, and MySQL variables must be set before running it.
-19. Run `SetupPrivateRepoAccess.ps1` when local Poetry source credentials need to be refreshed; the script now isolates Poetry temp files and restores the original temp environment after it completes.
-20. Use `SetToLocalRepo.ps1` or `SetToRemoteRepo.ps1` when switching related Poetry dependencies between editable local checkouts and GitHub sources.
-21. Run `SetUpDocker.ps1` only when you intend to rebuild the local Docker Compose environment; it can remove containers and volumes before startup.
+09. For public no-docker PR workflows, define the `AUTHZ_CACHE_TTL_SEC` and `AUTHZ_HOST` repository variables before using `templates/py-temp-pr-pub-no_docker-def.yaml`.
+10. Publish-after-merge templates do not publish releases for merges performed by `dependabot[bot]`.
+11. Dependabot is configured to scan Poetry, GitHub Actions, and Docker definitions weekly from the repository root.
+12. For native-docker PR workflows, define the required repository variables (`AUTHZ_SERVICE_CLIENT_ID`, `COMMIT_BATCH_SIZE`, `COMPOSE_PROJECT_NAME`, `DEV_AUTO_MYSQL_HOST`, `DEV_AUTO_MYSQL_TCP_PORT`, `DEV_AUTO_OVERRIDE`, `DEV_E2E_MYSQL_TCP_PORT`, `ES_SERVICE_CLIENT_ID`, `LOG_BACKUP_COUNT`, `LOG_DIR`, `LOG_LEVEL_*`, `MYSQL_ROOT_USER`, `RTEAPI_BASE_IMAGES_PATH`, `RTEAPI_ES_*`, `RTEAPI_LOG_REQUESTS`, and `UMS_SERVICE_CLIENT_ID`) and provide the `AUTHZ_SERVICE_CLIENT_SECRET`, `ES_SERVICE_CLIENT_SECRET`, `MYSQL_PWD`, and `UMS_SERVICE_CLIENT_SECRET` secrets before running the workflow; `PYTEST_MYSQL_*` repository variables are no longer required for this path.
+13. For native-docker CI workflows, pass `AUTHZ_SERVICE_CLIENT_ID` through the calling workflow and verify the generated `.env` resolves it correctly from the workflow context, alongside matching `COMMIT_BATCH_SIZE`, `COMPOSE_PROJECT_NAME`, `DEV_AUTO_*`, `DEV_E2E_MYSQL_TCP_PORT`, `ES_SERVICE_CLIENT_ID`, `LOG_*`, `MYSQL_ROOT_USER`, and `UMS_SERVICE_CLIENT_ID` values and the existing installer and database credentials; provide the `AUTHZ_SERVICE_CLIENT_SECRET`, `ES_SERVICE_CLIENT_SECRET`, `MYSQL_PWD`, and `UMS_SERVICE_CLIENT_SECRET` secrets as before, and note that `PYTEST_MYSQL_*` secrets are no longer required by the reusable workflow.
+14. For private native-docker CI, ensure the `RTEAPI_BASE_IMAGES_PATH` directory exists on the runner before jobs that read/write base images.
+15. For private no-docker CI and PR workflows, define the `PROJECT_NAME` repository variable because the reusable workflows require it, and `templates/py-temp-pr-pvt-no_docker-def.yaml` now forwards it into the reusable private PR workflow.
+16. Public CI workflows that upload coverage now rely on `codecov/codecov-action@v6`.
+17. Use `pushpy.ps1` for validation pushes and `pushpr.ps1` to publish release-ready changes.
+18. Do not rely on `rtecommon` as a direct runtime dependency of this package; add explicit downstream dependencies where a consuming project requires them.
+19. Run `SetupDotEnv.ps1` from the repository root to regenerate `.env`; required installer, logging, and MySQL variables must be set before running it.
+20. Run `SetupPrivateRepoAccess.ps1` when local Poetry source credentials need to be refreshed; the script now isolates Poetry temp files and restores the original temp environment after it completes.
+21. Use `SetToLocalRepo.ps1` or `SetToRemoteRepo.ps1` when switching related Poetry dependencies between editable local checkouts and GitHub sources.
+22. Run `SetUpDocker.ps1` only when you intend to rebuild the local Docker Compose environment; it can remove containers and volumes before startup.
 
 ## Deployment
 

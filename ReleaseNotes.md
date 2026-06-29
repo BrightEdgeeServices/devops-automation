@@ -1,3 +1,41 @@
+### Release 16.0.0
+
+- Date: 2026-06-29 22:49 (UTC+02:00)
+
+______________________________________________________________________
+
+### Template Workflows
+
+- Public PR Template: Updated `templates/py-temp-pr-pub-no_docker-def.yaml` to forward `AUTHZ_CACHE_TTL_SEC` and `AUTHZ_HOST` from repository variables to the reusable public no-docker PR workflow.
+
+______________________________________________________________________
+
+### Documentation
+
+- Documentation: Updated `README.md` to document the public no-docker PR template's required authorization repository variables and usage guidance.
+
+______________________________________________________________________
+
+### Package Metadata
+
+- Build: Bumped version to 16.0.0 in `pyproject.toml` (major bump because an existing script in `templates/` changed, and there was no previous major version bump in the previous three days).
+
+______________________________________________________________________
+
+### Change Statistics (vs master)
+
+- Branch: `hendrik/wip_ever_green_branch`
+- Files changed:
+  - README.md
+  - ReleaseNotes.md
+  - pyproject.toml
+  - templates/py-temp-pr-pub-no_docker-def.yaml
+- Number of files changed: 4
+- Insertions: 56
+- Deletions: 14
+
+______________________________________________________________________
+
 ### Release 15.1.0
 
 - Date: 2026-05-19 21:31 (UTC+02:00)
