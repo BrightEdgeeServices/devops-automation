@@ -75,4 +75,4 @@ jobs:
       UMS_SERVICE_CLIENT_SECRET:           ${{secrets.UMS_SERVICE_CLIENT_SECRET }}
       VENV_ENVIRONMENT:                    ${{vars.VENV_ENVIRONMENT }}
       MYSQL_IMAGE:                         ${{vars.MYSQL_IMAGE }}
-      UMS_PORT:                            ${{vars.UMS_PORT }}
+      UMS_MAILER_PASSWORD:                 ${{secrets.UMS_MAILER_PASSWORD }}

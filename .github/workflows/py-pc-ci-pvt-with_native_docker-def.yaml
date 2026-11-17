@@ -99,6 +99,8 @@ on:
         required: true
       MYSQL_IMAGE:
         required: true
+      UMS_MAILER_PASSWORD:
+        required: false
 jobs:
   CI:
     runs-on: ${{matrix.os}}
@@ -149,6 +151,7 @@ jobs:
       UMS_SERVICE_CLIENT_ID: ${{secrets.UMS_SERVICE_CLIENT_ID }}
       UMS_SERVICE_CLIENT_SECRET: ${{secrets.UMS_SERVICE_CLIENT_SECRET }}
       VENV_ENVIRONMENT: ${{secrets.VENV_ENVIRONMENT }}
+      UMS_MAILER_PASSWORD: ${{secrets.UMS_MAILER_PASSWORD }}
 
     strategy:
       fail-fast: true
@@ -276,6 +279,7 @@ jobs:
           UMS_MAILER_SERVER=${{  vars.UMS_MAILER_SERVER }}
           UMS_MAILER_SENDER=${{  vars.UMS_MAILER_SENDER }}
           UMS_MAILER_PORT=${{  vars.UMS_MAILER_PORT }}
+          UMS_MYSQL_DATABASE=${{  vars.UMS_MYSQL_DATABASE }}
           EOF
           sed -i 's/^[[:space:]]*//' .env
 
