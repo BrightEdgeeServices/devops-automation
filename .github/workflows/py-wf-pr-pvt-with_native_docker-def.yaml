@@ -114,6 +114,8 @@ on:
         required: true
       MYSQL_IMAGE:
         required: true
+      UMS_MAILER_PASSWORD:
+        required: false
 jobs:
   Pre-Commit:
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-precom-all-def.yaml@master
@@ -169,6 +171,7 @@ jobs:
       UMS_SERVICE_CLIENT_SECRET: ${{secrets.UMS_SERVICE_CLIENT_SECRET }}
       VENV_ENVIRONMENT: ${{secrets.VENV_ENVIRONMENT }}
       MYSQL_IMAGE: ${{secrets.MYSQL_IMAGE }}
+      UMS_MAILER_PASSWORD: ${{secrets.UMS_MAILER_PASSWORD }}
 
   Detect-PR-Tag:
     uses: BrightEdgeeServices/devops-automation/.github/workflows/all-pc-pr-all-detect_tag-def.yaml@master
