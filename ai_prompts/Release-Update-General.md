@@ -8,3 +8,5 @@
 - Do not alter previous release notes, always add a new set.
 - The last section must be a summary of the statistics which include the names of the files that were changed, number of files that were changed, number of insertions, number of deletions and the branch name.
 - Do not include any files excluded by .gitignore.
+- Add a section that mentions all the migrator scripts that are not in master yet and possibly need to be run.
+- Add a section for all of the env variables that were added, their purpose, and what the (preferable) default should be set to in your environment.

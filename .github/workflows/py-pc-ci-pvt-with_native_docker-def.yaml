@@ -270,6 +270,7 @@ jobs:
           UMS_SERVICE_CLIENT_SECRET=${{ secrets.UMS_SERVICE_CLIENT_SECRET }}
           VENV_ENVIRONMENT=${{ secrets.VENV_ENVIRONMENT }}
           MYSQL_IMAGE=${{ secrets.MYSQL_IMAGE }}
+          UMS_PORT=${{ vars.UMS_PORT }}
           EOF
           sed -i 's/^[[:space:]]*//' .env
 
