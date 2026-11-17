@@ -101,6 +101,10 @@ on:
         required: true
       UMS_MAILER_PASSWORD:
         required: false
+      OTP_TOKEN_HASH_SECRET:
+        required: false
+      JWT_SIGNING_KEY_ID:
+        required: false
 jobs:
   CI:
     runs-on: ${{matrix.os}}
@@ -152,6 +156,8 @@ jobs:
       UMS_SERVICE_CLIENT_SECRET: ${{secrets.UMS_SERVICE_CLIENT_SECRET }}
       VENV_ENVIRONMENT: ${{secrets.VENV_ENVIRONMENT }}
       UMS_MAILER_PASSWORD: ${{secrets.UMS_MAILER_PASSWORD }}
+      OTP_TOKEN_HASH_SECRET: ${{secrets.OTP_TOKEN_HASH_SECRET }}
+      JWT_SIGNING_KEY_ID: ${{secrets.JWT_SIGNING_KEY_ID }}
 
     strategy:
       fail-fast: true
