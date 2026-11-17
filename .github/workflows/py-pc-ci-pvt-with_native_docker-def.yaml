@@ -271,11 +271,11 @@ jobs:
           VENV_ENVIRONMENT=${{ secrets.VENV_ENVIRONMENT }}
           MYSQL_IMAGE=${{ secrets.MYSQL_IMAGE }}
           UMS_PORT=${{ vars.UMS_PORT }}
-          UMS_MYSQL_TCP_PORT:${{  vars.UMS_MYSQL_TCP_PORT }}
-          UMS_MYSQL_HOST:${{  vars.UMS_MYSQL_HOST }}
-          UMS_MAILER_SERVER:${{  vars.UMS_MAILER_SERVER }}
-          UMS_MAILER_SENDER:${{  vars.UMS_MAILER_SENDER }}
-          UMS_MAILER_PORT:${{  vars.UMS_MAILER_PORT }}
+          UMS_MYSQL_TCP_PORT=${{  vars.UMS_MYSQL_TCP_PORT }}
+          UMS_MYSQL_HOST=${{  vars.UMS_MYSQL_HOST }}
+          UMS_MAILER_SERVER=${{  vars.UMS_MAILER_SERVER }}
+          UMS_MAILER_SENDER=${{  vars.UMS_MAILER_SENDER }}
+          UMS_MAILER_PORT=${{  vars.UMS_MAILER_PORT }}
           EOF
           sed -i 's/^[[:space:]]*//' .env
 
