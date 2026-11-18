@@ -120,6 +120,10 @@ on:
         required: true
       JWT_SIGNING_KEY_ID:
         required: true
+      ES_INTERNAL_PRESENCE_TOKEN:
+        required: false
+      RTEAPI_REDIS_PASSWORD:
+        required: false
 jobs:
   Pre-Commit:
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-precom-all-def.yaml@master
@@ -178,6 +182,8 @@ jobs:
       UMS_MAILER_PASSWORD: ${{secrets.UMS_MAILER_PASSWORD }}
       OTP_TOKEN_HASH_SECRET: ${{secrets.OTP_TOKEN_HASH_SECRET }}
       JWT_SIGNING_KEY_ID: ${{secrets.JWT_SIGNING_KEY_ID }}
+      ES_INTERNAL_PRESENCE_TOKEN: ${{secrets.ES_INTERNAL_PRESENCE_TOKEN }}
+      RTEAPI_REDIS_PASSWORD: ${{secrets.RTEAPI_REDIS_PASSWORD }}
 
   Detect-PR-Tag:
     uses: BrightEdgeeServices/devops-automation/.github/workflows/all-pc-pr-all-detect_tag-def.yaml@master
