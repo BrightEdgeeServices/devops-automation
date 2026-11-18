@@ -4,6 +4,12 @@ name: py-pc-ci-pvt-with_native_docker-def
 
 on:
   workflow_call:
+    inputs:
+      ums-contract-ref:
+        description: "Pinned UMS revision for native-auth contract tests; empty skips the extra checkout."
+        type: string
+        required: false
+        default: ""
     secrets:
       AUTHZ_SERVICE_CLIENT_ID:
         required: true
@@ -113,6 +119,7 @@ jobs:
   CI:
     runs-on: ${{matrix.os}}
     env:
+      RTE_UMS_SRC: ${{ inputs.ums-contract-ref != '' && format('{0}/.ci/ums/src', github.workspace) || '' }}
       AUTHZ_SERVICE_CLIENT_ID: ${{secrets.AUTHZ_SERVICE_CLIENT_ID }}
       AUTHZ_SERVICE_CLIENT_SECRET: ${{secrets.AUTHZ_SERVICE_CLIENT_SECRET }}
       COMMIT_BATCH_SIZE: ${{secrets.COMMIT_BATCH_SIZE }}
@@ -176,6 +183,16 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v7
+
+      - name: Check out UMS contract source
+        if: ${{ inputs.ums-contract-ref != '' }}
+        uses: actions/checkout@v7
+        with:
+          repository: RealTimeEvents/user_management_service
+          ref: ${{ inputs.ums-contract-ref }}
+          token: ${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
+          path: .ci/ums
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@v6
