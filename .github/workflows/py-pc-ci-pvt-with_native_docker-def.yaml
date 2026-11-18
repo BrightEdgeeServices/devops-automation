@@ -107,8 +107,6 @@ on:
         required: false
       ES_INTERNAL_PRESENCE_TOKEN:
         required: false
-      RTEAPI_INSTANCE_ID:
-        required: false
       RTEAPI_REDIS_PASSWORD:
         required: false
 jobs:
@@ -294,8 +292,6 @@ jobs:
           UMS_MAILER_SENDER=${{  vars.UMS_MAILER_SENDER }}
           UMS_MAILER_PORT=${{  vars.UMS_MAILER_PORT }}
           UMS_MYSQL_DATABASE=${{  vars.UMS_MYSQL_DATABASE }}
-
-
           RTEAPI_INSTANCE_ID=${{ vars.RTEAPI_INSTANCE_ID }}
           AUTHZ_PORT=${{  vars.AUTHZ_PORT }}
           AUTHZ_URL=${{  vars.AUTHZ_URL }}

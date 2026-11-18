@@ -120,7 +120,6 @@ on:
         required: true
       JWT_SIGNING_KEY_ID:
         required: true
-
       ES_INTERNAL_PRESENCE_TOKEN:
         required: false
       RTEAPI_REDIS_PASSWORD:
