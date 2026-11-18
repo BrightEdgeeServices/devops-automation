@@ -3,6 +3,12 @@ name: py-wf-pr-pvt-with_native_docker-def
 
 on:
   workflow_call:
+    inputs:
+      ums-contract-ref:
+        description: "Pinned UMS revision for native-auth contract tests; empty skips the extra checkout."
+        type: string
+        required: false
+        default: ""
     secrets:
       AUTHZ_CACHE_TTL_SEC:
         required: false
@@ -131,6 +137,8 @@ jobs:
 
   CI:
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-ci-pvt-with_native_docker-def.yaml@master
+    with:
+      ums-contract-ref: ${{ inputs.ums-contract-ref }}
     secrets:
       AUTHZ_SERVICE_CLIENT_ID: ${{secrets.AUTHZ_SERVICE_CLIENT_ID }}
       AUTHZ_SERVICE_CLIENT_SECRET: ${{secrets.AUTHZ_SERVICE_CLIENT_SECRET }}
