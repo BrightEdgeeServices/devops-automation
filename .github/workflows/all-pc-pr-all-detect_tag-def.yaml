@@ -1,5 +1,5 @@
 # all-pc-pr-all-detect_tag-def.yaml
-# Reusable workflow: Detect presence of 'pr' tag on remote
+# Reusable workflow: Detect a PR request for the pushed commit
 name: all-pc-pr-all-detect_tag-def
 permissions:
   contents: read
@@ -8,23 +8,43 @@ on:
   workflow_call:
     outputs:
       has_pr_tag:
-        description: "True if a tag named 'pr' exists on the remote repository"
+        description: "True if the remote pr tag points to the pushed commit"
         value: ${{ jobs.Detect-PR-Tag.outputs.has_pr_tag }}
+      tag_oid:
+        description: "Object ID of the matching remote tag ref for conditional cleanup"
+        value: ${{ jobs.Detect-PR-Tag.outputs.tag_oid }}
 
 jobs:
   Detect-PR-Tag:
     runs-on: ubuntu-latest
     outputs:
       has_pr_tag: ${{ steps.detect.outputs.has_pr_tag }}
+      tag_oid: ${{ steps.detect.outputs.tag_oid }}
     steps:
-      - name: Check if tag 'pr' exists in remote
+      - name: Match the remote pr tag to this branch push
         id: detect
         env:
           REPO: ${{ github.repository }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if git ls-remote --exit-code --tags "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" refs/tags/pr >/dev/null 2>&1; then
-            echo "has_pr_tag=true" >> "$GITHUB_OUTPUT"
+          if [[ "$GITHUB_REF" != refs/heads/* ]]; then
+            echo "has_pr_tag=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          remote="https://x-access-token:${GH_TOKEN}@${GITHUB_SERVER_URL#https://}/${REPO}.git"
+          tags=$(git ls-remote --tags "$remote" refs/tags/pr 'refs/tags/pr^{}')
+          tag_oid=
+          peeled_oid=
+          while read -r oid ref; do
+            case "$ref" in
+              refs/tags/pr) tag_oid="$oid" ;;
+              'refs/tags/pr^{}') peeled_oid="$oid" ;;
+            esac
+          done <<< "$tags"
+
+          if [[ -n "$tag_oid" && "${peeled_oid:-$tag_oid}" == "$GITHUB_SHA" ]]; then
+            printf 'has_pr_tag=true\ntag_oid=%s\n' "$tag_oid" >> "$GITHUB_OUTPUT"
           else
             echo "has_pr_tag=false" >> "$GITHUB_OUTPUT"
           fi

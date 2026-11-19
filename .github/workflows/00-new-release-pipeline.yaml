@@ -47,7 +47,12 @@ jobs:
     permissions:
       contents: write
     needs:
+      - Pre-Commit
+      - Merge
+      - Publish-Release
       - Send-Notice
       - Detect-PR-Tag
     uses: ./.github/workflows/all-pc-pr-all-cleanup_tag-def.yaml
+    with:
+      tag_oid: ${{ needs.Detect-PR-Tag.outputs.tag_oid }}
     secrets: inherit

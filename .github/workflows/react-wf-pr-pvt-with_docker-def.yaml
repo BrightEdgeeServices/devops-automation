@@ -104,7 +104,7 @@ jobs:
       id-token: write
       contents: write
       pull-requests: write
-    # Run whenever the repository currently has a tag named 'pr'
+    # Run when the pushed commit requests a PR
     if: ${{ always() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
     needs:
       - Detect-PR-Tag
@@ -119,5 +119,10 @@ jobs:
     if: ${{ always() && needs.Detect-PR-Tag.outputs.has_pr_tag == 'true' }}
     needs:
       - Detect-PR-Tag
+      - Pre-Commit
+      - CI
+      - PR
     uses: BrightEdgeeServices/devops-automation/.github/workflows/all-pc-pr-all-cleanup_tag-def.yaml@master
+    with:
+      tag_oid: ${{ needs.Detect-PR-Tag.outputs.tag_oid }}
     secrets: inherit
