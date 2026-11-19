@@ -132,6 +132,10 @@ on:
         required: false
       ES_MAILER_PASSWORD:
         required: false
+      DMA_SERVICE_CLIENT_ID:
+        required: false
+      DMA_SERVICE_CLIENT_SECRET:
+        required: false
 jobs:
   Pre-Commit:
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-precom-all-def.yaml@master
@@ -195,6 +199,8 @@ jobs:
       ES_INTERNAL_PRESENCE_TOKEN: ${{secrets.ES_INTERNAL_PRESENCE_TOKEN }}
       RTEAPI_REDIS_PASSWORD: ${{secrets.RTEAPI_REDIS_PASSWORD }}
       ES_MAILER_PASSWORD: ${{secrets.ES_MAILER_PASSWORD}}
+      DMA_SERVICE_CLIENT_ID:               ${{vars.DMA_SERVICE_CLIENT_ID }}
+      DMA_SERVICE_CLIENT_SECRET:           ${{secrets.DMA_SERVICE_CLIENT_SECRET }}
 
   Detect-PR-Tag:
     uses: BrightEdgeeServices/devops-automation/.github/workflows/all-pc-pr-all-detect_tag-def.yaml@master
