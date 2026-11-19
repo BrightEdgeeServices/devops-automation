@@ -19,6 +19,8 @@ jobs:
       pull-requests: write
     if: ${{ github.ref_type != 'tag' }}
     uses: BrightEdgeeServices/devops-automation/.github/workflows/py-wf-pr-pvt-with_native_docker-def.yaml@master
+    with:
+      ums-contract-ref: 7edf3afca66849b6569b9293b4190d5b1af7ecb2
     secrets:
       AUTHZ_CACHE_TTL_SEC:                 ${{vars.AUTHZ_CACHE_TTL_SEC}}
       AUTHZ_HOST:                          ${{vars.AUTHZ_HOST}}
@@ -80,3 +82,4 @@ jobs:
       JWT_SIGNING_KEY_ID:                  ${{secrets.JWT_SIGNING_KEY_ID }}
       ES_INTERNAL_PRESENCE_TOKEN:          ${{secrets.ES_INTERNAL_PRESENCE_TOKEN }}
       RTEAPI_REDIS_PASSWORD:               ${{secrets.RTEAPI_REDIS_PASSWORD }}
+      ES_MAILER_PASSWORD:                  ${{secrets.ES_MAILER_PASSWORD}}
