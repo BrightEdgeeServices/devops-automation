@@ -3,6 +3,10 @@ name: all-pc-pr-all-cleanup_tag-def
 
 on:
   workflow_call:
+    inputs:
+      tag_oid:
+        description: "Object ID detected before CI and PR creation"
+        type: string
     # secrets:
     #   GH_REPO_ACCESS_BEE_MASTER:
     #     required: true
@@ -14,29 +18,29 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Delete remote 'pr' tag via GitHub API (idempotent)
+      - name: Delete the pr tag if it still belongs to this run
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EXPECTED_TAG_OID: ${{ inputs.tag_oid }}
         run: |
-          response=$(curl -sS -L -X DELETE \
-            -H "Authorization: Bearer $GITHUB_TOKEN" \
-            -H "Accept: application/vnd.github+json" \
-            -w "\n%{http_code}" \
-            https://api.github.com/repos/${{ github.repository }}/git/refs/tags/pr)
-          code=$(echo "$response" | tail -n1)
-          body=$(echo "$response" | sed '$d')
+          if [[ -z "$EXPECTED_TAG_OID" ]]; then
+            echo "No tag object was recorded. Skipping pr tag cleanup."
+            exit 0
+          fi
 
-          # 204 = success, 404 = tag doesn't exist (already deleted), 422 = validation error (often means tag doesn't exist)
-          if [ "$code" = "204" ]; then
-            echo "Successfully deleted 'pr' tag"
-          elif [ "$code" = "404" ]; then
-            echo "Tag 'pr' does not exist (already deleted or never existed)"
-          elif [ "$code" = "422" ]; then
-            echo "Tag 'pr' does not exist or cannot be deleted (HTTP 422)"
-            echo "Response: $body"
-            # Treat 422 as non-fatal (tag likely doesn't exist)
+          remote="https://x-access-token:${GH_TOKEN}@${GITHUB_SERVER_URL#https://}/${GITHUB_REPOSITORY}.git"
+          git_dir=$(mktemp -d)
+          git init --quiet "$git_dir"
+          if git -C "$git_dir" push --force-with-lease="refs/tags/pr:$EXPECTED_TAG_OID" "$remote" :refs/tags/pr; then
+            exit 0
+          fi
+
+          current_tag=$(git ls-remote --refs "$remote" refs/tags/pr)
+          if [[ -z "$current_tag" ]]; then
+            echo "The pr tag is already absent."
+          elif [[ "${current_tag%%$'\t'*}" != "$EXPECTED_TAG_OID" ]]; then
+            echo "A different request owns the pr tag. Skipping cleanup."
           else
-            echo "Unexpected status deleting tag (HTTP $code)" >&2
-            echo "Response: $body" >&2
+            echo "Could not delete this run's pr tag." >&2
             exit 1
           fi
