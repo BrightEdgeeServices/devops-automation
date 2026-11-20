@@ -3,6 +3,11 @@ name: py-pc-precom-all-def
 
 on:
   workflow_call:
+    inputs:
+      python_version:
+        description: "Python version for pre-commit"
+        type: string
+        default: "3.13"
 
 jobs:
   Pre-Commit:
@@ -11,7 +16,7 @@ jobs:
       fail-fast: true
       matrix:
         os: ["ubuntu-latest"]
-        python-version: ["3.13"]
+        python-version: ["${{ inputs.python_version }}"]
 
     steps:
       - name: Check out code
