@@ -3,6 +3,11 @@ name: py-wf-pr-pvt-no_docker-def
 
 on:
   workflow_call:
+    inputs:
+      python_version:
+        description: "Python version for pre-commit and CI"
+        type: string
+        default: "3.13"
     secrets:
       AUTHZ_CACHE_TTL_SEC:
         required: true
@@ -51,11 +56,15 @@ on:
 
 jobs:
   Pre-Commit:
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-precom-all-def.yaml@master
+    uses: ./.github/workflows/py-pc-precom-all-def.yaml
+    with:
+      python_version: ${{ inputs.python_version }}
     secrets: inherit
 
   CI:
-    uses: BrightEdgeeServices/devops-automation/.github/workflows/py-pc-ci-pvt-no_docker-def.yaml@master
+    uses: ./.github/workflows/py-pc-ci-pvt-no_docker-def.yaml
+    with:
+      python_version: ${{ inputs.python_version }}
     secrets:
       AUTHZ_CACHE_TTL_SEC: ${{secrets.AUTHZ_CACHE_TTL_SEC}}
       AUTHZ_HOST: ${{secrets.AUTHZ_HOST}}

@@ -10,6 +10,11 @@ on:
         type: string
         required: false
         default: ""
+      fps-contract-ref:
+        description: "Pinned FIDE Parser Service revision for FIDE contract tests."
+        type: string
+        required: false
+        default: ""
     secrets:
       AUTHZ_SERVICE_CLIENT_ID:
         required: true
@@ -203,6 +208,16 @@ jobs:
           path: .ci/ums
           persist-credentials: false
 
+      - name: Check out FIDE Parser Service contract source
+        if: ${{ inputs.fps-contract-ref != '' }}
+        uses: actions/checkout@v7
+        with:
+          repository: RealTimeEvents/fide_parser_service
+          ref: ${{ inputs.fps-contract-ref }}
+          token: ${{ secrets.GH_REPO_ACCESS_RTE_MASTER }}
+          path: .ci/fps
+          persist-credentials: false
+
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
@@ -237,6 +252,17 @@ jobs:
       - name: Install dependencies
         run: |
           poetry install --with dev
+
+      - name: Install FIDE Parser Service contract dependencies
+        if: ${{ inputs.fps-contract-ref != '' }}
+        working-directory: .ci/fps
+        run: |
+          poetry install --only main
+          fps_test_python="$(poetry env info --executable)"
+          {
+            echo "FPS_TEST_REPOSITORY=$PWD"
+            echo "FPS_TEST_PYTHON=$fps_test_python"
+          } >> "$GITHUB_ENV"
 
       # Create Google credentials file (required)
       - name: Create Google credentials file

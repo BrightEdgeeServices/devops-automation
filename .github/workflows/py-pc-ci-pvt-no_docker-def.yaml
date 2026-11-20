@@ -3,6 +3,11 @@ name: py-pc-ci-pvt-no_docker-def
 
 on:
   workflow_call:
+    inputs:
+      python_version:
+        description: "Python version for CI"
+        type: string
+        default: "3.13"
     secrets:
       AUTHZ_CACHE_TTL_SEC:
         required: true
@@ -80,7 +85,7 @@ jobs:
       fail-fast: true
       matrix:
         #        python-version: ['3.8', '3.9', '3.10', '3.11']
-        python-version: ["3.13"]
+        python-version: ["${{ inputs.python_version }}"]
         #        os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
         os: ["ubuntu-latest"]
 
